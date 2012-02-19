@@ -58,7 +58,7 @@ fi
 echo "Executing tests..."
 # OPTS="--reporter junit --output test/results"
 
-FILES="`find test -name 'test-*.js'`"
+FILES="`find test -name 'test-*.js'` `find examples -name '*.js'`"
 
 # echo nodeunit $OPTS $FILES
 exec nodeunit $OPTS $FILES
