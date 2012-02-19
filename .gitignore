@@ -1,2 +1,4 @@
 .project
 .settings
+node_modules
+test/results
