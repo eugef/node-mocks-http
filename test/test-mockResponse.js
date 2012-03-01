@@ -119,3 +119,34 @@ exports['writeHead - Can not call after end'] = function(test) {
     });
     test.done();
 };
+
+exports['status - Set the status code'] = function(test) {
+    var response = httpMocks.createResponse();
+    response.status(401);
+    test.equal(401, response._getStatusCode());
+    test.done();
+};
+
+exports['send - Status code at the beginning'] = function(test) {
+    var s = 123;
+    var t = 'This is a weird status code';
+    
+    var response = httpMocks.createResponse();
+    response.send(s, t);
+
+    test.equal(s, response._getStatusCode());
+    test.equal(t, response._getData());
+    test.done();
+};
+
+exports['send - Status code at the end'] = function(test) {
+    var s = 543;
+    var t = 'This is a weird status code';
+    
+    var response = httpMocks.createResponse();
+    response.send(t, s);
+
+    test.equal(s, response._getStatusCode());
+    test.equal(t, response._getData());
+    test.done();
+};
