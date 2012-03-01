@@ -61,4 +61,38 @@ before calling and inspecting afterwards.
 
 We are looking for more volunteers to value to this project, including the
 creation of more objects from the [HTTP module](http://nodejs.org/docs/latest/api/http.html).
+
+Release Notes
+=============
+
+Most releases fixes bugs with our mocks or add features similar to the
+actual `Request` and `Response` objects offered by Node.js and extended
+by Express.
+
+v 0.0.5
+-------
+
+  * Fixed a bug where `response.send()` can take two parameters, the
+    status code and the data to send.
+
+v 0.0.4
+-------
+
+  * Added a `request.session` that can be set during construction (or via
+    calling the `_setSessionVariable()` method, and read as an object.
+    
+v 0.0.3
+-------
+
+  * Added a `request.query` that can be set during construction and read
+    as an object.
+
+v 0.0.2
+-------
+
+  * Code refactoring of the `Response` mock.
   
+v 0.0.1
+-------
+
+  * Initial code banged out one late night...
