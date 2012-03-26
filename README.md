@@ -69,6 +69,11 @@ Most releases fixes bugs with our mocks or add features similar to the
 actual `Request` and `Response` objects offered by Node.js and extended
 by Express.
 
+v 0.0.6
+-------
+
+  * Add support for request files
+
 v 0.0.5
 -------
 
