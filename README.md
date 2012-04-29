@@ -69,6 +69,12 @@ Most releases fixes bugs with our mocks or add features similar to the
 actual `Request` and `Response` objects offered by Node.js and extended
 by Express.
 
+v 0.0.8
+-------
+
+  * Add support for request headers
+  * Fix wrong function name of set cookies
+
 v 0.0.7
 -------
 
