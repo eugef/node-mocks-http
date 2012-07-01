@@ -150,3 +150,24 @@ exports['send - Status code at the end'] = function(test) {
     test.equal(t, response._getData());
     test.done();
 };
+
+exports['implement - WriteableStream'] = function(test){
+	var response = httpMocks.createResponse();	
+	test.equal(typeof(response.writable), 'function');
+	test.equal(typeof(response.destroy), 'function');
+	test.equal(typeof(response.destroySoon), 'function');
+	test.done();
+};
+
+exports['implement - EventEmitter'] = function(test){
+	var response = httpMocks.createResponse();	
+	test.equal(typeof(response.addListener), 'function');
+	test.equal(typeof(response.on), 'function');
+	test.equal(typeof(response.once), 'function');
+	test.equal(typeof(response.removeListener), 'function');
+	test.equal(typeof(response.removeAllListeners), 'function');
+	test.equal(typeof(response.setMaxListeners), 'function');
+	test.equal(typeof(response.listeners), 'function');
+	test.equal(typeof(response.emit), 'function');
+	test.done();
+};
