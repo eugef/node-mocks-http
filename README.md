@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/howardabrams/node-mocks-http.png)](http://travis-ci.org/howardabrams/node-mocks-http)
 node-mocks-http
 ===============
 
