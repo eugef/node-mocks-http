@@ -22,5 +22,11 @@
   "main": "./lib/http-mock.js",
   "engines": {
     "node": ">=0.6"
+  },
+  "devDependencies":{
+    "nodeunit":""
+  },
+  "scripts":{
+    "test": "./run-tests"
   }
 }
