@@ -24,7 +24,8 @@
     "node": ">=0.6"
   },
   "devDependencies":{
-    "nodeunit":""
+    "nodeunit":"",
+     "node-restify-errors":"git://github.com/m9dfukc/node-restify-errors.git"
   },
   "scripts":{
     "test": "./run-tests"
