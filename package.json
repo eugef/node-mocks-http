@@ -22,5 +22,12 @@
   "main": "./lib/http-mock.js",
   "engines": {
     "node": ">=0.6"
+  },
+  "devDependencies":{
+    "nodeunit":"",
+     "node-restify-errors":"git://github.com/m9dfukc/node-restify-errors.git"
+  },
+  "scripts":{
+    "test": "./run-tests"
   }
 }
