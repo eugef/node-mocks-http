@@ -2,7 +2,7 @@
   "author": "Howard Abrams <howard.abrams@gmail.com> (http://www.github.com/howardabrams)",
   "name": "node-mocks-http",
   "description": "Mock 'http' objects for testing Express routing functions",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "homepage": "http://www.github.com/howardabrams/node-mocks-http",
   "keywords": [
                "mock",
