@@ -176,10 +176,19 @@ exports['cookies - Cookies creation'] = function(test) {
   var response = httpMocks.createResponse();
   test.deepEqual(response.cookies, {});
   test.done();
-}
+};
+
 exports['cookies - Cookies assignment'] = function(test) {
   var response = httpMocks.createResponse();
-  response.cookies.egg = 'chicken';
-  test.deepEqual(response.cookies, {egg: 'chicken'});
+  response.cookie("egg", "chicken", { maxAge: 1000 });
+  test.deepEqual(response.cookies, {egg: {value: 'chicken', options: { maxAge: 1000 }}});
   test.done();
-}
+};
+
+exports['cookies - Cookie deletion'] = function(test) {
+  var response = httpMocks.createResponse();
+  response.cookie("egg", "chicken", { maxAge: 1000 });
+  response.clearCookie("egg");
+  test.deepEqual(response.cookies, {});
+  test.done();
+};
