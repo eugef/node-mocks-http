@@ -25,9 +25,9 @@ You can easily test that function with some code like this:
             params: { id: 42 }
         });
         var response = httpMocks.createResponse();
-    
+
         aroute(request, response);
-    
+
         var data = JSON.parse( response._getData() );
         test.equal("Bob Dog", data.name);
         test.equal(42, data.age);
@@ -50,7 +50,7 @@ This project is available as a NPM package.
 After this, just include the following in your test files:
 
     var httpMocks = require('../lib/http-mock');
-    
+
 Design Decisions
 ----------------
 
@@ -68,6 +68,11 @@ Release Notes
 Most releases fixes bugs with our mocks or add features similar to the
 actual `Request` and `Response` objects offered by Node.js and extended
 by Express.
+
+v 0.0.9
+-------
+
+  * Add support for response cookies
 
 v 0.0.8
 -------
@@ -96,7 +101,7 @@ v 0.0.4
 
   * Added a `request.session` that can be set during construction (or via
     calling the `_setSessionVariable()` method, and read as an object.
-    
+
 v 0.0.3
 -------
 
@@ -107,7 +112,7 @@ v 0.0.2
 -------
 
   * Code refactoring of the `Response` mock.
-  
+
 v 0.0.1
 -------
 
