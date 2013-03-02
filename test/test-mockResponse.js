@@ -8,7 +8,7 @@ var httpMocks = require('../lib/http-mock');
 
 exports['object - Simple verification'] = function( test ) {
     var response = httpMocks.createResponse();
-    
+
     response.send("Hello", 'utf8');
     response.send("World");
     test.equal("HelloWorld", response._getData());
@@ -31,7 +31,7 @@ exports['end - Simple Verification'] = function(test) {
 
     response.send("Hello");
     response.end("World");
-    
+
     test.equal("HelloWorld", response._getData());
 
     test.ok(response._isEndCalled());
@@ -42,7 +42,7 @@ exports['end - No Data Called'] = function(test) {
     var response = httpMocks.createResponse();
 
     response.end("Hello World");
-    
+
     test.equal("Hello World", response._getData());
 
     test.ok(response._isEndCalled());
@@ -51,10 +51,10 @@ exports['end - No Data Called'] = function(test) {
 
 exports['write - Simple verification'] = function( test ) {
     var response = httpMocks.createResponse();
-    
+
     response.write("Hello", 'utf8');
     response.end("World");
-    
+
     test.equal("HelloWorld", response._getData());
 
     test.ok( response._isUTF8());
@@ -64,25 +64,25 @@ exports['write - Simple verification'] = function( test ) {
 
 exports['setHeader - Simple verification'] = function(test) {
     var response = httpMocks.createResponse();
-    
+
     response.setHeader('foo', 'bar');
     response.setHeader('bling', 'blang');
-    
+
     test.equal('bar', response.getHeader('foo'));
     test.equal('blang', response.getHeader('bling'));
 
     response.removeHeader('bling');
     test.ok( !response.getHeader('bling'));
-    
+
     test.done();
 };
 
 exports['setHeader - Can not call after end'] = function(test) {
     var response = httpMocks.createResponse();
-    
+
     var body = 'hello world';
     response.end(body);
-    
+
     test.throws( function() {
         response.setHead('Content-Length', body.length);
     });
@@ -91,13 +91,13 @@ exports['setHeader - Can not call after end'] = function(test) {
 
 exports['writeHead - Simple verification'] = function(test) {
     var response = httpMocks.createResponse();
-    
+
     var body = 'hello world';
     response.writeHead(200, {
       'Content-Length': body.length,
       'Content-Type': 'text/plain' });
     response.end(body);
-    
+
     test.equal(200, response._getStatusCode() );
     test.equal(body, response._getData() );
     test.ok(response._isDataLengthValid() );
@@ -108,10 +108,10 @@ exports['writeHead - Simple verification'] = function(test) {
 
 exports['writeHead - Can not call after end'] = function(test) {
     var response = httpMocks.createResponse();
-    
+
     var body = 'hello world';
     response.end(body);
-    
+
     test.throws( function() {
         response.writeHead(200, {
             'Content-Length': body.length,
@@ -130,7 +130,7 @@ exports['status - Set the status code'] = function(test) {
 exports['send - Status code at the beginning'] = function(test) {
     var s = 123;
     var t = 'This is a weird status code';
-    
+
     var response = httpMocks.createResponse();
     response.send(s, t);
 
@@ -142,7 +142,7 @@ exports['send - Status code at the beginning'] = function(test) {
 exports['send - Status code at the end'] = function(test) {
     var s = 543;
     var t = 'This is a weird status code';
-    
+
     var response = httpMocks.createResponse();
     response.send(t, s);
 
@@ -152,7 +152,7 @@ exports['send - Status code at the end'] = function(test) {
 };
 
 exports['implement - WriteableStream'] = function(test){
-	var response = httpMocks.createResponse();	
+	var response = httpMocks.createResponse();
 	test.equal(typeof(response.writable), 'function');
 	test.equal(typeof(response.destroy), 'function');
 	test.equal(typeof(response.destroySoon), 'function');
@@ -160,7 +160,7 @@ exports['implement - WriteableStream'] = function(test){
 };
 
 exports['implement - EventEmitter'] = function(test){
-	var response = httpMocks.createResponse();	
+	var response = httpMocks.createResponse();
 	test.equal(typeof(response.addListener), 'function');
 	test.equal(typeof(response.on), 'function');
 	test.equal(typeof(response.once), 'function');
@@ -171,3 +171,15 @@ exports['implement - EventEmitter'] = function(test){
 	test.equal(typeof(response.emit), 'function');
 	test.done();
 };
+
+exports['cookies - Cookies creation'] = function(test) {
+  var response = httpMocks.createResponse();
+  test.deepEqual(response.cookies, {});
+  test.done();
+}
+exports['cookies - Cookies assignment'] = function(test) {
+  var response = httpMocks.createResponse();
+  response.cookies.egg = 'chicken';
+  test.deepEqual(response.cookies, {egg: 'chicken'});
+  test.done();
+}
