@@ -69,6 +69,11 @@ Most releases fixes bugs with our mocks or add features similar to the
 actual `Request` and `Response` objects offered by Node.js and extended
 by Express.
 
+v 1.0.0
+-------
+
+  * Add support for response redirect and render
+
 v 0.0.9
 -------
 

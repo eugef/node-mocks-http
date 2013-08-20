@@ -192,3 +192,41 @@ exports['cookies - Cookie deletion'] = function(test) {
   test.deepEqual(response.cookies, {});
   test.done();
 };
+
+exports['redirect - Redirect to a url with response code'] = function(test) {
+    var response = httpMocks.createResponse();
+    var url = '/index';
+    var responseCode = 200;
+    response.redirect(responseCode, url);
+    test.equal(response._getRedirectUrl(), url);
+    test.equal(response._getStatusCode(), responseCode);
+    test.done();
+};
+
+exports['redirect - Redirect to a url without response code'] = function(test) {
+    var response = httpMocks.createResponse();
+    var url = '/index';
+    response.redirect(url);
+    test.equal(response._getRedirectUrl(), url);
+    test.done();
+};
+
+exports['render - Render to a view with data'] = function(test) {
+    var response = httpMocks.createResponse();
+    var view = 'index';
+    var data = { 'name': 'bob' };
+    var callback = function() {};
+    response.render(view, data, callback);
+    test.equal(response._getRenderView(), view);
+    test.deepEqual(response._getRenderData(), data);
+    test.done();
+};
+
+exports['render - Render to a view without data'] = function(test) {
+    var response = httpMocks.createResponse();
+    var view = 'index';
+    var callback = function() {};
+    response.render(view, callback);
+    test.equal(response._getRenderView(), view);
+    test.done();
+};
