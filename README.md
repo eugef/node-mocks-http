@@ -69,6 +69,13 @@ Most releases fixes bugs with our mocks or add features similar to the
 actual `Request` and `Response` objects offered by Node.js and extended
 by Express.
 
+v 1.0.2
+-------
+
+  * Added a `.json()` method to the response. (Thanks, diachedelic)
+  * Cleaned up all source files so ./run-tests passes.
+  * Cleaned up jshint issues.
+
 v 1.0.1
 -------
 
