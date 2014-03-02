@@ -5,6 +5,7 @@
  */
 
 var httpMocks = require('../lib/http-mock');
+var EventEmitter = require('events').EventEmitter;
 
 exports['object - Simple verification'] = function (test) {
   var response = httpMocks.createResponse();
@@ -273,7 +274,7 @@ exports['json - With status code'] = function (test) {
 
 exports['events - end'] = function (test) {
   var response = httpMocks.createResponse({
-    eventEmitter: require('events').EventEmitter
+    eventEmitter: EventEmitter
   });
 
   response.on('end', function () {
@@ -286,7 +287,7 @@ exports['events - end'] = function (test) {
 
 exports['events - send'] = function (test) {
   var response = httpMocks.createResponse({
-    eventEmitter: require('events').EventEmitter
+    eventEmitter: EventEmitter
   });
 
   response.on('send', function () {
@@ -299,7 +300,7 @@ exports['events - send'] = function (test) {
 
 exports['events - render'] = function (test) {
   var response = httpMocks.createResponse({
-    eventEmitter: require('events').EventEmitter
+    eventEmitter: EventEmitter
   });
   var view = 'index';
   var data = {
