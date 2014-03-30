@@ -5,6 +5,7 @@
  */
 
 var httpMocks = require('../lib/http-mock');
+var EventEmitter = require('events').EventEmitter;
 
 exports['object - Simple verification'] = function (test) {
   var response = httpMocks.createResponse();
@@ -269,4 +270,49 @@ exports['json - With status code'] = function (test) {
   test.equal(response._getData(), JSON.stringify(data));
   test.equal(response.statusCode, 201);
   test.done();
+};
+
+exports['events - end'] = function (test) {
+  var response = httpMocks.createResponse({
+    eventEmitter: EventEmitter
+  });
+
+  response.on('end', function () {
+    test.ok(response._isEndCalled());
+    test.done();
+  });
+
+  response.end();
+};
+
+exports['events - send'] = function (test) {
+  var response = httpMocks.createResponse({
+    eventEmitter: EventEmitter
+  });
+
+  response.on('send', function () {
+    test.equal(response.statusCode, 200);
+    test.done();
+  });
+
+  response.send(200);
+};
+
+exports['events - render'] = function (test) {
+  var response = httpMocks.createResponse({
+    eventEmitter: EventEmitter
+  });
+  var view = 'index';
+  var data = {
+    'name': 'bob'
+  };
+  var callback = function () {};
+
+  response.on('render', function () {
+    test.equal(response._getRenderView(), view);
+    test.deepEqual(response._getRenderData(), data);
+    test.done();
+  });
+
+  response.render(view, data, callback);
 };
