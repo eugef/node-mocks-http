@@ -316,3 +316,26 @@ exports['events - render'] = function (test) {
 
   response.render(view, data, callback);
 };
+
+
+exports['send - sending response objects a.k.a restifyError with statusCode'] = function(test) {
+  var errors = require('node-restify-errors')
+  var response = httpMocks.createResponse();
+  response.send(409, new errors.InvalidArgumentError("I just dont like you"));
+
+  test.equal(409, response._getStatusCode());
+  test.equal('InvalidArgument', response._getData().code);
+  test.equal('I just dont like you', response._getData().message);
+  test.done();
+};
+
+exports['send - sending response objects a.k.a restifyError without statusCode'] = function(test) {
+  var errors = require('node-restify-errors')
+  var response = httpMocks.createResponse();
+  response.send(new errors.InvalidArgumentError("I just dont like you"));
+
+  test.equal(409, response._getStatusCode());
+  test.equal('InvalidArgument', response._getData().code);
+  test.equal('I just dont like you', response._getData().message);
+  test.done();
+};

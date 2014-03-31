@@ -1,5 +1,5 @@
 #!/bin/sh
-# 
+#
 #  This will run the NodeUnit tests. If `nodeunit` isn't installed, type:
 #
 #      sudo npm install nodeunit
@@ -9,7 +9,7 @@ if type jshint >/dev/null 2>&1
 then
     FILES="`find examples lib -name '*.js'`"
     TMPHINT=/tmp/jshint-results
-    
+
     for FILE in $FILES
     do
         echo "Analyzing: $FILE"
@@ -32,9 +32,9 @@ then
     done
 fi
 
-# Usage: nodeunit [options] testmodule1.js testfolder [...] 
+# Usage: nodeunit [options] testmodule1.js testfolder [...]
 # Options:
-# 
+#
 #   --config FILE     the path to a JSON file with options
 #   --reporter FILE   optional path to a reporter file to customize the output
 #   --list-reporters  list available build-in reporters
@@ -42,7 +42,7 @@ fi
 #   -h, --help        display this help and exit
 #   -v, --version     output version information and exit
 
-# Build-in reporters: 
+# Build-in reporters:
 #   * browser: Browser-based test reporter
 #   * default: Default tests reporter
 #   * eclipse: Reporter for eclipse plugin
@@ -61,4 +61,5 @@ echo "Executing tests..."
 FILES="`find test -name 'test-*.js'` `find examples -name '*.js'`"
 
 # echo nodeunit $OPTS $FILES
+PATH=./node_modules/nodeunit/bin:$PATH
 exec nodeunit $OPTS $FILES

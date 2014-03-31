@@ -2,7 +2,7 @@
   "author": "Howard Abrams <howard.abrams@gmail.com> (http://www.github.com/howardabrams)",
   "name": "node-mocks-http",
   "description": "Mock 'http' objects for testing Express routing functions",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "homepage": "http://www.github.com/howardabrams/node-mocks-http",
   "keywords": [
                "mock",
@@ -22,5 +22,12 @@
   "main": "./lib/http-mock.js",
   "engines": {
     "node": ">=0.6"
+  },
+  "devDependencies":{
+    "nodeunit":"",
+    "node-restify-errors":"git://github.com/m9dfukc/node-restify-errors.git"
+  },
+  "scripts":{
+    "test": "./run-tests"
   }
 }
