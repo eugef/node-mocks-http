@@ -82,6 +82,16 @@ Most releases fixes bugs with our mocks or add features similar to the
 actual `Request` and `Response` objects offered by Node.js and extended
 by Express.
 
+v 1.1.0
+-------
+
+    * Adds a `.header`, `.set`, and `.get` method to the response.
+
+v 1.0.4
+-------
+
+    * Adds the MIT license
+
 v 1.0.3
 -------
 
@@ -103,35 +113,35 @@ v 1.0.3
 v 1.0.2
 -------
 
-  * Added a `.json()` method to the response. (Thanks, diachedelic)
+  * Adds a `.json()` method to the response. (Thanks, diachedelic)
   * Cleaned up all source files so ./run-tests passes.
   * Cleaned up jshint issues.
 
 v 1.0.1
 -------
 
-  * Add support for response redirect and render
+  * Adds support for response redirect and render
 
 v 0.0.9
 -------
 
-  * Add support for response cookies
+  * Adds support for response cookies
 
 v 0.0.8
 -------
 
-  * Add support for request headers
+  * Adds support for request headers
   * Fix wrong function name of set cookies
 
 v 0.0.7
 -------
 
-  * Add support for request cookies
+  * Adds support for request cookies
 
 v 0.0.6
 -------
 
-  * Add support for request files
+  * Adds support for request files
 
 v 0.0.5
 -------
@@ -142,13 +152,13 @@ v 0.0.5
 v 0.0.4
 -------
 
-  * Added a `request.session` that can be set during construction (or via
+  * Adds a `request.session` that can be set during construction (or via
     calling the `_setSessionVariable()` method, and read as an object.
 
 v 0.0.3
 -------
 
-  * Added a `request.query` that can be set during construction and read
+  * Adds a `request.query` that can be set during construction and read
     as an object.
 
 v 0.0.2
