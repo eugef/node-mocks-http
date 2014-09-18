@@ -85,12 +85,12 @@ by Express.
 v 1.1.0
 -------
 
-    * Adds a `.header`, `.set`, and `.get` method to the response.
+  * Adds a `.header`, `.set`, and `.get` method to the response.
 
 v 1.0.4
 -------
 
-    * Adds the MIT license
+  * Adds the MIT license
 
 v 1.0.3
 -------
