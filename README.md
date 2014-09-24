@@ -99,6 +99,11 @@ Most releases fix bugs with our mocks or add features similar to the
 actual `Request` and `Response` objects offered by Node.js and extended
 by Express.
 
+v 1.2.0
+---
+
+  * Adds a `.header` and `.get` method to the request.
+
 v 1.1.0
 ---
 
