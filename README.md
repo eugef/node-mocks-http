@@ -1,7 +1,7 @@
 node-mocks-http
 ---
 
-Mock 'http' objects for testing Express routing functions, but could be used
+Mock 'http' objects for testing [Express](http://expressjs.com/) routing functions, but could be used
 for testing any [Node.js](http://www.nodejs.org) web server applications that
 have code that requires mockups of the `request` and `response` objects.
 
@@ -61,6 +61,7 @@ exports['routeHandler - Simple testing'] = function(test) {
     test.ok( response._isEndCalled());
     test.ok( response._isJSON());
     test.ok( response._isUTF8());
+
     test.done();
 
 };
@@ -84,11 +85,22 @@ This project doesn't address all features that must be
 mocked, but it is a good start. Feel free to send pull requests,
 and a member of the team will be timely in merging them.
 
-After making any changes, please verify your work:
+After making any changes, please verify your works.
+
+Running Tests
+---
+
+Install `jshint` globally.
 
 ```bash
 npm install -g jshint
-npm install
+```
+
+Navigate to the project folder and run `npm install` to install the project's dependencies.
+
+Then simply run the tests.
+
+```bash
 ./run-tests
 ```
 
@@ -98,3 +110,9 @@ Release Notes
 Most releases fix bugs with our mocks or add features similar to the
 actual `Request` and `Response` objects offered by Node.js and extended
 by Express.
+
+
+License
+---
+
+Licensed under [MIT](https://github.com/howardabrams/node-mocks-http/blob/master/LICENSE).
