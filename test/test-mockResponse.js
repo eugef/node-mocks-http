@@ -272,6 +272,19 @@ exports['json - With status code'] = function (test) {
   test.done();
 };
 
+exports['json - With status code reverse'] = function (test) {
+  var response = httpMocks.createResponse(),
+      data = {
+          hello: 'there'
+      };
+
+  response.json(data, 201);
+  test.equal(response._isJSON(), true);
+  test.equal(response._getData(), JSON.stringify(data));
+  test.equal(response.statusCode, 201);
+  test.done();
+};
+
 exports['events - end'] = function (test) {
   var response = httpMocks.createResponse({
     eventEmitter: EventEmitter
