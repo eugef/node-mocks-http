@@ -1,14 +1,16 @@
 node-mocks-http
 ---
 
-Mock 'http' objects for testing [Express](http://expressjs.com/) routing functions, but could be used
-for testing any [Node.js](http://www.nodejs.org) web server applications that
-have code that requires mockups of the `request` and `response` objects.
+Mock 'http' objects for testing [Express](http://expressjs.com/)
+routing functions, but could be used for testing any
+[Node.js](http://www.nodejs.org) web server applications that have
+code that requires mockups of the `request` and `response` objects.
 
 Installation
 ---
 
-This project is available as a [NPM package](https://www.npmjs.org/package/node-mocks-http).
+This project is available as a
+[NPM package](https://www.npmjs.org/package/node-mocks-http).
 
 ```bash
 $ npm install node-mocks-http
@@ -35,7 +37,8 @@ And you have created a function to handle that route's call:
 var routeHandler = function( request, response ) { ... };
 ```
 
-You can easily test the `routeHandler` function with some code like this using the testing framework of your choice:
+You can easily test the `routeHandler` function with some code like
+this using the testing framework of your choice:
 
 ```js
 exports['routeHandler - Simple testing'] = function(test) {
@@ -72,14 +75,16 @@ Design Decisions
 
 We wanted some simple mocks without a large framework.
 
-We also wanted the mocks to act like the original framework being mocked,
-but allow for setting of values before calling and inspecting of values after calling.
+We also wanted the mocks to act like the original framework being
+mocked, but allow for setting of values before calling and inspecting
+of values after calling.
 
 For Developers
 ---
 
-We are looking for more volunteers to bring value to this project, including the
-creation of more objects from the [HTTP module](http://nodejs.org/docs/latest/api/http.html).
+We are looking for more volunteers to bring value to this project,
+including the creation of more objects from the
+[HTTP module](http://nodejs.org/docs/latest/api/http.html).
 
 This project doesn't address all features that must be
 mocked, but it is a good start. Feel free to send pull requests,
@@ -96,7 +101,8 @@ Install `jshint` globally.
 npm install -g jshint
 ```
 
-Navigate to the project folder and run `npm install` to install the project's dependencies.
+Navigate to the project folder and run `npm install` to install the
+project's dependencies.
 
 Then simply run the tests.
 
