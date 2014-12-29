@@ -49,7 +49,7 @@ exports['url - Setting a POST'] = function(test) {
 
 exports['addBody - Simple verification'] = function(test) {
     var request = httpMocks.createRequest();
-    
+
     var username = 'bob';
     request._addBody('user', username);
     test.equal(username, request.body.user);
@@ -58,9 +58,11 @@ exports['addBody - Simple verification'] = function(test) {
 
 exports['setBody - Simple verification'] = function(test) {
     var request = httpMocks.createRequest();
-    
+
     var username = 'bob';
-    request._setBody( { 'user': username } );
+    request._setBody({
+        'user': username
+    });
     test.equal(username, request.body.user);
     test.done();
 };
@@ -73,12 +75,12 @@ exports['body - Unset value'] = function(test) {
 
 
 exports['Object creation - All values set'] = function(test) {
-    
+
     var methodValue = "PUT";
     var idValue = 34;
     var urlValue = 'http://localhost:6522/blingbling';
     var usernameValue = "mittens";
-    
+
     var request = httpMocks.createRequest({
         method: methodValue,
         url: urlValue,
@@ -91,10 +93,77 @@ exports['Object creation - All values set'] = function(test) {
             email: 'bob@dog.com'
         }
     });
-    
+
     test.equal(methodValue, request.method);
     test.equal(urlValue, request.url);
     test.equal(idValue, request.params.id);
     test.equal(usernameValue, request.body.username);
+    test.done();
+};
+
+exports['.param - returns value from params if exists'] = function(test) {
+    var request = httpMocks.createRequest();
+    request._setParameter('paramitem', 'abc');
+
+    test.equal(request.param('paramitem'), 'abc');
+    test.done();
+};
+
+exports['.param - returns value in body if exists'] = function(test) {
+    var request = httpMocks.createRequest();
+    request._addBody('bodyitem', 'abc');
+
+    test.equal(request.param('bodyitem'), 'abc');
+    test.done();
+};
+
+exports['.param - returns value in querystring if exists'] = function(test) {
+    var request = httpMocks.createRequest({
+        query: {
+            'queryitem': 'abc'
+        }
+    });
+
+    test.equal(request.param('queryitem'), 'abc');
+    test.done();
+};
+
+
+exports['.param - returns value in correct order (params)'] = function(test) {
+    var request = httpMocks.createRequest({
+        query: {
+            'thing': '3'
+        }
+    });
+
+    request._setParameter('thing', '1');
+    request._addBody('thing', '2');
+
+    test.equal(request.param('thing'), '1');
+    test.done();
+};
+
+exports['.param - returns value in correct order (body)'] = function(test) {
+    var request = httpMocks.createRequest({
+        query: {
+            'thing': '2'
+        }
+    });
+
+    request._addBody('thing', '1');
+
+    test.equal(request.param('thing'), '1');
+    test.done();
+};
+
+exports['.param - returns value in correct order (query)'] = function(test) {
+    var request = httpMocks.createRequest({
+        query: {
+            'thing': '1'
+        }
+    });
+
+    test.equal(request.param('thing'), '1');
+
     test.done();
 };
