@@ -4,15 +4,13 @@ var httpMocks = require('../lib/http-mock');
 
 // Suppose you have the following Express route:
 
-//     app.get('/user/:id', routeHandler);
+//     app.post('/users', routeHandler);
 
 // And you have created a function to handle that route's call:
 
 var routeHandler = function(request, response) {
 
-    var id = request.params.id;
-
-    console.log('We have a \'%s\' request for %s (ID: %d)', request.method, request.url, id);
+    console.log('We have a \'%s\' request for %s', request.method, request.url);
 
     var body = {
         name: 'Bob Dog',
@@ -28,14 +26,11 @@ var routeHandler = function(request, response) {
 // In another file, you can easily test the routeHandler function
 // with some code like this using the testing framework of your choice:
 
-exports['routeHandler - Simple testing'] = function(test) {
+exports['routeHandler - Simple testing of status() vs json()'] = function(test) {
 
     var request = httpMocks.createRequest({
-        method: 'GET',
-        url: '/user/42',
-        params: {
-            id: 42
-        }
+        method: 'POST',
+        url: '/users'
     });
 
     var response = httpMocks.createResponse();
@@ -49,9 +44,7 @@ exports['routeHandler - Simple testing'] = function(test) {
     test.equal('bob@dog.com', data.email);
 
     test.equal(201, response.statusCode);
-    test.ok(response._isEndCalled());
     test.ok(response._isJSON());
-    test.ok(response._isUTF8());
 
     test.done();
 
