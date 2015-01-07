@@ -167,3 +167,32 @@ exports['.param - returns value in correct order (query)'] = function(test) {
 
     test.done();
 };
+
+exports['query object is parsed from url query string'] = function(test) {
+    var request = httpMocks.createRequest({
+        url: 'http://www.whatever.com?a=1&b=2&c=3'
+    });
+
+    test.equal(request.query['a'], '1');
+    test.equal(request.query['b'], '2');
+    test.equal(request.query['c'], '3');
+
+    test.done();
+};
+
+exports['query object is parsed from supplied options if provided'] = function(test) {
+    var request = httpMocks.createRequest({
+        url: 'http://www.whatever.com?a=1&b=2&c=3',
+        query: {
+            'a': '7',
+            'b': '8',
+            'c': '9'
+        }
+    });
+
+    test.equal(request.query['a'], '7');
+    test.equal(request.query['b'], '8');
+    test.equal(request.query['c'], '9');
+
+    test.done();
+};
