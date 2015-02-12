@@ -168,6 +168,13 @@ exports['send - Status code at the end'] = function (test) {
   test.done();
 };
 
+exports['sendStatus - Set the status code'] = function (test) {
+  var response = httpMocks.createResponse();
+  response.sendStatus(404);
+  test.equal(404, response._getStatusCode());
+  test.done();
+};
+
 exports['implement - WriteableStream'] = function (test) {
   var response = httpMocks.createResponse();
   test.equal(typeof (response.writable), 'function');
