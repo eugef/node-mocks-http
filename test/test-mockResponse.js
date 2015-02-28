@@ -222,6 +222,7 @@ exports['redirect - Redirect to a url without response code'] = function (test) 
   var url = '/index';
   response.redirect(url);
   test.equal(response._getRedirectUrl(), url);
+  test.equal(response._getStatusCode(), 302);
   test.done();
 };
 
