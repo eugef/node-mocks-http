@@ -202,7 +202,7 @@ exports['path(pathname) has to be parsed from url'] = function(test) {
         url: 'http://www.whatever.com/iamthepath?a=1&b=2&c=3'
     });
 
-    test.equal(request.path, 'iamthepath');
+    test.equal(request.path, '/iamthepath');
 
     test.done();
 }
