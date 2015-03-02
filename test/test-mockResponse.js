@@ -20,7 +20,7 @@ exports['object - Simple verification'] = function (test) {
 
 exports['object - Data Initialization'] = function (test) {
   var response = httpMocks.createResponse();
-  test.equal(-1, response.statusCode);
+  test.equal(200, response.statusCode);
   test.equal("", response._getData());
   test.ok(!response._isUTF8());
   test.ok(!response._isEndCalled());
