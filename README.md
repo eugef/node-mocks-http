@@ -117,6 +117,13 @@ Most releases fix bugs with our mocks or add features similar to the
 actual `Request` and `Response` objects offered by Node.js and extended
 by Express.
 
+* v 1.2.5
+
+  * Add `path` to request similar to how express does `req.path`
+  * Emit send and end events for json response too
+  * res.set() works like Express when passed an object #33
+  * Set mockResponse.statusCode default to 200, instead of -1
+
 
 License
 ---

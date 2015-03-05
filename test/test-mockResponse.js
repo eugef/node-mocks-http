@@ -20,7 +20,7 @@ exports['object - Simple verification'] = function (test) {
 
 exports['object - Data Initialization'] = function (test) {
   var response = httpMocks.createResponse();
-  test.equal(-1, response.statusCode);
+  test.equal(200, response.statusCode);
   test.equal("", response._getData());
   test.ok(!response._isUTF8());
   test.ok(!response._isEndCalled());
@@ -87,6 +87,20 @@ exports['setHeader - Can not call after end'] = function (test) {
   test.throws(function () {
     response.setHead('Content-Length', body.length);
   });
+  test.done();
+};
+
+exports['set - Can set multiple headers with object'] = function (test) {
+  var response = httpMocks.createResponse();
+
+  response.set({
+    'foo': 'bar',
+    'bling': 'blang'
+  });
+
+  test.equal('bar', response.getHeader('foo'));
+  test.equal('blang', response.getHeader('bling'));
+
   test.done();
 };
 
@@ -222,6 +236,7 @@ exports['redirect - Redirect to a url without response code'] = function (test) 
   var url = '/index';
   response.redirect(url);
   test.equal(response._getRedirectUrl(), url);
+  test.equal(response._getStatusCode(), 302);
   test.done();
 };
 
