@@ -90,6 +90,20 @@ exports['setHeader - Can not call after end'] = function (test) {
   test.done();
 };
 
+exports['set - Can set multiple headers with object'] = function (test) {
+  var response = httpMocks.createResponse();
+
+  response.set({
+    'foo': 'bar',
+    'bling': 'blang'
+  });
+
+  test.equal('bar', response.getHeader('foo'));
+  test.equal('blang', response.getHeader('bling'));
+
+  test.done();
+};
+
 exports['writeHead - Simple verification'] = function (test) {
   var response = httpMocks.createResponse();
 
