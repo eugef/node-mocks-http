@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "0.12"
+  - "0.10"
+
+notifications:
+  email: 
+    - "howard.abrams@gmail.com"
+    - "johnny.estilles@agentia.asia"
+
+after_script: 
+  - npm install -g jshint
+  - npm install -g nodeunit
+  - ./run-tests
