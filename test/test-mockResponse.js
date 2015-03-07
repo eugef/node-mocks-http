@@ -379,3 +379,35 @@ exports['send - sending response objects a.k.a restifyError without statusCode']
   test.equal('I just dont like you', response._getData().message);
   test.done();
 };
+
+exports['type - set "Content-Type" response header with .type()'] = function(test) {
+  var response = httpMocks.createResponse();
+
+  response.type('.html');
+  test.equal('text/html', response.getHeader('Content-Type'));
+  response.type('html');
+  test.equal('text/html', response.getHeader('Content-Type'));
+  response.type('json');
+  test.equal('application/json', response.getHeader('Content-Type'));
+  response.type('application/json');
+  test.equal('application/json', response.getHeader('Content-Type'));
+  response.type('png');
+  test.equal('image/png', response.getHeader('Content-Type'));
+  test.done();
+};
+
+exports['type - set "Content-Type" response header with .contentType()'] = function(test) {
+  var response = httpMocks.createResponse();
+
+  response.contentType('.html');
+  test.equal('text/html', response.getHeader('Content-Type'));
+  response.contentType('html');
+  test.equal('text/html', response.getHeader('Content-Type'));
+  response.contentType('json');
+  test.equal('application/json', response.getHeader('Content-Type'));
+  response.contentType('application/json');
+  test.equal('application/json', response.getHeader('Content-Type'));
+  response.contentType('png');
+  test.equal('image/png', response.getHeader('Content-Type'));
+  test.done();
+};
