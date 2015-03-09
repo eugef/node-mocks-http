@@ -47,6 +47,36 @@ exports['url - Setting a POST'] = function(test) {
     test.done();
 };
 
+exports['originalUrl - Default value'] = function(test) {
+    var request = httpMocks.createRequest();
+    test.equal(request.url, request.originalUrl);
+    test.done();
+};
+
+exports['originalUrl - Default value (with url option set)'] = function(test) {
+    var expected = 'http://localhost:5732/blah';
+    var request = httpMocks.createRequest({ url: expected });
+    test.equal(request.url, request.originalUrl);
+    test.done();
+};
+
+exports['originalUrl - Default value (with url and originalUrl options set)'] = function(test) {
+    var url = 'http://localhost:5732/blah';
+    var originalUrl = 'http://original/blah';
+    var request = httpMocks.createRequest({ url: url, originalUrl: originalUrl });
+    test.equal(url, request.url);
+    test.equal(originalUrl, request.originalUrl);
+    test.done();
+};
+
+exports['originalUrl - Setting using ._setOriginalUrl()'] = function(test) {
+    var request = httpMocks.createRequest();
+    var expected = 'http://localhost:5732/blah';
+    request._setOriginalUrl(expected);
+    test.equal(expected, request.originalUrl);
+    test.done();
+};
+
 exports['addBody - Simple verification'] = function(test) {
     var request = httpMocks.createRequest();
 
@@ -96,6 +126,7 @@ exports['Object creation - All values set'] = function(test) {
 
     test.equal(methodValue, request.method);
     test.equal(urlValue, request.url);
+    test.equal(urlValue, request.originalUrl);
     test.equal(idValue, request.params.id);
     test.equal(usernameValue, request.body.username);
     test.done();
