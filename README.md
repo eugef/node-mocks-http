@@ -1,5 +1,6 @@
 node-mocks-http
 ---
+[![NPM version](https://badge.fury.io/js/node-mocks-http.png)](https://www.npmjs.com/package/node-mocks-http)
 
 Mock 'http' objects for testing [Express](http://expressjs.com/)
 routing functions, but could be used for testing any
