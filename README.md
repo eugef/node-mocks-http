@@ -92,25 +92,8 @@ This project doesn't address all features that must be
 mocked, but it is a good start. Feel free to send pull requests,
 and a member of the team will be timely in merging them.
 
-After making any changes, please verify your works.
+If you wish to contribute please read our [contributing guidelines](CONTRIBUTING.md).
 
-Running Tests
----
-
-Install `jshint` globally.
-
-```bash
-npm install -g jshint
-```
-
-Navigate to the project folder and run `npm install` to install the
-project's dependencies.
-
-Then simply run the tests.
-
-```bash
-./run-tests
-```
 
 Release Notes
 ---
