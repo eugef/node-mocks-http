@@ -49,9 +49,9 @@ Provide the following information to help us identify and fix the issue in a tim
 * **Suggestions** - if you have identified the lines of code or the commit responsible for the problem please include it as well
 
 ### Submitting a Pull Request
-We are a *Pull Request-friendly* project! Your pull requests are always welcome! 
+We are a *Pull Request-friendly* project!
 
-We only ask that before you submit your pull request you consider the following guidelines:
+Your pull requests are always welcome. We only ask that  you adhere to the following guidelines before you submit your pull request:
 
 * Search [GitHub][pulls] for an open or closed Pull Request that may be similar to yours. Avoid duplicates!
 * Fork our [repo][repo] and create a local clone, if you haven't done so already.
@@ -67,6 +67,7 @@ We only ask that before you submit your pull request you consider the following 
      git fetch upstream
      git checkout master
      git merge upstream/master
+	 ```
 
 * Create a new topic branch:
 
@@ -83,6 +84,7 @@ We only ask that before you submit your pull request you consider the following 
      ```shell
      git commit -a
      ```
+
   Note: the optional commit `-a` command line option will automatically "add" and "rm" edited files.
 
 * Push your branch to GitHub:
