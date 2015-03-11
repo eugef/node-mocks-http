@@ -33,7 +33,7 @@
     "nodeunit": ""
   },
   "scripts": {
-    "test": "./run-tests",
-    "eslint": "node node_modules/eslint/bin/eslint.js ./lib"  
+    "lint": "DEBUG=eslint:cli-engine node_modules/eslint/bin/eslint.js ./lib ./examples ./test",
+    "test": "npm run lint && ./run-tests"
   }
 }
