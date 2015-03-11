@@ -30,7 +30,7 @@
   "devDependencies": {
     "eslint": "^0.16.1",
     "node-restify-errors": "git://github.com/m9dfukc/node-restify-errors.git",
-    "nodeunit": ""
+    "nodeunit": "^0.9.1"
   },
   "scripts": {
     "lint": "DEBUG=eslint:cli-engine node_modules/eslint/bin/eslint.js ./lib ./examples ./test",
