@@ -5,32 +5,32 @@
 #      sudo npm install nodeunit
 #      sudo npm install jshint
 
-if type jshint >/dev/null 2>&1
-then
-    FILES="`find examples lib -name '*.js'`"
-    TMPHINT=/tmp/jshint-results
+# if type jshint >/dev/null 2>&1
+# then
+#     FILES="`find examples lib -name '*.js'`"
+#     TMPHINT=/tmp/jshint-results
 
-    for FILE in $FILES
-    do
-        echo "Analyzing: $FILE"
-        HIDDEN_EXP="`dirname $FILE`/.`basename $FILE`-exp"
-        jshint $FILE > $TMPHINT
-        if [ $? -gt 0 ]
-        then
-            if [ -f "$HIDDEN_EXP" ]
-            then
-                diff $TMPHINT "$HIDDEN_EXP"
-            else
-                cat $TMPHINT
-                echo
-                echo "Note: If this is an expected (and accepted) warning, then:"
-                echo "cp '$TMPHINT' '$HIDDEN_EXP'"
-                echo
-                exit 1
-            fi
-        fi
-    done
-fi
+#     for FILE in $FILES
+#     do
+#         echo "Analyzing: $FILE"
+#         HIDDEN_EXP="`dirname $FILE`/.`basename $FILE`-exp"
+#         jshint $FILE > $TMPHINT
+#         if [ $? -gt 0 ]
+#         then
+#             if [ -f "$HIDDEN_EXP" ]
+#             then
+#                 diff $TMPHINT "$HIDDEN_EXP"
+#             else
+#                 cat $TMPHINT
+#                 echo
+#                 echo "Note: If this is an expected (and accepted) warning, then:"
+#                 echo "cp '$TMPHINT' '$HIDDEN_EXP'"
+#                 echo
+#                 exit 1
+#             fi
+#         fi
+#     done
+# fi
 
 # Usage: nodeunit [options] testmodule1.js testfolder [...]
 # Options:
@@ -55,7 +55,10 @@ fi
 #   * tap: TAP output
 #   * verbose: Verbose tests reporter
 
+echo 
 echo "Executing tests..."
+echo
+
 # OPTS="--reporter junit --output test/results"
 
 FILES="`find test -name 'test-*.js'` `find examples -name '*.js'`"
