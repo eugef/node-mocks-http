@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Test: test-mockResponse
  *
@@ -10,9 +12,9 @@ var EventEmitter = require('events').EventEmitter;
 exports['object - Simple verification'] = function (test) {
   var response = httpMocks.createResponse();
 
-  response.send("Hello", 'utf8');
-  response.send("World");
-  test.equal("HelloWorld", response._getData());
+  response.send('Hello', 'utf8');
+  response.send('World');
+  test.equal('HelloWorld', response._getData());
   test.ok(response._isUTF8());
   test.ok(!response._isEndCalled());
   test.done();
@@ -21,7 +23,7 @@ exports['object - Simple verification'] = function (test) {
 exports['object - Data Initialization'] = function (test) {
   var response = httpMocks.createResponse();
   test.equal(200, response.statusCode);
-  test.equal("", response._getData());
+  test.equal('', response._getData());
   test.ok(!response._isUTF8());
   test.ok(!response._isEndCalled());
   test.done();
@@ -30,10 +32,10 @@ exports['object - Data Initialization'] = function (test) {
 exports['end - Simple Verification'] = function (test) {
   var response = httpMocks.createResponse();
 
-  response.send("Hello");
-  response.end("World");
+  response.send('Hello');
+  response.end('World');
 
-  test.equal("HelloWorld", response._getData());
+  test.equal('HelloWorld', response._getData());
 
   test.ok(response._isEndCalled());
   test.done();
@@ -42,9 +44,9 @@ exports['end - Simple Verification'] = function (test) {
 exports['end - No Data Called'] = function (test) {
   var response = httpMocks.createResponse();
 
-  response.end("Hello World");
+  response.end('Hello World');
 
-  test.equal("Hello World", response._getData());
+  test.equal('Hello World', response._getData());
 
   test.ok(response._isEndCalled());
   test.done();
@@ -53,10 +55,10 @@ exports['end - No Data Called'] = function (test) {
 exports['write - Simple verification'] = function (test) {
   var response = httpMocks.createResponse();
 
-  response.write("Hello", 'utf8');
-  response.end("World");
+  response.write('Hello', 'utf8');
+  response.end('World');
 
-  test.equal("HelloWorld", response._getData());
+  test.equal('HelloWorld', response._getData());
 
   test.ok(response._isUTF8());
   test.ok(response._isEndCalled());
@@ -197,7 +199,7 @@ exports['cookies - Cookies creation'] = function (test) {
 
 exports['cookies - Cookies assignment'] = function (test) {
   var response = httpMocks.createResponse();
-  response.cookie("egg", "chicken", {
+  response.cookie('egg', 'chicken', {
     maxAge: 1000
   });
   test.deepEqual(response.cookies, {
@@ -213,10 +215,10 @@ exports['cookies - Cookies assignment'] = function (test) {
 
 exports['cookies - Cookie deletion'] = function (test) {
   var response = httpMocks.createResponse();
-  response.cookie("egg", "chicken", {
+  response.cookie('egg', 'chicken', {
     maxAge: 1000
   });
-  response.clearCookie("egg");
+  response.clearCookie('egg');
   test.deepEqual(response.cookies, {});
   test.done();
 };
@@ -359,9 +361,9 @@ exports['events - render'] = function (test) {
 
 
 exports['send - sending response objects a.k.a restifyError with statusCode'] = function(test) {
-  var errors = require('node-restify-errors')
+  var errors = require('node-restify-errors');
   var response = httpMocks.createResponse();
-  response.send(409, new errors.InvalidArgumentError("I just dont like you"));
+  response.send(409, new errors.InvalidArgumentError('I just dont like you'));
 
   test.equal(409, response._getStatusCode());
   test.equal('InvalidArgument', response._getData().code);
@@ -370,9 +372,9 @@ exports['send - sending response objects a.k.a restifyError with statusCode'] = 
 };
 
 exports['send - sending response objects a.k.a restifyError without statusCode'] = function(test) {
-  var errors = require('node-restify-errors')
+  var errors = require('node-restify-errors');
   var response = httpMocks.createResponse();
-  response.send(new errors.InvalidArgumentError("I just dont like you"));
+  response.send(new errors.InvalidArgumentError('I just dont like you'));
 
   test.equal(409, response._getStatusCode());
   test.equal('InvalidArgument', response._getData().code);
