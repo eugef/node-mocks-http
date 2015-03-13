@@ -4,19 +4,19 @@
   "description": "Mock 'http' objects for testing Express routing functions",
   "version": "1.2.5",
   "homepage": "http://www.github.com/howardabrams/node-mocks-http",
-  "license" : "MIT",
+  "license": "MIT",
   "keywords": [
-               "mock",
-               "stub",
-               "dummy",
-               "nodejs",
-               "js",
-               "testing",
-               "test",
-               "http",
-               "http mock"
-             ],
-    "repository": {
+    "mock",
+    "stub",
+    "dummy",
+    "nodejs",
+    "js",
+    "testing",
+    "test",
+    "http",
+    "http mock"
+  ],
+  "repository": {
     "type": "git",
     "url": "git://github.com/howardabrams/node-mocks-http.git"
   },
@@ -27,11 +27,13 @@
   "dependencies": {
     "mime": "^1.3.4"
   },
-  "devDependencies":{
-    "nodeunit":"",
-    "node-restify-errors":"git://github.com/m9dfukc/node-restify-errors.git"
+  "devDependencies": {
+    "eslint": "^0.16.2",
+    "node-restify-errors": "git://github.com/m9dfukc/node-restify-errors.git",
+    "nodeunit": "^0.9.1"
   },
-  "scripts":{
-    "test": "./run-tests"
+  "scripts": {
+    "lint": "DEBUG=eslint:cli-engine node_modules/eslint/bin/eslint.js ./lib ./examples ./test",
+    "test": "npm run lint && ./run-tests"
   }
 }

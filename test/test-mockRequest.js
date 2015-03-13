@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Test: test-mockRequest
  *
@@ -106,10 +108,10 @@ exports['body - Unset value'] = function(test) {
 
 exports['Object creation - All values set'] = function(test) {
 
-    var methodValue = "PUT";
+    var methodValue = 'PUT';
     var idValue = 34;
     var urlValue = 'http://localhost:6522/blingbling';
-    var usernameValue = "mittens";
+    var usernameValue = 'mittens';
 
     var request = httpMocks.createRequest({
         method: methodValue,
@@ -204,9 +206,9 @@ exports['query object is parsed from url query string'] = function(test) {
         url: 'http://www.whatever.com?a=1&b=2&c=3'
     });
 
-    test.equal(request.query['a'], '1');
-    test.equal(request.query['b'], '2');
-    test.equal(request.query['c'], '3');
+    test.equal(request.query.a, '1');
+    test.equal(request.query.b, '2');
+    test.equal(request.query.c, '3');
 
     test.done();
 };
@@ -221,9 +223,9 @@ exports['query object is parsed from supplied options if provided'] = function(t
         }
     });
 
-    test.equal(request.query['a'], '7');
-    test.equal(request.query['b'], '8');
-    test.equal(request.query['c'], '9');
+    test.equal(request.query.a, '7');
+    test.equal(request.query.b, '8');
+    test.equal(request.query.c, '9');
 
     test.done();
 };
@@ -236,4 +238,4 @@ exports['path(pathname) has to be parsed from url'] = function(test) {
     test.equal(request.path, '/iamthepath');
 
     test.done();
-}
+};
