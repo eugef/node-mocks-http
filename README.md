@@ -1,4 +1,4 @@
-node-mocks-http
+[![node-mocks-http logo](https://raw.githubusercontent.com/wiki/howardabrams/node-mocks-http/images/nmh-logo-200x132.png)](https://github.com/howardabrams/node-mocks-http)
 ---
 [![NPM version](https://badge.fury.io/js/node-mocks-http.png)](https://www.npmjs.com/package/node-mocks-http)
 [![Build Status](https://travis-ci.org/howardabrams/node-mocks-http.svg?branch=master)](https://travis-ci.org/howardabrams/node-mocks-http)
