@@ -413,3 +413,20 @@ exports['type - set "Content-Type" response header with .contentType()'] = funct
   test.equal('image/png', response.getHeader('Content-Type'));
   test.done();
 };
+
+exports['send - response "Status Code" with .sendStatus()'] = function(test) {
+  var http = require('../lib/node/http');
+  var response, statusCode;
+
+  for (statusCode in http.STATUS_CODES) {
+    response = httpMocks.createResponse();
+    response.sendStatus(statusCode);
+    test.equal(response._getStatusCode(), statusCode);
+    test.equal(response._getData(), http.STATUS_CODES[statusCode]);
+    // uncomment after fixing bug in .send()
+    // test.ok(response._isEndCalled());
+    response = null;
+  }
+
+  test.done();
+};
