@@ -47,6 +47,50 @@ exports['url - Setting a POST'] = function(test) {
     test.done();
 };
 
+exports['get/header - Setting a header using options'] = function(test) {
+    var name = 'accept';
+    var value = 'text/plain';
+    var options = { headers: {} };
+    options.headers[name] = value;
+    var request = httpMocks.createRequest(options);
+    test.equal(request.get(name), value);
+    test.done();
+};
+
+exports['get/header - Setting a header using ._setHeadersVariable()'] = function(test) {
+    var request = httpMocks.createRequest();
+    var name = 'accept';
+    var value = 'text/plain';
+    request._setHeadersVariable(name, value);
+    test.equal(request.get(name), value);
+    test.equal(request.header(name), value);
+    test.done();
+};
+
+exports['get/header - Setting header "referer" edge-case'] = function(test) {
+    var request = httpMocks.createRequest();
+    var name = 'referer';
+    var value = 'http://localhost:5732/blah';
+    request._setHeadersVariable(name, value);
+    test.equal(request.get('referer'), value);
+    test.equal(request.get('referrer'), value);
+    test.equal(request.header('referer'), value);
+    test.equal(request.header('referrer'), value);
+    test.done();
+};
+
+exports['get/header - Setting header "referrer" edge-case'] = function(test) {
+    var request = httpMocks.createRequest();
+    var name = 'referrer';
+    var value = 'http://localhost:5732/blah';
+    request._setHeadersVariable(name, value);
+    test.equal(request.get('referer'), value);
+    test.equal(request.get('referrer'), value);
+    test.equal(request.header('referer'), value);
+    test.equal(request.header('referrer'), value);
+    test.done();
+};
+
 exports['addBody - Simple verification'] = function(test) {
     var request = httpMocks.createRequest();
 
