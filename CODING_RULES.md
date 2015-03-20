@@ -82,11 +82,15 @@ These rules have to do with variable declarations.
 * [no-shadow] - disallow declaration of variables already declared in the outer scope
 * [no-use-before-define] - disallow use of variables before they are defined
 
+[Back to Top](#top)
+
 ## <a name="node"></a> Node.js
 These rules are specific to JavaScript running on Node.js.
 
 * [no-sync] - disallow use of synchronous methods
 * [no-mixed-requires] - allow mixing regular variable and require declarations
+
+[Back to Top](#top)
 
 ## <a name="style"></a> Stylistic Issues
 
