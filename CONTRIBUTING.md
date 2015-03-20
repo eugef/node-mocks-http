@@ -135,14 +135,15 @@ After we merge your pull request, you can safely delete your branch and pull the
     ```
 
 ## <a name="rules"></a> Coding Rules
-*Coming soon! Please stay tuned!*
+
+For a detailed list our the conding conventions used in our project please read our [Coding Rules](CODING_RULES.md).
 
 ## <a name="tests"></a> Running Test Suite
 
-Install `jshint` globally.
+Install `eslint` globally.
 
 ```bash
-npm install -g jshint
+npm install -g elsint
 ```
 
 Navigate to the project folder and run `npm install` to install the
