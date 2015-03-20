@@ -106,7 +106,6 @@ These rules are specific to JavaScript running on Node.js.
 * [semi] - require use of semicolons instead of ASI
 * [no-mixed-spaces-and-tabs] - disallow mixed spaces and tabs for indentation
 * [indent] - 4 spaces indentation with enabled switch cases validation
-* no-underscore-dangle - disallow dangling underscores in identifiers - disallow dangling underscores in identifiers
  
 [Back to Top](#top)
 
