@@ -8,6 +8,7 @@ Contributions are always welcome, no matter how large or small. Here are the gui
  - [Submission Guidelines](#submit)
  - [Coding Rules](#rules)
  - [Running Test Suite](#tests)
+ - [Contact Us](#contact)
 
 ## <a name="coc"></a> Code of Conduct
 We want to keep our project open and inclusive. We ask that before you
@@ -155,10 +156,17 @@ Then simply run the tests.
 ./run-tests
 ```
 
+## <a name="contact"></a> Contact Us
+[![Gitter chat](https://badges.gitter.im/howardabrams/node-mocks-http.png)](https://gitter.im/howardabrams/node-mocks-http)
+
+If you have any other questions or comments about **node-mocks-http** that do not fall under the category of [issues](#issue), [bugs](#issue), or [feature requests](#feature), feel free to join us on our [Gitter channel][gitter].
+
+
 [repo]: https://github.com/howardabrams/node-mocks-http
 [issues]: https://github.com/howardabrams/node-mocks-http/issues
 [issues-archive]: https://github.com/howardabrams/node-mocks-http/issues?q=is%3Aissue
 [pulls]: https://github.com/howardabrams/node-mocks-http/pulls
 [pulls-archive]: https://github.com/howardabrams/node-mocks-http/pulls?q=is%3Apr
+[gitter]: https://gitter.im/howardabrams/node-mocks-http
 [jsfiddle]: http://jsfiddle.net/
 [plunker]: http://plnkr.co/edit
