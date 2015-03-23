@@ -104,12 +104,10 @@ Most releases fix bugs with our mocks or add features similar to the
 actual `Request` and `Response` objects offered by Node.js and extended
 by Express.
 
-* v 1.2.5
+[Most Recent Releast Notes](https://github.com/howardabrams/node-mocks-http/releases)
 
-  * Add `path` to request similar to how express does `req.path`
-  * Emit send and end events for json response too
-  * res.set() works like Express when passed an object #33
-  * Set mockResponse.statusCode default to 200, instead of -1
+* [v1.2.6](https://github.com/howardabrams/node-mocks-http/releases/tag/v1.2.6) - March 19, 2015
+* [v1.2.5](https://github.com/howardabrams/node-mocks-http/releases/tag/v1.2.5) - March 5, 2015
 
 
 License
