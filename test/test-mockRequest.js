@@ -111,16 +111,27 @@ exports['setBody - Simple verification'] = function(test) {
     test.done();
 };
 
-exports['body - Unset value'] = function(test) {
+exports['Object creation - No values set'] = function(test) {
     var request = httpMocks.createRequest();
-    test.equal(undefined, request.body.user);
+
+    test.equal(request.method, 'GET');
+    test.equal(request.url, '');
+    test.equal(request.path, '');
+    test.deepEqual(request.params, {});
+    test.equal(typeof request.session, 'undefined');
+    test.deepEqual(request.cookies, {});
+    test.equal(typeof request.signedCookies, 'undefined');
+    test.deepEqual(request.headers, {});
+    test.deepEqual(request.body, {});
+    test.deepEqual(request.query, {});
+    test.deepEqual(request.files, {});
     test.done();
 };
 
 
-exports['Object creation - All values set'] = function(test) {
+exports['Object creation - Most values set'] = function(test) {
 
-    var methodValue = "PUT";
+    var methodValue = 'PUT';
     var idValue = 34;
     var urlValue = 'http://localhost:6522/blingbling';
     var usernameValue = "mittens";
@@ -132,16 +143,30 @@ exports['Object creation - All values set'] = function(test) {
             id: idValue,
             sort: 'asc'
         },
+        session: {},
+        cookies: {
+            name: 'value'
+        },
+        signedCookies: {
+            name: 'value'
+        },
+        headers: {
+            name: 'value'
+        },
         body: {
             username: usernameValue,
             email: 'bob@dog.com'
         }
     });
 
-    test.equal(methodValue, request.method);
-    test.equal(urlValue, request.url);
-    test.equal(idValue, request.params.id);
-    test.equal(usernameValue, request.body.username);
+    test.equal(request.method, methodValue);
+    test.equal(request.url, urlValue);
+    test.equal(request.params.id, idValue);
+    test.deepEqual(request.session, {});
+    test.equal(request.cookies.name, 'value');
+    test.equal(request.signedCookies.name, 'value');
+    test.equal(request.header('name'), 'value');
+    test.equal(request.body.username, usernameValue);
     test.done();
 };
 
@@ -249,4 +274,22 @@ exports['path(pathname) has to be parsed from url'] = function(test) {
     test.equal(request.path, '/iamthepath');
 
     test.done();
-}
+};
+
+exports['session - setting session variable using _setSessionVariable()'] = function(test) {
+    var request = httpMocks.createRequest();
+    request._setSessionVariable('name', 'value');
+
+    test.equal(request.session.name, 'value');
+
+    test.done();
+};
+
+exports['signedCookies - setting signed cookies variable using _setSignedCookiesVariable()'] = function(test) {
+    var request = httpMocks.createRequest();
+    request._setSignedCookiesVariable('name', 'value');
+
+    test.equal(request.signedCookies.name, 'value');
+
+    test.done();
+};
