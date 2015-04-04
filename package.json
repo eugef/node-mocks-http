@@ -7,6 +7,18 @@
   "bugs": {
     "url" : "https://github.com/howardabrams/node-mocks-http/issues"
   },
+  "contributors": [
+    {
+      "name" : "Howard Abrams",
+      "email" : "howard.abrams@gmail.com",
+      "url" : "https://github.com/howardabrams"
+    },
+    {
+      "name" : "Johnny Estilles",
+      "email" : "johnny.estilles@agentia.asia",
+      "url" : "https://github.com/JohnnyEstilles"
+    }
+  ],
   "license": "MIT",
   "keywords": [
     "mock",
