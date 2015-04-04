@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Test: test-mockRequest
  *
@@ -44,6 +46,36 @@ exports['url - Setting a POST'] = function(test) {
     var expected = 'http://localhost:5732/blah';
     request._setURL(expected);
     test.equal(expected, request.url);
+    test.done();
+};
+
+exports['originalUrl - Default value'] = function(test) {
+    var request = httpMocks.createRequest();
+    test.equal(request.url, request.originalUrl);
+    test.done();
+};
+
+exports['originalUrl - Default value (with url option set)'] = function(test) {
+    var expected = 'http://localhost:5732/blah';
+    var request = httpMocks.createRequest({ url: expected });
+    test.equal(request.url, request.originalUrl);
+    test.done();
+};
+
+exports['originalUrl - Default value (with url and originalUrl options set)'] = function(test) {
+    var url = 'http://localhost:5732/blah';
+    var originalUrl = 'http://original/blah';
+    var request = httpMocks.createRequest({ url: url, originalUrl: originalUrl });
+    test.equal(url, request.url);
+    test.equal(originalUrl, request.originalUrl);
+    test.done();
+};
+
+exports['originalUrl - Setting using ._setOriginalUrl()'] = function(test) {
+    var request = httpMocks.createRequest();
+    var expected = 'http://localhost:5732/blah';
+    request._setOriginalUrl(expected);
+    test.equal(expected, request.originalUrl);
     test.done();
 };
 
@@ -134,7 +166,7 @@ exports['Object creation - Most values set'] = function(test) {
     var methodValue = 'PUT';
     var idValue = 34;
     var urlValue = 'http://localhost:6522/blingbling';
-    var usernameValue = "mittens";
+    var usernameValue = 'mittens';
 
     var request = httpMocks.createRequest({
         method: methodValue,
@@ -161,6 +193,7 @@ exports['Object creation - Most values set'] = function(test) {
 
     test.equal(request.method, methodValue);
     test.equal(request.url, urlValue);
+    test.equal(request.originalUrl, urlValue);
     test.equal(request.params.id, idValue);
     test.deepEqual(request.session, {});
     test.equal(request.cookies.name, 'value');
@@ -242,9 +275,9 @@ exports['query object is parsed from url query string'] = function(test) {
         url: 'http://www.whatever.com?a=1&b=2&c=3'
     });
 
-    test.equal(request.query['a'], '1');
-    test.equal(request.query['b'], '2');
-    test.equal(request.query['c'], '3');
+    test.equal(request.query.a, '1');
+    test.equal(request.query.b, '2');
+    test.equal(request.query.c, '3');
 
     test.done();
 };
@@ -259,9 +292,9 @@ exports['query object is parsed from supplied options if provided'] = function(t
         }
     });
 
-    test.equal(request.query['a'], '7');
-    test.equal(request.query['b'], '8');
-    test.equal(request.query['c'], '9');
+    test.equal(request.query.a, '7');
+    test.equal(request.query.b, '8');
+    test.equal(request.query.c, '9');
 
     test.done();
 };
