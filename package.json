@@ -3,7 +3,7 @@
   "name": "node-mocks-http",
   "description": "Mock 'http' objects for testing Express routing functions",
   "version": "1.2.7",
-  "homepage": "http://www.github.com/howardabrams/node-mocks-http",
+  "homepage": "https://github.com/howardabrams/node-mocks-http",
   "license": "MIT",
   "keywords": [
     "mock",
