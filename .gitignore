@@ -1,5 +1,6 @@
 .project
 .settings
+coverage
 node_modules
 test/results
 npm-debug.log
