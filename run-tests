@@ -1,10 +1,10 @@
 #!/bin/sh
-echo 
+echo
 echo "Executing tests..."
 
 # OPTS="--reporter junit --output test/results"
 
-FILES="`find test -name 'test-*.js'` `find examples -name '*.js'`"
+FILES="`find test-legacy -name 'test-*.js'` `find examples -name '*.js'`"
 
 # echo nodeunit $OPTS $FILES
 PATH=./node_modules/nodeunit/bin:$PATH
