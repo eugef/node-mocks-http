@@ -51,9 +51,7 @@
     "gulp-istanbul": "^0.8.1",
     "gulp-mocha": "^2.0.1",
     "istanbul": "^0.3.13",
-    "mocha": "^2.2.1",
-    "node-restify-errors": "git://github.com/m9dfukc/node-restify-errors.git",
-    "nodeunit": "^0.9.1",
+    "mocha": "^2.2.3",
     "sinon": "^1.14.1",
     "sinon-chai": "^2.7.0"
   },
