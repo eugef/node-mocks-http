@@ -22,9 +22,6 @@ describe('mockWritableStream', function() {
   });
 
   it('should expose "MockWritableStream" prototype', function() {
-    expect(mockWritableStream).to.have.property('writable');
-    expect(mockWritableStream.writable).to.be.a('function');
-
     expect(mockWritableStream).to.have.property('end');
     expect(mockWritableStream.end).to.be.a('function');
 
@@ -36,7 +33,6 @@ describe('mockWritableStream', function() {
   });
 
   it('should return undefined when methods called', function() {
-    expect(mockWritableStream.writable()).to.be.undefined;
     expect(mockWritableStream.end()).to.be.undefined;
     expect(mockWritableStream.destroy()).to.be.undefined;
     expect(mockWritableStream.destroySoon()).to.be.undefined;
