@@ -28,7 +28,7 @@ gulp.task('spec', function () {
 });
 
 gulp.task('coverage', function (done) {
-    gulp.src(files.lib)
+    gulp.src(files.src)
       .pipe(istanbul())
       .pipe(istanbul.hookRequire())
       .on('finish', function () {
