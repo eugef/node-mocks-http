@@ -8,15 +8,15 @@ notifications:
     - "howard.abrams@gmail.com"
     - "johnny.estilles@agentia.asia"
 
-# addons:
-#   code_climate:
-#     repo_token: === INSERT TOKEN HERE ===
+addons:
+  code_climate:
+    repo_token: 75dc20817d25bb52614e495f87d69b228edac0016fb096ccab2a75b624c68d4e
 
 before_script:
   - npm install -g gulp
-  # - npm install -g codeclimate-test-reporter
+  - npm install -g codeclimate-test-reporter
   - gulp lint
 
 after_script:
   - gulp coverage
-  # - codeclimate < ./coverage/lcov.info
+  - codeclimate < ./coverage/lcov.info
