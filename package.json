@@ -58,7 +58,6 @@
     "sinon-chai": "^2.7.0"
   },
   "scripts": {
-    "lint": "DEBUG=eslint:cli-engine node_modules/eslint/bin/eslint.js ./lib ./examples ./test-legacy",
-    "test": "npm run lint && ./run-tests"
+    "test": "gulp spec"
   }
 }
