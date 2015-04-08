@@ -4,6 +4,19 @@ node_js:
   - "0.12"
 
 notifications:
-  email: 
+  email:
     - "howard.abrams@gmail.com"
     - "johnny.estilles@agentia.asia"
+
+# addons:
+#   code_climate:
+#     repo_token: === INSERT TOKEN HERE ===
+
+before_script:
+  - npm install -g gulp
+  # - npm install -g codeclimate-test-reporter
+  - gulp lint
+
+after_script:
+  - gulp coverage
+  # - codeclimate < ./coverage/lcov.info
