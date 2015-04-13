@@ -157,6 +157,21 @@ describe('mockRequest', function() {
         expect(request.headers).to.deep.equal(options.headers);
       });
 
+      it('should set .headers to options.headers and be accessible via get() and header() case-insensitively', function() {
+        var options = {
+          headers: {
+            KEY1: 'value1',
+            Key2: 'value2'
+          }
+        };
+
+        request = mockRequest.createRequest(options);
+        expect(request.header('KEY1')).to.equal('value1');
+        expect(request.get('KEY1')).to.equal('value1');
+        expect(request.header('KEY2')).to.equal('value2');
+        expect(request.get('KEY2')).to.equal('value2');
+      });
+
       it('should set .body to options.body', function() {
         var options = {
           body: {
