@@ -141,19 +141,13 @@ For a detailed list our the conding conventions used in our project please read 
 
 ## <a name="tests"></a> Running Test Suite
 
-Install `eslint` globally.
-
-```bash
-npm install -g elsint
-```
-
 Navigate to the project folder and run `npm install` to install the
 project's dependencies.
 
 Then simply run the tests.
 
 ```bash
-./run-tests
+npm test
 ```
 
 ## <a name="contact"></a> Contact Us
