@@ -101,8 +101,9 @@ Most releases fix bugs with our mocks or add features similar to the
 actual `Request` and `Response` objects offered by Node.js and extended
 by Express.
 
-[Most Recent Releast Notes](https://github.com/howardabrams/node-mocks-http/releases)
+[Most Recent Release Notes](https://github.com/howardabrams/node-mocks-http/releases)
 
+* [v1.4.1](https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.1) - April 14, 2015
 * [v1.4.0](https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.0) - April 12, 2015
 * [v1.3.0](https://github.com/howardabrams/node-mocks-http/releases/tag/v1.3.0) - April 5, 2015
 * [v1.2.7](https://github.com/howardabrams/node-mocks-http/releases/tag/v1.2.7) - March 24, 2015
