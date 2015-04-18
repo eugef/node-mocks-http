@@ -71,6 +71,6 @@
         "use-isnan": 2,
         "valid-typeof": 2,
         "wrap-iife": 2,
-        "indent": [2, 4, {indentSwitchCase: true}]
+        "indent": [2, 2, {"indentSwitchCase": true}]
     }
 }
