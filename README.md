@@ -103,6 +103,7 @@ by Express.
 
 [Most Recent Release Notes](https://github.com/howardabrams/node-mocks-http/releases)
 
+* [v1.4.2][release-v1.4.2] - April 30, 2015
 * [v1.4.1][release-v1.4.1] - April 14, 2015
 * [v1.4.0][release-v1.4.0] - April 12, 2015
 * [v1.3.0][release-v1.3.0] - April 5, 2015
