@@ -1,19 +1,19 @@
-[![node-mocks-http logo](https://raw.githubusercontent.com/wiki/howardabrams/node-mocks-http/images/nmh-logo-200x132.png)](https://github.com/howardabrams/node-mocks-http)
+[![node-mocks-http logo][nmh-logo]][nmh-url]
 ---
-[![NPM version](https://badge.fury.io/js/node-mocks-http.png)](https://www.npmjs.com/package/node-mocks-http)
-[![Build Status](https://travis-ci.org/howardabrams/node-mocks-http.svg?branch=master)](https://travis-ci.org/howardabrams/node-mocks-http)
-[![Gitter chat](https://badges.gitter.im/howardabrams/node-mocks-http.png)](https://gitter.im/howardabrams/node-mocks-http)
+[![NPM version][npm-badge]][npm-url]
+[![Build Status][travis-badge]][travis-url]
+[![Gitter chat][gitter-badge]][gitter-url]
 
 
-Mock 'http' objects for testing [Express](http://expressjs.com/)
+Mock 'http' objects for testing [Express][express-url]
 routing functions, but could be used for testing any
-[Node.js](http://www.nodejs.org) web server applications that have
+[Node.js][node-url] web server applications that have
 code that requires mockups of the `request` and `response` objects.
 
 ## Installation
 
 This project is available as a
-[NPM package](https://www.npmjs.org/package/node-mocks-http).
+[NPM package][npm-url].
 
 ```bash
 $ npm install --save-dev node-mocks-http
@@ -74,6 +74,43 @@ exports['routeHandler - Simple testing'] = function(test) {
 };
 ```
 
+## API
+### .createRequest()
+
+```
+httpMocks.createRequest(options)
+```
+
+Where options is an object hash with any of the following values:
+
+option | description | default value
+------ | ----------- | -------------
+`method`| request HTTP method | 'GET'
+`url` | request URL | ''
+`originalUrl` | request original URL | `url`
+`path` | request path | ''
+`params` | object hash with params | {}
+`session` | object hash with session values | `undefined`
+`cookies` | object hash with request cookies | {}
+`signedCookies` | object hash with signed cookies | `undefined`
+`headers` | object hash with request headers | {}
+`body` | object hash with body | {}
+`query` | object hash with query values | {}
+`files` | object hash with values | {}
+
+### .createResponse()
+
+```js
+httpMocks.createResponse(options)
+```
+
+Where options is an object hash with any of the following values:
+
+option | description | default value
+------ | ----------- | -------------
+`eventEmitter` | event emitter used by nmh | `mockEventEmitter`
+`writableStream`  | writable stream used by nmh | `mockWritableStream`
+
 ## Design Decisions
 
 We wanted some simple mocks without a large framework.
@@ -86,7 +123,7 @@ of values after calling.
 
 We are looking for more volunteers to bring value to this project,
 including the creation of more objects from the
-[HTTP module](http://nodejs.org/docs/latest/api/http.html).
+[HTTP module][node-http-module-url].
 
 This project doesn't address all features that must be
 mocked, but it is a good start. Feel free to send pull requests,
@@ -101,17 +138,44 @@ Most releases fix bugs with our mocks or add features similar to the
 actual `Request` and `Response` objects offered by Node.js and extended
 by Express.
 
-[Most Recent Release Notes](https://github.com/howardabrams/node-mocks-http/releases)
+[Most Recent Release Notes][release-notes]
 
-* [v1.4.1](https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.1) - April 14, 2015
-* [v1.4.0](https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.0) - April 12, 2015
-* [v1.3.0](https://github.com/howardabrams/node-mocks-http/releases/tag/v1.3.0) - April 5, 2015
-* [v1.2.7](https://github.com/howardabrams/node-mocks-http/releases/tag/v1.2.7) - March 24, 2015
-* [v1.2.6](https://github.com/howardabrams/node-mocks-http/releases/tag/v1.2.6) - March 19, 2015
-* [v1.2.5](https://github.com/howardabrams/node-mocks-http/releases/tag/v1.2.5) - March 5, 2015
+* [v1.4.2][release-v1.4.2] - April 30, 2015
+* [v1.4.1][release-v1.4.1] - April 14, 2015
+* [v1.4.0][release-v1.4.0] - April 12, 2015
+* [v1.3.0][release-v1.3.0] - April 5, 2015
+* [v1.2.7][release-v1.2.7] - March 24, 2015
+* [v1.2.6][release-v1.2.6] - March 19, 2015
+* [v1.2.5][release-v1.2.5] - March 5, 2015
 
 
 License
 ---
 
 Licensed under [MIT](https://github.com/howardabrams/node-mocks-http/blob/master/LICENSE).
+
+[nmh-logo]: https://raw.githubusercontent.com/wiki/howardabrams/node-mocks-http/images/nmh-logo-200x132.png
+[nmh-url]: https://github.com/howardabrams/node-mocks-http
+
+[npm-badge]: https://badge.fury.io/js/node-mocks-http.png
+[npm-url]: https://www.npmjs.com/package/node-mocks-http
+
+[travis-badge]: https://travis-ci.org/howardabrams/node-mocks-http.svg?branch=master
+[travis-url]: https://travis-ci.org/howardabrams/node-mocks-http
+
+[gitter-badge]: https://badges.gitter.im/howardabrams/node-mocks-http.png
+[gitter-url]: https://gitter.im/howardabrams/node-mocks-http
+
+[express-url]: http://expressjs.com/
+[node-url]: http://www.nodejs.org
+[node-http-module-url]: http://nodejs.org/docs/latest/api/http.html
+
+[release-notes]: https://github.com/howardabrams/node-mocks-http/releases
+
+[release-v1.4.2]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.2
+[release-v1.4.1]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.1
+[release-v1.4.0]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.0
+[release-v1.3.0]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.3.0
+[release-v1.2.7]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.2.7
+[release-v1.2.6]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.2.6
+[release-v1.2.5]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.2.5
