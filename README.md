@@ -108,8 +108,8 @@ Where options is an object hash with any of the following values:
 
 option | description | default value
 ------ | ----------- | -------------
-`eventEmitter` | event emitter used by nmh | `mockEventEmitter`
-`writableStream`  | writable stream used by nmh | `mockWritableStream`
+`eventEmitter` | event emitter used by `response` object | `mockEventEmitter`
+`writableStream`  | writable stream used by `response` object | `mockWritableStream`
 
 ## Design Decisions
 
