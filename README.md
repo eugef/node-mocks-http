@@ -74,6 +74,43 @@ exports['routeHandler - Simple testing'] = function(test) {
 };
 ```
 
+## API
+### .createRequest()
+
+```
+httpMocks.createRequest(options)
+```
+
+Where options is an object hash with any of the following values:
+
+option | description | default value
+------ | ----------- | -------------
+`method`| request HTTP method | 'GET'
+`url` | request URL | ''
+`originalUrl` | request original URL | `url`
+`path` | request path | ''
+`params` | object hash with params | {}
+`session` | object hash with session values | `undefined`
+`cookies` | object hash with request cookies | {}
+`signedCookies` | object hash with signed cookies | `undefined`
+`headers` | object hash with request headers | {}
+`body` | object hash with body | {}
+`query` | object hash with query values | {}
+`files` | object hash with values | {}
+
+### .createResponse()
+
+```js
+httpMocks.createResponse(options)
+```
+
+Where options is an object hash with any of the following values:
+
+option | description | default value
+------ | ----------- | -------------
+`eventEmitter` | event emitter used by nmh | `mockEventEmitter`
+`writableStream`  | writable stream used by nmh | `mockWritableStream`
+
 ## Design Decisions
 
 We wanted some simple mocks without a large framework.
