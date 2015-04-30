@@ -103,15 +103,23 @@ by Express.
 
 [Most Recent Release Notes](https://github.com/howardabrams/node-mocks-http/releases)
 
-* [v1.4.1](https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.1) - April 14, 2015
-* [v1.4.0](https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.0) - April 12, 2015
-* [v1.3.0](https://github.com/howardabrams/node-mocks-http/releases/tag/v1.3.0) - April 5, 2015
-* [v1.2.7](https://github.com/howardabrams/node-mocks-http/releases/tag/v1.2.7) - March 24, 2015
-* [v1.2.6](https://github.com/howardabrams/node-mocks-http/releases/tag/v1.2.6) - March 19, 2015
-* [v1.2.5](https://github.com/howardabrams/node-mocks-http/releases/tag/v1.2.5) - March 5, 2015
+* [v1.4.1][release-v1.4.1] - April 14, 2015
+* [v1.4.0][release-v1.4.0] - April 12, 2015
+* [v1.3.0][release-v1.3.0] - April 5, 2015
+* [v1.2.7][release-v1.2.7] - March 24, 2015
+* [v1.2.6][release-v1.2.6] - March 19, 2015
+* [v1.2.5][release-v1.2.5] - March 5, 2015
 
 
 License
 ---
 
 Licensed under [MIT](https://github.com/howardabrams/node-mocks-http/blob/master/LICENSE).
+
+[release-v1.4.2]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.2
+[release-v1.4.1]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.1
+[release-v1.4.0]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.0
+[release-v1.3.0]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.3.0
+[release-v1.2.7]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.2.7
+[release-v1.2.6]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.2.6
+[release-v1.2.5]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.2.5
