@@ -40,9 +40,13 @@
     "node": ">=0.6"
   },
   "dependencies": {
+    "accepts": "~1.2.7",
     "depd": "^1.0.1",
+    "fresh": "0.2.4",
     "merge-descriptors": "^1.0.0",
-    "mime": "^1.3.4"
+    "mime": "^1.3.4",
+    "parseurl": "~1.3.0",
+    "type-is": "~1.6.2"
   },
   "devDependencies": {
     "chai": "^2.2.0",
