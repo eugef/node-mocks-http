@@ -465,8 +465,26 @@ describe('mockResponse', function() {
 
     // TODO: fix in 2.0; method should mimic Express Response.json()
     describe('.json()', function() {
+      var response;
+
+      beforeEach(function() {
+        response = mockResponse.createResponse();
+        sinon.spy(response, 'emit');
+      });
+
+      afterEach(function() {
+        response.emit.restore();
+        response = null;
+      });
 
       it('method should mimic Express Response.json()');
+
+      it('should emit send and end events', function() {
+        response.json({});
+        expect(response.emit).to.have.been.calledTwice;
+        expect(response.emit).to.have.been.calledWith('send');
+        expect(response.emit).to.have.been.calledWith('end');
+      });
 
     });
 
