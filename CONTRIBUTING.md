@@ -10,6 +10,12 @@ Contributions are always welcome, no matter how large or small. Here are the gui
  - [Running Test Suite](#tests)
  - [Contact Us](#contact)
 
+> **NOTE**
+
+> While we complete our transition to version `2.0`, please adhere to the following:
+- For any contributions to our `2.0` track, please create a topic branch based off our `master` branch, push said topic branch onto your fork and submit your pull request from that branch.
+- Anyone wishing to contribute a bug fix to our `1.x` track, please create a topic branch based off our `1.x` branch, push said topic branch onto your fork and submit your pull request from that branch..
+
 ## <a name="coc"></a> Code of Conduct
 We want to keep our project open and inclusive. We ask that before you
 contribute, you read and follow our [Code of Conduct](CODE_OF_CONDUCT.md).
@@ -36,7 +42,7 @@ Think you can help us out by implementing the feature yourself? Go for it! Just 
 ### Submitting an Issue
 Before you submit your issue search the [archive][archive], maybe your question was already answered. Let's avoid duplicates.
 
-If you believe your issue is a bug, and you can't find a issue in the [archive][issues-archive], just open a new issue. 
+If you believe your issue is a bug, and you can't find a issue in the [archive][issues-archive], just open a new issue.
 
 **Help us help you!**
 
