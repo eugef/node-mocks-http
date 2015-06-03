@@ -140,6 +140,7 @@ by Express.
 
 [Most Recent Release Notes][release-notes]
 
+* [v1.4.3][release-v1.4.3] - June 3, 2015
 * [v1.4.2][release-v1.4.2] - April 30, 2015
 * [v1.4.1][release-v1.4.1] - April 14, 2015
 * [v1.4.0][release-v1.4.0] - April 12, 2015
@@ -172,6 +173,7 @@ Licensed under [MIT](https://github.com/howardabrams/node-mocks-http/blob/master
 
 [release-notes]: https://github.com/howardabrams/node-mocks-http/releases
 
+[release-v1.4.3]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.3
 [release-v1.4.2]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.2
 [release-v1.4.1]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.1
 [release-v1.4.0]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.0
