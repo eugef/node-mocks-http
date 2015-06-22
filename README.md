@@ -111,6 +111,28 @@ option | description | default value
 `eventEmitter` | event emitter used by `response` object | `mockEventEmitter`
 `writableStream`  | writable stream used by `response` object | `mockWritableStream`
 
+> NOTE: The out-of-the-box mock event emitter included with `node-mocks-http` is
+not a functional event emitter and as such does not actually emit events. If you
+wish to test your event handlers you will need to bring your own event emitter.
+
+> Here's an example:
+
+```js
+var httpMocks = require('node-mocks-http');
+var res = httpMocks.createResponse({
+  EventEmitter: require('events').EventEmitter;
+});
+
+// ...
+  it('should do something', funciton(done) {
+    res.on('end', function() {
+      assert.equal(...);
+      done();
+    });
+  });
+// ...
+```
+
 ## Design Decisions
 
 We wanted some simple mocks without a large framework.
