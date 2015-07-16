@@ -272,6 +272,51 @@ describe('mockRequest', function() {
 
   });
 
+  describe('.is()', function() {
+    var request;
+
+    afterEach(function() {
+      request = null;
+    });
+
+    it('should return type, when found in content-type header', function() {
+      var options = {
+        headers: {
+          'content-type': 'text/html',
+          'transfer-encoding': 'chunked'
+        }
+      };
+
+      request = mockRequest.createRequest(options);
+      expect(request.is('html')).to.equal('html');
+    });
+
+    it('should return first matching type, given array of types', function() {
+      var options = {
+        headers: {
+          'content-type': 'text/html',
+          'transfer-encoding': 'chunked'
+        }
+      };
+
+      request = mockRequest.createRequest(options);
+      expect(request.is(['json', 'html', 'text'])).to.equal('html');
+    });
+
+    it('should return false when type not found', function() {
+      var options = {
+        headers: {
+          'content-type': 'text/html',
+          'transfer-encoding': 'chunked'
+        }
+      };
+
+      request = mockRequest.createRequest(options);
+      expect(request.is(['json'])).to.equal(false);
+    });
+
+  });
+
   describe('.param()', function() {
     var request;
 
