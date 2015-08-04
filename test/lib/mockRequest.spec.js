@@ -88,6 +88,15 @@ describe('mockRequest', function() {
         expect(request.originalUrl).to.equal(options.originalUrl);
       });
 
+      it('should set .path to options.path', function() {
+        var options = {
+          path: '/this/is/a/path'
+        };
+
+        request = mockRequest.createRequest(options);
+        expect(request.path).to.equal(options.path);
+      });
+
       it('should set .path to pathname of options.url', function() {
         var options = {
           url: '/this/is/a/url'
