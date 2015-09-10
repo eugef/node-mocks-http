@@ -120,11 +120,11 @@ wish to test your event handlers you will need to bring your own event emitter.
 ```js
 var httpMocks = require('node-mocks-http');
 var res = httpMocks.createResponse({
-  EventEmitter: require('events').EventEmitter;
+  eventEmitter: require('events').EventEmitter
 });
 
 // ...
-  it('should do something', funciton(done) {
+  it('should do something', function(done) {
     res.on('end', function() {
       assert.equal(...);
       done();
