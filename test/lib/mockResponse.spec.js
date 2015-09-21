@@ -217,10 +217,32 @@ describe('mockResponse', function() {
         response = null;
       });
 
-      it('should remove cookie, when called with existing cookie', function() {
+      it('should set an already expired date to the cookie, when called with existing cookie', function() {
+        var cookie = {
+          value: '',
+          options: {
+            expires: new Date(1),
+            path: '/'
+          }
+        };
         response.cookie('name', 'value');
         response.clearCookie('name');
-        expect(response.cookies.name).not.to.exist;
+        expect(response.cookies.name).to.deep.equal(cookie);
+      });
+
+      it('should keep the options of the cookie except expiration date and path, if provided', function() {
+        var cookie = {
+          value: '',
+          options: {
+            expires: new Date(1),
+            path: '/',
+            domain: 'domain',
+            httpOnly: true
+          }
+        };
+        response.cookie('name', 'value');
+        response.clearCookie('name', {expires: new Date(), path: '/path', domain: 'domain', httpOnly: true});
+        expect(response.cookies.name).to.deep.equal(cookie);
       });
 
       it('should return silently, when called with non-existing cookie', function() {
