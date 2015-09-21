@@ -1,3 +1,17 @@
+v 1.4.4
+---
+
+  Bug fix release, including the following:
+  * Fixed for [#67][67]
+  * Merge fix for [#68][68]
+  * Merge fix for [#70][70]
+  * Merge fix for [#73][73]
+
+    [67]: https://github.com/howardabrams/node-mocks-http/issues/67
+    [68]: https://github.com/howardabrams/node-mocks-http/issues/68
+    [70]: https://github.com/howardabrams/node-mocks-http/issues/70
+    [73]: https://github.com/howardabrams/node-mocks-http/issues/73
+
 v 1.2.0
 ---
 

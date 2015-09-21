@@ -120,7 +120,7 @@ wish to test your event handlers you will need to bring your own event emitter.
 ```js
 var httpMocks = require('node-mocks-http');
 var res = httpMocks.createResponse({
-  EventEmitter: require('events').EventEmitter;
+  EventEmitter: require('events').EventEmitter
 });
 
 // ...
@@ -162,6 +162,7 @@ by Express.
 
 [Most Recent Release Notes][release-notes]
 
+* [v1.4.4][release-v1.4.4] - June 3, 2015
 * [v1.4.3][release-v1.4.3] - June 3, 2015
 * [v1.4.2][release-v1.4.2] - April 30, 2015
 * [v1.4.1][release-v1.4.1] - April 14, 2015
@@ -195,6 +196,7 @@ Licensed under [MIT](https://github.com/howardabrams/node-mocks-http/blob/master
 
 [release-notes]: https://github.com/howardabrams/node-mocks-http/releases
 
+[release-v1.4.4]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.4
 [release-v1.4.3]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.3
 [release-v1.4.2]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.2
 [release-v1.4.1]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.1
