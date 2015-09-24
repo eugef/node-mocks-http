@@ -383,6 +383,18 @@ describe('mockRequest', function() {
       expect(request.header('key')).to.not.exist;
     });
 
+    it('should return defaultValue, when not found in params/body/query', function() {
+      request = mockRequest.createRequest();
+      expect(request.get('key')).to.not.exist;
+      expect(request.param('key', 'defaultValue')).to.equal('defaultValue');
+    });
+
+    it('should return undefined, when not found in params/body/query', function() {
+      request = mockRequest.createRequest();
+      expect(request.get('key')).to.not.exist;
+      expect(request.param('key')).to.be.undefined;
+    });
+
   });
 
   describe('helper functions', function() {
