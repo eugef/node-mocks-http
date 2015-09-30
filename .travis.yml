@@ -1,0 +1,27 @@
+language: node_js
+node_js:
+  - "0.10"
+  - "0.12"
+
+notifications:
+  email:
+    - "howard.abrams@gmail.com"
+    - "johnny.estilles@agentia.asia"
+
+branches:
+  only:
+    - master
+    - 1.x
+
+addons:
+  code_climate:
+    repo_token: 75dc20817d25bb52614e495f87d69b228edac0016fb096ccab2a75b624c68d4e
+
+before_script:
+  - npm install -g gulp
+  - npm install -g codeclimate-test-reporter
+  - gulp lint
+
+after_script:
+  - gulp coverage
+  - codeclimate < ./coverage/lcov.info

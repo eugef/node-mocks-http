@@ -1,0 +1,10 @@
+extends: ../.eslintrc
+
+env:
+  mocha: true
+
+rules:
+  no-unused-expressions: 0
+  indent:
+    - 2
+    - 2

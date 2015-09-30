@@ -1,131 +1,207 @@
-node-mocks-http
-===============
+[![node-mocks-http logo][nmh-logo]][nmh-url]
+---
+[![NPM version][npm-badge]][npm-url]
+[![Build Status][travis-badge]][travis-url]
+[![Gitter chat][gitter-badge]][gitter-url]
 
-Mock 'http' objects for testing Express routing functions, but could be used
-for testing any [Node.js](http://www.nodejs.org) web server applications that
-have code that requires mockups of the `request` and `response` objects.
 
-Example
--------
+Mock 'http' objects for testing [Express][express-url]
+routing functions, but could be used for testing any
+[Node.js][node-url] web server applications that have
+code that requires mockups of the `request` and `response` objects.
 
-Suppose we have the following magical Express incantation:
+## Installation
 
-    app.get('/user/:id', mod.aroute);
+This project is available as a
+[NPM package][npm-url].
 
-And we have ourselves a function to answer that call:
+```bash
+$ npm install --save-dev node-mocks-http
+```
 
-    var aroute = function( request, response ) { ... };
+> Our example includes `--save-dev` based on the assumption that **node-mocks-http** will be used as a development dependency..
 
-You can easily test that function with some code like this:
+After installing the package include the following in your test files:
 
-    exports['aroute - Simple testing'] = function(test) {
-        var request  = httpMocks.createRequest({
-            method: 'GET',
-            url: '/user/42',
-            params: { id: 42 }
-        });
-        var response = httpMocks.createResponse();
+```js
+var httpMocks = require('node-mocks-http');
+```
 
-        aroute(request, response);
+## Usage
 
-        var data = JSON.parse( response._getData() );
-        test.equal("Bob Dog", data.name);
-        test.equal(42, data.age);
-        test.equal("bob@dog.com", data.email);
+Suppose you have the following Express route:
 
-        test.equal(200, response.statusCode );
-        test.ok( response._isEndCalled());
-        test.ok( response._isJSON());
-        test.ok( response._isUTF8());
-        test.done();
-    };
+```js
+app.get('/user/:id', routeHandler);
+```
 
-Installation
-------------
+And you have created a function to handle that route's call:
 
-This project is available as a NPM package.
+```js
+var routeHandler = function( request, response ) { ... };
+```
 
-    npm install node-mocks-http
+You can easily test the `routeHandler` function with some code like
+this using the testing framework of your choice:
 
-After this, just include the following in your test files:
+```js
+exports['routeHandler - Simple testing'] = function(test) {
 
-    var httpMocks = require('../lib/http-mock');
+    var request  = httpMocks.createRequest({
+        method: 'GET',
+        url: '/user/42',
+        params: {
+          id: 42
+        }
+    });
 
-Design Decisions
-----------------
+    var response = httpMocks.createResponse();
 
-We wanted some simple mocks without any larger framework.
+    routeHandler(request, response);
 
-We also wanted the mocks to simply act like the original, but allow setting values
-before calling and inspecting afterwards.
+    var data = JSON.parse( response._getData() );
+    test.equal("Bob Dog", data.name);
+    test.equal(42, data.age);
+    test.equal("bob@dog.com", data.email);
 
-We are looking for more volunteers to value to this project, including the
-creation of more objects from the [HTTP module](http://nodejs.org/docs/latest/api/http.html).
+    test.equal(200, response.statusCode );
+    test.ok( response._isEndCalled());
+    test.ok( response._isJSON());
+    test.ok( response._isUTF8());
 
-Release Notes
-=============
+    test.done();
 
-Most releases fixes bugs with our mocks or add features similar to the
+};
+```
+
+## API
+### .createRequest()
+
+```
+httpMocks.createRequest(options)
+```
+
+Where options is an object hash with any of the following values:
+
+option | description | default value
+------ | ----------- | -------------
+`method`| request HTTP method | 'GET'
+`url` | request URL | ''
+`originalUrl` | request original URL | `url`
+`path` | request path | ''
+`params` | object hash with params | {}
+`session` | object hash with session values | `undefined`
+`cookies` | object hash with request cookies | {}
+`signedCookies` | object hash with signed cookies | `undefined`
+`headers` | object hash with request headers | {}
+`body` | object hash with body | {}
+`query` | object hash with query values | {}
+`files` | object hash with values | {}
+
+### .createResponse()
+
+```js
+httpMocks.createResponse(options)
+```
+
+Where options is an object hash with any of the following values:
+
+option | description | default value
+------ | ----------- | -------------
+`eventEmitter` | event emitter used by `response` object | `mockEventEmitter`
+`writableStream`  | writable stream used by `response` object | `mockWritableStream`
+
+> NOTE: The out-of-the-box mock event emitter included with `node-mocks-http` is
+not a functional event emitter and as such does not actually emit events. If you
+wish to test your event handlers you will need to bring your own event emitter.
+
+> Here's an example:
+
+```js
+var httpMocks = require('node-mocks-http');
+var res = httpMocks.createResponse({
+  EventEmitter: require('events').EventEmitter
+});
+
+// ...
+  it('should do something', funciton(done) {
+    res.on('end', function() {
+      assert.equal(...);
+      done();
+    });
+  });
+// ...
+```
+
+## Design Decisions
+
+We wanted some simple mocks without a large framework.
+
+We also wanted the mocks to act like the original framework being
+mocked, but allow for setting of values before calling and inspecting
+of values after calling.
+
+## For Developers
+
+We are looking for more volunteers to bring value to this project,
+including the creation of more objects from the
+[HTTP module][node-http-module-url].
+
+This project doesn't address all features that must be
+mocked, but it is a good start. Feel free to send pull requests,
+and a member of the team will be timely in merging them.
+
+If you wish to contribute please read our [Contributing Guidelines](CONTRIBUTING.md).
+
+
+## Release Notes
+
+Most releases fix bugs with our mocks or add features similar to the
 actual `Request` and `Response` objects offered by Node.js and extended
 by Express.
 
-v 1.0.2
--------
+[Most Recent Release Notes][release-notes]
 
-  * Added a `.json()` method to the response. (Thanks, diachedelic)
-  * Cleaned up all source files so ./run-tests passes.
-  * Cleaned up jshint issues.
+* [v1.4.4][release-v1.4.4] - June 3, 2015
+* [v1.4.3][release-v1.4.3] - June 3, 2015
+* [v1.4.2][release-v1.4.2] - April 30, 2015
+* [v1.4.1][release-v1.4.1] - April 14, 2015
+* [v1.4.0][release-v1.4.0] - April 12, 2015
+* [v1.3.0][release-v1.3.0] - April 5, 2015
+* [v1.2.7][release-v1.2.7] - March 24, 2015
+* [v1.2.6][release-v1.2.6] - March 19, 2015
+* [v1.2.5][release-v1.2.5] - March 5, 2015
 
-v 1.0.1
--------
 
-  * Add support for response redirect and render
+License
+---
 
-v 0.0.9
--------
+Licensed under [MIT](https://github.com/howardabrams/node-mocks-http/blob/master/LICENSE).
 
-  * Add support for response cookies
+[nmh-logo]: https://raw.githubusercontent.com/wiki/howardabrams/node-mocks-http/images/nmh-logo-200x132.png
+[nmh-url]: https://github.com/howardabrams/node-mocks-http
 
-v 0.0.8
--------
+[npm-badge]: https://badge.fury.io/js/node-mocks-http.png
+[npm-url]: https://www.npmjs.com/package/node-mocks-http
 
-  * Add support for request headers
-  * Fix wrong function name of set cookies
+[travis-badge]: https://travis-ci.org/howardabrams/node-mocks-http.svg?branch=master
+[travis-url]: https://travis-ci.org/howardabrams/node-mocks-http
 
-v 0.0.7
--------
+[gitter-badge]: https://badges.gitter.im/howardabrams/node-mocks-http.png
+[gitter-url]: https://gitter.im/howardabrams/node-mocks-http
 
-  * Add support for request cookies
+[express-url]: http://expressjs.com/
+[node-url]: http://www.nodejs.org
+[node-http-module-url]: http://nodejs.org/docs/latest/api/http.html
 
-v 0.0.6
--------
+[release-notes]: https://github.com/howardabrams/node-mocks-http/releases
 
-  * Add support for request files
-
-v 0.0.5
--------
-
-  * Fixed a bug where `response.send()` can take two parameters, the
-    status code and the data to send.
-
-v 0.0.4
--------
-
-  * Added a `request.session` that can be set during construction (or via
-    calling the `_setSessionVariable()` method, and read as an object.
-
-v 0.0.3
--------
-
-  * Added a `request.query` that can be set during construction and read
-    as an object.
-
-v 0.0.2
--------
-
-  * Code refactoring of the `Response` mock.
-
-v 0.0.1
--------
-
-  * Initial code banged out one late night...
+[release-v1.4.4]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.4
+[release-v1.4.3]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.3
+[release-v1.4.2]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.2
+[release-v1.4.1]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.1
+[release-v1.4.0]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.0
+[release-v1.3.0]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.3.0
+[release-v1.2.7]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.2.7
+[release-v1.2.6]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.2.6
+[release-v1.2.5]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.2.5
