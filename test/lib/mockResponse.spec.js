@@ -491,6 +491,31 @@ describe('mockResponse', function() {
 
     });
 
+    // TODO: fix in 2.0; method should mimic Express Response.jsonp()
+    describe('.jsonp()', function() {
+      var response;
+
+      beforeEach(function() {
+        response = mockResponse.createResponse();
+        sinon.spy(response, 'emit');
+      });
+
+      afterEach(function() {
+        response.emit.restore();
+        response = null;
+      });
+
+      it('method should mimic Express Response.jsonp()');
+
+      it('should emit send and end events', function() {
+        response.jsonp({});
+        expect(response.emit).to.have.been.calledTwice;
+        expect(response.emit).to.have.been.calledWith('send');
+        expect(response.emit).to.have.been.calledWith('end');
+      });
+
+    });
+
     // TODO: fix in 2.0; method should mimic Express Response.redirect()
     describe('.redirect()', function() {
 
