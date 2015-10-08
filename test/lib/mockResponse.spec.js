@@ -44,6 +44,9 @@ describe('mockResponse', function() {
       expect(response).to.have.property('json');
       expect(response.json).to.be.a('function');
 
+      expect(response).to.have.property('jsonp');
+      expect(response.jsonp).to.be.a('function');
+
       expect(response).to.have.property('contentType');
       expect(response.contentType).to.be.a('function');
 
