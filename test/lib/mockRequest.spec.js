@@ -238,6 +238,15 @@ describe('mockRequest', function() {
         expect(request.query).to.deep.equal(parsedOptions);
       });
 
+      it('should accept and set non-standard options passed to it', function() {
+        var options = {
+          mySampleProp: 'la LA LA'
+        };
+
+        request = mockRequest.createRequest(options);
+        expect(request.mySampleProp).to.equal('la LA LA');
+      });
+
     });
 
   });
