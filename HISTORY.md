@@ -1,5 +1,25 @@
+v 1.5.0
+-------
+
+Documentation changes, a new feature, and better behaviors, including:
+
+  * Added `jsonp` method that takes a status code and a payload, see [PR #79][79]
+  * Now able to attach non-standard properties to the mock request object. [PR #74][74]
+  * param now takes a default value, see [PR #76][76]
+  * Emit `end` when redirecting, see [PR #77][77]
+  * Documentation changes, see [PR #64][64], [PR #75][75], [PR #78][78]
+
+  [64]: https://github.com/howardabrams/node-mocks-http/issues/64
+  [74]: https://github.com/howardabrams/node-mocks-http/issues/74
+  [75]: https://github.com/howardabrams/node-mocks-http/issues/75
+  [76]: https://github.com/howardabrams/node-mocks-http/issues/76
+  [77]: https://github.com/howardabrams/node-mocks-http/issues/77
+  [78]: https://github.com/howardabrams/node-mocks-http/issues/78
+  [79]: https://github.com/howardabrams/node-mocks-http/issues/79
+
+
 v 1.4.4
----
+-------
 
   Bug fix release, including the following:
   * Fixed for [#67][67]
@@ -7,10 +27,10 @@ v 1.4.4
   * Merge fix for [#70][70]
   * Merge fix for [#73][73]
 
-    [67]: https://github.com/howardabrams/node-mocks-http/issues/67
-    [68]: https://github.com/howardabrams/node-mocks-http/issues/68
-    [70]: https://github.com/howardabrams/node-mocks-http/issues/70
-    [73]: https://github.com/howardabrams/node-mocks-http/issues/73
+  [67]: https://github.com/howardabrams/node-mocks-http/issues/67
+  [68]: https://github.com/howardabrams/node-mocks-http/issues/68
+  [70]: https://github.com/howardabrams/node-mocks-http/issues/70
+  [73]: https://github.com/howardabrams/node-mocks-http/issues/73
 
 v 1.2.0
 ---
