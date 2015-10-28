@@ -124,7 +124,7 @@ var res = httpMocks.createResponse({
 });
 
 // ...
-  it('should do something', funciton(done) {
+  it('should do something', function(done) {
     res.on('end', function() {
       assert.equal(...);
       done();
