@@ -22,6 +22,12 @@ describe('mockRequest', function() {
         request = mockRequest.createRequest();
       });
 
+      it('should have event emitter prototype functions', function () {
+        expect(request.on).to.be.a('function');
+        expect(request.once).to.be.a('function');
+        expect(request.emit).to.be.a('function');
+      });
+
       it('should return an object', function() {
         expect(request).to.be.an('object');
       });
