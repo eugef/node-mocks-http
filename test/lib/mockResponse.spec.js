@@ -297,6 +297,39 @@ describe('mockResponse', function() {
 
     });
 
+    describe('.vary()', function() {
+      var response;
+
+      beforeEach(function() {
+        response = mockResponse.createResponse();
+        sinon.spy(response, 'setHeader');
+      });
+
+      afterEach(function() {
+        response.setHeader.restore();
+        response = null;
+      });
+
+      it('should set vary header, when called with a single field', function() {
+        response.vary('value1');
+        expect(response.setHeader).to.have.been.calledWith('Vary', 'value1');
+        expect(response.get('Vary')).to.equal('value1');
+      });
+
+      it('should set vary header, when called with a an array of fields', function() {
+        response.vary([ 'value1', 'value2' ]);
+        expect(response.setHeader).to.have.been.calledWith('Vary', 'value1, value2');
+        expect(response.get('Vary')).to.equal('value1, value2');
+      });
+
+      it('should not duplicate vary header values', function() {
+        response.vary([ 'value1', 'value2' ]);
+        response.vary([ 'value1', 'value3' ]);
+        expect(response.get('Vary')).to.equal('value1, value2, value3');
+      });
+
+    });
+
     describe('.set()/.header()', function() {
       var response;
 
