@@ -328,6 +328,12 @@ describe('mockResponse', function() {
         expect(response.get('Vary')).to.equal('value1, value2, value3');
       });
 
+      it('Should match vary header values regardless of case', function() {
+        response.vary('Value1');
+        response.vary([ 'value1', 'Value2' ]);
+        expect(response.get('Vary')).to.equal('Value1, Value2');
+      });
+
     });
 
     describe('.set()/.header()', function() {
