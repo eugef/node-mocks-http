@@ -322,16 +322,10 @@ describe('mockResponse', function() {
         expect(response.get('Vary')).to.equal('value1, value2');
       });
 
-      it('should not duplicate vary header values', function() {
+      it('should not duplicate vary header values (regardless of case)', function() {
         response.vary([ 'value1', 'value2' ]);
-        response.vary([ 'value1', 'value3' ]);
+        response.vary([ 'Value1', 'VALUE2', 'value3' ]);
         expect(response.get('Vary')).to.equal('value1, value2, value3');
-      });
-
-      it('Should match vary header values regardless of case', function() {
-        response.vary('Value1');
-        response.vary([ 'value1', 'Value2' ]);
-        expect(response.get('Vary')).to.equal('Value1, Value2');
       });
 
     });
