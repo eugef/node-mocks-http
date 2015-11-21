@@ -1,3 +1,8 @@
+v 1.5.1
+-------
+
+  * Add support for the `.vary()` response method
+
 v 1.5.0
 -------
 
