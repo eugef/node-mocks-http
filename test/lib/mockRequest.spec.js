@@ -370,6 +370,17 @@ describe('mockRequest', function() {
       expect(request.param('key')).to.equal('value');
     });
 
+    it('should return falsy param, when found in params', function() {
+      var options = {
+        params: {
+          key: 0
+        }
+      };
+
+      request = mockRequest.createRequest(options);
+      expect(request.param('key')).to.equal(0);
+    });
+
     it('should return param, when found in body', function() {
       var options = {
         body: {
@@ -381,6 +392,17 @@ describe('mockRequest', function() {
       expect(request.param('key')).to.equal('value');
     });
 
+    it('should return falsy param, when found in body', function() {
+      var options = {
+        body: {
+          key: 0
+        }
+      };
+
+      request = mockRequest.createRequest(options);
+      expect(request.param('key')).to.equal(0);
+    });
+
     it('should return param, when found in query', function() {
       var options = {
         query: {
@@ -390,6 +412,17 @@ describe('mockRequest', function() {
 
       request = mockRequest.createRequest(options);
       expect(request.param('key')).to.equal('value');
+    });
+
+    it('should return falsy param, when found in query', function() {
+      var options = {
+        query: {
+          key: 0
+        }
+      };
+
+      request = mockRequest.createRequest(options);
+      expect(request.param('key')).to.equal(0);
     });
 
     it('should not return param, when not found in params/body/query', function() {
