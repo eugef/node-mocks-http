@@ -96,7 +96,6 @@ describe('mockResponse', function() {
     });
 
     it('should expose Node WritableStream methods', function() {
-
       expect(response).to.have.property('destroy');
       expect(response.destroy).to.be.a('function');
 
@@ -679,6 +678,14 @@ describe('mockResponse', function() {
 
         response.header('name2', 'value2');
         expect(response.getHeader('name2')).to.equal('value2');
+      });
+
+      it('should get header regardless of case, when called existing header', function() {
+        response.set('NAME1', 'value1');
+        expect(response.getHeader('name1')).to.equal('value1');
+
+        response.header('name2', 'value2');
+        expect(response.getHeader('NAME2')).to.equal('value2');
       });
 
       it('should throw and error, when called without arguments', function() {
