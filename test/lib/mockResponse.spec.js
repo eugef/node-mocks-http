@@ -562,8 +562,69 @@ describe('mockResponse', function() {
   describe('Node ServerResponse methods', function() {
 
     describe('.writeHead()', function() {
+      var response;
+
+      beforeEach(function() {
+        response = mockResponse.createResponse();
+
+        expect(response.statusCode).to.equal(200);
+        expect(response.statusMessage).to.equal('OK');
+        expect(response._getHeaders()).to.be.empty;
+      });
+
+      afterEach(function() {
+        response = null;
+      });
 
       it('should inherit from ServerResponse.writeHead()');
+
+      it('writes the statusCode of the response', function() {
+        response.writeHead(400);
+        expect(response.statusCode).to.equal(400);
+      });
+
+      it('writes the statusMessage of the response', function() {
+        response.writeHead(400, 'NotOK');
+        expect(response.statusMessage).to.equal('NotOK');
+      });
+
+      it('writes the headers of the response', function() {
+        var headers = { 'x-header': 'test llama' };
+        response.writeHead(400, headers);
+        expect(response._getHeaders()).to.deep.equal(headers);
+      });
+
+      it('works with statusMessage and headers as optional', function() {
+        response.writeHead(400);
+        expect(response.statusCode).to.equal(400);
+        expect(response.statusMessage).to.equal('OK');
+        expect(response._getHeaders()).to.be.empty;
+      });
+
+      it('works with statusMessage as optional', function() {
+        var headers = { 'x-header': 'test llama' };
+        response.writeHead(400, headers);
+        expect(response.statusMessage).to.equal('OK');
+        expect(response._getHeaders()).to.deep.equal(headers);
+      });
+
+      it('works with headers as optional', function() {
+        response.writeHead(400, 'NotOK');
+        expect(response.statusMessage).to.equal('NotOK');
+        expect(response._getHeaders()).to.be.empty;
+      });
+
+      it('works with statusCode, statusMessage, and headers defined', function() {
+        var headers = { 'x-header': 'test llama' };
+        response.writeHead(400, 'NotOK', headers);
+        expect(response.statusMessage).to.equal('NotOK');
+        expect(response._getHeaders()).to.deep.equal(headers);
+      });
+
+      it('throws if end has already been called', function() {
+        response.end();
+        expect(response.writeHead.bind(response, 200)).to.throw('The end() method has already been called');
+      });
 
     });
 
@@ -803,6 +864,26 @@ describe('mockResponse', function() {
       it('should return set status code', function() {
         response.status(404);
         expect(response._getStatusCode()).to.equal(404);
+      });
+
+    });
+
+    describe('._getStatusMessage()', function() {
+
+      it('will be deprecated in 2.0');
+
+      it('should return the default status message, when not set', function() {
+        expect(response._getStatusMessage()).to.equal('OK');
+      });
+
+      it('should return set status message', function() {
+        response.statusMessage = 'NotOK';
+        expect(response._getStatusMessage()).to.equal('NotOK');
+      });
+
+      it('should return status message set by .writeHead()', function() {
+        response.writeHead(400, 'NotOK');
+        expect(response._getStatusMessage()).to.equal('NotOK');
       });
 
     });
