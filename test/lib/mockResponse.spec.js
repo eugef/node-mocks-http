@@ -599,7 +599,7 @@ describe('mockResponse', function() {
         response.writeHead(400, headers);
         // headers are only sent by node with first body byte
         expect(response.headersSent).to.equal(false);
-        response.write("foo");
+        response.write('foo');
         expect(response.headersSent).to.equal(true);
         // further updates to headers shouldn't really be reflected in mock headers
         // since these would be transmitted as part of the body (probably breaking chunked encoding)
