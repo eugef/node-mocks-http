@@ -626,6 +626,12 @@ describe('mockResponse', function() {
         expect(response.writeHead.bind(response, 200)).to.throw('The end() method has already been called');
       });
 
+      it('merges the given headers with the ones specified earlier (set with `setHeader`)', function() {
+        response.setHeader('Access-Control-Allow-Origin', '*');
+        response.writeHead(200, {'Access-Control-Max-Age': '86400'});
+        expect(response._getHeaders()).to.contain.all.keys({'Access-Control-Allow-Origin': '*', 'Access-Control-Max-Age': '86400'});
+      });
+
     });
 
   });
