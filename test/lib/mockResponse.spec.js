@@ -329,6 +329,23 @@ describe('mockResponse', function() {
 
     });
 
+    describe('.location()', function() {
+      var response;
+
+      beforeEach(function() {
+        response = mockResponse.createResponse();
+      });
+
+      it('sets the Location header to the given path', function() {
+        response.location('/a/nice/location');
+        expect(response.get('Location')).to.equal('/a/nice/location');
+      });
+
+      it('returns the response object', function() {
+        expect(response.location('')).to.equal(response);
+      });
+    });
+
     describe('.set()/.header()', function() {
       var response;
 
