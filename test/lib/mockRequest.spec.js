@@ -352,6 +352,27 @@ describe('mockRequest', function() {
 
   });
 
+  describe('.accepts()', function() {
+    var request;
+
+    beforeEach(function() {
+      request = mockRequest.createRequest({ headers: { accept: 'text/html' }});
+    });
+
+    it('returns type if the same as Accept header', function() {
+      expect(request.accepts('text/html')).to.equal('text/html');
+      expect(request.accepts('html')).to.equal('html');
+    });
+
+    it('returns the first matching type of an array of types', function() {
+      expect(request.accepts(['json', 'html'])).to.equal('html');
+    });
+
+    it('returns false when types dont match', function() {
+      expect(request.accepts(['json', 'xml'])).to.equal(false);
+    });
+  });
+
   describe('.param()', function() {
     var request;
 
@@ -442,7 +463,6 @@ describe('mockRequest', function() {
       expect(request.get('key')).to.not.exist;
       expect(request.param('key')).to.be.undefined;
     });
-
   });
 
   describe('helper functions', function() {

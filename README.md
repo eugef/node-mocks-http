@@ -110,6 +110,7 @@ option | description | default value
 ------ | ----------- | -------------
 `eventEmitter` | event emitter used by `response` object | `mockEventEmitter`
 `writableStream`  | writable stream used by `response` object | `mockWritableStream`
+`req` | Request object being responded to | null
 
 > NOTE: The out-of-the-box mock event emitter included with `node-mocks-http` is
 not a functional event emitter and as such does not actually emit events. If you
@@ -132,6 +133,15 @@ var res = httpMocks.createResponse({
   });
 // ...
 ```
+
+### .createMocks()
+
+```js
+httpMocks.createMocks(reqOptions, resOptions)
+```
+
+Merges `createRequest` and `createResponse`. Passes given options object to each
+constructor.
 
 ## Design Decisions
 

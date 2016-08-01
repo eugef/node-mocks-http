@@ -7,6 +7,7 @@ var sinonChai = require('sinon-chai');
 chai.use(sinonChai);
 
 var mockResponse = require('../../lib/mockResponse');
+var mockRequest = require('../../lib/mockRequest');
 
 describe('mockResponse', function() {
 
@@ -562,16 +563,64 @@ describe('mockResponse', function() {
         expect(response.emit).to.have.been.calledWith('send');
         expect(response.emit).to.have.been.calledWith('end');
       });
-
     });
 
     // TODO: fix in 2.0; method should mimic Express Response.redirect()
     describe('.redirect()', function() {
-
       it('method should mimic Express Response.redirect()');
-
     });
 
+    describe('.format()', function() {
+      var response, request;
+
+      beforeEach(function () {
+        request = mockRequest.createRequest();
+        response = mockResponse.createResponse({ req: request });
+      });
+
+      it('sends 406 when given no supported formats', function() {
+        response.format({});
+        expect(response.statusCode).to.equal(406);
+        expect(response._getData()).to.equal('Not Acceptable');
+      });
+
+      it('throws when no request object is available', function() {
+        response = mockResponse.createResponse();
+
+        expect(function() {
+          response.format({ html: function() {} });
+        }).to.throw(Error, /Request object unavailable/);
+      });
+
+      it('calls the handler for the closest accepted type', function() {
+        var htmlSpy = sinon.spy();
+        var jsonSpy = sinon.spy();
+
+        request.headers.accept = 'application/json';
+        response.format({ html: htmlSpy, json: jsonSpy });
+
+        expect(htmlSpy).to.not.have.been.called;
+        expect(jsonSpy).to.have.been.called;
+      });
+
+      it('sends 406 when no match is found', function() {
+        var htmlSpy = sinon.spy();
+        var jsonSpy = sinon.spy();
+
+        request.headers.accept = 'text/xml';
+        response.format({ html: htmlSpy, json: jsonSpy });
+
+        expect(htmlSpy).to.not.have.been.called;
+        expect(jsonSpy).to.not.have.been.called;
+        expect(response.statusCode).to.equal(406);
+      });
+
+      it('runs default function if it exists and no match is found', function() {
+        var defaultSpy = sinon.spy();
+        response.format({ default: defaultSpy });
+        expect(defaultSpy).to.have.been.called;
+      });
+    });
   });
 
   // TODO: fix in 2.0; methods should be inherited from Node ServerResponse
