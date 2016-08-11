@@ -1,3 +1,28 @@
+v 1.5.3
+-------
+
+  * Add `.format` to the `mockResponse` object [PR #94][94]
+  * Add `.location` to the `mockResponse` object [PR #96][96]
+  * Add API method, `createMocks` to create both mocks with correct references
+
+  [96]: https://github.com/howardabrams/node-mocks-http/issues/96
+  [94]: https://github.com/howardabrams/node-mocks-http/issues/94
+
+v 1.5.2
+-------
+
+  * Add case insensitive response headers [#85][85]
+  * Fix behavior of `mockResponse.writeHead` [#92][92]
+  * Add support for statusMessage [#84][84]
+  * Fix issue with `req.param` not returning when false [#82][82]
+  * Other bug fixes
+
+  [92]: https://github.com/howardabrams/node-mocks-http/issues/92
+  [84]: https://github.com/howardabrams/node-mocks-http/issues/84
+  [82]: https://github.com/howardabrams/node-mocks-http/issues/82
+  [85]: https://github.com/howardabrams/node-mocks-http/issues/85
+
+
 v 1.5.1
 -------
 
