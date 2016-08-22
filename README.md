@@ -141,7 +141,7 @@ httpMocks.createMocks(reqOptions, resOptions)
 ```
 
 Merges `createRequest` and `createResponse`. Passes given options object to each
-constructor.
+constructor. Returns an object with properties `req` and `res`.
 
 ## Design Decisions
 
