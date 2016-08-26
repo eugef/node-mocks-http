@@ -45,6 +45,9 @@ describe('mockEventEmitter', function() {
 
     expect(mockEventEmitter).to.have.property('emit');
     expect(mockEventEmitter.emit).to.be.a('function');
+
+    expect(mockEventEmitter).to.have.property('prependListener');
+    expect(mockEventEmitter.prependListener).to.be.a('function');
   });
 
   it('should return undefined when methods called', function() {
@@ -56,6 +59,8 @@ describe('mockEventEmitter', function() {
     expect(mockEventEmitter.setMaxListeners()).to.be.undefined;
     expect(mockEventEmitter.listeners()).to.be.undefined;
     expect(mockEventEmitter.emit()).to.be.undefined;
+    expect(mockEventEmitter.prependListener()).to.be.undefined;
+
   });
 
 });
