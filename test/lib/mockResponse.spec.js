@@ -539,6 +539,18 @@ describe('mockResponse', function() {
         expect(response.emit).to.have.been.calledWith('end');
       });
 
+      // reference : https://github.com/howardabrams/node-mocks-http/pull/98
+      it('should call .write()', function() {
+        var originalWrite = response.write.bind(response);
+        var hackedContent = JSON.stringify({foo: 'bar'});
+        response.write = function(data, encoding) {
+          console.log('data :', data);
+          return originalWrite(hackedContent, encoding);
+        };
+        response.json({hello: 'world'});
+        expect(response._getData()).to.eql(hackedContent);
+      });
+
     });
 
     // TODO: fix in 2.0; method should mimic Express Response.jsonp()
@@ -1091,5 +1103,6 @@ describe('mockResponse', function() {
     });
 
   });
+
 
 });
