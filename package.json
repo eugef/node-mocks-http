@@ -58,6 +58,7 @@
     "sinon-chai": "^2.7.0"
   },
   "scripts": {
-    "test": "gulp spec"
+    "test": "gulp spec",
+    "postversion": "npm publish && git push --follow-tags"
   }
 }
