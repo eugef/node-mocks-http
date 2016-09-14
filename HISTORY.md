@@ -1,3 +1,10 @@
+v 1.5.4
+-------
+
+  * Call `write` method from json method of `responseMock` [PR #98][98]
+
+  [98]: https://github.com/howardabrams/node-mocks-http/issues/98
+
 v 1.5.3
 -------
 

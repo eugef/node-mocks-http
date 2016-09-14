@@ -170,18 +170,10 @@ Most releases fix bugs with our mocks or add features similar to the
 actual `Request` and `Response` objects offered by Node.js and extended
 by Express.
 
-[Most Recent Release Notes][release-notes]
+See the [Release History](HISTORY.md) for details.
 
-* [v1.4.4][release-v1.4.4] - June 3, 2015
-* [v1.4.3][release-v1.4.3] - June 3, 2015
-* [v1.4.2][release-v1.4.2] - April 30, 2015
-* [v1.4.1][release-v1.4.1] - April 14, 2015
-* [v1.4.0][release-v1.4.0] - April 12, 2015
-* [v1.3.0][release-v1.3.0] - April 5, 2015
-* [v1.2.7][release-v1.2.7] - March 24, 2015
-* [v1.2.6][release-v1.2.6] - March 19, 2015
-* [v1.2.5][release-v1.2.5] - March 5, 2015
-
+[release-notes]: https://github.com/howardabrams/node-mocks-http/releases
+[release-v1.4.4]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.4
 
 License
 ---
@@ -203,15 +195,3 @@ Licensed under [MIT](https://github.com/howardabrams/node-mocks-http/blob/master
 [express-url]: http://expressjs.com/
 [node-url]: http://www.nodejs.org
 [node-http-module-url]: http://nodejs.org/docs/latest/api/http.html
-
-[release-notes]: https://github.com/howardabrams/node-mocks-http/releases
-
-[release-v1.4.4]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.4
-[release-v1.4.3]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.3
-[release-v1.4.2]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.2
-[release-v1.4.1]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.1
-[release-v1.4.0]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.0
-[release-v1.3.0]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.3.0
-[release-v1.2.7]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.2.7
-[release-v1.2.6]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.2.6
-[release-v1.2.5]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.2.5
