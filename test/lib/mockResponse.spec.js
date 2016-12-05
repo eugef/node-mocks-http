@@ -493,9 +493,10 @@ describe('mockResponse', function() {
         response.render(view);
         expect(response._getRenderView()).to.equal(view);
         expect(response._getRenderData()).to.deep.equal({});
-        expect(response.emit).to.have.been.calledTwice;
+        expect(response.emit).to.have.been.calledThrice;
         expect(response.emit).to.have.been.calledWith('render');
         expect(response.emit).to.have.been.calledWith('end');
+        expect(response.emit).to.have.been.calledWith('finish');
       });
 
       it('should accept view and data arguments', function() {
@@ -505,9 +506,10 @@ describe('mockResponse', function() {
         response.render(view, data);
         expect(response._getRenderView()).to.equal(view);
         expect(response._getRenderData()).to.deep.equal(data);
-        expect(response.emit).to.have.been.calledTwice;
+        expect(response.emit).to.have.been.calledThrice;
         expect(response.emit).to.have.been.calledWith('render');
         expect(response.emit).to.have.been.calledWith('end');
+        expect(response.emit).to.have.been.calledWith('finish');
       });
 
     });
@@ -537,9 +539,10 @@ describe('mockResponse', function() {
 
       it('should emit send and end events', function() {
         response.json({});
-        expect(response.emit).to.have.been.calledTwice;
+        expect(response.emit).to.have.been.calledThrice;
         expect(response.emit).to.have.been.calledWith('send');
         expect(response.emit).to.have.been.calledWith('end');
+        expect(response.emit).to.have.been.calledWith('finish');
       });
 
       // reference : https://github.com/howardabrams/node-mocks-http/pull/98
@@ -574,9 +577,10 @@ describe('mockResponse', function() {
 
       it('should emit send and end events', function() {
         response.jsonp({});
-        expect(response.emit).to.have.been.calledTwice;
+        expect(response.emit).to.have.been.calledThrice;
         expect(response.emit).to.have.been.calledWith('send');
         expect(response.emit).to.have.been.calledWith('end');
+        expect(response.emit).to.have.been.calledWith('finish');
       });
     });
 
