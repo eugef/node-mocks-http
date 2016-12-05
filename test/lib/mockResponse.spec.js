@@ -128,6 +128,9 @@ describe('mockResponse', function() {
 
       expect(response).to.have.property('emit');
       expect(response.emit).to.be.a('function');
+
+      expect(response).to.have.property('prependListener');
+      expect(response.prependListener).to.be.a('function');
     });
 
     it('should expose heler methods', function() {
@@ -894,6 +897,12 @@ describe('mockResponse', function() {
     describe('.emit()', function() {
 
       it('should inherit from Node EventEmitter.emit()');
+
+    });
+
+    describe('.prependListener()', function() {
+
+      it('should inherit from Node EventEmitter.prependListener()');
 
     });
 
