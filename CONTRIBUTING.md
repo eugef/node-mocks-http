@@ -40,7 +40,7 @@ Think you can help us out by implementing the feature yourself? Go for it! Just 
 ## <a name="submit"></a> Submission Guidelines
 
 ### Submitting an Issue
-Before you submit your issue search the [archive][archive], maybe your question was already answered. Let's avoid duplicates.
+Before you submit your issue search the [archive][issues-archive], maybe your question was already answered. Let's avoid duplicates.
 
 If you believe your issue is a bug, and you can't find a issue in the [archive][issues-archive], just open a new issue.
 
