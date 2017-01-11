@@ -373,7 +373,7 @@ describe('mockResponse', function() {
         expect(response.get('name2')).to.equal('value2');
       });
 
-      it('should conver value to string, when called with called with non-string value', function() {
+      it('should convert value to string, when called with called with non-string value', function() {
         var num = 1;
         var obj = { key: 'value' };
         var bool = false;
@@ -389,6 +389,11 @@ describe('mockResponse', function() {
         response.set('bool', bool);
         expect(response.setHeader).to.have.been.calledWith('bool', bool.toString());
         expect(response.get('bool')).to.equal(bool.toString());
+      });
+
+      it('returns the header value when called with only a key', function() {
+        response.header('x', 'y');
+        expect(response.header('x')).to.equal('y');
       });
 
       it('should set headers, when called with a hash of key/values', function() {
