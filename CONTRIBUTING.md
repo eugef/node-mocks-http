@@ -31,7 +31,7 @@ Want to contribute with a fix? Even better! Just submit a [Pull Request][pulls].
 **Please read the [Submission Guidelines](#submit) below**.
 
 ## <a name="feature"></a> Want a Feature?
-Need a new feature no yet available on node-mocks-http? Submit a new feature to our [GitHub Repository][issues].  
+Need a new feature no yet available on node-mocks-http? Submit a new feature to our [GitHub Repository][issues].
 
 Think you can help us out by implementing the feature yourself? Go for it! Just craft and submit your [Pull Request][pulls].
 
@@ -152,9 +152,16 @@ project's dependencies.
 
 Then simply run the tests.
 
-```bash
-npm test
-```
+    npm test
+
+Also, please adhere to the ESLint's rules by running the following:
+
+    npm install -q gulp
+    gulp lint
+
+Failures in the linting process may fail our continuous integration builds.
+
+Thanks again for helping out!
 
 ## <a name="contact"></a> Contact Us
 [![Gitter chat](https://badges.gitter.im/howardabrams/node-mocks-http.png)](https://gitter.im/howardabrams/node-mocks-http)

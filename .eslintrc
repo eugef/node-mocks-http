@@ -41,7 +41,7 @@ rules:
   no-self-compare: 2
   no-sync: 2
   no-loop-func: 2
-  no-empty-label: 2
+  no-labels: 2
   no-unused-vars: 1
   no-script-url: 2
   no-proto: 2
@@ -49,7 +49,7 @@ rules:
   no-mixed-requires:
     - 0
     - false
-  no-wrap-func: 2
+  no-extra-parens: 2
   no-shadow: 2
   no-use-before-define: 2
   no-redeclare: 2
@@ -78,5 +78,6 @@ rules:
   valid-typeof: 2
   wrap-iife: 2
   indent:
-    - 2
-    - indentSwitchCase: true
+    - 1
+    - 4
+    - SwitchCase: 1
