@@ -555,7 +555,6 @@ describe('mockResponse', function() {
         var originalWrite = response.write.bind(response);
         var hackedContent = JSON.stringify({foo: 'bar'});
         response.write = function(data, encoding) {
-          console.log('data :', data);
           return originalWrite(hackedContent, encoding);
         };
         response.json({hello: 'world'});

@@ -61,11 +61,13 @@
     "gulp-mocha": "^2.0.1",
     "istanbul": "^0.3.13",
     "mocha": "^2.2.4",
+    "run-sequence": "~1.2.2",
     "sinon": "^1.14.1",
     "sinon-chai": "^2.7.0"
   },
   "scripts": {
-    "test": "gulp spec",
+    "spec": "gulp spec",
+    "test": "gulp test",
     "postversion": "npm publish && git push --follow-tags"
   }
 }

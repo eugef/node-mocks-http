@@ -150,7 +150,7 @@ For a detailed list our the conding conventions used in our project please read 
 Navigate to the project folder and run `npm install` to install the
 project's dependencies.
 
-Then simply run the tests.
+Then simply run the tests.  This also checks that the code adheres to the ESLint rules.
 
     npm test
 
