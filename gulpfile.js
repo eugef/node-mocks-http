@@ -7,13 +7,16 @@ var eslint = require('gulp-eslint');
 var sequence = require('run-sequence');
 
 var files = {
-  src: ['./lib/**/*.js'],
-  test: ['./test/**/*.spec.js', './*.js']
+    src: ['./lib/**/*.js'],
+    test: ['./test/**/*.spec.js', './*.js']
 };
 
 gulp.task('lint', function () {
     return gulp.src(files.src.concat(files.test))
-        .pipe(eslint())
+        .pipe(eslint({
+            // configFile: './.eslintrc',
+            useEslintrc: true
+        }))
         .pipe(eslint.format())
         .pipe(eslint.failOnError());
 });
