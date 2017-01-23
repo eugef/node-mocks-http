@@ -1,6 +1,0 @@
-extends: ../../.eslintrc
-
-rules:
-  indent:
-    - 2
-    - 2

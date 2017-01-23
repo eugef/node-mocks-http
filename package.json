@@ -49,22 +49,24 @@
     "net": "^1.0.2",
     "parseurl": "^1.3.1",
     "range-parser": "^1.2.0",
-    "type-is": "^1.6.4"
+    "type-is": "^1.6.14"
   },
   "devDependencies": {
-    "chai": "^2.2.0",
-    "eslint": "^0.22.1",
-    "gulp": "^3.8.11",
-    "gulp-eslint": "^0.12.0",
-    "gulp-istanbul": "^0.9.0",
-    "gulp-mocha": "^2.0.1",
-    "istanbul": "^0.3.13",
-    "mocha": "^2.2.4",
-    "sinon": "^1.14.1",
-    "sinon-chai": "^2.7.0"
+    "chai": "^3.5.0",
+    "eslint": "^3.13.1",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^3.0.1",
+    "gulp-istanbul": "^1.1.1",
+    "gulp-mocha": "^3.0.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0",
+    "run-sequence": "~1.2.2",
+    "sinon": "^1.17.7",
+    "sinon-chai": "^2.8.0"
   },
   "scripts": {
-    "test": "gulp spec",
+    "spec": "gulp spec",
+    "test": "gulp test",
     "postversion": "npm publish && git push --follow-tags"
   }
 }
