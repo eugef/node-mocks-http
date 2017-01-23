@@ -1,3 +1,10 @@
+v 1.6.0
+-------
+
+  - Dropping support for Node's "0" version, but will continue to support v4.
+  - Verifying our builds with v6 (latest stable) as well as current work (v7)
+  - Removing dependency on lodash and other bug fixes
+
 v 1.5.4
 -------
 
