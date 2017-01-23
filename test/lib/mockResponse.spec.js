@@ -834,6 +834,24 @@ describe('mockResponse', function() {
     });
 
     describe('.end()', function() {
+      var response;
+
+      beforeEach(function() {
+        response = mockResponse.createResponse();
+      });
+
+      // Issue 119
+      it('only emits end once', function() {
+        var emits = 0;
+        response.emit = function (event) {
+          if (event === 'end') {
+            emits += 1;
+          }
+        };
+        response.end();
+        response.end();
+        expect(emits).to.eql(1);
+      });
 
       it('should inherit from Node OutogingMessage.end()');
 
