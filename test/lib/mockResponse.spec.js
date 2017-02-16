@@ -210,6 +210,19 @@ describe('mockResponse', function() {
         expect(response.cookie).to.throw;
       });
 
+      it('should allow chaining', function() {
+        var cookie = {
+          value: 'value',
+          options: {
+            domain: 'foo.bar.com',
+            path: '/cookie/path'
+          }
+        };
+
+        var chainedResponse = response.cookie('name', cookie.value, cookie.options);
+        expect(chainedResponse).to.deep.equal(response);
+      });
+
     });
 
     describe('.clearCookie()', function() {
@@ -231,6 +244,12 @@ describe('mockResponse', function() {
 
       it('should return silently, when called with non-existing cookie', function() {
         expect(response.clearCookie.bind(null, 'invalid')).not.to.throw;
+      });
+
+      it('should allow chaining', function() {
+        response.cookie('name', 'value');
+        var chainedResponse = response.clearCookie('name');
+        expect(chainedResponse).to.deep.equal(response);
       });
 
     });
