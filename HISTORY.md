@@ -1,3 +1,9 @@
+v 1.6.1
+-------
+
+  - Fix for Issue #130 for method chaining for `cookie()` and `clearCookie()`
+  - Fix for Issue #131 for adding `finished` to the response
+
 v 1.6.0
 -------
 
