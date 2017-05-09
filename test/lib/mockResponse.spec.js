@@ -26,6 +26,10 @@ describe('mockResponse', function() {
       expect(response).to.be.an('object');
     });
 
+    it('should contain .locals object', function() {
+      expect(response.locals).to.be.an('object');
+    });
+
     it('should expose Express Response methods', function() {
       expect(response).to.have.property('cookie');
       expect(response.cookie).to.be.a('function');
