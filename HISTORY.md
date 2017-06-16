@@ -8,6 +8,13 @@ v 1.6.4
 
   - Incorporated a trimmed down published NPM artifact PR #141
 
+v 1.6.3
+-------
+
+  - Moved @types/express to dev-dependencies. [PR #136][136]
+
+  [136]: https://github.com/howardabrams/node-mocks-http/issues/136
+
 v 1.6.1
 -------
 
