@@ -70,5 +70,8 @@
     "spec": "gulp spec",
     "test": "gulp test",
     "postversion": "npm publish && git push --follow-tags"
-  }
+  },
+  "files":[
+    "lib"
+  ]
 }
