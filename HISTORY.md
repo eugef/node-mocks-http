@@ -1,3 +1,8 @@
+v 1.6.4
+-------
+
+  - Incorporated a trimmed down published NPM artifact PR #141
+
 v 1.6.1
 -------
 
