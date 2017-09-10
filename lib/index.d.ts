@@ -22,7 +22,7 @@ declare module 'node-mocks-http' {
     }
 
     export interface Query {
-        [key: string]: string;
+        [key: string]: any;
     }
 
     export interface Files {
