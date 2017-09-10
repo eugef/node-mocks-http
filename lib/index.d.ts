@@ -3,7 +3,7 @@ import { Request, Response } from 'express';
 declare module 'node-mocks-http' {
 
     export type RequestMethod =
-        'GET' | 'HEAD'| 'POST' | 'PUT' | 'DELETE' | 'TRACE' | 'CONNECT';
+        'CONNECT' | 'DELETE' | 'GET' | 'HEAD' | 'OPTIONS' | 'PATCH' | 'POST' | 'PUT' | 'TRACE';
 
     export interface Params {
         [key: string]: any;
