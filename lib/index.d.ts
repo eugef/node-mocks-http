@@ -30,7 +30,7 @@ declare module 'node-mocks-http' {
     }
 
     export interface Body {
-        [key: string]: string;
+        [key: string]: any;
     }
 
     export interface RequestOptions {
