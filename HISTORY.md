@@ -1,3 +1,8 @@
+v 1.6.5
+-------
+
+  - Query type definition now more flexible [PR #146](https://github.com/howardabrams/node-mocks-http/pull/146)
+
 v 1.6.4
 -------
 
