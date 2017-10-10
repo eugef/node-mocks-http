@@ -37,6 +37,7 @@ declare module 'node-mocks-http' {
         method?: RequestMethod;
         url?: string;
         originalUrl?: string;
+        baseUrl?: string;
         path?: string;
         params?: Params;
         session?: Session;

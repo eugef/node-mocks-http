@@ -88,6 +88,7 @@ option | description | default value
 `method`| request HTTP method | 'GET'
 `url` | request URL | ''
 `originalUrl` | request original URL | `url`
+`baseUrl` | request base URL | `url`
 `path` | request path | ''
 `params` | object hash with params | {}
 `session` | object hash with session values | `undefined`
