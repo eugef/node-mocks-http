@@ -1,3 +1,11 @@
+v 1.6.6
+-------
+
+  - Upgrade Fresh dependency to 0.5.2 due to a [Security advisory][166-SA]. [PR #147](https://github.com/howardabrams/node-mocks-http/pull/147)
+  - Add the baseUrl property to the request object. [PR #150](https://github.com/howardabrams/node-mocks-http/pull/150)
+
+  [166-SA]: https://nodesecurity.io/advisories/526
+
 v 1.6.5
 -------
 
