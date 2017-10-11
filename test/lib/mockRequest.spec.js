@@ -47,6 +47,7 @@ describe('mockRequest', function() {
         expect(request.method).to.equal('GET');
         expect(request.url).to.equal('');
         expect(request.originalUrl).to.equal(request.url);
+        expect(request.baseUrl).to.equal(request.url);
         expect(request.path).to.equal('');
         expect(request.params).to.deep.equal({});
         expect(request.session).to.not.exist;
@@ -83,6 +84,7 @@ describe('mockRequest', function() {
         request = mockRequest.createRequest(options);
         expect(request.url).to.equal(options.url);
         expect(request.originalUrl).to.equal(options.url);
+        expect(request.baseUrl).to.equal(options.url);
       });
 
       it('should set .url automatically', function() {
@@ -94,6 +96,15 @@ describe('mockRequest', function() {
 
         request = mockRequest.createRequest(options);
         expect(request.url).to.equal(expectedUrl);
+      });
+
+      it('should set .baseUrl to options.baseUrl', function() {
+        var options = {
+          baseUrl: '/this'
+        };
+
+        request = mockRequest.createRequest(options);
+        expect(request.baseUrl).to.equal(options.baseUrl);
       });
 
       it('should set .originalUrl to options.originalUrl', function() {
@@ -612,6 +623,21 @@ describe('mockRequest', function() {
       it('should unset url, when called with no arguments', function() {
         request._setURL();
         expect(request.url).to.not.exist;
+      });
+
+    });
+
+    describe('._setBaseUrl()', function() {
+
+      it('should set baseUrl, when called with value', function() {
+        var value = '/path';
+        request._setBaseUrl(value);
+        expect(request.baseUrl).to.equal(value);
+      });
+
+      it('should unset baseUrl, when called with no arguments', function() {
+        request._setBaseUrl();
+        expect(request.baseUrl).to.not.exist;
       });
 
     });
