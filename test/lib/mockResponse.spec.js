@@ -352,6 +352,52 @@ describe('mockResponse', function() {
 
     });
 
+    describe('.append()', function() {
+      var response;
+
+      beforeEach(function() {
+        response = mockResponse.createResponse();
+        sinon.spy(response, 'setHeader');
+      });
+
+      afterEach(function() {
+        response.setHeader.restore();
+        response = null;
+      });
+
+      it('should append multiple headers', function() {
+        response.append('Link', '<http://localhost/>');
+        response.append('Link', '<http://localhost:80/>');
+
+        expect(response.setHeader).to.have.been.calledTwice;
+        expect(response.setHeader).to.have.been.calledWith('Link', '<http://localhost/>');
+        expect(response.setHeader).to.have.been.calledWith('Link', ['<http://localhost/>', '<http://localhost:80/>']);
+
+        expect(response.get('Link')).to.deep.equal(['<http://localhost/>', '<http://localhost:80/>']);
+      });
+
+      it('should accept array of values', function() {
+        response.append('Set-Cookie', ['foo=bar', 'fizz=buzz']);
+        expect(response.setHeader).to.have.been.calledWith('Set-Cookie', ['foo=bar', 'fizz=buzz']);
+        expect(response.get('Set-Cookie')).to.deep.equal(['foo=bar', 'fizz=buzz']);
+      });
+
+      it('should get reset by res.set(field, val)', function() {
+        response.append('Link', '<http://localhost/>');
+        response.append('Link', '<http://localhost:80/>');
+        response.set('Link', '<http://127.0.0.1/>');
+        expect(response.setHeader).to.have.been.calledThrice;
+        expect(response.get('Link')).to.equal('<http://127.0.0.1/>');
+      });
+
+      it('should work with res.set(field, val) first', function() {
+        response.set('Link', '<http://localhost/>');
+        response.append('Link', '<http://localhost:80/>');
+        expect(response.setHeader).to.have.been.calledTwice;
+        expect(response.get('Link')).to.deep.equal(['<http://localhost/>', '<http://localhost:80/>']);
+      });
+    });
+
     describe('.location()', function() {
       var response;
 
