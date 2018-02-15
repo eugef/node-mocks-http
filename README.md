@@ -109,6 +109,7 @@ Where options is an object hash with any of the following values:
 
 option | description | default value
 ------ | ----------- | -------------
+`locals` | object that contains `response` local variables | `{}`
 `eventEmitter` | event emitter used by `response` object | `mockEventEmitter`
 `writableStream`  | writable stream used by `response` object | `mockWritableStream`
 `req` | Request object being responded to | null

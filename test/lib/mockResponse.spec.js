@@ -19,7 +19,9 @@ describe('mockResponse', function() {
     var response;
 
     before(function() {
-      response = mockResponse.createResponse();
+      response = mockResponse.createResponse({
+        locals: {a: 'b'}
+      });
     });
 
     it('should return an object', function() {
@@ -133,7 +135,7 @@ describe('mockResponse', function() {
       expect(response.prependListener).to.be.a('function');
     });
 
-    it('should expose heler methods', function() {
+    it('should expose helper methods', function() {
       expect(response).to.have.property('_isEndCalled');
       expect(response._isEndCalled).to.be.a('function');
 
@@ -168,6 +170,7 @@ describe('mockResponse', function() {
     it('shoud initialize with default options', function() {
       expect(response.statusCode).to.equal(200);
       expect(response.cookies).to.deep.equal({});
+      expect(response.locals).to.deep.equal({a: 'b'});
     });
 
   });
