@@ -1,3 +1,18 @@
+v 1.6.7
+-------
+
+  - Set an expiration date to a cookie when deleting it [#155][115]
+  - No `finish` event, `end` event called when it shouldn't be. [#112][112]
+  - Add support for [append][] on MockResponse [#143][143]
+
+  Special shoutout to [Eugene Fidelin](https://github.com/eugef) for
+  joining the team and helping out so much.
+
+  [112]: https://github.com/howardabrams/node-mocks-http/issues/112
+  [143]: https://github.com/howardabrams/node-mocks-http/issues/143
+  [155]: https://github.com/howardabrams/node-mocks-http/issues/155
+  [append]: http://expressjs.com/en/api.html#res.append
+
 v 1.6.6
 -------
 

@@ -1,6 +1,6 @@
 # Contributing
 
-Contributions are always welcome, no matter how large or small. Here are the guidelines we ask our contributors to follow:
+As a community-focused, open source project, contributions are always welcome, no matter how large or small. Here are the guidelines we ask our contributors to follow:
 
  - [Code of Conduct](#coc)
  - [Issues and Bugs](#issue)
