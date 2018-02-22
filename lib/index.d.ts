@@ -49,7 +49,7 @@ declare module 'node-mocks-http' {
         files?: Files;
     }
 
-    export interface MockRequest extends Request {
+    export type MockRequest<T extends Request> = T & {
         _setParameter: (key: string, value: string) => void;
         _setSessionVariable: (variable: string, value: string) => void;
         _setCookiesVariable: (variable: string, value: string) => void;
@@ -69,7 +69,7 @@ declare module 'node-mocks-http' {
         req?: any;
     }
 
-    export interface MockResponse extends Response {
+    export type MockResponse<T extends Response> = T & {
         _isEndCalled: () => boolean;
         _getHeaders: () => Headers;
         _getData: () => any;
@@ -82,14 +82,14 @@ declare module 'node-mocks-http' {
         _getRenderData: () => any;
     }
 
-    export function createRequest(options?: RequestOptions): MockRequest;
+    export function createRequest<T extends Request = Request>(options?: RequestOptions): MockRequest<T>;
 
-    export function createResponse(options?: ResponseOptions): MockResponse;
+    export function createResponse<T extends Response = Response>(options?: ResponseOptions): MockResponse<T>;
 
-    export interface Mocks {
-        req: MockRequest;
-        res: MockResponse;
+    export interface Mocks<T1 extends Request, T2 extends Response> {
+        req: MockRequest<T1>;
+        res: MockResponse<T2>;
     }
 
-    export function createMocks(reqOptions?: RequestOptions, resOptions?: ResponseOptions): Mocks;
+    export function createMocks<T1 extends Request = Request, T2 extends Response = Response>(reqOptions?: RequestOptions, resOptions?: ResponseOptions): Mocks<T1, T2>;
 }
