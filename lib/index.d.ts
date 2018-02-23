@@ -61,6 +61,9 @@ declare module 'node-mocks-http' {
         _setOriginalUrl: (value: string) => void;
         _setBody: (body: Body) => void;
         _addBody: (key: string, value: any) => void;
+
+        // Support custom properties appended on Request objects.
+        [key: string]: any;
     }
 
     export interface ResponseOptions {
@@ -80,6 +83,7 @@ declare module 'node-mocks-http' {
         _isDataLengthValid: () => boolean;
         _getRedirectUrl: () => string;
         _getRenderData: () => any;
+        _getRenderView: () => string;
     }
 
     export function createRequest<T extends Request = Request>(options?: RequestOptions): MockRequest<T>;
