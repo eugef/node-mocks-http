@@ -47,6 +47,9 @@ declare module 'node-mocks-http' {
         body?: Body;
         query?: Query;
         files?: Files;
+
+        // Support custom properties appended on Request objects.
+        [key: string]: any;
     }
 
     export type MockRequest<T extends Request> = T & {
