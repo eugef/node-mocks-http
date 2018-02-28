@@ -1,3 +1,19 @@
+v 1.6.8
+-------
+
+  - Better typings, including the following (see [PR #158][158] for details):
+    - request object for a controller fn which is typed as extension of `express.Request`
+    - same for `Response`
+    - custom properties appended to request object
+    - fixed missing `_getRenderView` method on `Response`
+
+  **Note:** As of this release, we are officially supporting:
+  - 6.13
+  - 8.9
+  - 9.6
+
+  [158]: https://github.com/howardabrams/node-mocks-http/pull/158
+
 v 1.6.7
 -------
 
