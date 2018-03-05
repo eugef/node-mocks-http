@@ -846,6 +846,46 @@ describe('mockResponse', function() {
     });
 
     describe('.write()', function() {
+      var response;
+
+      beforeEach(function() {
+        response = mockResponse.createResponse();
+      });
+
+      it('should accept a string and hold it in _data', function() {
+        var payload1 = 'payload1';
+        var encoding = 'utf8';
+        response.write(payload1, encoding);
+        expect(response._getData()).to.equal(payload1);
+        expect(response.getEncoding()).to.equal(encoding);
+      });
+
+      it('should accept multiple strings and concatenate them in _data', function() {
+        var payload1 = 'payload1';
+        var payload2 = 'payload2';
+        response.write(payload1);
+        response.write(payload2);
+        expect(response._getData()).to.equal(payload1 + payload2);
+      });
+
+      it('should accept a buffer and hold it in _chunks', function() {
+        var payload1 = 'payload1';
+        response.write(new Buffer(payload1));
+        var chunks = response._getChunks();
+        expect(chunks.length).to.eql(1);
+        expect(chunks[0].toString()).to.equal(payload1);
+      });
+
+      it('should accept multiple buffers and hold them in _chunks', function() {
+        var payload1 = 'payload1';
+        var payload2 = 'payload2';
+        response.write(new Buffer(payload1));
+        response.write(new Buffer(payload2));
+        var chunks = response._getChunks();
+        expect(chunks.length).to.eql(2);
+        expect(chunks[0].toString()).to.equal(payload1);
+        expect(chunks[1].toString()).to.equal(payload2);
+      });
 
       it('should inherit from Node OutogingMessage.write()');
 
@@ -871,8 +911,49 @@ describe('mockResponse', function() {
         expect(emits).to.eql(1);
       });
 
+      it('writes to _data if a string is supplied', function() {
+        var payload1 = 'payload1';
+        var encoding = 'utf8';
+        response.end(payload1, encoding);
+        expect(response._getData()).to.equal(payload1);
+        expect(response.getEncoding()).to.equal(encoding);
+      });
+
+      it('writes to _buffer if a Buffer is supplied', function() {
+        var payload1 = 'payload1';
+        response.end(new Buffer(payload1));
+        var buffer = response._getBuffer();
+        expect(buffer.toString()).to.equal(payload1);
+      });
+
       it('should inherit from Node OutogingMessage.end()');
 
+    });
+
+  });
+
+  describe('write() + end() interactions', function() {
+    var response;
+
+    beforeEach(function() {
+      response = mockResponse.createResponse();
+    });
+
+    it('should accept strings through write() and end() and concatenate them in _data', function() {
+      var payload1 = 'payload1';
+      var payload2 = 'payload2';
+      response.write(payload1);
+      response.end(payload2);
+      expect(response._getData()).to.equal(payload1 + payload2);
+    });
+
+    it('should accept buffers through write() and end() and concatenate them in _buffer', function() {
+      var payload1 = 'payload1';
+      var payload2 = 'payload2';
+      response.write(new Buffer(payload1));
+      response.end(new Buffer(payload2));
+      var buffer = response._getBuffer();
+      expect(buffer.toString()).to.equal(payload1 + payload2);
     });
 
   });
