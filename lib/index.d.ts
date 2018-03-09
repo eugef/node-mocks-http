@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+import { Request, Response, CookieOptions } from 'express';
 
 declare module 'node-mocks-http' {
 
@@ -75,6 +75,11 @@ declare module 'node-mocks-http' {
         req?: any;
     }
 
+    export type ResponseCookie = {
+        value: any;
+        options: CookieOptions;
+    }
+
     export type MockResponse<T extends Response> = T & {
         _isEndCalled: () => boolean;
         _getHeaders: () => Headers;
@@ -87,6 +92,8 @@ declare module 'node-mocks-http' {
         _getRedirectUrl: () => string;
         _getRenderData: () => any;
         _getRenderView: () => string;
+
+        cookies: {[name: string]: ResponseCookie};
     }
 
     export function createRequest<T extends Request = Request>(options?: RequestOptions): MockRequest<T>;
