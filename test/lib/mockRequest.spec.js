@@ -694,6 +694,77 @@ describe('mockRequest', function() {
 
     });
 
+    describe('.send()', function() {
+
+      it('should trigger data and end event when string is given', function(done) {
+        var data = [];
+        request.on('data', function(chunk) {
+          data.push(chunk);
+        });
+        request.on('end', function() {
+          data = Buffer.concat(data).toString();
+          expect(data).to.equal('test data');
+          done();
+        });
+        request.send('test data');
+      });
+
+      it('should trigger data and end event when object is given', function(done) {
+        var data = [];
+        var dataTosend = {'key' : 'value'};
+        request.on('data', function(chunk) {
+          data.push(chunk);
+        });
+        request.on('end', function() {
+          data = Buffer.concat(data).toString();
+          expect(JSON.parse(data)).to.deep.equal(dataTosend);
+          done();
+        });
+        request.send(dataTosend);
+      });
+
+      it('should trigger data and end event when number is given', function(done) {
+        var data = [];
+        request.on('data', function(chunk) {
+          data.push(chunk);
+        });
+        request.on('end', function() {
+          data = Buffer.concat(data).toString();
+          expect(data).to.equal('35');
+          done();
+        });
+        request.send(35);
+      });
+
+      it('should trigger data and end event when buffer is given', function(done) {
+        var data = [];
+        var bufferdata = Buffer.from('test data');
+        request.on('data', function(chunk) {
+          data.push(chunk);
+        });
+        request.on('end', function() {
+          data = Buffer.concat(data).toString();
+          expect(data).to.equal('test data');
+          done();
+        });
+        request.send(bufferdata);
+      });
+
+      it('should trigger data and end event when nothing is given', function(done) {
+        var data = [];
+        request.on('data', function(chunk) {
+          data.push(chunk);
+        });
+        request.on('end', function() {
+          data = Buffer.concat(data).toString();
+          expect(data).to.equal('');
+          done();
+        });
+        request.send();
+      });
+
+    });
+
   });
 
 });
