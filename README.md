@@ -136,6 +136,41 @@ var res = httpMocks.createResponse({
 // ...
 ```
 
+> This is an example to send request body and trigger it's 'data' and 'end' events:
+
+```js
+var httpMocks = require('node-mocks-http');
+var req = httpMocks.createRequest();
+var res = httpMocks.createResponse({
+  eventEmitter: require('events').EventEmitter
+});
+
+// ...
+  it('should do something', function(done) {
+    res.on('end', function() {
+      expect(response._getData()).to.euqal('data sent in request');
+      done();
+    });
+
+    route(req,res);
+
+    req.send('data sent in request');
+  });
+
+  function route(req,res){
+    var data= [];
+    req.on("data", chunk => {
+        data.push(chunk)
+    });
+    req.on("end", () => {
+        data = Buffer.concat(data)
+        res.write(data);
+        res.end();
+    });
+    
+}
+// ...
+
 ### .createMocks()
 
 ```js
