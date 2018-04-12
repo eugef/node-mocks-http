@@ -170,6 +170,7 @@ var res = httpMocks.createResponse({
     
 }
 // ...
+```
 
 ### .createMocks()
 
