@@ -148,7 +148,7 @@ var res = httpMocks.createResponse({
 // ...
   it('should do something', function(done) {
     res.on('end', function() {
-      expect(response._getData()).to.euqal('data sent in request');
+      expect(response._getData()).to.equal('data sent in request');
       done();
     });
 
