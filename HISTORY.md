@@ -1,3 +1,12 @@
+v 1.7.0
+-------
+
+ - Add support for Buffer payload [#154][154]
+ - Send request body/payload to trigger relevant events [#164][164] 
+
+ [154]: https://github.com/howardabrams/node-mocks-http/pull/154
+ [164]: https://github.com/howardabrams/node-mocks-http/pull/164
+ 
 v 1.6.8
 -------
 
