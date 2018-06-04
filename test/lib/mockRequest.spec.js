@@ -32,6 +32,14 @@ describe('mockRequest', function() {
         expect(request).to.be.an('object');
       });
 
+      it('should be an EventEmitter', function() {
+        expect(request).to.be.an.instanceof(require('events').EventEmitter);
+      });
+
+      it('should be a Readable stream', function() {
+        expect(request).to.be.an.instanceof(require('stream').Readable);
+      });
+
       it('should expose Express Request object methods', function() {
         expect(request).to.have.property('get');
         expect(request.get).to.be.a('function');
