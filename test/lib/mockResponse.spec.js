@@ -142,6 +142,9 @@ describe('mockResponse', function() {
       expect(response).to.have.property('_getHeaders');
       expect(response._getHeaders).to.be.a('function');
 
+      expect(response).to.have.property('_getLocals');
+      expect(response._getLocals).to.be.a('function');
+
       expect(response).to.have.property('_getData');
       expect(response._getData).to.be.a('function');
 
@@ -1146,6 +1149,22 @@ describe('mockResponse', function() {
         };
         response.type('txt');
         expect(response._getHeaders()).to.deep.equal(headers);
+      });
+
+    });
+
+    describe('._getLocals()', function() {
+
+      it('should return empty object when no locals have been set', function() {
+        expect(response._getLocals()).to.deep.equal({});
+      });
+
+      it('should set the locals -object correctly', function() {
+        var locals = {
+          token: 'Test'
+        };
+        response.locals = locals;
+        expect(response._getLocals()).to.deep.equal(locals);
       });
 
     });

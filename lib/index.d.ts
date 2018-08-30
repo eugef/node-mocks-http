@@ -73,6 +73,7 @@ declare module 'node-mocks-http' {
         eventEmitter?: any;
         writableStream?: any;
         req?: any;
+        locals?: any;
     }
 
     export type ResponseCookie = {
@@ -84,6 +85,7 @@ declare module 'node-mocks-http' {
         _isEndCalled: () => boolean;
         _getHeaders: () => Headers;
         _getData: () => any;
+        _getLocals: () => any;
         _getStatusCode: () => number;
         _getStatusMessage: () => string;
         _isJSON: () => boolean;
