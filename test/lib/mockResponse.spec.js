@@ -825,7 +825,7 @@ describe('mockResponse', function() {
       it('merges the given headers with the ones specified earlier (set with `setHeader`)', function() {
         response.setHeader('Access-Control-Allow-Origin', '*');
         response.writeHead(200, {'Access-Control-Max-Age': '86400'});
-        expect(response._getHeaders()).to.contain.all.keys({'Access-Control-Allow-Origin': '*', 'Access-Control-Max-Age': '86400'});
+        expect(response._getHeaders()).to.contain.all.keys({'access-control-allow-origin': '*', 'access-control-max-age': '86400'});
       });
 
     });
@@ -883,6 +883,9 @@ describe('mockResponse', function() {
 
         response.header('name2', 'value2');
         expect(response.getHeader('NAME2')).to.equal('value2');
+
+        response.header('Name3', 'value3');
+        expect(response.getHeader('name3')).to.equal('value3');
       });
 
       it('should throw and error, when called without arguments', function() {
@@ -906,6 +909,20 @@ describe('mockResponse', function() {
         response.set('namer1');
         response.removeHeader('name1');
         expect(response.getHeader('name1')).not.to.exist;
+      });
+
+      it('should delete header regardless of case, when called existing header', function() {
+        response.set('NAME1', 'value1');
+        response.removeHeader('name1');
+        expect(response.getHeader('name1')).not.to.exist;
+
+        response.set('name2', 'value2');
+        response.removeHeader('name2');
+        expect(response.getHeader('NAME2')).not.to.exist;
+
+        response.set('Name3', 'value3');
+        response.removeHeader('name3');
+        expect(response.getHeader('name3')).not.to.exist;
       });
 
       it('should exit silently, when with called non-existing header', function() {
@@ -1145,7 +1162,7 @@ describe('mockResponse', function() {
 
       it('should return true when .end() has been called', function() {
         var headers = {
-          'Content-Type': 'text/plain'
+          'content-type': 'text/plain'
         };
         response.type('txt');
         expect(response._getHeaders()).to.deep.equal(headers);
