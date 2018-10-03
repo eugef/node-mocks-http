@@ -5,7 +5,7 @@
 [![Gitter chat][gitter-badge]][gitter-url]
 
 
-Mock 'http' objects for testing [Express][express-url]
+Mock 'http' objects for testing [Express][express-url] and [Koa][koa-url]
 routing functions, but could be used for testing any
 [Node.js][node-url] web server applications that have
 code that requires mockups of the `request` and `response` objects.
@@ -231,5 +231,6 @@ Licensed under [MIT](https://github.com/howardabrams/node-mocks-http/blob/master
 [gitter-url]: https://gitter.im/howardabrams/node-mocks-http
 
 [express-url]: http://expressjs.com/
+[koa-url]: https://koajs.com/
 [node-url]: http://www.nodejs.org
 [node-http-module-url]: http://nodejs.org/docs/latest/api/http.html
