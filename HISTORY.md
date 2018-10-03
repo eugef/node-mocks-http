@@ -1,3 +1,16 @@
+v 1.7.1
+-------  
+  
+  - Turn mock request into a stream [#169][169]
+  - Added missing typings for "locals" & create a helper method to get locals [#170][170]
+  - Make header names case-insensitive in response [#172][172]
+  - Throw an error object instead of a string [#173][173]
+
+  [169]: https://github.com/howardabrams/node-mocks-http/pull/169
+  [170]: https://github.com/howardabrams/node-mocks-http/pull/170
+  [172]: https://github.com/howardabrams/node-mocks-http/pull/172
+  [173]: https://github.com/howardabrams/node-mocks-http/pull/173
+
 v 1.7.0
 -------
 
