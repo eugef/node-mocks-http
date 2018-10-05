@@ -1,3 +1,11 @@
+v 1.7.2
+-------  
+  
+  - Revert Turn mock request into a stream [#174][174]
+  - Fix security issues reported by npm audit
+
+  [174]: https://github.com/howardabrams/node-mocks-http/pull/174
+
 v 1.7.1
 -------  
   
