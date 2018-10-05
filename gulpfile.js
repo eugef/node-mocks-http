@@ -4,7 +4,6 @@ var gulp = require('gulp');
 var mocha = require('gulp-mocha');
 var istanbul = require('gulp-istanbul');
 var eslint = require('gulp-eslint');
-var sequence = require('run-sequence');
 
 var files = {
     src: ['./lib/**/*.js'],
@@ -26,9 +25,7 @@ gulp.task('dot', function () {
         .pipe(mocha({reporter: 'dot'}));
 });
 
-gulp.task('test', function (done) {
-    sequence('dot', 'lint', done);
-});
+gulp.task('test', gulp.series('dot', 'lint'));
 
 gulp.task('spec', function () {
     return gulp.src(files.test, {read: false})
