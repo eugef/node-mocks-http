@@ -1,3 +1,10 @@
+NEXT RELEASE
+-------  
+  
+  - Added `.range()` on a mocked request mimicking the [same function](http://expressjs.com/en/4x/api.html#req.range) on Express' request. [#175][175]
+
+  [175]: https://github.com/howardabrams/node-mocks-http/pull/175
+  
 v 1.7.2
 -------  
   

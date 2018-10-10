@@ -99,6 +99,8 @@ option | description | default value
 `query` | object hash with query values | {}
 `files` | object hash with values | {}
 
+The object returned from this function also supports the [Express request](http://expressjs.com/en/4x/api.html#req) functions ([`.accepts()`](http://expressjs.com/en/4x/api.html#req.accepts), [`.is()`](http://expressjs.com/en/4x/api.html#req.is), [`.get()`](http://expressjs.com/en/4x/api.html#req.get), [`.range()`](http://expressjs.com/en/4x/api.html#req.range), etc.). Please send a PR for any missing functions.
+
 ### .createResponse()
 
 ```js

@@ -4,6 +4,7 @@ var chai = require('chai');
 var expect = chai.expect;
 var url = require('url');
 var querystring = require('querystring');
+var parseRange = require('range-parser');
 
 var mockRequest = require('../../lib/mockRequest');
 
@@ -385,6 +386,57 @@ describe('mockRequest', function() {
 
     it('returns false when types dont match', function() {
       expect(request.accepts(['json', 'xml'])).to.equal(false);
+    });
+  });
+
+  describe('.range()', function() {
+    var request;
+
+    afterEach(function() {
+      request = null;
+    });
+
+    it('returns undefined if there is no Range header', function() {
+      request = mockRequest.createRequest();
+      expect(request.range()).to.be.undefined;
+    });
+    
+    var tests = [
+      {
+        // Unsatisfiable
+        header: 'bytes=90-100',
+        size: 10
+      },
+      {
+        // Malformed
+        header: 'by90-100',
+        size: 10
+      },
+      {
+        // Basic range
+        header: 'bytes=50-55',
+        size: 100
+      },
+      {
+        // Complex, without options
+        header: 'bytes=50-55,0-10,5-10,56-60',
+        size: 100
+      },
+      {
+        // With options
+        header: 'bytes=50-55,0-10,5-10,56-60',
+        size: 100,
+        options: {
+          combine: true
+        }
+      }
+    ];
+
+    tests.forEach(function(t) {
+      it('returns the result of range-parser if there is a Range header of ' + t.header + ' using size: ' + t.size, function() {
+        request = mockRequest.createRequest({ headers: { range: t.header }});
+        expect(request.range(t.size, t.options)).to.deep.equal(parseRange(t.size, t.header, t.options));
+      });
     });
   });
 

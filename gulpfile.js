@@ -38,12 +38,12 @@ gulp.task('coverage', function (done) {
         .pipe(istanbul.hookRequire())
         .on('finish', function () {
             gulp.src(files.test)
-            .pipe(mocha({reporter: 'dot'}))
-            .pipe(istanbul.writeReports({
-                dir: './coverage',
-                reporters: ['lcov', 'json', 'html'],
-                reportOpts: { dir: './coverage' }
-            }))
-            .on('end', done);
+                .pipe(mocha({reporter: 'dot'}))
+                .pipe(istanbul.writeReports({
+                    dir: './coverage',
+                    reporters: ['lcov', 'json', 'html'],
+                    reportOpts: { dir: './coverage' }
+                }))
+                .on('end', done);
         });
 });
