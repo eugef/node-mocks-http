@@ -1,21 +1,21 @@
-NEXT RELEASE
--------  
-  
+v 1.7.3
+-------
+
   - Added `.range()` on a mocked request mimicking the [same function](http://expressjs.com/en/4x/api.html#req.range) on Express' request. [#175][175]
 
   [175]: https://github.com/howardabrams/node-mocks-http/pull/175
-  
+
 v 1.7.2
--------  
-  
+-------
+
   - Revert Turn mock request into a stream [#174][174]
   - Fix security issues reported by npm audit
 
   [174]: https://github.com/howardabrams/node-mocks-http/pull/174
 
 v 1.7.1
--------  
-  
+-------
+
   - Turn mock request into a stream [#169][169]
   - Added missing typings for "locals" & create a helper method to get locals [#170][170]
   - Make header names case-insensitive in response [#172][172]
@@ -30,11 +30,11 @@ v 1.7.0
 -------
 
  - Add support for Buffer payload [#154][154]
- - Send request body/payload to trigger relevant events [#164][164] 
+ - Send request body/payload to trigger relevant events [#164][164]
 
  [154]: https://github.com/howardabrams/node-mocks-http/pull/154
  [164]: https://github.com/howardabrams/node-mocks-http/pull/164
- 
+
 v 1.6.8
 -------
 
