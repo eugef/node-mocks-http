@@ -156,8 +156,12 @@ Then simply run the tests.  This also checks that the code adheres to the ESLint
 
 Also, please adhere to the ESLint's rules by running the following:
 
-    npm install -q gulp
+    npm install -g gulp
     gulp lint
+
+Or:
+
+    npx gulp lint
 
 Failures in the linting process may fail our continuous integration builds.
 
