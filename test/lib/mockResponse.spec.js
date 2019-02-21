@@ -643,6 +643,16 @@ describe('mockResponse', function() {
         expect(response.emit).to.have.been.calledWith('finish');
       });
 
+      it('should set data to "false" if passed false', function () {
+        response.json(false);
+        expect(response._getData()).to.equal('false');
+      });
+
+      it('should set data to "null" if passed null', function () {
+        response.json(null);
+        expect(response._getData()).to.equal('null');
+      });
+
       // reference : https://github.com/howardabrams/node-mocks-http/pull/98
       it('should call .write()', function() {
         var originalWrite = response.write.bind(response);
@@ -678,6 +688,16 @@ describe('mockResponse', function() {
         expect(response.emit).to.have.been.calledWith('send');
         expect(response.emit).to.have.been.calledWith('end');
         expect(response.emit).to.have.been.calledWith('finish');
+      });
+
+      it('should set data to "false" if passed false', function () {
+        response.jsonp(false);
+        expect(response._getData()).to.equal('false');
+      });
+
+      it('should set data to "null" if passed null', function () {
+        response.jsonp(null);
+        expect(response._getData()).to.equal('null');
       });
     });
 
