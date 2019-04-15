@@ -85,6 +85,7 @@ declare module 'node-mocks-http' {
         _isEndCalled: () => boolean;
         _getHeaders: () => Headers;
         _getData: () => any;
+        _getJSONData: () => any;
         _getBuffer: () => Buffer;
         _getLocals: () => any;
         _getStatusCode: () => number;

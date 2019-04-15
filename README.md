@@ -59,7 +59,7 @@ exports['routeHandler - Simple testing'] = function(test) {
 
     routeHandler(request, response);
 
-    var data = JSON.parse( response._getData() );
+    var data = response._getJSONData(); // short-hand for JSON.parse( response._getData() );
     test.equal("Bob Dog", data.name);
     test.equal(42, data.age);
     test.equal("bob@dog.com", data.email);

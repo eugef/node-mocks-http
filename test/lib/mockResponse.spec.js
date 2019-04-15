@@ -1221,6 +1221,18 @@ describe('mockResponse', function() {
 
     });
 
+    describe('._getJSONData()', function() {
+
+      it('will be deprecated in 2.0');
+
+      it('should return sent data', function() {
+        var data = { a: 1, b: { c: 2 }};
+        response.send(JSON.stringify(data));
+        expect(response._getJSONData()).to.deep.equal(data);
+      });
+
+    });
+
     describe('._getStatusCode()', function() {
 
       it('will be deprecated in 2.0');
