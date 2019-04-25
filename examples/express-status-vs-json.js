@@ -37,7 +37,7 @@ exports['routeHandler - Simple testing of status() vs json()'] = function(test) 
 
     routeHandler(request, response);
 
-    var data = JSON.parse(response._getData());
+    var data = response._getJSONData();
 
     test.equal('Bob Dog', data.name);
     test.equal(42, data.age);
