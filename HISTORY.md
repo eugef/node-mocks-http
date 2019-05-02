@@ -1,7 +1,12 @@
+v 1.7.5
+-------
+
+  - Updated the dependency tree with newer versions of `eslint`.
+
 v 1.7.4
 -------
 
-  - Add `_getJSONData` with data sent to the user as JSON. [#181][181]
+  - Added `_getJSONData` function with data sent to the user as JSON. [#181][181]
 
   [181]: https://github.com/howardabrams/node-mocks-http/pull/181
 
