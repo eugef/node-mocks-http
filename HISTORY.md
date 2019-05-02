@@ -1,3 +1,10 @@
+v 1.7.4
+-------
+
+  - Add `_getJSONData` with data sent to the user as JSON. [#181][181]
+
+  [181]: https://github.com/howardabrams/node-mocks-http/pull/181
+
 v 1.7.3
 -------
 
