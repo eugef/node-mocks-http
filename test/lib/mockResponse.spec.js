@@ -643,6 +643,24 @@ describe('mockResponse', function() {
         expect(response.emit).to.have.been.calledWith('finish');
       });
 
+      it('should set data and statusCode if first argument is data and second is number', function () {
+        response.json({},400);
+        expect(response.statusCode).to.equal(400);
+        expect(response._getData()).to.equal('{}');
+      });
+
+      it('should set data and statusCode if second argument is data and first is number', function () {
+        response.json(400, {});
+        expect(response.statusCode).to.equal(400);
+        expect(response._getData()).to.equal('{}');
+      });
+
+      it('should set data to number if passed number as only argument', function () {
+        response.json(400);
+        expect(response.statusCode).to.equal(200);
+        expect(response._getData()).to.equal('400');
+      });
+
       it('should set data to "false" if passed false', function () {
         response.json(false);
         expect(response._getData()).to.equal('false');
@@ -688,6 +706,24 @@ describe('mockResponse', function() {
         expect(response.emit).to.have.been.calledWith('send');
         expect(response.emit).to.have.been.calledWith('end');
         expect(response.emit).to.have.been.calledWith('finish');
+      });
+
+      it('should set data and statusCode if first argument is data and second is number', function () {
+        response.jsonp({},400);
+        expect(response.statusCode).to.equal(400);
+        expect(response._getData()).to.equal('{}');
+      });
+
+      it('should set data and statusCode if second argument is data and first is number', function () {
+        response.jsonp(400, {});
+        expect(response.statusCode).to.equal(400);
+        expect(response._getData()).to.equal('{}');
+      });
+
+      it('should set data to number if passed number as only argument', function () {
+        response.jsonp(400);
+        expect(response.statusCode).to.equal(200);
+        expect(response._getData()).to.equal('400');
       });
 
       it('should set data to "false" if passed false', function () {
