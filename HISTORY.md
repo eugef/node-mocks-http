@@ -1,3 +1,10 @@
+v 1.7.6
+-------
+
+  - Fix for [Issue #182][182].
+
+  [182]: https://github.com/howardabrams/node-mocks-http/issues/182
+
 v 1.7.5
 -------
 
