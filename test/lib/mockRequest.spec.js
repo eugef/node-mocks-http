@@ -416,7 +416,7 @@ describe('mockRequest', function() {
       request = mockRequest.createRequest({ headers: { 'Accept-Charset': 'utf-8' }});
     });
 
-    it('returns type if the same as Accept-Encoding header', function() {
+    it('returns type if the same as Accept-Charset header', function() {
       expect(request.acceptsCharsets('utf-8')).to.equal('utf-8');
     });
 
@@ -436,7 +436,7 @@ describe('mockRequest', function() {
       request = mockRequest.createRequest({ headers: { 'Accept-Language': 'en-GB' }});
     });
 
-    it('returns type if the same as Accept-Encoding header', function() {
+    it('returns type if the same as Accept-Language header', function() {
       expect(request.acceptsLanguages('en-GB')).to.equal('en-GB');
     });
 
