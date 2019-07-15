@@ -389,6 +389,26 @@ describe('mockRequest', function() {
     });
   });
 
+  describe('.acceptsEncodings()', function() {
+    var request;
+
+    beforeEach(function() {
+      request = mockRequest.createRequest({ headers: { 'Accept-Encoding': 'gzip' }});
+    });
+
+    it('returns type if the same as Accept-Encoding header', function() {
+      expect(request.acceptsEncodings('gzip')).to.equal('gzip');
+    });
+
+    it('returns the first matching type of an array of types', function() {
+      expect(request.acceptsEncodings(['compress', 'gzip'])).to.equal('gzip');
+    });
+
+    it('returns false when types dont match', function() {
+      expect(request.acceptsEncodings(['compress', 'deflate'])).to.equal(false);
+    });
+  });
+
   describe('.range()', function() {
     var request;
 
