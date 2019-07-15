@@ -429,6 +429,26 @@ describe('mockRequest', function() {
     });
   });
 
+  describe('.acceptsLanguages()', function() {
+    var request;
+
+    beforeEach(function() {
+      request = mockRequest.createRequest({ headers: { 'Accept-Language': 'en-GB' }});
+    });
+
+    it('returns type if the same as Accept-Encoding header', function() {
+      expect(request.acceptsLanguages('en-GB')).to.equal('en-GB');
+    });
+
+    it('returns the first matching type of an array of types', function() {
+      expect(request.acceptsLanguages(['de-DE', 'en-GB'])).to.equal('en-GB');
+    });
+
+    it('returns false when types dont match', function() {
+      expect(request.acceptsLanguages(['de-DE', 'fr-FR'])).to.equal(false);
+    });
+  });
+
   describe('.range()', function() {
     var request;
 
