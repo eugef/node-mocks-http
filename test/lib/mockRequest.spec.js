@@ -409,6 +409,26 @@ describe('mockRequest', function() {
     });
   });
 
+  describe('.acceptsCharsets()', function() {
+    var request;
+
+    beforeEach(function() {
+      request = mockRequest.createRequest({ headers: { 'Accept-Charset': 'utf-8' }});
+    });
+
+    it('returns type if the same as Accept-Encoding header', function() {
+      expect(request.acceptsCharsets('utf-8')).to.equal('utf-8');
+    });
+
+    it('returns the first matching type of an array of types', function() {
+      expect(request.acceptsCharsets(['iso-8859-15', 'utf-8'])).to.equal('utf-8');
+    });
+
+    it('returns false when types dont match', function() {
+      expect(request.acceptsCharsets(['iso-8859-15', 'us-ascii'])).to.equal(false);
+    });
+  });
+
   describe('.range()', function() {
     var request;
 
