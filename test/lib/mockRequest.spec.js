@@ -592,6 +592,28 @@ describe('mockRequest', function() {
     });
   });
 
+  describe('defined getters', function() {
+    describe('.xhr', function() {
+      it('should set xhr to true if X-Requested-With header was set to XMLHttpRequest', function() {
+        var request = mockRequest.createRequest({ headers: { 'X-Requested-With': 'XMLHttpRequest' }});
+
+        expect(request.xhr).to.be.true;
+      });
+
+      it('should set xhr to false if X-Requested-With header was not set to XMLHttpRequest', function() {
+        var request = mockRequest.createRequest({ headers: { 'X-Requested-With': 'Foo' }});
+
+        expect(request.xhr).to.be.false;
+      });
+
+      it('should set xhr to false if no valid X-Requested-With header is given', function() {
+        var request = mockRequest.createRequest();
+
+        expect(request.xhr).to.be.false;
+      });
+    });
+  });
+
   describe('helper functions', function() {
     var request;
 
