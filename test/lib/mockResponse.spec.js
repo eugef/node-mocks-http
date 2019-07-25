@@ -617,6 +617,11 @@ describe('mockResponse', function() {
 
       it('should mimic Express Response.send()');
 
+      it('should return the response', function () {
+        var response = mockResponse.createResponse();
+        expect(response.send({})).to.equal(response);
+      });
+
     });
 
     // TODO: fix in 2.0; method should mimic Express Response.json()
@@ -669,6 +674,10 @@ describe('mockResponse', function() {
       it('should set data to "null" if passed null', function () {
         response.json(null);
         expect(response._getData()).to.equal('null');
+      });
+
+      it('should return the response', function () {
+        expect(response.json(null)).to.equal(response);
       });
 
       // reference : https://github.com/howardabrams/node-mocks-http/pull/98
@@ -734,6 +743,10 @@ describe('mockResponse', function() {
       it('should set data to "null" if passed null', function () {
         response.jsonp(null);
         expect(response._getData()).to.equal('null');
+      });
+
+      it('should return the response', function () {
+        expect(response.jsonp(null)).to.equal(response);
       });
     });
 
