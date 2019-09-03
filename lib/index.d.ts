@@ -18,7 +18,7 @@ declare module 'node-mocks-http' {
     }
 
     export interface Headers {
-        [key: string]: string;
+        [key: string]: string | string[] | undefined;
     }
 
     export interface Query {
