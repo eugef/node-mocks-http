@@ -1,3 +1,14 @@
+v 1.8.0
+-------
+
+  - Added types for IncomingHeaders [Issue #192][192].
+  - Enabled method chaining [Issue #191][191].
+  - Added accepts language [Issue #188][188].
+
+  [192]: https://github.com/howardabrams/node-mocks-http/issues/192
+  [191]: https://github.com/howardabrams/node-mocks-http/issues/191
+  [188]: https://github.com/howardabrams/node-mocks-http/issues/188
+
 v 1.7.6
 -------
 
