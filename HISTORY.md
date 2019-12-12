@@ -1,3 +1,11 @@
+v 1.8.1
+-------
+
+  - Enable res.render() callback argument [Issue #197][197].
+
+  [197]: https://github.com/howardabrams/node-mocks-http/issues/197
+ 
+  
 v 1.8.0
 -------
 
