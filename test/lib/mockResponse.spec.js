@@ -1095,6 +1095,12 @@ describe('mockResponse', function() {
         expect(emits).to.eql(1);
       });
 
+      it('should set writableEnded to true', function() {
+        response.end();
+        expect(response.writableEnded).to.eql(true);
+        expect(response.writableFinished).to.eql(true);
+      });
+
       it('writes to _data if a string is supplied', function() {
         var payload1 = 'payload1';
         var encoding = 'utf8';
