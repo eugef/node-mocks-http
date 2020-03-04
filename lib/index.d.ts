@@ -10,7 +10,7 @@ declare module 'node-mocks-http' {
     }
 
     export interface Session {
-        [key: string]: string;
+        [key: string]: any;
     }
 
     export interface Cookies {
