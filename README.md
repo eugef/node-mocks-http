@@ -93,6 +93,7 @@ option | description | default value
 `params` | object hash with params | {}
 `session` | object hash with session values | `undefined`
 `cookies` | object hash with request cookies | {}
+`socket` | object hash with request socket | {}
 `signedCookies` | object hash with signed cookies | `undefined`
 `headers` | object hash with request headers | {}
 `body` | object hash with body | {}
