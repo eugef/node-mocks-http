@@ -903,7 +903,13 @@ describe('mockRequest', function() {
         };
         request = mockRequest.createRequest(options);
         expect(request.subdomains).to.be.an('array').that.empty;
+
+        options.headers.host = 'example.com';
+        request = mockRequest.createRequest(options);
+        expect(request.subdomains).to.be.an('array').that.empty;
+
       });
+
     });
 
   });
