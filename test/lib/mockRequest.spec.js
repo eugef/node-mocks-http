@@ -881,6 +881,37 @@ describe('mockRequest', function() {
 
     });
 
+    describe('.subdomains', function() {
+
+      it('should returns the host subdomains', function() {
+        var options = {
+          headers: {
+            host: 'tobi.ferrets.example.com'
+          }
+        };
+        request = mockRequest.createRequest(options);
+        expect(request.subdomains).to.be.an('array').that.includes('ferrets');
+        expect(request.subdomains).to.be.an('array').that.includes('tobi');
+
+      });
+
+      it('should returns and empty array', function () {
+        var options = {
+          headers: {
+            key1: 'key1'
+          }
+        };
+        request = mockRequest.createRequest(options);
+        expect(request.subdomains).to.be.an('array').that.empty;
+
+        options.headers.host = 'example.com';
+        request = mockRequest.createRequest(options);
+        expect(request.subdomains).to.be.an('array').that.empty;
+
+      });
+
+    });
+
   });
 
 });
