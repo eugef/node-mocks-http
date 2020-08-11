@@ -987,6 +987,42 @@ describe('mockResponse', function() {
 
     });
 
+    describe('.getHeaders()', function() {
+      var response;
+
+      beforeEach(function() {
+        response = mockResponse.createResponse();
+      });
+
+      afterEach(function() {
+        response = null;
+      });
+
+      it('should return an empty object when no cookies were set', function() {
+        expect(response.getHeaders()).to.deep.equal({});
+      });
+
+      it('should return cookies previously set', function() {
+        response.setHeader('name1', 'value1');
+        response.setHeader('name2', 'value2');
+
+        var headers = response.getHeaders();
+
+        expect(headers['name1']).to.equal('value1');
+        expect(headers['name2']).to.equal('value2');
+      });
+
+      it('should return a shallow copy', function() {
+        var array = [ 1, 2 ];
+
+        response.setHeader('name1', array);
+        var headers = response.getHeaders();
+
+        expect(headers['name1']).not.to.equal(array);
+        expect(headers['name1']).to.deep.equal(array);
+      });
+    });
+
     describe('.removeHeader()', function() {
       var response;
 
