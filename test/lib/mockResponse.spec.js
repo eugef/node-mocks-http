@@ -843,7 +843,7 @@ describe('mockResponse', function() {
 
         expect(response.statusCode).to.equal(200);
         expect(response.statusMessage).to.equal('OK');
-        expect(response._getHeaders()).to.be.empty;
+        expect(response.getHeaders()).to.be.empty;
       });
 
       afterEach(function() {
@@ -865,7 +865,7 @@ describe('mockResponse', function() {
       it('writes the headers of the response', function() {
         var headers = { 'x-header': 'test llama' };
         response.writeHead(400, headers);
-        expect(response._getHeaders()).to.deep.equal(headers);
+        expect(response.getHeaders()).to.deep.equal(headers);
       });
 
       it('updates the headersSent property of the response', function() {
@@ -880,34 +880,34 @@ describe('mockResponse', function() {
         // in real life.
         response.writeHead(500, {'x-header': 'llama party'});
         // Should still see same as before
-        expect(response._getHeaders()).to.deep.equal(headers);
+        expect(response.getHeaders()).to.deep.equal(headers);
       });
 
       it('works with statusMessage and headers as optional', function() {
         response.writeHead(400);
         expect(response.statusCode).to.equal(400);
         expect(response.statusMessage).to.equal('OK');
-        expect(response._getHeaders()).to.be.empty;
+        expect(response.getHeaders()).to.be.empty;
       });
 
       it('works with statusMessage as optional', function() {
         var headers = { 'x-header': 'test llama' };
         response.writeHead(400, headers);
         expect(response.statusMessage).to.equal('OK');
-        expect(response._getHeaders()).to.deep.equal(headers);
+        expect(response.getHeaders()).to.deep.equal(headers);
       });
 
       it('works with headers as optional', function() {
         response.writeHead(400, 'NotOK');
         expect(response.statusMessage).to.equal('NotOK');
-        expect(response._getHeaders()).to.be.empty;
+        expect(response.getHeaders()).to.be.empty;
       });
 
       it('works with statusCode, statusMessage, and headers defined', function() {
         var headers = { 'x-header': 'test llama' };
         response.writeHead(400, 'NotOK', headers);
         expect(response.statusMessage).to.equal('NotOK');
-        expect(response._getHeaders()).to.deep.equal(headers);
+        expect(response.getHeaders()).to.deep.equal(headers);
       });
 
       it('throws if end has already been called', function() {
@@ -918,7 +918,7 @@ describe('mockResponse', function() {
       it('merges the given headers with the ones specified earlier (set with `setHeader`)', function() {
         response.setHeader('Access-Control-Allow-Origin', '*');
         response.writeHead(200, {'Access-Control-Max-Age': '86400'});
-        expect(response._getHeaders()).to.contain.all.keys({'access-control-allow-origin': '*', 'access-control-max-age': '86400'});
+        expect(response.getHeaders()).to.contain.all.keys({'access-control-allow-origin': '*', 'access-control-max-age': '86400'});
       });
 
     });
