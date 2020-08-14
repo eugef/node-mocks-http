@@ -1090,7 +1090,7 @@ describe('mockResponse', function () {
 
       it('should accept a buffer and hold it in _chunks', function () {
         var payload1 = 'payload1';
-        response.write(new Buffer(payload1));
+        response.write(Buffer.from(payload1));
         var chunks = response._getChunks();
         expect(chunks.length).to.eql(1);
         expect(chunks[0].toString()).to.equal(payload1);
@@ -1099,8 +1099,8 @@ describe('mockResponse', function () {
       it('should accept multiple buffers and hold them in _chunks', function () {
         var payload1 = 'payload1';
         var payload2 = 'payload2';
-        response.write(new Buffer(payload1));
-        response.write(new Buffer(payload2));
+        response.write(Buffer.from(payload1));
+        response.write(Buffer.from(payload2));
         var chunks = response._getChunks();
         expect(chunks.length).to.eql(2);
         expect(chunks[0].toString()).to.equal(payload1);
@@ -1147,7 +1147,7 @@ describe('mockResponse', function () {
 
       it('writes to _buffer if a Buffer is supplied', function () {
         var payload1 = 'payload1';
-        response.end(new Buffer(payload1));
+        response.end(Buffer.from(payload1));
         var buffer = response._getBuffer();
         expect(buffer.toString()).to.equal(payload1);
       });
@@ -1176,8 +1176,8 @@ describe('mockResponse', function () {
     it('should accept buffers through write() and end() and concatenate them in _buffer', function () {
       var payload1 = 'payload1';
       var payload2 = 'payload2';
-      response.write(new Buffer(payload1));
-      response.end(new Buffer(payload2));
+      response.write(Buffer.from(payload1));
+      response.end(Buffer.from(payload2));
       var buffer = response._getBuffer();
       expect(buffer.toString()).to.equal(payload1 + payload2);
     });
