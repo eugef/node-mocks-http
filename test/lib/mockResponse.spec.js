@@ -987,6 +987,29 @@ describe('mockResponse', function () {
 
     });
 
+    describe('.getHeaderNames()', function () {
+      var response;
+
+      beforeEach(function () {
+        response = mockResponse.createResponse();
+      });
+
+      afterEach(function () {
+        response = null;
+      });
+
+      it('should return an empty array when no headers were set', function () {
+        expect(response.getHeaderNames()).to.deep.equal([]);
+      });
+
+      it('should return names of headers previously set', function () {
+        response.setHeader('name1', 'value1');
+        response.setHeader('name2', 'value2');
+
+        expect(response.getHeaderNames()).to.deep.equal(['name1', 'name2']);
+      });
+    });
+
     describe('.getHeaders()', function () {
       var response;
 
