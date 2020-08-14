@@ -1021,11 +1021,11 @@ describe('mockResponse', function () {
         response = null;
       });
 
-      it('should return an empty object when no cookies were set', function () {
+      it('should return an empty object when no headers were set', function () {
         expect(response.getHeaders()).to.deep.equal({});
       });
 
-      it('should return cookies previously set', function () {
+      it('should return headers previously set', function () {
         response.setHeader('name1', 'value1');
         response.setHeader('name2', 'value2');
 
