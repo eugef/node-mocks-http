@@ -1046,6 +1046,32 @@ describe('mockResponse', function () {
       });
     });
 
+    describe('.hasHeader()', function () {
+      var response;
+
+      beforeEach(function () {
+        response = mockResponse.createResponse();
+      });
+
+      afterEach(function () {
+        response = null;
+      });
+
+      it('should return true if the header was set', function () {
+        response.setHeader('name1');
+        expect(response.hasHeader('name1')).to.be.true;
+      });
+
+      it('should return false if the header is missing', function () {
+        expect(response.hasHeader('name1')).to.be.false;
+      });
+
+      it('should be case-insensitive', function () {
+        response.setHeader('name1');
+        expect(response.hasHeader('NAME1')).to.be.true;
+      });
+    });
+
     describe('.removeHeader()', function () {
       var response;
 
