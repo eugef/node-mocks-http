@@ -1,3 +1,24 @@
+v 1.9.0
+-------
+
+  - Implement response.getHeaderNames() and response.hasHeader() [Issue #222][222].
+  - Remove calls to deprecated Buffer constructors [Issue #221][221].
+  - Run tests for Node 10, 12 and 14. Drop support for Node 6 and 8  [Issue #218][218].
+  - Implement response.getHeaders()  [Issue #217][217].
+  - Add req.subdomains  [Issue #213][213].
+  - Add socket option to mockRequest  [Issue #209][209].
+  - Fix index.d.ts  [Issue #205][205].
+  - Added support for response.writableEnded and response.writableFinished [Issue #205][203].
+
+  [222]: https://github.com/howardabrams/node-mocks-http/issues/222
+  [221]: https://github.com/howardabrams/node-mocks-http/issues/221
+  [218]: https://github.com/howardabrams/node-mocks-http/issues/218
+  [217]: https://github.com/howardabrams/node-mocks-http/issues/217
+  [213]: https://github.com/howardabrams/node-mocks-http/issues/213
+  [209]: https://github.com/howardabrams/node-mocks-http/issues/209
+  [205]: https://github.com/howardabrams/node-mocks-http/issues/205
+  [203]: https://github.com/howardabrams/node-mocks-http/issues/203
+
 v 1.8.1
 -------
 
