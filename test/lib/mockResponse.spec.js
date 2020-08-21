@@ -987,6 +987,29 @@ describe('mockResponse', function () {
 
     });
 
+    describe('.getHeaderNames()', function () {
+      var response;
+
+      beforeEach(function () {
+        response = mockResponse.createResponse();
+      });
+
+      afterEach(function () {
+        response = null;
+      });
+
+      it('should return an empty array when no headers were set', function () {
+        expect(response.getHeaderNames()).to.deep.equal([]);
+      });
+
+      it('should return names of headers previously set', function () {
+        response.setHeader('name1', 'value1');
+        response.setHeader('name2', 'value2');
+
+        expect(response.getHeaderNames()).to.deep.equal(['name1', 'name2']);
+      });
+    });
+
     describe('.getHeaders()', function () {
       var response;
 
@@ -998,11 +1021,11 @@ describe('mockResponse', function () {
         response = null;
       });
 
-      it('should return an empty object when no cookies were set', function () {
+      it('should return an empty object when no headers were set', function () {
         expect(response.getHeaders()).to.deep.equal({});
       });
 
-      it('should return cookies previously set', function () {
+      it('should return headers previously set', function () {
         response.setHeader('name1', 'value1');
         response.setHeader('name2', 'value2');
 
@@ -1020,6 +1043,32 @@ describe('mockResponse', function () {
 
         expect(headers.name1).not.to.equal(array);
         expect(headers.name1).to.deep.equal(array);
+      });
+    });
+
+    describe('.hasHeader()', function () {
+      var response;
+
+      beforeEach(function () {
+        response = mockResponse.createResponse();
+      });
+
+      afterEach(function () {
+        response = null;
+      });
+
+      it('should return true if the header was set', function () {
+        response.setHeader('name1');
+        expect(response.hasHeader('name1')).to.be.true;
+      });
+
+      it('should return false if the header is missing', function () {
+        expect(response.hasHeader('name1')).to.be.false;
+      });
+
+      it('should be case-insensitive', function () {
+        response.setHeader('name1');
+        expect(response.hasHeader('NAME1')).to.be.true;
       });
     });
 
