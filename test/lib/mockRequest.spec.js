@@ -881,6 +881,47 @@ describe('mockRequest', function() {
 
     });
 
+    describe('.hostname', function() {
+
+      it('should return the host\'s main domain', function() {
+        var options = {
+          headers: {
+            host: 'tobi.ferrets.example.com:5000'
+          }
+        };
+        request = mockRequest.createRequest(options);
+        expect(request.hostname).to.equal('example.com');
+
+        options.headers.host = 'tobi.ferrets.example.com';
+        request = mockRequest.createRequest(options);
+        expect(request.hostname).to.equal('example.com');
+
+        options.headers.host = 'example.com';
+        request = mockRequest.createRequest(options);
+        expect(request.hostname).to.equal('example.com');
+
+        options.headers.host = 'example.com:8443';
+        request = mockRequest.createRequest(options);
+        expect(request.hostname).to.equal('example.com');
+
+        options.headers.host = 'localhost:3000';
+        request = mockRequest.createRequest(options);
+        expect(request.hostname).to.equal('localhost');
+
+      });
+
+      it('should return an empty string', function () {
+        var options = {
+          headers: {
+            key1: 'key1'
+          }
+        };
+        request = mockRequest.createRequest(options);
+        expect(request.hostname).to.equal('');
+      });
+
+    });
+
     describe('.subdomains', function() {
 
       it('should returns the host subdomains', function() {
