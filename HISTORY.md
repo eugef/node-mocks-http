@@ -1,3 +1,12 @@
+v 1.10.0
+-------
+
+  - Add support for req.hostname [Issue #224][224].
+  - Allow to chain writeHead() [Issue #229][229].
+
+  [224]: https://github.com/howardabrams/node-mocks-http/issues/224
+  [229]: https://github.com/howardabrams/node-mocks-http/issues/229
+  
 v 1.9.0
 -------
 
