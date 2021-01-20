@@ -460,7 +460,7 @@ describe('mockRequest', function() {
       request = mockRequest.createRequest();
       expect(request.range()).to.be.undefined;
     });
-    
+
     var tests = [
       {
         // Unsatisfiable
@@ -890,11 +890,11 @@ describe('mockRequest', function() {
           }
         };
         request = mockRequest.createRequest(options);
-        expect(request.hostname).to.equal('example.com');
+        expect(request.hostname).to.equal('tobi.ferrets.example.com');
 
         options.headers.host = 'tobi.ferrets.example.com';
         request = mockRequest.createRequest(options);
-        expect(request.hostname).to.equal('example.com');
+        expect(request.hostname).to.equal('tobi.ferrets.example.com');
 
         options.headers.host = 'example.com';
         request = mockRequest.createRequest(options);
@@ -918,6 +918,17 @@ describe('mockRequest', function() {
         };
         request = mockRequest.createRequest(options);
         expect(request.hostname).to.equal('');
+      });
+
+      it('should return an predefined hostname', function () {
+        var options = {
+          hostname: 'predefined.host.com',
+          headers: {
+            host: 'other.host'
+          }
+        };
+        request = mockRequest.createRequest(options);
+        expect(request.hostname).to.equal('predefined.host.com');
       });
 
     });
