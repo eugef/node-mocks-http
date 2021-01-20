@@ -1,3 +1,10 @@
+v 1.10.1
+-------
+
+  - Fix support for req.hostname [Issue #231][231].
+  
+  [231]: https://github.com/howardabrams/node-mocks-http/issues/231
+  
 v 1.10.0
 -------
 
