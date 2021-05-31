@@ -210,8 +210,10 @@ describe('mockRequest', function() {
         request = mockRequest.createRequest(options);
         expect(request.header('KEY1')).to.equal('value1');
         expect(request.get('KEY1')).to.equal('value1');
+        expect(request.getHeader('KEY1')).to.equal('value1');
         expect(request.header('KEY2')).to.equal('value2');
         expect(request.get('KEY2')).to.equal('value2');
+        expect(request.getHeader('KEY2')).to.equal('value2');
       });
 
       it('should set .body to options.body', function() {
@@ -289,6 +291,7 @@ describe('mockRequest', function() {
       request = mockRequest.createRequest(options);
       expect(request.get('key')).to.equal('value');
       expect(request.header('key')).to.equal('value');
+      expect(request.getHeader('key')).to.equal('value');
     });
 
     it('should return referer, when request as referrer', function() {
@@ -301,6 +304,7 @@ describe('mockRequest', function() {
       request = mockRequest.createRequest(options);
       expect(request.get('referrer')).to.equal('value');
       expect(request.header('referrer')).to.equal('value');
+      expect(request.getHeader('referrer')).to.equal('value');
     });
 
     it('should return referrer, when request as referer', function() {
@@ -313,12 +317,14 @@ describe('mockRequest', function() {
       request = mockRequest.createRequest(options);
       expect(request.get('referer')).to.equal('value');
       expect(request.header('referer')).to.equal('value');
+      expect(request.getHeader('referer')).to.equal('value');
     });
 
     it('should not return header, when not set', function() {
       request = mockRequest.createRequest();
       expect(request.get('key')).to.not.exist;
       expect(request.header('key')).to.not.exist;
+      expect(request.getHeader('key')).to.not.exist;
     });
 
   });
@@ -685,6 +691,7 @@ describe('mockRequest', function() {
         request._setHeadersVariable('key', 'value');
         expect(request.get('key')).to.equal('value');
         expect(request.header('key')).to.equal('value');
+        expect(request.getHeader('key')).to.equal('value');
       });
 
       it('should throw an error, when called with missing arguments', function () {
