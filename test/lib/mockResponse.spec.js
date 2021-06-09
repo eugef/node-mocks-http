@@ -1441,6 +1441,11 @@ describe('mockResponse', function () {
         expect(response._isJSON()).to.be.true;
       });
 
+      it('should return true, when Content-Type is JSON with vendor prefix', function () {
+        response.type('application/hal+json');
+        expect(response._isJSON()).to.be.true;
+      });
+
       it('should return false, when Content-Type is not JSON', function () {
         response.type('html');
         expect(response._isJSON()).to.be.false;
