@@ -74,6 +74,9 @@ describe('mockResponse', function () {
 
       expect(response).to.have.property('render');
       expect(response.render).to.be.a('function');
+
+      expect(response).to.have.property('attachment');
+      expect(response.render).to.be.a('function');
     });
 
     it('should expose Node OutgoingMessage methods', function () {
@@ -828,6 +831,21 @@ describe('mockResponse', function () {
         var defaultSpy = sinon.spy();
         response.format({ default: defaultSpy });
         expect(defaultSpy).to.have.been.called;
+      });
+    });
+
+    describe('.attachment()', function () {
+      var response;
+
+      beforeEach(function () {
+        response = mockResponse.createResponse();
+      });
+
+      it('adds Content-Disposition header', function () {
+        response.attachment('download.csv');
+
+        expect(response._headers).to.have.property('content-disposition');
+        expect(response._headers['content-disposition']).to.be.equal('attachment; filename="download.csv"');
       });
     });
   });
