@@ -101,6 +101,7 @@ declare module 'node-mocks-http' {
         body?: Body;
         query?: Query;
         files?: Files;
+        ip?: string;
 
         // Support custom properties appended on Request objects.
         [key: string]: any;

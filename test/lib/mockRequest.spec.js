@@ -62,6 +62,8 @@ describe('mockRequest', function() {
         expect(request.body).to.deep.equal({});
         expect(request.query).to.deep.equal({});
         expect(request.files).to.deep.equal({});
+        expect(request.ip).to.equal('127.0.0.1');
+        expect(request.ips).to.deep.equal([request.ip]);
       });
 
     });
@@ -269,6 +271,24 @@ describe('mockRequest', function() {
 
         request = mockRequest.createRequest(options);
         expect(request.mySampleProp).to.equal('la LA LA');
+      });
+
+      it('should set .ip to options.ip', function() {
+        var options = {
+          ip: '192.168.1.1'
+        };
+
+        request = mockRequest.createRequest(options);
+        expect(request.ip).to.equal(options.ip);
+      });
+
+      it('should set .ips to [options.ip]', function() {
+        var options = {
+          ip: '192.168.1.1'
+        };
+
+        request = mockRequest.createRequest(options);
+        expect(request.ips).to.deep.equal([options.ip]);
       });
 
     });
