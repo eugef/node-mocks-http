@@ -1,3 +1,14 @@
+v 1.11.0
+-------
+
+- Fix request.ip and add request.ips [Issue #244][244].
+- Add response.attachment() from express [Issue #246][246].
+- Add request.getHeader() alias for request.header() [Issue #241][241].
+
+[244]: https://github.com/howardabrams/node-mocks-http/issues/244
+[246]: https://github.com/howardabrams/node-mocks-http/issues/246
+[241]: https://github.com/howardabrams/node-mocks-http/issues/241
+
 v 1.10.1
 -------
 
