@@ -1221,28 +1221,24 @@ describe('mockResponse', function () {
 
       it('should inherit from Node OutogingMessage.end()');
 
-      it("triggers callback provided as 1st argument", function() {
-        var buff = Buffer.from('random-text');
-        var called = false;
-        function cb() { called = true; }
-        response.end(cb);
-        expect(called).to.eql(true);
+      it('triggers callback provided as 1st argument', function() {
+        var callback = sinon.spy();
+        response.end(callback);
+        expect(callback).to.have.been.called;
       });
       
-      it("triggers callback provided as 2nd argument", function() {
+      it('triggers callback provided as 2nd argument', function() {
         var buff = Buffer.from('random-text');
-        var called = false;
-        function cb() { called = true; }
-        response.end(buff, cb);
-        expect(called).to.eql(true);
+        var callback = sinon.spy();
+        response.end(buff, callback);
+        expect(callback).to.have.been.called;
       });
       
-      it("triggers callback provided as 3rd argument", function() {
+      it('triggers callback provided as 3rd argument', function() {
         var buff = Buffer.from('random-text');
-        var called = false;
-        function cb() { called = true; }
-        response.end(buff, "utf8", cb);
-        expect(called).to.eql(true);
+        var callback = sinon.spy();
+        response.end(buff, 'utf8', callback);
+        expect(callback).to.have.been.called;
       });
       
     });
