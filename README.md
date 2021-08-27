@@ -237,3 +237,5 @@ Licensed under [MIT](https://github.com/howardabrams/node-mocks-http/blob/master
 [koa-url]: https://koajs.com/
 [node-url]: http://www.nodejs.org
 [node-http-module-url]: http://nodejs.org/docs/latest/api/http.html
+
+.test travis-ci
