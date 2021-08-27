@@ -1229,21 +1229,21 @@ describe('mockResponse', function () {
       });
       
       it('triggers callback provided as 2nd argument', function() {
-        var buff = Buffer.from('random-text');
+        var payload = 'random-text';
         var callback = sinon.spy();
-        response.end(buff, callback);
+        response.end(Buffer.from(payload), callback);
         
         expect(callback).to.have.been.called;
-        expect(buff.toString()).to.equal(response._getBuffer().toString());
+        expect(response._getBuffer().toString()).to.equal(payload);
       });
       
       it('triggers callback provided as 3rd argument', function() {
-        var buff = Buffer.from('random-text');
+        var payload = 'random-text';
         var callback = sinon.spy();
-        response.end(buff, 'utf8', callback);
+        response.end(Buffer.from(payload), 'utf8', callback);
         
         expect(callback).to.have.been.called;
-        expect(buff.toString()).to.equal(response._getBuffer().toString());
+        expect(response._getBuffer().toString()).to.equal(payload);
       });
       
     });
