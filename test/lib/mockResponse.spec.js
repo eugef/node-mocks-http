@@ -1224,6 +1224,7 @@ describe('mockResponse', function () {
       it('triggers callback provided as 1st argument', function() {
         var callback = sinon.spy();
         response.end(callback);
+        
         expect(callback).to.have.been.called;
       });
       
@@ -1231,14 +1232,18 @@ describe('mockResponse', function () {
         var buff = Buffer.from('random-text');
         var callback = sinon.spy();
         response.end(buff, callback);
+        
         expect(callback).to.have.been.called;
+        expect(buff.toString()).to.equal(response._getBuffer().toString());
       });
       
       it('triggers callback provided as 3rd argument', function() {
         var buff = Buffer.from('random-text');
         var callback = sinon.spy();
         response.end(buff, 'utf8', callback);
+        
         expect(callback).to.have.been.called;
+        expect(buff.toString()).to.equal(response._getBuffer().toString());
       });
       
     });
