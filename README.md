@@ -1,4 +1,4 @@
-## [![node-mocks-http logo][nmh-logo]][nmh-url]
+[![node-mocks-http logo][nmh-logo]][nmh-url]
 
 ---
 
