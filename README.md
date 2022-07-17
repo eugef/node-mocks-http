@@ -24,7 +24,7 @@ $ npm install --save-dev node-mocks-http
 After installing the package include the following in your test files:
 
 ```js
-var httpMocks = require('node-mocks-http')
+var httpMocks = require('node-mocks-http');
 ```
 
 ## Usage
@@ -32,44 +32,44 @@ var httpMocks = require('node-mocks-http')
 Suppose you have the following Express route:
 
 ```js
-app.get('/user/:id', routeHandler)
+app.get('/user/:id', routeHandler);
 ```
 
 And you have created a function to handle that route's call:
 
 ```js
-var routeHandler = function (request, response) { ... }
+var routeHandler = function(request, response) { ... };
 ```
 
 You can easily test the `routeHandler` function with some code like
 this using the testing framework of your choice:
 
 ```js
-exports['routeHandler - Simple testing'] = function (test) {
+exports['routeHandler - Simple testing'] = function(test) {
 	var request = httpMocks.createRequest({
 		method: 'GET',
 		url: '/user/42',
 		params: {
 			id: 42,
 		},
-	})
+	});
 
-	var response = httpMocks.createResponse()
+	var response = httpMocks.createResponse();
 
-	routeHandler(request, response)
+	routeHandler(request, response);
 
-	var data = response._getJSONData() // bashort-hand for JSON.parse( response._getData() )
-	test.equal('Bob Dog', data.name)
-	test.equal(42, data.age)
-	test.equal('bob@dog.com', data.email)
+	var data = response._getJSONData(); // bashort-hand for JSON.parse( response._getData() )
+	test.equal('Bob Dog', data.name);
+	test.equal(42, data.age);
+	test.equal('bob@dog.com', data.email);
 
-	test.equal(200, response.statusCode)
-	test.ok(response._isEndCalled())
-	test.ok(response._isJSON())
-	test.ok(response._isUTF8())
+	test.equal(200, response.statusCode);
+	test.ok(response._isEndCalled());
+	test.ok(response._isJSON());
+	test.ok(response._isUTF8());
 
-	test.done()
-}
+	test.done();
+};
 ```
 
 ## API
@@ -77,7 +77,7 @@ exports['routeHandler - Simple testing'] = function (test) {
 ### .createRequest()
 
 ```js
-httpMocks.createRequest(options)
+httpMocks.createRequest(options);
 ```
 
 Where options is an object hash with any of the following values:
@@ -104,7 +104,7 @@ The object returned from this function also supports the [Express request](http:
 ### .createResponse()
 
 ```js
-httpMocks.createResponse(options)
+httpMocks.createResponse(options);
 ```
 
 Where options is an object hash with any of the following values:
@@ -123,52 +123,52 @@ Where options is an object hash with any of the following values:
 > Here's an example:
 
 ```js
-var httpMocks = require('node-mocks-http')
+var httpMocks = require('node-mocks-http');
 var res = httpMocks.createResponse({
   eventEmitter: require('events').EventEmitter
-})
+});
 
 // ...
-  it('should do something', function (done) {
-    res.on('end', function () {
-      assert.equal(...)
-      done()
-    })
-  })
+  it('should do something', function(done) {
+    res.on('end', function() {
+      assert.equal(...);
+      done();
+    });
+  });
 // ...
 ```
 
 > This is an example to send request body and trigger it's 'data' and 'end' events:
 
 ```js
-var httpMocks = require('node-mocks-http')
-var req = httpMocks.createRequest()
+var httpMocks = require('node-mocks-http');
+var req = httpMocks.createRequest();
 var res = httpMocks.createResponse({
 	eventEmitter: require('events').EventEmitter,
-})
+});
 
 // ...
-it('should do something', function (done) {
-	res.on('end', function () {
-		expect(response._getData()).to.equal('data sent in request')
-		done()
-	})
+it('should do something', function(done) {
+	res.on('end', function() {
+		expect(response._getData()).to.equal('data sent in request');
+		done();
+	});
 
-	route(req, res)
+	route(req, res);
 
-	req.send('data sent in request')
-})
+	req.send('data sent in request');
+});
 
 function route(req, res) {
-	var data = []
-	req.on('data', (chunk) => {
-		data.push(chunk)
-	})
+	var data = [];
+	req.on('data', chunk => {
+		data.push(chunk);
+	});
 	req.on('end', () => {
-		data = Buffer.concat(data)
-		res.write(data)
-		res.end()
-	})
+		data = Buffer.concat(data);
+		res.write(data);
+		res.end();
+	});
 }
 // ...
 ```
@@ -176,7 +176,7 @@ function route(req, res) {
 ### .createMocks()
 
 ```js
-httpMocks.createMocks(reqOptions, resOptions)
+httpMocks.createMocks(reqOptions, resOptions);
 ```
 
 Merges `createRequest` and `createResponse`. Passes given options object to each
