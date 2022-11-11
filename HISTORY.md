@@ -1,3 +1,12 @@
+v 1.12.0
+-------
+
+- Make it easier to create mocks for the node http library [Issue #259][259].
+- mockResponse.end(): added callback triggering once end() logic has run [Issue #248][248].
+
+[259]: https://github.com/howardabrams/node-mocks-http/issues/259
+[248]: https://github.com/howardabrams/node-mocks-http/issues/248
+
 v 1.11.0
 -------
 
