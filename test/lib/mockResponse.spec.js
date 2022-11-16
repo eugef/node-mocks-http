@@ -512,6 +512,14 @@ describe('mockResponse', function () {
         expect(response.header).to.throw;
       });
 
+      it('should throw an error when called after they are sent', function() {
+        response.set({ name1: 'value1' });
+        response.send();
+
+        expect(function() {
+          response.set({ name2: 'value2' });
+        }).to.throw();
+      });
     });
 
     describe('.get()', function () {
@@ -1515,14 +1523,14 @@ describe('mockResponse', function () {
       });
 
       it('should return true, when Content-Length equals data size', function () {
-        response.send('data');
         response.header('Content-Length', '4');
+        response.send('data');
         expect(response._isDataLengthValid()).to.be.true;
       });
 
       it('should return false, when Content-Length does not equal data size', function () {
-        response.send('data');
         response.header('Content-Length', '5');
+        response.send('data');
         expect(response._isDataLengthValid()).to.be.false;
       });
 
