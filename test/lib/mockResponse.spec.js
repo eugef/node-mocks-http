@@ -657,6 +657,13 @@ describe('mockResponse', function () {
         expect(response.send({})).to.equal(response);
       });
 
+      it('throws when called twice', function() {
+        var response = mockResponse.createResponse();
+        response.send('Can not send response twice');
+        expect(function() {
+          response.send('This one should fail!');
+        }).to.throw();
+      });
     });
 
     // TODO: fix in 2.0; method should mimic Express Response.json()
@@ -1202,8 +1209,17 @@ describe('mockResponse', function () {
           }
         };
         response.end();
-        response.end();
+        expect(function() {
+          response.end();
+        }).to.throw();
         expect(emits).to.eql(1);
+      });
+
+      it('throws when called twice', function() {
+        response.end();
+        expect(function() {
+          response.end();
+        }).to.throw();
       });
 
       it('should set writableEnded to true', function () {
