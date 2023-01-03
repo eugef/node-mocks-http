@@ -53,7 +53,7 @@
     "type-is": "^1.6.18"
   },
   "devDependencies": {
-    "@types/express": "^4.17.7",
+    "@types/express": "^4.17.15",
     "chai": "^4.2.0",
     "eslint": "^7.7.0",
     "gulp": "^4.0.2",
