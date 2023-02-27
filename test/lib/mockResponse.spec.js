@@ -967,6 +967,10 @@ describe('mockResponse', function () {
         expect(response.setHeader).to.throw;
       });
 
+      it('should return this', function() {
+        expect(response.setHeader('name', 'value')).to.be(response);
+      })
+
     });
 
     describe('.getHeader()', function () {
