@@ -968,8 +968,8 @@ describe('mockResponse', function () {
       });
 
       it('should return this', function() {
-        expect(response.setHeader('name', 'value')).to.be(response);
-      })
+        expect(response.setHeader('name', 'value')).to.equal(response);
+      });
 
     });
 
