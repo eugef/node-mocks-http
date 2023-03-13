@@ -1,3 +1,12 @@
+v 1.12.2
+-------
+
+- 📦️ Upgrade @types/express [Issue #267][267].
+- setHeader should return this [Issue #268][268].
+
+[267]: https://github.com/howardabrams/node-mocks-http/issues/267
+[268]: https://github.com/howardabrams/node-mocks-http/issues/268
+
 v 1.12.1
 -------
 
