@@ -167,17 +167,11 @@ Failures in the linting process may fail our continuous integration builds.
 
 Thanks again for helping out!
 
-## <a name="contact"></a> Contact Us
-[![Gitter chat](https://badges.gitter.im/howardabrams/node-mocks-http.png)](https://gitter.im/howardabrams/node-mocks-http)
 
-If you have any other questions or comments about **node-mocks-http** that do not fall under the category of [issues](#issue), [bugs](#issue), or [feature requests](#feature), feel free to join us on our [Gitter channel][gitter].
-
-
-[repo]: https://github.com/howardabrams/node-mocks-http
-[issues]: https://github.com/howardabrams/node-mocks-http/issues
-[issues-archive]: https://github.com/howardabrams/node-mocks-http/issues?q=is%3Aissue
-[pulls]: https://github.com/howardabrams/node-mocks-http/pulls
-[pulls-archive]: https://github.com/howardabrams/node-mocks-http/pulls?q=is%3Apr
-[gitter]: https://gitter.im/howardabrams/node-mocks-http
+[repo]: https://github.com/eugef/node-mocks-http
+[issues]: https://github.com/eugef/node-mocks-http/issues
+[issues-archive]: https://github.com/eugef/node-mocks-http/issues?q=is%3Aissue
+[pulls]: https://github.com/eugef/node-mocks-http/pulls
+[pulls-archive]: https://github.com/eugef/node-mocks-http/pulls?q=is%3Apr
 [jsfiddle]: http://jsfiddle.net/
 [plunker]: http://plnkr.co/edit
