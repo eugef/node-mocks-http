@@ -1,4 +1,5 @@
-[![nmh logo](https://user-images.githubusercontent.com/895071/227719403-acb59717-256a-4c82-9fba-ef9f0d07ec19.png)](https://github.com/eugef/node-mocks-http)
+[![Logo](https://user-images.githubusercontent.com/895071/227720269-37e34019-eba0-4768-80ab-1a4dad043043.png)](https://github.com/eugef/node-mocks-http)
+
 ---
 [![NPM version][npm-badge]][npm-url]
 
