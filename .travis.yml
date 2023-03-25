@@ -4,11 +4,6 @@ node_js:
   - "16"
   - "18"
 
-notifications:
-  email:
-    - "howard.abrams@gmail.com"
-    - "johnny.estilles@agentia.asia"
-
 branches:
   only:
     - master
