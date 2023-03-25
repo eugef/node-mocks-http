@@ -1,8 +1,6 @@
-[![node-mocks-http logo][nmh-logo]][nmh-url]
+[![nmh logo](https://user-images.githubusercontent.com/895071/227719403-acb59717-256a-4c82-9fba-ef9f0d07ec19.png)](https://github.com/eugef/node-mocks-http)
 ---
 [![NPM version][npm-badge]][npm-url]
-[![Build Status][travis-badge]][travis-url]
-[![Gitter chat][gitter-badge]][gitter-url]
 
 
 Mock 'http' objects for testing [Express][express-url] and [Koa][koa-url]
@@ -213,25 +211,15 @@ by Express.
 
 See the [Release History](HISTORY.md) for details.
 
-[release-notes]: https://github.com/howardabrams/node-mocks-http/releases
-[release-v1.4.4]: https://github.com/howardabrams/node-mocks-http/releases/tag/v1.4.4
+[release-notes]: https://github.com/eugef/node-mocks-http/releases
 
 License
 ---
 
-Licensed under [MIT](https://github.com/howardabrams/node-mocks-http/blob/master/LICENSE).
-
-[nmh-logo]: https://raw.githubusercontent.com/wiki/howardabrams/node-mocks-http/images/nmh-logo-200x132.png
-[nmh-url]: https://github.com/howardabrams/node-mocks-http
+Licensed under [MIT](LICENSE).
 
 [npm-badge]: https://badge.fury.io/js/node-mocks-http.png
 [npm-url]: https://www.npmjs.com/package/node-mocks-http
-
-[travis-badge]: https://travis-ci.org/howardabrams/node-mocks-http.svg?branch=master
-[travis-url]: https://travis-ci.org/howardabrams/node-mocks-http
-
-[gitter-badge]: https://badges.gitter.im/howardabrams/node-mocks-http.png
-[gitter-url]: https://gitter.im/howardabrams/node-mocks-http
 
 [express-url]: http://expressjs.com/
 [koa-url]: https://koajs.com/
