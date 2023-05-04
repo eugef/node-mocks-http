@@ -1,4 +1,4 @@
-import { Request, Response, CookieOptions } from 'express';
+import { Request, Response, CookieOptions } from './express/mock-express';
 
 declare module 'node-mocks-http' {
 
