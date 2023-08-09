@@ -38,7 +38,7 @@
   "main": "./lib/http-mock.js",
   "types": "./lib/index.d.ts",
   "engines": {
-    "node": ">=0.6"
+    "node": ">=14"
   },
   "dependencies": {
     "accepts": "^1.3.7",
