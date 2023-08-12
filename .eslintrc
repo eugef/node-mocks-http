@@ -1,5 +1,9 @@
 env:
   node: true
+  es2017: true
+
+parserOptions:
+  ecmaVersion: 2019
 
 rules:
   comma-dangle: 2
@@ -42,7 +46,10 @@ rules:
   no-sync: 2
   no-loop-func: 2
   no-labels: 2
-  no-unused-vars: 1
+  no-unused-vars:
+    - 1
+    - argsIgnorePattern: ^_
+      varsIgnorePattern: ^_
   no-script-url: 2
   no-proto: 2
   no-iterator: 2
