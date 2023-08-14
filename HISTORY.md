@@ -1,11 +1,19 @@
+v 1.13.0
+-------
+
+- Add Request async iterator [Issue #278][278].
+
+[278]: https://github.com/eugef/node-mocks-http/issues/278
+
+
 v 1.12.2
 -------
 
 - 📦️ Upgrade @types/express [Issue #267][267].
 - setHeader should return this [Issue #268][268].
 
-[267]: https://github.com/howardabrams/node-mocks-http/issues/267
-[268]: https://github.com/howardabrams/node-mocks-http/issues/268
+[267]: https://github.com/eugef/node-mocks-http/issues/267
+[268]: https://github.com/eugef/node-mocks-http/issues/268
 
 v 1.12.1
 -------
@@ -18,8 +26,8 @@ v 1.12.0
 - Make it easier to create mocks for the node http library [Issue #259][259].
 - mockResponse.end(): added callback triggering once end() logic has run [Issue #248][248].
 
-[259]: https://github.com/howardabrams/node-mocks-http/issues/259
-[248]: https://github.com/howardabrams/node-mocks-http/issues/248
+[259]: https://github.com/eugef/node-mocks-http/issues/259
+[248]: https://github.com/eugef/node-mocks-http/issues/248
 
 v 1.11.0
 -------
@@ -28,16 +36,16 @@ v 1.11.0
 - Add response.attachment() from express [Issue #246][246].
 - Add request.getHeader() alias for request.header() [Issue #241][241].
 
-[244]: https://github.com/howardabrams/node-mocks-http/issues/244
-[246]: https://github.com/howardabrams/node-mocks-http/issues/246
-[241]: https://github.com/howardabrams/node-mocks-http/issues/241
+[244]: https://github.com/eugef/node-mocks-http/issues/244
+[246]: https://github.com/eugef/node-mocks-http/issues/246
+[241]: https://github.com/eugef/node-mocks-http/issues/241
 
 v 1.10.1
 -------
 
   - Fix support for req.hostname [Issue #231][231].
   
-  [231]: https://github.com/howardabrams/node-mocks-http/issues/231
+  [231]: https://github.com/eugef/node-mocks-http/issues/231
   
 v 1.10.0
 -------
@@ -45,8 +53,8 @@ v 1.10.0
   - Add support for req.hostname [Issue #224][224].
   - Allow to chain writeHead() [Issue #229][229].
 
-  [224]: https://github.com/howardabrams/node-mocks-http/issues/224
-  [229]: https://github.com/howardabrams/node-mocks-http/issues/229
+  [224]: https://github.com/eugef/node-mocks-http/issues/224
+  [229]: https://github.com/eugef/node-mocks-http/issues/229
   
 v 1.9.0
 -------
@@ -60,21 +68,21 @@ v 1.9.0
   - Fix index.d.ts  [Issue #205][205].
   - Added support for response.writableEnded and response.writableFinished [Issue #205][203].
 
-  [222]: https://github.com/howardabrams/node-mocks-http/issues/222
-  [221]: https://github.com/howardabrams/node-mocks-http/issues/221
-  [218]: https://github.com/howardabrams/node-mocks-http/issues/218
-  [217]: https://github.com/howardabrams/node-mocks-http/issues/217
-  [213]: https://github.com/howardabrams/node-mocks-http/issues/213
-  [209]: https://github.com/howardabrams/node-mocks-http/issues/209
-  [205]: https://github.com/howardabrams/node-mocks-http/issues/205
-  [203]: https://github.com/howardabrams/node-mocks-http/issues/203
+  [222]: https://github.com/eugef/node-mocks-http/issues/222
+  [221]: https://github.com/eugef/node-mocks-http/issues/221
+  [218]: https://github.com/eugef/node-mocks-http/issues/218
+  [217]: https://github.com/eugef/node-mocks-http/issues/217
+  [213]: https://github.com/eugef/node-mocks-http/issues/213
+  [209]: https://github.com/eugef/node-mocks-http/issues/209
+  [205]: https://github.com/eugef/node-mocks-http/issues/205
+  [203]: https://github.com/eugef/node-mocks-http/issues/203
 
 v 1.8.1
 -------
 
   - Enable res.render() callback argument [Issue #197][197].
 
-  [197]: https://github.com/howardabrams/node-mocks-http/issues/197
+  [197]: https://github.com/eugef/node-mocks-http/issues/197
  
   
 v 1.8.0
@@ -84,16 +92,16 @@ v 1.8.0
   - Enabled method chaining [Issue #191][191].
   - Added accepts language [Issue #188][188].
 
-  [192]: https://github.com/howardabrams/node-mocks-http/issues/192
-  [191]: https://github.com/howardabrams/node-mocks-http/issues/191
-  [188]: https://github.com/howardabrams/node-mocks-http/issues/188
+  [192]: https://github.com/eugef/node-mocks-http/issues/192
+  [191]: https://github.com/eugef/node-mocks-http/issues/191
+  [188]: https://github.com/eugef/node-mocks-http/issues/188
 
 v 1.7.6
 -------
 
   - Fix for [Issue #182][182].
 
-  [182]: https://github.com/howardabrams/node-mocks-http/issues/182
+  [182]: https://github.com/eugef/node-mocks-http/issues/182
 
 v 1.7.5
 -------
@@ -105,14 +113,14 @@ v 1.7.4
 
   - Added `_getJSONData` function with data sent to the user as JSON. [#181][181]
 
-  [181]: https://github.com/howardabrams/node-mocks-http/pull/181
+  [181]: https://github.com/eugef/node-mocks-http/pull/181
 
 v 1.7.3
 -------
 
   - Added `.range()` on a mocked request mimicking the [same function](http://expressjs.com/en/4x/api.html#req.range) on Express' request. [#175][175]
 
-  [175]: https://github.com/howardabrams/node-mocks-http/pull/175
+  [175]: https://github.com/eugef/node-mocks-http/pull/175
 
 v 1.7.2
 -------
@@ -120,7 +128,7 @@ v 1.7.2
   - Revert Turn mock request into a stream [#174][174]
   - Fix security issues reported by npm audit
 
-  [174]: https://github.com/howardabrams/node-mocks-http/pull/174
+  [174]: https://github.com/eugef/node-mocks-http/pull/174
 
 v 1.7.1
 -------
@@ -130,10 +138,10 @@ v 1.7.1
   - Make header names case-insensitive in response [#172][172]
   - Throw an error object instead of a string [#173][173]
 
-  [169]: https://github.com/howardabrams/node-mocks-http/pull/169
-  [170]: https://github.com/howardabrams/node-mocks-http/pull/170
-  [172]: https://github.com/howardabrams/node-mocks-http/pull/172
-  [173]: https://github.com/howardabrams/node-mocks-http/pull/173
+  [169]: https://github.com/eugef/node-mocks-http/pull/169
+  [170]: https://github.com/eugef/node-mocks-http/pull/170
+  [172]: https://github.com/eugef/node-mocks-http/pull/172
+  [173]: https://github.com/eugef/node-mocks-http/pull/173
 
 v 1.7.0
 -------
@@ -141,8 +149,8 @@ v 1.7.0
  - Add support for Buffer payload [#154][154]
  - Send request body/payload to trigger relevant events [#164][164]
 
- [154]: https://github.com/howardabrams/node-mocks-http/pull/154
- [164]: https://github.com/howardabrams/node-mocks-http/pull/164
+ [154]: https://github.com/eugef/node-mocks-http/pull/154
+ [164]: https://github.com/eugef/node-mocks-http/pull/164
 
 v 1.6.8
 -------
@@ -158,7 +166,7 @@ v 1.6.8
   - 8.9
   - 9.6
 
-  [158]: https://github.com/howardabrams/node-mocks-http/pull/158
+  [158]: https://github.com/eugef/node-mocks-http/pull/158
 
 v 1.6.7
 -------
@@ -171,25 +179,25 @@ v 1.6.7
   Special shoutout to [Eugene Fidelin](https://github.com/eugef) for
   joining the team and helping out so much.
 
-  [112]: https://github.com/howardabrams/node-mocks-http/issues/112
-  [135]: https://github.com/howardabrams/node-mocks-http/issues/135
-  [143]: https://github.com/howardabrams/node-mocks-http/issues/143
-  [155]: https://github.com/howardabrams/node-mocks-http/issues/155
+  [112]: https://github.com/eugef/node-mocks-http/issues/112
+  [135]: https://github.com/eugef/node-mocks-http/issues/135
+  [143]: https://github.com/eugef/node-mocks-http/issues/143
+  [155]: https://github.com/eugef/node-mocks-http/issues/155
   [append]: http://expressjs.com/en/api.html#res.append
   [locals]: https://expressjs.com/en/api.html#res.locals
 
 v 1.6.6
 -------
 
-  - Upgrade Fresh dependency to 0.5.2 due to a [Security advisory][166-SA]. [PR #147](https://github.com/howardabrams/node-mocks-http/pull/147)
-  - Add the baseUrl property to the request object. [PR #150](https://github.com/howardabrams/node-mocks-http/pull/150)
+  - Upgrade Fresh dependency to 0.5.2 due to a [Security advisory][166-SA]. [PR #147](https://github.com/eugef/node-mocks-http/pull/147)
+  - Add the baseUrl property to the request object. [PR #150](https://github.com/eugef/node-mocks-http/pull/150)
 
   [166-SA]: https://nodesecurity.io/advisories/526
 
 v 1.6.5
 -------
 
-  - Query type definition now more flexible [PR #146](https://github.com/howardabrams/node-mocks-http/pull/146)
+  - Query type definition now more flexible [PR #146](https://github.com/eugef/node-mocks-http/pull/146)
 
 v 1.6.4
 -------
@@ -201,7 +209,7 @@ v 1.6.3
 
   - Moved @types/express to dev-dependencies. [PR #136][136]
 
-  [136]: https://github.com/howardabrams/node-mocks-http/issues/136
+  [136]: https://github.com/eugef/node-mocks-http/issues/136
 
 v 1.6.1
 -------
@@ -221,7 +229,7 @@ v 1.5.4
 
   * Call `write` method from json method of `responseMock` [PR #98][98]
 
-  [98]: https://github.com/howardabrams/node-mocks-http/issues/98
+  [98]: https://github.com/eugef/node-mocks-http/issues/98
 
 v 1.5.3
 -------
@@ -230,8 +238,8 @@ v 1.5.3
   * Add `.location` to the `mockResponse` object [PR #96][96]
   * Add API method, `createMocks` to create both mocks with correct references
 
-  [96]: https://github.com/howardabrams/node-mocks-http/issues/96
-  [94]: https://github.com/howardabrams/node-mocks-http/issues/94
+  [96]: https://github.com/eugef/node-mocks-http/issues/96
+  [94]: https://github.com/eugef/node-mocks-http/issues/94
 
 v 1.5.2
 -------
@@ -242,10 +250,10 @@ v 1.5.2
   * Fix issue with `req.param` not returning when false [#82][82]
   * Other bug fixes
 
-  [92]: https://github.com/howardabrams/node-mocks-http/issues/92
-  [84]: https://github.com/howardabrams/node-mocks-http/issues/84
-  [82]: https://github.com/howardabrams/node-mocks-http/issues/82
-  [85]: https://github.com/howardabrams/node-mocks-http/issues/85
+  [92]: https://github.com/eugef/node-mocks-http/issues/92
+  [84]: https://github.com/eugef/node-mocks-http/issues/84
+  [82]: https://github.com/eugef/node-mocks-http/issues/82
+  [85]: https://github.com/eugef/node-mocks-http/issues/85
 
 
 v 1.5.1
@@ -264,13 +272,13 @@ Documentation changes, a new feature, and better behaviors, including:
   * Emit `end` when redirecting, see [PR #77][77]
   * Documentation changes, see [PR #64][64], [PR #75][75], [PR #78][78]
 
-  [64]: https://github.com/howardabrams/node-mocks-http/issues/64
-  [74]: https://github.com/howardabrams/node-mocks-http/issues/74
-  [75]: https://github.com/howardabrams/node-mocks-http/issues/75
-  [76]: https://github.com/howardabrams/node-mocks-http/issues/76
-  [77]: https://github.com/howardabrams/node-mocks-http/issues/77
-  [78]: https://github.com/howardabrams/node-mocks-http/issues/78
-  [79]: https://github.com/howardabrams/node-mocks-http/issues/79
+  [64]: https://github.com/eugef/node-mocks-http/issues/64
+  [74]: https://github.com/eugef/node-mocks-http/issues/74
+  [75]: https://github.com/eugef/node-mocks-http/issues/75
+  [76]: https://github.com/eugef/node-mocks-http/issues/76
+  [77]: https://github.com/eugef/node-mocks-http/issues/77
+  [78]: https://github.com/eugef/node-mocks-http/issues/78
+  [79]: https://github.com/eugef/node-mocks-http/issues/79
 
 
 v 1.4.4
@@ -282,10 +290,10 @@ v 1.4.4
   * Merge fix for [#70][70]
   * Merge fix for [#73][73]
 
-  [67]: https://github.com/howardabrams/node-mocks-http/issues/67
-  [68]: https://github.com/howardabrams/node-mocks-http/issues/68
-  [70]: https://github.com/howardabrams/node-mocks-http/issues/70
-  [73]: https://github.com/howardabrams/node-mocks-http/issues/73
+  [67]: https://github.com/eugef/node-mocks-http/issues/67
+  [68]: https://github.com/eugef/node-mocks-http/issues/68
+  [70]: https://github.com/eugef/node-mocks-http/issues/70
+  [73]: https://github.com/eugef/node-mocks-http/issues/73
 
 v 1.2.0
 ---
@@ -306,7 +314,7 @@ v 1.0.3
 ---
 
   * Merged changes by [invernizzie](https://github.com/invernizzie):
-    to address [#11](https://github.com/howardabrams/node-mocks-http/pull/11)
+    to address [#11](https://github.com/eugef/node-mocks-http/pull/11)
 
   * Merged changes by [ericchaves](https://github.com/ericchaves):
     > I extended your library a little but so it could also handle
