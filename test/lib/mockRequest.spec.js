@@ -993,4 +993,229 @@ describe('mockRequest', function() {
 
   });
 
+  describe('asyncIterator', function() {
+
+    async function collect(asyncIterable) {
+      const chunks = [];
+      for await (const chunk of asyncIterable) {
+        chunks.push(chunk);
+      }
+      return chunks;
+    }
+
+    it('should iterate when sending data', async function() {
+      const request = mockRequest.createRequest();
+
+      const chunksPromise = collect(request);
+      request.send('test data');
+
+      const data = Buffer.concat(await chunksPromise).toString();
+      expect(data).to.equal('test data');
+    });
+
+    it('should iterate synchronous pushes', async function() {
+      const request = mockRequest.createRequest();
+
+      const chunksPromise = collect(request);
+      request.emit('data', Buffer.from('foo'));
+      request.emit('data', Buffer.from('bar'));
+      request.emit('data', Buffer.from('baz'));
+      request.emit('end');
+
+      const data = Buffer.concat(await chunksPromise).toString();
+      expect(data).to.equal('foobarbaz');
+    });
+
+    it('should ignore push after end', async function() {
+      const request = mockRequest.createRequest();
+
+      const chunksPromise = collect(request);
+      request.emit('data', Buffer.from('foo'));
+      request.emit('end');
+      request.emit('data', Buffer.from('bar'));
+
+      const data = Buffer.concat(await chunksPromise).toString();
+      expect(data).to.equal('foo');
+    });
+
+    it('should iterate asynchronous pushes', async function() {
+      const request = mockRequest.createRequest();
+
+      const chunksPromise = collect(request);
+      request.emit('data', Buffer.from('foo'));
+      await new Promise(r => setTimeout(r));
+      request.emit('data', Buffer.from('bar'));
+      await new Promise(r => setTimeout(r));
+      request.emit('data', Buffer.from('baz'));
+      await new Promise(r => setTimeout(r));
+      request.emit('end');
+
+      const data = Buffer.concat(await chunksPromise).toString();
+      expect(data).to.equal('foobarbaz');
+    });
+
+    it('should support asynchronous pushes while iterating', async function() {
+      const request = mockRequest.createRequest();
+
+      const chunksPromise = (async () => {
+        const extraPushes = ['3', '2', '1'];
+        const chunks = [];
+        for await (const chunk of request) {
+          chunks.push(chunk);
+          if (extraPushes.length > 0) {
+            request.emit('data', Buffer.from(extraPushes.pop()));
+            await new Promise(r => setTimeout(r));
+          }
+        }
+        return chunks;
+      })();
+
+      request.emit('data', Buffer.from('foo'));
+      await new Promise(r => setTimeout(r));
+      request.emit('data', Buffer.from('bar'));
+      await new Promise(r => setTimeout(r));
+      request.emit('data', Buffer.from('baz'));
+      await new Promise(r => setTimeout(r));
+      request.emit('end');
+
+      const data = Buffer.concat(await chunksPromise).toString();
+      expect(data).to.equal('foo1bar2baz3');
+    });
+
+    it('supports error', async function() {
+      const request = mockRequest.createRequest();
+
+      /** @type {AsyncIterator} */
+      const iterator = request[Symbol.asyncIterator]();
+      const error = new Error('Test error');
+      
+      const nextPromise = iterator.next();
+      request.emit('error', error);
+
+      try {
+        await nextPromise;
+        expect.fail();
+      } catch (e) {
+        expect(e).to.equal(error);
+      }
+    });
+
+    it('supports throw', async function() {
+      const request = mockRequest.createRequest();
+
+      /** @type {AsyncIterator} */
+      const iterator = request[Symbol.asyncIterator]();
+      const error = new Error('Test error');
+
+      const nextPromise = iterator.next();
+      request.emit('data', Buffer.from('foo'));
+      await nextPromise;
+
+      try {
+        await iterator.throw(error);
+        expect.fail();
+      } catch (e) {
+        expect(e).to.equal(error);
+        return;
+      }
+    });
+
+    it('first error wins', async function() {
+      const request = mockRequest.createRequest();
+
+      /** @type {AsyncIterator} */
+      const iterator = request[Symbol.asyncIterator]();
+      const error1 = new Error('Test error 1');
+      const error2 = new Error('Test error 2');
+      
+      const nextPromise = iterator.next();
+      request.emit('error', error1);
+      request.emit('error', error2);
+
+      try {
+        await nextPromise;
+        expect.fail();
+      } catch (e) {
+        expect(e).to.equal(error1);
+      }
+    });
+
+    it('supports return', async function() {
+      const request = mockRequest.createRequest();
+
+      /** @type {AsyncIterator} */
+      const iterator = request[Symbol.asyncIterator]();
+
+      const result = await iterator.return();
+      expect(result.done).to.equal(true);
+    });
+
+    ['close', 'error'].forEach(event => {
+      it(`discards buffer on ${event}`, async function () {
+        const request = mockRequest.createRequest();
+  
+        const chunksPromise = (async () => {
+          const chunks = [];
+          try {
+            for await (const data of request) {
+              chunks.push(data);
+            }
+          } catch (e) {
+            // Ignore
+          }
+          return chunks;
+        })();
+  
+        request.emit('data', Buffer.from('foo'));
+        await new Promise(r => setTimeout(r));
+        request.emit('data', Buffer.from('bar'));
+        request.emit(event, event === 'error' ? new Error('Test error') : undefined);
+        request.emit('data', Buffer.from('baz'));
+  
+        const data = Buffer.concat(await chunksPromise).toString();
+        expect(data).to.equal('foo');
+      });
+    });
+
+    it('emits custom event after creation', async () => {
+      const request = mockRequest.createRequest();
+      
+      request.on('async_iterator', () => {
+        request.emit('data', Buffer.from('foo'));
+        request.emit('data', Buffer.from('bar'));
+        request.emit('data', Buffer.from('baz'));
+        request.emit('end');
+      });
+
+      const data = Buffer.concat(await collect(request)).toString();
+      expect(data).to.equal('foobarbaz');
+    });
+
+    if (typeof global.Request === 'function') {
+      it('can be fed to a Fetch API Request body', async function () {
+        const request = mockRequest.createRequest();
+        
+        // eslint-disable-next-line no-undef
+        const webRequest = new Request('http://example.com', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: request,
+          duplex: 'half'
+        });
+
+        request.on('async_iterator', () => {
+          request.emit('data', Buffer.from('{ "foo": "b'));
+          request.emit('data', Buffer.from('ar" }'));
+          request.emit('end');
+        });
+
+        const webRequestJson = await webRequest.json();
+        expect(webRequestJson).to.deep.equal({ foo: 'bar' });
+      });
+    }
+
+  });
+
 });
