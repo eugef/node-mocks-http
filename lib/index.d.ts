@@ -160,10 +160,10 @@ declare module 'node-mocks-http' {
 
     export function createResponse<T extends OutgoingMessage = Response>(options?: ResponseOptions): MockResponse<T>;
 
-    export interface Mocks<T1 extends Request, T2 extends Response> {
+    export interface Mocks<T1 extends IncomingMessage, T2 extends OutgoingMessage> {
         req: MockRequest<T1>;
         res: MockResponse<T2>;
     }
 
-    export function createMocks<T1 extends Request = Request, T2 extends Response = Response>(reqOptions?: RequestOptions, resOptions?: ResponseOptions): Mocks<T1, T2>;
+    export function createMocks<T1 extends IncomingMessage = Request, T2 extends OutgoingMessage = Response>(reqOptions?: RequestOptions, resOptions?: ResponseOptions): Mocks<T1, T2>;
 }
