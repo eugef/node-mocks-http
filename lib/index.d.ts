@@ -1,4 +1,5 @@
 import { Request, Response, CookieOptions } from 'express';
+import { IncomingMessage, OutgoingMessage } from 'http';
 
 declare module 'node-mocks-http' {
 
@@ -107,7 +108,7 @@ declare module 'node-mocks-http' {
         [key: string]: any;
     }
 
-    export type MockRequest<T extends Request> = T & {
+    export type MockRequest<T extends IncomingMessage> = T & {
         _setParameter: (key: string, value: string) => void;
         _setSessionVariable: (variable: string, value: string) => void;
         _setCookiesVariable: (variable: string, value: string) => void;
@@ -136,7 +137,7 @@ declare module 'node-mocks-http' {
         options: CookieOptions;
     }
 
-    export type MockResponse<T extends Response> = T & {
+    export type MockResponse<T extends OutgoingMessage> = T & {
         _isEndCalled: () => boolean;
         _getHeaders: () => Headers;
         _getData: () => any;
@@ -155,9 +156,9 @@ declare module 'node-mocks-http' {
         cookies: {[name: string]: ResponseCookie};
     }
 
-    export function createRequest<T extends Request = Request>(options?: RequestOptions): MockRequest<T>;
+    export function createRequest<T extends IncomingMessage = Request>(options?: RequestOptions): MockRequest<T>;
 
-    export function createResponse<T extends Response = Response>(options?: ResponseOptions): MockResponse<T>;
+    export function createResponse<T extends OutgoingMessage = Response>(options?: ResponseOptions): MockResponse<T>;
 
     export interface Mocks<T1 extends Request, T2 extends Response> {
         req: MockRequest<T1>;
