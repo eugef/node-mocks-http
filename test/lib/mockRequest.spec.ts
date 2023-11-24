@@ -1,7 +1,8 @@
 import { expect } from "chai";
+import { createRequest } from "../../lib/mockRequest";
 
-describe("calculator test", () => {
-  it("should add 1 + 1", () => {
-    expect(1 + 1).to.equal(2);
+describe('mockRequest (TS)', () => {
+  it('should expose .createRequest()', () => {
+    expect(createRequest).to.be.a('function');
   });
 });
