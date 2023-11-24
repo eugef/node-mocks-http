@@ -7,7 +7,8 @@ var eslint = require('gulp-eslint');
 
 var files = {
     src: ['./lib/**/*.js'],
-    test: ['./test/**/*.spec.js', './*.js']
+    test: ['./test/**/*.spec.js', './*.js'],
+    testTs: ['./test/**/*.spec.ts']
 };
 
 gulp.task('lint', function () {
@@ -21,14 +22,14 @@ gulp.task('lint', function () {
 });
 
 gulp.task('dot', function () {
-    return gulp.src(files.test, {read: false})
+    return gulp.src(files.test.concat(files.testTs), {read: false})
         .pipe(mocha({reporter: 'dot'}));
 });
 
 gulp.task('test', gulp.series('dot', 'lint'));
 
 gulp.task('spec', function () {
-    return gulp.src(files.test, {read: false})
+    return gulp.src(files.test.concat(files.testTs), {read: false})
         .pipe(mocha({reporter: 'spec'}));
 });
 
