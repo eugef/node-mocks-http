@@ -2,17 +2,13 @@
 
 As a community-focused, open source project, contributions are always welcome, no matter how large or small. Here are the guidelines we ask our contributors to follow:
 
-- [Contributing](#contributing)
-  - [ Code of Conduct](#-code-of-conduct)
-  - [ Found an Issue?](#-found-an-issue)
-  - [ Want a Feature?](#-want-a-feature)
-  - [ Submission Guidelines](#-submission-guidelines)
-    - [Submitting an Issue](#submitting-an-issue)
-    - [Submitting a Pull Request](#submitting-a-pull-request)
-      - [Post merged cleanup](#post-merged-cleanup)
-  - [ Coding Rules](#-coding-rules)
-  - [ Running Test Suite](#-running-test-suite)
-    - [TypeScript tests](#typescript-tests)
+ - [Code of Conduct](#coc)
+ - [Issues and Bugs](#issue)
+ - [Feature Requests](#feature)
+ - [Submission Guidelines](#submit)
+ - [Coding Rules](#rules)
+ - [Running Test Suite](#tests)
+ - [Contact Us](#contact)
 
 > **NOTE**
 
@@ -176,6 +172,7 @@ It's also possible to implement tests in TypeScript, primarily for the purpose o
     npm run test:ts
 
 Note: at this point ESLint is not ran against TypeScript tests.
+
 
 Thanks again for helping out!
 
