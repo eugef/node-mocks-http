@@ -22,14 +22,24 @@ gulp.task('lint', function () {
 });
 
 gulp.task('dot', function () {
-    return gulp.src(files.test.concat(files.testTs), {read: false})
+    return gulp.src(files.test, {read: false})
         .pipe(mocha({reporter: 'dot'}));
 });
 
 gulp.task('test', gulp.series('dot', 'lint'));
 
+gulp.task('test:ts', function () {
+    return gulp.src(files.testTs, {read: false})
+        .pipe(mocha({reporter: 'dot', require: 'ts-node/register'}));
+});
+
 gulp.task('spec', function () {
-    return gulp.src(files.test.concat(files.testTs), {read: false})
+    return gulp.src(files.test, {read: false})
+        .pipe(mocha({reporter: 'spec'}));
+});
+
+gulp.task('spec:ts', function () {
+    return gulp.src(files.testTs, {read: false})
         .pipe(mocha({reporter: 'spec'}));
 });
 
