@@ -53,7 +53,9 @@
     "type-is": "^1.6.18"
   },
   "devDependencies": {
+    "@types/chai": "^4.3.11",
     "@types/express": "^4.17.17",
+    "@types/mocha": "^10.0.6",
     "chai": "^4.2.0",
     "eslint": "^7.7.0",
     "gulp": "^4.0.2",
@@ -63,11 +65,15 @@
     "istanbul": "^0.4.5",
     "mocha": "^8.1.1",
     "sinon": "^9.0.3",
-    "sinon-chai": "^3.5.0"
+    "sinon-chai": "^3.5.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.3.2"
   },
   "scripts": {
     "spec": "gulp spec",
+    "spec:ts": "gulp spec:ts",
     "test": "gulp test",
+    "test:ts": "gulp test:ts",
     "postversion": "npm publish && git push --follow-tags"
   },
   "files": [

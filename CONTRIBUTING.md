@@ -165,6 +165,15 @@ Or:
 
 Failures in the linting process may fail our continuous integration builds.
 
+### TypeScript tests
+
+It's also possible to implement tests in TypeScript, primarily for the purpose of testing the TypeScript definitions.  To run these tests, use:
+
+    npm run test:ts
+
+Note: at this point ESLint is not ran against TypeScript tests.
+
+
 Thanks again for helping out!
 
 
