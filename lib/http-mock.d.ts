@@ -109,11 +109,11 @@ export interface RequestOptions {
 
 export type MockRequest<T extends IncomingMessage> = T & {
     _setParameter: (key: string, value?: string) => void;
-    _setSessionVariable: (variable: string, value: string) => void;
-    _setCookiesVariable: (variable: string, value: string) => void;
-    _setSignedCookiesVariable: (variable: string, value: string) => void;
+    _setSessionVariable: (variable: string, value?: string) => void;
+    _setCookiesVariable: (variable: string, value?: string) => void;
+    _setSignedCookiesVariable: (variable: string, value?: string) => void;
     _setHeadersCookiesVariable: (variable: string, value: string) => void;
-    _setFilesCookiesVariable: (variable: string, value: string) => void;
+    _setFilesCookiesVariable: (variable: string, value?: string) => void;
     _setMethod: (method?: string) => void;
     _setURL: (value?: string) => void;
     _setOriginalUrl: (value?: string) => void;

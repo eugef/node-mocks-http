@@ -445,21 +445,18 @@ describe('mockRequest', function() {
   });
 
   describe('.acceptsLanguages()', function() {
-    let request: mockRequest.MockRequest<IncomingMessage>;
-
-    beforeEach(function() {
-      const request = mockRequest.createRequest({ headers: { 'Accept-Language': 'en-GB' }});
-    });
-
     it('returns type if the same as Accept-Language header', function() {
+      const request = mockRequest.createRequest({ headers: { 'Accept-Language': 'en-GB' }});
       expect(request.acceptsLanguages('en-GB')).to.equal('en-GB');
     });
 
     it('returns the first matching type of an array of types', function() {
+      const request = mockRequest.createRequest({ headers: { 'Accept-Language': 'en-GB' }});
       expect(request.acceptsLanguages(['de-DE', 'en-GB'])).to.equal('en-GB');
     });
 
     it('returns false when types dont match', function() {
+      const request = mockRequest.createRequest({ headers: { 'Accept-Language': 'en-GB' }});
       expect(request.acceptsLanguages(['de-DE', 'fr-FR'])).to.equal(false);
     });
   });
@@ -467,7 +464,7 @@ describe('mockRequest', function() {
   describe('.range()', function() {
     it('returns undefined if there is no Range header', function() {
       const request = mockRequest.createRequest();
-      expect(request.range).to.be.undefined;
+      expect(request.range(10)).to.be.undefined;
     });
 
     const tests = [
@@ -625,76 +622,76 @@ describe('mockRequest', function() {
 
     });
 
-    describe('._setSessionconstiable()', function() {
+    describe('._setSessionVariable()', function() {
       it('should set session constiable, when called with key and value', function() {
         const request = mockRequest.createRequest();
-        request._setSessionconstiable('key', 'value');
+        request._setSessionVariable('key', 'value');
         expect(request.session.key).to.equal('value');
       });
 
       it('should unset session constiable, when called with key and no value', function() {
         const request = mockRequest.createRequest();
-        request._setSessionconstiable('key', 'value');
-        request._setSessionconstiable('key');
+        request._setSessionVariable('key', 'value');
+        request._setSessionVariable('key');
         expect(request.param('key')).to.not.exist;
       });
 
       it('should throw an error, when called with no arguments', function () {
         const request = mockRequest.createRequest();
-        expect(request._setSessionconstiable).to.throw;
+        expect(request._setSessionVariable).to.throw;
       });
 
     });
 
-    describe('._setCookiesconstiable()', function() {
+    describe('._setCookiesVariable()', function() {
 
       it('should set cookie, when called with key and value', function() {
         const request = mockRequest.createRequest();
-        request._setCookiesconstiable('key', 'value');
+        request._setCookiesVariable('key', 'value');
         expect(request.cookies.key).to.equal('value');
       });
 
       it('should unset cookie, when called with key and no value', function() {
         const request = mockRequest.createRequest();
-        request._setCookiesconstiable('key', 'value');
-        request._setCookiesconstiable('key');
+        request._setCookiesVariable('key', 'value');
+        request._setCookiesVariable('key');
         expect(request.cookies.key).to.not.exist;
       });
 
       it('should throw an error, when called with no arguments', function () {
         const request = mockRequest.createRequest();
-        expect(request._setCookiesconstiable).to.throw;
+        expect(request._setCookiesVariable).to.throw;
       });
 
     });
 
-    describe('._setSignedCookiesconstiable()', function() {
+    describe('._setSignedCookiesVariable()', function() {
 
       it('should set signed cookie, when called with key and value', function() {
         const request = mockRequest.createRequest();
-        request._setSignedCookiesconstiable('key', 'value');
+        request._setSignedCookiesVariable('key', 'value');
         expect(request.signedCookies.key).to.equal('value');
       });
 
       it('should unset signed cookie, when called with key and no value', function() {
         const request = mockRequest.createRequest();
-        request._setSignedCookiesconstiable('key', 'value');
-        request._setSignedCookiesconstiable('key');
+        request._setSignedCookiesVariable('key', 'value');
+        request._setSignedCookiesVariable('key');
         expect(request.signedCookies.key).to.not.exist;
       });
 
       it('should throw an error, when called with no arguments', function () {
         const request = mockRequest.createRequest();
-        expect(request._setSignedCookiesconstiable).to.throw;
+        expect(request._setSignedCookiesVariable).to.throw;
       });
 
     });
 
-    describe('._setHeadersconstiable()', function() {
+    describe('._setHeadersVariable()', function() {
 
       it('should set header, when called with key and value', function() {
         const request = mockRequest.createRequest();
-        request._setHeadersconstiable('key', 'value');
+        request._setHeadersVariable('key', 'value');
         expect(request.get('key')).to.equal('value');
         expect(request.header('key')).to.equal('value');
         expect(request.getHeader('key')).to.equal('value');
@@ -702,30 +699,30 @@ describe('mockRequest', function() {
 
       it('should throw an error, when called with missing arguments', function () {
         const request = mockRequest.createRequest();
-        expect(request._setHeadersconstiable).to.throw;
-        expect(request._setHeadersconstiable.bind(null, 'key')).to.throw;
+        expect(request._setHeadersVariable).to.throw;
+        expect(request._setHeadersVariable.bind(null, 'key')).to.throw;
       });
 
     });
 
-    describe('._setFilesconstiable()', function() {
+    describe('._setFilesVariable()', function() {
 
       it('should set file, when called with key and value', function() {
         const request = mockRequest.createRequest();
-        request._setFilesconstiable('key', 'value');
+        request._setFilesVariable('key', 'value');
         expect(request.files.key).to.equal('value');
       });
 
       it('should unset file, when called with key and no value', function() {
         const request = mockRequest.createRequest();
-        request._setFilesconstiable('key', 'value');
-        request._setFilesconstiable('key');
+        request._setFilesVariable('key', 'value');
+        request._setFilesVariable('key');
         expect(request.files.key).to.not.exist;
       });
 
       it('should throw an error, when called with no arguments', function () {
         const request = mockRequest.createRequest();
-        expect(request._setFilesconstiable).to.throw;
+        expect(request._setFilesVariable).to.throw;
       });
 
     });
