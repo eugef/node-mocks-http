@@ -35,8 +35,8 @@
     "type": "git",
     "url": "git://github.com/howardabrams/node-mocks-http.git"
   },
-  "main": "./lib/http-mock.js",
-  "types": "./lib/index.d.ts",
+  "main": "./lib/node-http-mock.js",
+  "types": "./lib/node-http-mock.d.ts",
   "engines": {
     "node": ">=14"
   },
