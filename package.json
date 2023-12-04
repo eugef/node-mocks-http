@@ -35,8 +35,8 @@
     "type": "git",
     "url": "git://github.com/howardabrams/node-mocks-http.git"
   },
-  "main": "./lib/node-http-mock.js",
-  "types": "./lib/node-http-mock.d.ts",
+  "main": "./lib/http-mock.js",
+  "types": "./lib/http-mock.d.ts",
   "engines": {
     "node": ">=14"
   },
@@ -76,6 +76,7 @@
     "spec:ts": "gulp spec:ts",
     "test": "gulp test",
     "test:ts": "gulp test:ts",
+    "types": "tsd . --files ./test/**/*.test-d.ts",
     "postversion": "npm publish && git push --follow-tags"
   },
   "files": [
