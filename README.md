@@ -18,7 +18,7 @@ This project is available as a
 $ npm install --save-dev node-mocks-http
 ```
 
-> Our example includes `--save-dev` based on the assumption that **node-mocks-http** will be used as a development dependency..
+> Our example includes `--save-dev` based on the assumption that **node-mocks-http** will be used as a development dependency.
 
 After installing the package include the following in your test files:
 
@@ -71,6 +71,56 @@ exports['routeHandler - Simple testing'] = function(test) {
     test.done();
 
 };
+```
+
+### TypeScript typings
+
+The typings for TypeScript are bundled with this project. In particular, the `.createRequest()`, `.createResponse()` and `.createMocks()` methods are typed and are generic. Unless specified explicitly, they will be return an Express-based request/response object:
+
+```ts
+it("should handle expressjs requests", () => {
+    const mockExpressRequest = httpMocks.createRequest({
+            method: 'GET',
+            url: '/user/42',
+            params: {
+              id: 42
+            }
+        });
+    const mockExpressResponse = httpMocks.createResponse();
+
+    routeHandler(request, response);
+
+    const data = response._getJSONData();
+    test.equal("Bob Dog", data.name);
+    test.equal(42, data.age);
+    test.equal("bob@dog.com", data.email);
+
+    test.equal(200, response.statusCode );
+    test.ok( response._isEndCalled());
+    test.ok( response._isJSON());
+    test.ok( response._isUTF8());
+
+    test.done();
+});
+```
+
+The expected type parameter in the mock request and response expects any type that extends the NodeJS
+`http.IncomingRequest` interface. This means you can also mock requests coming from other frameworks
+too. An example for NextJS request will look like this:
+
+```ts
+it("should handle nextjs requests", () => {
+    const mockExpressRequest = httpMocks.createRequest<NextApiRequest>({
+            method: 'GET',
+            url: '/user/42',
+            params: {
+              id: 42
+            }
+        });
+    const mockExpressResponse = httpMocks.createResponse<NextApiResponse>();
+
+    // ... the rest of the test as above.
+});
 ```
 
 ## API
