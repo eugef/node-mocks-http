@@ -1,3 +1,12 @@
+v 1.14.0
+-------
+
+- Fix nodejs typing [Issue #281][281].
+- Add testing capability in TypeScript [Issue #282][282].
+
+[281]: https://github.com/eugef/node-mocks-http/pull/281
+[282]: https://github.com/eugef/node-mocks-http/pull/282
+
 v 1.13.0
 -------
 
