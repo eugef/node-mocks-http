@@ -4,10 +4,8 @@
 [![NPM version][npm-badge]][npm-url]
 
 
-Mock 'http' objects for testing [Express][express-url] and [Koa][koa-url]
-routing functions, but could be used for testing any
-[Node.js][node-url] web server applications that have
-code that requires mockups of the `request` and `response` objects.
+Mock 'http' objects for testing [Express][express-url], [Next.js][nextjs-url] and [Koa][koa-url] routing functions, 
+but could be used for testing any [Node.js][node-url] web server applications that have code that requires mockups of the `request` and `response` objects.
 
 ## Installation
 
@@ -272,7 +270,8 @@ Licensed under [MIT](LICENSE).
 [npm-badge]: https://badge.fury.io/js/node-mocks-http.png
 [npm-url]: https://www.npmjs.com/package/node-mocks-http
 
-[express-url]: http://expressjs.com/
-[koa-url]: https://koajs.com/
+[express-url]: https://expressjs.com
+[nextjs-url]: https://nextjs.org
+[koa-url]: https://koajs.com
 [node-url]: http://www.nodejs.org
 [node-http-module-url]: http://nodejs.org/docs/latest/api/http.html
