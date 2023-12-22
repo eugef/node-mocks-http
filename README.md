@@ -13,15 +13,19 @@ This project is available as a
 [NPM package][npm-url].
 
 ```bash
-$ npm install --save-dev node-mocks-http
+$ npm install node-mocks-http --save-dev
 ```
 
-> Our example includes `--save-dev` based on the assumption that **node-mocks-http** will be used as a development dependency.
+or
+
+```bash
+$ yarn add node-mocks-http --dev
+```
 
 After installing the package include the following in your test files:
 
 ```js
-var httpMocks = require('node-mocks-http');
+const httpMocks = require('node-mocks-http');
 ```
 
 ## Usage
@@ -35,7 +39,7 @@ app.get('/user/:id', routeHandler);
 And you have created a function to handle that route's call:
 
 ```js
-var routeHandler = function( request, response ) { ... };
+const routeHandler = function( request, response ) { ... };
 ```
 
 You can easily test the `routeHandler` function with some code like
@@ -44,7 +48,7 @@ this using the testing framework of your choice:
 ```js
 exports['routeHandler - Simple testing'] = function(test) {
 
-    var request  = httpMocks.createRequest({
+    const request  = httpMocks.createRequest({
         method: 'GET',
         url: '/user/42',
         params: {
@@ -52,11 +56,11 @@ exports['routeHandler - Simple testing'] = function(test) {
         }
     });
 
-    var response = httpMocks.createResponse();
+    const response = httpMocks.createResponse();
 
     routeHandler(request, response);
 
-    var data = response._getJSONData(); // short-hand for JSON.parse( response._getData() );
+    const data = response._getJSONData(); // short-hand for JSON.parse( response._getData() );
     test.equal("Bob Dog", data.name);
     test.equal(42, data.age);
     test.equal("bob@dog.com", data.email);
@@ -171,8 +175,8 @@ wish to test your event handlers you will need to bring your own event emitter.
 > Here's an example:
 
 ```js
-var httpMocks = require('node-mocks-http');
-var res = httpMocks.createResponse({
+const httpMocks = require('node-mocks-http');
+const res = httpMocks.createResponse({
   eventEmitter: require('events').EventEmitter
 });
 
@@ -189,9 +193,9 @@ var res = httpMocks.createResponse({
 > This is an example to send request body and trigger it's 'data' and 'end' events:
 
 ```js
-var httpMocks = require('node-mocks-http');
-var req = httpMocks.createRequest();
-var res = httpMocks.createResponse({
+const httpMocks = require('node-mocks-http');
+const req = httpMocks.createRequest();
+const res = httpMocks.createResponse({
   eventEmitter: require('events').EventEmitter
 });
 
@@ -208,7 +212,7 @@ var res = httpMocks.createResponse({
   });
 
   function route(req,res){
-    var data= [];
+    let data = [];
     req.on("data", chunk => {
         data.push(chunk)
     });

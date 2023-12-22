@@ -1,11 +1,11 @@
 {
   "author": "Howard Abrams <howard.abrams@gmail.com> (http://www.github.com/howardabrams)",
   "name": "node-mocks-http",
-  "description": "Mock 'http' objects for testing Express routing functions",
+  "description": "Mock 'http' objects for testing Express, Next.js and Koa routing functions",
   "version": "1.14.0",
-  "homepage": "https://github.com/howardabrams/node-mocks-http",
+  "homepage": "https://github.com/eugef/node-mocks-http",
   "bugs": {
-    "url": "https://github.com/howardabrams/node-mocks-http/issues"
+    "url": "https://github.com/eugef/node-mocks-http/issues"
   },
   "contributors": [
     {
@@ -17,6 +17,11 @@
       "name": "Johnny Estilles",
       "email": "johnny.estilles@agentia.asia",
       "url": "https://github.com/JohnnyEstilles"
+    },
+    {
+      "name": "Eugene Fidelin",
+      "email": "eugene.fidelin@gmail.com",
+      "url": "https://github.com/eugef"
     }
   ],
   "license": "MIT",
@@ -33,7 +38,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/howardabrams/node-mocks-http.git"
+    "url": "git://github.com/eugef/node-mocks-http.git"
   },
   "main": "./lib/http-mock.js",
   "types": "./lib/http-mock.d.ts",
