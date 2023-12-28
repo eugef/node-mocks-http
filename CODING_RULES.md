@@ -2,30 +2,30 @@
 
 For simplicity, we've divided our coding rules using the same categories as the ESLint documentation.
 
-- [Possible Errors](#errors)
-- [Best Practices](#best)
-- [Strict Mode](#strict)
-- [Variables](#variables)
-- [Node.js](#node)
-- [Stylistic Issues](#style)
+-   [Possible Errors](#errors)
+-   [Best Practices](#best)
+-   [Strict Mode](#strict)
+-   [Variables](#variables)
+-   [Node.js](#node)
+-   [Stylistic Issues](#style)
 
 ## <a name="errros"></a> Possible Errors
 
 The following rules point out areas where you might have made mistakes.
 
-- [comma-dangle] - enforce trailing commas
-- [no-control-regex] - disallow control characters in regular expressions
-- [no-debugger] - disallow use of debugger
-- [no-dupe-keys] - disallow duplicate keys when creating object literals
-- [no-empty] - disallow empty statements
-- [no-empty-class] - disallow the use of empty character classes in regular expressions
-- [no-ex-assign] - disallow assigning to the exception in a `catch block
-- [no-func-assign] - disallow overwriting functions written as function declarations
-- [no-unreachable] - disallow unreachable statements after a return, throw, continue, or break statement
-- [no-obj-calls] - disallow the use of object properties of the global object (`Math` and `JSON`) as functions
-- [no-regex-spaces] - disallow multiple spaces in a regular expression literal
-- [use-isnan] - disallow comparisons with the value `NaN`
-- [valid-typeof] - Ensure that the results of `typeof` are compared against a valid string
+-   [comma-dangle] - enforce trailing commas
+-   [no-control-regex] - disallow control characters in regular expressions
+-   [no-debugger] - disallow use of debugger
+-   [no-dupe-keys] - disallow duplicate keys when creating object literals
+-   [no-empty] - disallow empty statements
+-   [no-empty-class] - disallow the use of empty character classes in regular expressions
+-   [no-ex-assign] - disallow assigning to the exception in a `catch block
+-   [no-func-assign] - disallow overwriting functions written as function declarations
+-   [no-unreachable] - disallow unreachable statements after a return, throw, continue, or break statement
+-   [no-obj-calls] - disallow the use of object properties of the global object (`Math` and `JSON`) as functions
+-   [no-regex-spaces] - disallow multiple spaces in a regular expression literal
+-   [use-isnan] - disallow comparisons with the value `NaN`
+-   [valid-typeof] - Ensure that the results of `typeof` are compared against a valid string
 
 [Back to Top](#top)
 
@@ -33,35 +33,35 @@ The following rules point out areas where you might have made mistakes.
 
 These are rules designed to prevent you from making mistakes.
 
-- [no-caller] - disallow use of `arguments.caller` or `arguments.callee`
-- [no-div-regex] - disallow division operators explicitly at beginning of regular expression
-- [no-else-return] - disallow `else` after a `return` in an `if`
-- [no-eq-null] - disallow comparisons to null without a type-checking operator
-- [no-eval] - disallow use of `eval()`
-- [no-floating-decimal] - disallow the use of leading or trailing decimal points in numeric literals
-- [no-implied-eval] - disallow use of `eval()`-like methods
-- [no-with] - disallow use of the `with` statement
-- [no-fallthrough] - disallow fallthrough of case statements
-- [no-unused-expressions] - disallow usage of expressions in statement position
-- [no-octal] - disallow use of octal literals
-- [no-octal-escape] - disallow use of octal escape sequences in string literals, such as `var foo = "Copyright \251";`
-- [no-multi-str] - disallow use of multiline strings
-- [no-new-wrappers] - disallows creating new instances of `String`, `Number`, and `Boolean`
-- [no-new] - disallow use of new operator when not part of the assignment or comparison
-- [no-new-func] - disallow use of new operator for `Function` object
-- [no-native-reassign] - disallow reassignments of native objects
-- [no-return-assign] - disallow use of assignment in return statement
-- [no-self-compare] - disallow comparisons where both sides are exactly the same
-- [no-loop-func] - disallow creation of functions within loops
-- [no-empty-label] - disallow use of labels for anything other then loops and switches
-- [no-script-url] - disallow use of javascript: urls.
-- [no-proto] - disallow usage of `__proto__` property
-- [no-iterator] - disallow usage of `__iterator__` property
-- [no-redeclare] - disallow declaring the same variable more then once
-- [curly] - specify curly brace conventions for all control statements
-- [dot-notation] - encourages use of dot notation whenever possible
-- [eqeqeq] - require the use of `===` and `!==`
-- [wrap-iife] - require immediate function invocation to be wrapped in parentheses
+-   [no-caller] - disallow use of `arguments.caller` or `arguments.callee`
+-   [no-div-regex] - disallow division operators explicitly at beginning of regular expression
+-   [no-else-return] - disallow `else` after a `return` in an `if`
+-   [no-eq-null] - disallow comparisons to null without a type-checking operator
+-   [no-eval] - disallow use of `eval()`
+-   [no-floating-decimal] - disallow the use of leading or trailing decimal points in numeric literals
+-   [no-implied-eval] - disallow use of `eval()`-like methods
+-   [no-with] - disallow use of the `with` statement
+-   [no-fallthrough] - disallow fallthrough of case statements
+-   [no-unused-expressions] - disallow usage of expressions in statement position
+-   [no-octal] - disallow use of octal literals
+-   [no-octal-escape] - disallow use of octal escape sequences in string literals, such as `var foo = "Copyright \251";`
+-   [no-multi-str] - disallow use of multiline strings
+-   [no-new-wrappers] - disallows creating new instances of `String`, `Number`, and `Boolean`
+-   [no-new] - disallow use of new operator when not part of the assignment or comparison
+-   [no-new-func] - disallow use of new operator for `Function` object
+-   [no-native-reassign] - disallow reassignments of native objects
+-   [no-return-assign] - disallow use of assignment in return statement
+-   [no-self-compare] - disallow comparisons where both sides are exactly the same
+-   [no-loop-func] - disallow creation of functions within loops
+-   [no-empty-label] - disallow use of labels for anything other then loops and switches
+-   [no-script-url] - disallow use of javascript: urls.
+-   [no-proto] - disallow usage of `__proto__` property
+-   [no-iterator] - disallow usage of `__iterator__` property
+-   [no-redeclare] - disallow declaring the same variable more then once
+-   [curly] - specify curly brace conventions for all control statements
+-   [dot-notation] - encourages use of dot notation whenever possible
+-   [eqeqeq] - require the use of `===` and `!==`
+-   [wrap-iife] - require immediate function invocation to be wrapped in parentheses
 
 [Back to Top](#top)
 
@@ -69,7 +69,7 @@ These are rules designed to prevent you from making mistakes.
 
 These rules relate to using strict mode.
 
-- [strict] - ensures all code is in strict mode and that there are no extraneous Use Strict Directives
+-   [strict] - ensures all code is in strict mode and that there are no extraneous Use Strict Directives
 
 [Back to Top](#top)
 
@@ -77,14 +77,14 @@ These rules relate to using strict mode.
 
 These rules have to do with variable declarations.
 
-- [no-catch-shadow] - disallow the catch clause parameter name being the same as a variable in the outer scope
-- [no-undef] - disallow use of undeclared variables unless mentioned in a `/*global */` block
-- [no-undef-init] - disallow use of undefined when initializing variables
-- [no-delete-var] - disallow deletion of variables
-- [no-label-var] - disallow labels that share a name with a variable
-- [no-unused-vars] - disallow declaration of variables that are not used in the code
-- [no-shadow] - disallow declaration of variables already declared in the outer scope
-- [no-use-before-define] - disallow use of variables before they are defined
+-   [no-catch-shadow] - disallow the catch clause parameter name being the same as a variable in the outer scope
+-   [no-undef] - disallow use of undeclared variables unless mentioned in a `/*global */` block
+-   [no-undef-init] - disallow use of undefined when initializing variables
+-   [no-delete-var] - disallow deletion of variables
+-   [no-label-var] - disallow labels that share a name with a variable
+-   [no-unused-vars] - disallow declaration of variables that are not used in the code
+-   [no-shadow] - disallow declaration of variables already declared in the outer scope
+-   [no-use-before-define] - disallow use of variables before they are defined
 
 [Back to Top](#top)
 
@@ -92,25 +92,25 @@ These rules have to do with variable declarations.
 
 These rules are specific to JavaScript running on Node.js.
 
-- [no-sync] - disallow use of synchronous methods
-- [no-mixed-requires] - allow mixing regular variable and require declarations
+-   [no-sync] - disallow use of synchronous methods
+-   [no-mixed-requires] - allow mixing regular variable and require declarations
 
 [Back to Top](#top)
 
 ## <a name="style"></a> Stylistic Issues
 
-- [no-array-constructor] - disallow use of the `Array` `constructor
-- [no-new-object] - disallow use of the `Object constructor`
-- [no-wrap-func] - disallow wrapping of non-IIFE statements in parens
-- [brace-style] - enforce one true brace style
-- [camelcase] - require camel case names
-- [consistent-this] - enforces consistent naming when capturing the current execution context
-- [new-cap] - require a capital letter for constructors
-- [new-parens] - disallow the omission of parentheses when invoking a constructor with no arguments
-- [quotes] - specify whether double or single quotes should be used
-- [semi] - require use of semicolons instead of ASI
-- [no-mixed-spaces-and-tabs] - disallow mixed spaces and tabs for indentation
-- [indent] - 4 spaces indentation with enabled switch cases validation
+-   [no-array-constructor] - disallow use of the `Array` `constructor
+-   [no-new-object] - disallow use of the `Object constructor`
+-   [no-wrap-func] - disallow wrapping of non-IIFE statements in parens
+-   [brace-style] - enforce one true brace style
+-   [camelcase] - require camel case names
+-   [consistent-this] - enforces consistent naming when capturing the current execution context
+-   [new-cap] - require a capital letter for constructors
+-   [new-parens] - disallow the omission of parentheses when invoking a constructor with no arguments
+-   [quotes] - specify whether double or single quotes should be used
+-   [semi] - require use of semicolons instead of ASI
+-   [no-mixed-spaces-and-tabs] - disallow mixed spaces and tabs for indentation
+-   [indent] - 4 spaces indentation with enabled switch cases validation
 
 [Back to Top](#top)
 
