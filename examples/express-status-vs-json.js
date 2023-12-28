@@ -9,7 +9,7 @@ var httpMocks = require('../lib/http-mock');
 // And you have created a function to handle that route's call:
 
 var routeHandler = function (request, response) {
-    console.log('We have a \'%s\' request for %s', request.method, request.url);
+    console.log("We have a '%s' request for %s", request.method, request.url);
 
     var body = {
         name: 'Bob Dog',

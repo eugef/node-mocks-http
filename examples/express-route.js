@@ -11,7 +11,7 @@ var httpMocks = require('../lib/http-mock');
 var routeHandler = function (request, response) {
     var id = request.params.id;
 
-    console.log('We have a \'%s\' request for %s (ID: %d)', request.method, request.url, id);
+    console.log("We have a '%s' request for %s (ID: %d)", request.method, request.url, id);
 
     var body = {
         name: 'Bob Dog',
