@@ -2,20 +2,20 @@
 
 As a community-focused, open source project, contributions are always welcome, no matter how large or small. Here are the guidelines we ask our contributors to follow:
 
--   [Code of Conduct](#coc)
--   [Issues and Bugs](#issue)
--   [Feature Requests](#feature)
--   [Submission Guidelines](#submit)
--   [Coding Rules](#rules)
--   [Running Test Suite](#tests)
--   [Contact Us](#contact)
+- [Code of Conduct](#coc)
+- [Issues and Bugs](#issue)
+- [Feature Requests](#feature)
+- [Submission Guidelines](#submit)
+- [Coding Rules](#rules)
+- [Running Test Suite](#tests)
+- [Contact Us](#contact)
 
 > **NOTE**
 
 > While we complete our transition to version `2.0`, please adhere to the following:
 
--   For any contributions to our `2.0` track, please create a topic branch based off our `master` branch, push said topic branch onto your fork and submit your pull request from that branch.
--   Anyone wishing to contribute a bug fix to our `1.x` track, please create a topic branch based off our `1.x` branch, push said topic branch onto your fork and submit your pull request from that branch..
+- For any contributions to our `2.0` track, please create a topic branch based off our `master` branch, push said topic branch onto your fork and submit your pull request from that branch.
+- Anyone wishing to contribute a bug fix to our `1.x` track, please create a topic branch based off our `1.x` branch, push said topic branch onto your fork and submit your pull request from that branch..
 
 ## <a name="coc"></a> Code of Conduct
 
@@ -53,12 +53,12 @@ If you believe your issue is a bug, and you can't find a issue in the [archive][
 
 Provide the following information to help us identify and fix the issue in a timely manner:
 
--   **Overview** - describe the issue the best way you can, and if possible include a stack trace
--   **Use Case** - explain why you consider this a bug
--   **Version(s)** - tell us what version of node-mocks-http you're currently using
--   **Reproduce** - it would be awesome if you could provide a live example (using [Plunker][plunker] or
-    [JSFiddle][jsfiddle]), or at least a step-by-step description on how to reproduce it
--   **Suggestions** - if you have identified the lines of code or the commit responsible for the problem please include it as well
+- **Overview** - describe the issue the best way you can, and if possible include a stack trace
+- **Use Case** - explain why you consider this a bug
+- **Version(s)** - tell us what version of node-mocks-http you're currently using
+- **Reproduce** - it would be awesome if you could provide a live example (using [Plunker][plunker] or
+  [JSFiddle][jsfiddle]), or at least a step-by-step description on how to reproduce it
+- **Suggestions** - if you have identified the lines of code or the commit responsible for the problem please include it as well
 
 ### Submitting a Pull Request
 
@@ -66,57 +66,57 @@ We are a _Pull Request-friendly_ project!
 
 Your pull requests are always welcome. We only ask that you adhere to the following guidelines before you submit your pull request:
 
--   Search [GitHub][pulls] for an open or closed Pull Request that may be similar to yours. Avoid duplicates!
--   Fork our [repo][repo] and create a local clone, if you haven't done so already.
+- Search [GitHub][pulls] for an open or closed Pull Request that may be similar to yours. Avoid duplicates!
+- Fork our [repo][repo] and create a local clone, if you haven't done so already.
+
+  ```shell
+  git clone https://github.com/YOUR-NAME/node-mocks-http.git
+  ```
+
+- If you had previously cloned the [repo][repo], make sure you sync it with the upstream repository.
+
+  ```shell
+  git remote add upstream https://github.com/eugef/node-mocks-http.git
+  git fetch upstream
+  git checkout master
+  git merge upstream/master
+  ```
+
+- Create a new topic branch:
+
+  ```shell
+  git checkout -b my-awesome-fix master
+  ```
+
+- Now do your thing! Create your fix/patch, **including appropriate test cases**.
+- Follow our [Coding Rules](#rules).
+- Run our test suite, as described in [below](#tests),
+  and ensure that all tests pass.
+- Commit your changes using a descriptive commit message
+
+  ```shell
+  git commit -a
+  ```
+
+  Note: the optional commit `-a` command line option will automatically "add" and "rm" edited files.
+
+- Push your branch to GitHub:
+
+  ```shell
+  git push origin my-awesome-fix
+  ```
+
+- In GitHub, send a pull request to `node-mocks-http`.
+- If we find any issues we may suggest that you:
+
+  - Make the required updates.
+  - Re-run the [test suite](#tests) to ensure tests are still passing.
+  - Rebase your branch and force push to your GitHub repository (this will update your Pull Request):
 
     ```shell
-    git clone https://github.com/YOUR-NAME/node-mocks-http.git
+    git rebase master -i
+    git push origin my-awesome-fix -f
     ```
-
--   If you had previously cloned the [repo][repo], make sure you sync it with the upstream repository.
-
-    ```shell
-    git remote add upstream https://github.com/eugef/node-mocks-http.git
-    git fetch upstream
-    git checkout master
-    git merge upstream/master
-    ```
-
--   Create a new topic branch:
-
-    ```shell
-    git checkout -b my-awesome-fix master
-    ```
-
--   Now do your thing! Create your fix/patch, **including appropriate test cases**.
--   Follow our [Coding Rules](#rules).
--   Run our test suite, as described in [below](#tests),
-    and ensure that all tests pass.
--   Commit your changes using a descriptive commit message
-
-    ```shell
-    git commit -a
-    ```
-
-    Note: the optional commit `-a` command line option will automatically "add" and "rm" edited files.
-
--   Push your branch to GitHub:
-
-    ```shell
-    git push origin my-awesome-fix
-    ```
-
--   In GitHub, send a pull request to `node-mocks-http`.
--   If we find any issues we may suggest that you:
-
-    -   Make the required updates.
-    -   Re-run the [test suite](#tests) to ensure tests are still passing.
-    -   Rebase your branch and force push to your GitHub repository (this will update your Pull Request):
-
-        ```shell
-        git rebase master -i
-        git push origin my-awesome-fix -f
-        ```
 
 That's it!
 
@@ -124,29 +124,29 @@ That's it!
 
 After we merge your pull request, you can safely delete your branch and pull the changes from our main (upstream) repository:
 
--   Delete the remote branch on GitHub either through the GitHub web interface or your local shell as follows:
+- Delete the remote branch on GitHub either through the GitHub web interface or your local shell as follows:
 
-    ```shell
-    git push origin --delete my-awesome-fix
-    ```
+  ```shell
+  git push origin --delete my-awesome-fix
+  ```
 
--   Check out the master branch:
+- Check out the master branch:
 
-    ```shell
-    git checkout master -f
-    ```
+  ```shell
+  git checkout master -f
+  ```
 
--   Delete the local branch:
+- Delete the local branch:
 
-    ```shell
-    git branch -D my-awesome-fix
-    ```
+  ```shell
+  git branch -D my-awesome-fix
+  ```
 
--   Update your master with the latest upstream version:
+- Update your master with the latest upstream version:
 
-    ```shell
-    git pull --ff upstream master
-    ```
+  ```shell
+  git pull --ff upstream master
+  ```
 
 ## <a name="rules"></a> Coding Rules
 

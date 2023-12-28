@@ -47,29 +47,29 @@ this using the testing framework of your choice:
 
 ```js
 exports['routeHandler - Simple testing'] = function (test) {
-    const request = httpMocks.createRequest({
-        method: 'GET',
-        url: '/user/42',
-        params: {
-            id: 42
-        }
-    });
+  const request = httpMocks.createRequest({
+    method: 'GET',
+    url: '/user/42',
+    params: {
+      id: 42
+    }
+  });
 
-    const response = httpMocks.createResponse();
+  const response = httpMocks.createResponse();
 
-    routeHandler(request, response);
+  routeHandler(request, response);
 
-    const data = response._getJSONData(); // short-hand for JSON.parse( response._getData() );
-    test.equal('Bob Dog', data.name);
-    test.equal(42, data.age);
-    test.equal('bob@dog.com', data.email);
+  const data = response._getJSONData(); // short-hand for JSON.parse( response._getData() );
+  test.equal('Bob Dog', data.name);
+  test.equal(42, data.age);
+  test.equal('bob@dog.com', data.email);
 
-    test.equal(200, response.statusCode);
-    test.ok(response._isEndCalled());
-    test.ok(response._isJSON());
-    test.ok(response._isUTF8());
+  test.equal(200, response.statusCode);
+  test.ok(response._isEndCalled());
+  test.ok(response._isJSON());
+  test.ok(response._isUTF8());
 
-    test.done();
+  test.done();
 };
 ```
 
@@ -79,28 +79,28 @@ The typings for TypeScript are bundled with this project. In particular, the `.c
 
 ```ts
 it('should handle expressjs requests', () => {
-    const mockExpressRequest = httpMocks.createRequest({
-        method: 'GET',
-        url: '/user/42',
-        params: {
-            id: 42
-        }
-    });
-    const mockExpressResponse = httpMocks.createResponse();
+  const mockExpressRequest = httpMocks.createRequest({
+    method: 'GET',
+    url: '/user/42',
+    params: {
+      id: 42
+    }
+  });
+  const mockExpressResponse = httpMocks.createResponse();
 
-    routeHandler(request, response);
+  routeHandler(request, response);
 
-    const data = response._getJSONData();
-    test.equal('Bob Dog', data.name);
-    test.equal(42, data.age);
-    test.equal('bob@dog.com', data.email);
+  const data = response._getJSONData();
+  test.equal('Bob Dog', data.name);
+  test.equal(42, data.age);
+  test.equal('bob@dog.com', data.email);
 
-    test.equal(200, response.statusCode);
-    test.ok(response._isEndCalled());
-    test.ok(response._isJSON());
-    test.ok(response._isUTF8());
+  test.equal(200, response.statusCode);
+  test.ok(response._isEndCalled());
+  test.ok(response._isJSON());
+  test.ok(response._isUTF8());
 
-    test.done();
+  test.done();
 });
 ```
 
@@ -110,16 +110,16 @@ too. An example for NextJS request will look like this:
 
 ```ts
 it('should handle nextjs requests', () => {
-    const mockExpressRequest = httpMocks.createRequest<NextApiRequest>({
-        method: 'GET',
-        url: '/user/42',
-        params: {
-            id: 42
-        }
-    });
-    const mockExpressResponse = httpMocks.createResponse<NextApiResponse>();
+  const mockExpressRequest = httpMocks.createRequest<NextApiRequest>({
+    method: 'GET',
+    url: '/user/42',
+    params: {
+      id: 42
+    }
+  });
+  const mockExpressResponse = httpMocks.createResponse<NextApiResponse>();
 
-    // ... the rest of the test as above.
+  // ... the rest of the test as above.
 });
 ```
 
@@ -195,31 +195,31 @@ const res = httpMocks.createResponse({
 const httpMocks = require('node-mocks-http');
 const req = httpMocks.createRequest();
 const res = httpMocks.createResponse({
-    eventEmitter: require('events').EventEmitter
+  eventEmitter: require('events').EventEmitter
 });
 
 // ...
 it('should do something', function (done) {
-    res.on('end', function () {
-        expect(response._getData()).to.equal('data sent in request');
-        done();
-    });
+  res.on('end', function () {
+    expect(response._getData()).to.equal('data sent in request');
+    done();
+  });
 
-    route(req, res);
+  route(req, res);
 
-    req.send('data sent in request');
+  req.send('data sent in request');
 });
 
 function route(req, res) {
-    let data = [];
-    req.on('data', (chunk) => {
-        data.push(chunk);
-    });
-    req.on('end', () => {
-        data = Buffer.concat(data);
-        res.write(data);
-        res.end();
-    });
+  let data = [];
+  req.on('data', (chunk) => {
+    data.push(chunk);
+  });
+  req.on('end', () => {
+    data = Buffer.concat(data);
+    res.write(data);
+    res.end();
+  });
 }
 // ...
 ```
