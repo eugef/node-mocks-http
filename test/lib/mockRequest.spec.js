@@ -8,18 +8,16 @@ var parseRange = require('range-parser');
 
 var mockRequest = require('../../lib/mockRequest');
 
-describe('mockRequest', function() {
-
-  it('should expose .createRequest()', function() {
+describe('mockRequest', function () {
+  it('should expose .createRequest()', function () {
     expect(mockRequest.createRequest).to.be.a('function');
   });
 
-  describe('.createRequest()', function() {
+  describe('.createRequest()', function () {
     var request;
 
-    describe('without options', function() {
-
-      before(function() {
+    describe('without options', function () {
+      before(function () {
         request = mockRequest.createRequest();
       });
 
@@ -29,15 +27,15 @@ describe('mockRequest', function() {
         expect(request.emit).to.be.a('function');
       });
 
-      it('should return an object', function() {
+      it('should return an object', function () {
         expect(request).to.be.an('object');
       });
 
-      it('should be an EventEmitter', function() {
+      it('should be an EventEmitter', function () {
         expect(request).to.be.an.instanceof(require('events').EventEmitter);
       });
 
-      it('should expose Express Request object methods', function() {
+      it('should expose Express Request object methods', function () {
         expect(request).to.have.property('get');
         expect(request.get).to.be.a('function');
 
@@ -48,7 +46,7 @@ describe('mockRequest', function() {
         expect(request.param).to.be.a('function');
       });
 
-      it('shoud initialize with default options', function() {
+      it('shoud initialize with default options', function () {
         expect(request.method).to.equal('GET');
         expect(request.url).to.equal('');
         expect(request.originalUrl).to.equal(request.url);
@@ -65,16 +63,14 @@ describe('mockRequest', function() {
         expect(request.ip).to.equal('127.0.0.1');
         expect(request.ips).to.deep.equal([request.ip]);
       });
-
     });
 
-    describe('with options', function() {
-
-      afterEach(function() {
+    describe('with options', function () {
+      afterEach(function () {
         request = null;
       });
 
-      it('should set .method to options.method', function() {
+      it('should set .method to options.method', function () {
         var options = {
           method: 'POST'
         };
@@ -83,7 +79,7 @@ describe('mockRequest', function() {
         expect(request.method).to.equal(options.method);
       });
 
-      it('should set .url to options.url', function() {
+      it('should set .url to options.url', function () {
         var options = {
           url: '/this/is/a/url'
         };
@@ -94,7 +90,7 @@ describe('mockRequest', function() {
         expect(request.baseUrl).to.equal(options.url);
       });
 
-      it('should set .url automatically', function() {
+      it('should set .url automatically', function () {
         var options = {
           path: '/this/is/a/path'
         };
@@ -105,7 +101,7 @@ describe('mockRequest', function() {
         expect(request.url).to.equal(expectedUrl);
       });
 
-      it('should set .baseUrl to options.baseUrl', function() {
+      it('should set .baseUrl to options.baseUrl', function () {
         var options = {
           baseUrl: '/this'
         };
@@ -114,7 +110,7 @@ describe('mockRequest', function() {
         expect(request.baseUrl).to.equal(options.baseUrl);
       });
 
-      it('should set .originalUrl to options.originalUrl', function() {
+      it('should set .originalUrl to options.originalUrl', function () {
         var options = {
           originalUrl: '/this/is/a/url'
         };
@@ -123,7 +119,7 @@ describe('mockRequest', function() {
         expect(request.originalUrl).to.equal(options.originalUrl);
       });
 
-      it('should set .path to options.path', function() {
+      it('should set .path to options.path', function () {
         var options = {
           path: '/this/is/a/path'
         };
@@ -132,7 +128,7 @@ describe('mockRequest', function() {
         expect(request.path).to.equal(options.path);
       });
 
-      it('should set .path to pathname of options.url', function() {
+      it('should set .path to pathname of options.url', function () {
         var options = {
           url: '/this/is/a/url'
         };
@@ -141,7 +137,7 @@ describe('mockRequest', function() {
         expect(request.path).to.equal(url.parse(options.url).pathname);
       });
 
-      it('should set .params to options.params', function() {
+      it('should set .params to options.params', function () {
         var options = {
           params: {
             key1: 'value1',
@@ -153,7 +149,7 @@ describe('mockRequest', function() {
         expect(request.params).to.deep.equal(options.params);
       });
 
-      it('should set .session to options.session', function() {
+      it('should set .session to options.session', function () {
         var options = {
           session: {
             key1: 'value1',
@@ -165,7 +161,7 @@ describe('mockRequest', function() {
         expect(request.session).to.deep.equal(options.session);
       });
 
-      it('should set .cookies to options.cookies', function() {
+      it('should set .cookies to options.cookies', function () {
         var options = {
           cookies: {
             key1: 'value1',
@@ -177,7 +173,7 @@ describe('mockRequest', function() {
         expect(request.cookies).to.deep.equal(options.cookies);
       });
 
-      it('should set .signedCookies to options.signedCookies', function() {
+      it('should set .signedCookies to options.signedCookies', function () {
         var options = {
           signedCookies: {
             key1: 'value1',
@@ -189,7 +185,7 @@ describe('mockRequest', function() {
         expect(request.signedCookies).to.deep.equal(options.signedCookies);
       });
 
-      it('should set .headers to options.headers', function() {
+      it('should set .headers to options.headers', function () {
         var options = {
           headers: {
             key1: 'value1',
@@ -201,7 +197,7 @@ describe('mockRequest', function() {
         expect(request.headers).to.deep.equal(options.headers);
       });
 
-      it('should set .headers to options.headers and be accessible via get() and header() case-insensitively', function() {
+      it('should set .headers to options.headers and be accessible via get() and header() case-insensitively', function () {
         var options = {
           headers: {
             KEY1: 'value1',
@@ -218,7 +214,7 @@ describe('mockRequest', function() {
         expect(request.getHeader('KEY2')).to.equal('value2');
       });
 
-      it('should set .body to options.body', function() {
+      it('should set .body to options.body', function () {
         var options = {
           body: {
             key1: 'value1',
@@ -230,7 +226,7 @@ describe('mockRequest', function() {
         expect(request.body).to.deep.equal(options.body);
       });
 
-      it('should set .query to options.query', function() {
+      it('should set .query to options.query', function () {
         var options = {
           query: {
             key1: 'value1',
@@ -242,7 +238,7 @@ describe('mockRequest', function() {
         expect(request.query).to.deep.equal(options.query);
       });
 
-      it('should set .files to options.files', function() {
+      it('should set .files to options.files', function () {
         var options = {
           files: {
             key1: 'value1',
@@ -254,7 +250,7 @@ describe('mockRequest', function() {
         expect(request.files).to.deep.equal(options.files);
       });
 
-      it('should set .query to url query params when options.query not set', function() {
+      it('should set .query to url query params when options.query not set', function () {
         var options = {
           url: '/path/to/url?key1=value1&key2=value2'
         };
@@ -264,7 +260,7 @@ describe('mockRequest', function() {
         expect(request.query).to.deep.equal(parsedOptions);
       });
 
-      it('should accept and set non-standard options passed to it', function() {
+      it('should accept and set non-standard options passed to it', function () {
         var options = {
           mySampleProp: 'la LA LA'
         };
@@ -273,7 +269,7 @@ describe('mockRequest', function() {
         expect(request.mySampleProp).to.equal('la LA LA');
       });
 
-      it('should set .ip to options.ip', function() {
+      it('should set .ip to options.ip', function () {
         var options = {
           ip: '192.168.1.1'
         };
@@ -282,7 +278,7 @@ describe('mockRequest', function() {
         expect(request.ip).to.equal(options.ip);
       });
 
-      it('should set .ips to [options.ip]', function() {
+      it('should set .ips to [options.ip]', function () {
         var options = {
           ip: '192.168.1.1'
         };
@@ -290,19 +286,17 @@ describe('mockRequest', function() {
         request = mockRequest.createRequest(options);
         expect(request.ips).to.deep.equal([options.ip]);
       });
-
     });
-
   });
 
-  describe('.get()/.header()', function() {
+  describe('.get()/.header()', function () {
     var request;
 
-    afterEach(function() {
+    afterEach(function () {
       request = null;
     });
 
-    it('should return header, when set', function() {
+    it('should return header, when set', function () {
       var options = {
         headers: {
           key: 'value'
@@ -314,7 +308,7 @@ describe('mockRequest', function() {
       expect(request.getHeader('key')).to.equal('value');
     });
 
-    it('should return referer, when request as referrer', function() {
+    it('should return referer, when request as referrer', function () {
       var options = {
         headers: {
           referer: 'value'
@@ -327,7 +321,7 @@ describe('mockRequest', function() {
       expect(request.getHeader('referrer')).to.equal('value');
     });
 
-    it('should return referrer, when request as referer', function() {
+    it('should return referrer, when request as referer', function () {
       var options = {
         headers: {
           referrer: 'value'
@@ -340,23 +334,22 @@ describe('mockRequest', function() {
       expect(request.getHeader('referer')).to.equal('value');
     });
 
-    it('should not return header, when not set', function() {
+    it('should not return header, when not set', function () {
       request = mockRequest.createRequest();
       expect(request.get('key')).to.not.exist;
       expect(request.header('key')).to.not.exist;
       expect(request.getHeader('key')).to.not.exist;
     });
-
   });
 
-  describe('.is()', function() {
+  describe('.is()', function () {
     var request;
 
-    afterEach(function() {
+    afterEach(function () {
       request = null;
     });
 
-    it('should return type, when found in content-type header', function() {
+    it('should return type, when found in content-type header', function () {
       var options = {
         headers: {
           'content-type': 'text/html',
@@ -368,7 +361,7 @@ describe('mockRequest', function() {
       expect(request.is('html')).to.equal('html');
     });
 
-    it('should return first matching type, given array of types', function() {
+    it('should return first matching type, given array of types', function () {
       var options = {
         headers: {
           'content-type': 'text/html',
@@ -380,7 +373,7 @@ describe('mockRequest', function() {
       expect(request.is(['json', 'html', 'text'])).to.equal('html');
     });
 
-    it('should return false when type not found', function() {
+    it('should return false when type not found', function () {
       var options = {
         headers: {
           'content-type': 'text/html',
@@ -391,98 +384,97 @@ describe('mockRequest', function() {
       request = mockRequest.createRequest(options);
       expect(request.is(['json'])).to.equal(false);
     });
-
   });
 
-  describe('.accepts()', function() {
+  describe('.accepts()', function () {
     var request;
 
-    beforeEach(function() {
-      request = mockRequest.createRequest({ headers: { accept: 'text/html' }});
+    beforeEach(function () {
+      request = mockRequest.createRequest({ headers: { accept: 'text/html' } });
     });
 
-    it('returns type if the same as Accept header', function() {
+    it('returns type if the same as Accept header', function () {
       expect(request.accepts('text/html')).to.equal('text/html');
       expect(request.accepts('html')).to.equal('html');
     });
 
-    it('returns the first matching type of an array of types', function() {
+    it('returns the first matching type of an array of types', function () {
       expect(request.accepts(['json', 'html'])).to.equal('html');
     });
 
-    it('returns false when types dont match', function() {
+    it('returns false when types dont match', function () {
       expect(request.accepts(['json', 'xml'])).to.equal(false);
     });
   });
 
-  describe('.acceptsEncodings()', function() {
+  describe('.acceptsEncodings()', function () {
     var request;
 
-    beforeEach(function() {
-      request = mockRequest.createRequest({ headers: { 'Accept-Encoding': 'gzip' }});
+    beforeEach(function () {
+      request = mockRequest.createRequest({ headers: { 'Accept-Encoding': 'gzip' } });
     });
 
-    it('returns type if the same as Accept-Encoding header', function() {
+    it('returns type if the same as Accept-Encoding header', function () {
       expect(request.acceptsEncodings('gzip')).to.equal('gzip');
     });
 
-    it('returns the first matching type of an array of types', function() {
+    it('returns the first matching type of an array of types', function () {
       expect(request.acceptsEncodings(['compress', 'gzip'])).to.equal('gzip');
     });
 
-    it('returns false when types dont match', function() {
+    it('returns false when types dont match', function () {
       expect(request.acceptsEncodings(['compress', 'deflate'])).to.equal(false);
     });
   });
 
-  describe('.acceptsCharsets()', function() {
+  describe('.acceptsCharsets()', function () {
     var request;
 
-    beforeEach(function() {
-      request = mockRequest.createRequest({ headers: { 'Accept-Charset': 'utf-8' }});
+    beforeEach(function () {
+      request = mockRequest.createRequest({ headers: { 'Accept-Charset': 'utf-8' } });
     });
 
-    it('returns type if the same as Accept-Charset header', function() {
+    it('returns type if the same as Accept-Charset header', function () {
       expect(request.acceptsCharsets('utf-8')).to.equal('utf-8');
     });
 
-    it('returns the first matching type of an array of types', function() {
+    it('returns the first matching type of an array of types', function () {
       expect(request.acceptsCharsets(['iso-8859-15', 'utf-8'])).to.equal('utf-8');
     });
 
-    it('returns false when types dont match', function() {
+    it('returns false when types dont match', function () {
       expect(request.acceptsCharsets(['iso-8859-15', 'us-ascii'])).to.equal(false);
     });
   });
 
-  describe('.acceptsLanguages()', function() {
+  describe('.acceptsLanguages()', function () {
     var request;
 
-    beforeEach(function() {
-      request = mockRequest.createRequest({ headers: { 'Accept-Language': 'en-GB' }});
+    beforeEach(function () {
+      request = mockRequest.createRequest({ headers: { 'Accept-Language': 'en-GB' } });
     });
 
-    it('returns type if the same as Accept-Language header', function() {
+    it('returns type if the same as Accept-Language header', function () {
       expect(request.acceptsLanguages('en-GB')).to.equal('en-GB');
     });
 
-    it('returns the first matching type of an array of types', function() {
+    it('returns the first matching type of an array of types', function () {
       expect(request.acceptsLanguages(['de-DE', 'en-GB'])).to.equal('en-GB');
     });
 
-    it('returns false when types dont match', function() {
+    it('returns false when types dont match', function () {
       expect(request.acceptsLanguages(['de-DE', 'fr-FR'])).to.equal(false);
     });
   });
 
-  describe('.range()', function() {
+  describe('.range()', function () {
     var request;
 
-    afterEach(function() {
+    afterEach(function () {
       request = null;
     });
 
-    it('returns undefined if there is no Range header', function() {
+    it('returns undefined if there is no Range header', function () {
       request = mockRequest.createRequest();
       expect(request.range()).to.be.undefined;
     });
@@ -518,22 +510,28 @@ describe('mockRequest', function() {
       }
     ];
 
-    tests.forEach(function(t) {
-      it('returns the result of range-parser if there is a Range header of ' + t.header + ' using size: ' + t.size, function() {
-        request = mockRequest.createRequest({ headers: { range: t.header }});
-        expect(request.range(t.size, t.options)).to.deep.equal(parseRange(t.size, t.header, t.options));
-      });
+    tests.forEach(function (t) {
+      it(
+        'returns the result of range-parser if there is a Range header of ' +
+                    t.header +
+                    ' using size: ' +
+                    t.size,
+        function () {
+          request = mockRequest.createRequest({ headers: { range: t.header } });
+          expect(request.range(t.size, t.options)).to.deep.equal(parseRange(t.size, t.header, t.options));
+        }
+      );
     });
   });
 
-  describe('.param()', function() {
+  describe('.param()', function () {
     var request;
 
-    afterEach(function() {
+    afterEach(function () {
       request = null;
     });
 
-    it('should return param, when found in params', function() {
+    it('should return param, when found in params', function () {
       var options = {
         params: {
           key: 'value'
@@ -544,7 +542,7 @@ describe('mockRequest', function() {
       expect(request.param('key')).to.equal('value');
     });
 
-    it('should return falsy param, when found in params', function() {
+    it('should return falsy param, when found in params', function () {
       var options = {
         params: {
           key: 0
@@ -555,7 +553,7 @@ describe('mockRequest', function() {
       expect(request.param('key')).to.equal(0);
     });
 
-    it('should return param, when found in body', function() {
+    it('should return param, when found in body', function () {
       var options = {
         body: {
           key: 'value'
@@ -566,7 +564,7 @@ describe('mockRequest', function() {
       expect(request.param('key')).to.equal('value');
     });
 
-    it('should return falsy param, when found in body', function() {
+    it('should return falsy param, when found in body', function () {
       var options = {
         body: {
           key: 0
@@ -577,7 +575,7 @@ describe('mockRequest', function() {
       expect(request.param('key')).to.equal(0);
     });
 
-    it('should return param, when found in query', function() {
+    it('should return param, when found in query', function () {
       var options = {
         query: {
           key: 'value'
@@ -588,7 +586,7 @@ describe('mockRequest', function() {
       expect(request.param('key')).to.equal('value');
     });
 
-    it('should return falsy param, when found in query', function() {
+    it('should return falsy param, when found in query', function () {
       var options = {
         query: {
           key: 0
@@ -599,44 +597,43 @@ describe('mockRequest', function() {
       expect(request.param('key')).to.equal(0);
     });
 
-    it('should not return param, when not found in params/body/query', function() {
+    it('should not return param, when not found in params/body/query', function () {
       request = mockRequest.createRequest();
       expect(request.get('key')).to.not.exist;
       expect(request.header('key')).to.not.exist;
     });
 
-    it('should return defaultValue, when not found in params/body/query', function() {
+    it('should return defaultValue, when not found in params/body/query', function () {
       request = mockRequest.createRequest();
       expect(request.get('key')).to.not.exist;
       expect(request.param('key', 'defaultValue')).to.equal('defaultValue');
     });
 
-    it('should return undefined, when not found in params/body/query', function() {
+    it('should return undefined, when not found in params/body/query', function () {
       request = mockRequest.createRequest();
       expect(request.get('key')).to.not.exist;
       expect(request.param('key')).to.be.undefined;
     });
   });
 
-  describe('helper functions', function() {
+  describe('helper functions', function () {
     var request;
 
-    beforeEach(function() {
+    beforeEach(function () {
       request = mockRequest.createRequest();
     });
 
-    afterEach(function() {
+    afterEach(function () {
       request = null;
     });
 
-    describe('._setParameter()', function() {
-
-      it('should set param, when called with key and value', function() {
+    describe('._setParameter()', function () {
+      it('should set param, when called with key and value', function () {
         request._setParameter('key', 'value');
         expect(request.param('key')).to.equal('value');
       });
 
-      it('should unset param, when called with key and no value', function() {
+      it('should unset param, when called with key and no value', function () {
         request._setParameter('key', 'value');
         request._setParameter('key');
         expect(request.param('key')).to.not.exist;
@@ -645,17 +642,15 @@ describe('mockRequest', function() {
       it('should throw an error, when called with no arguments', function () {
         expect(request._setParameter).to.throw;
       });
-
     });
 
-    describe('._setSessionVariable()', function() {
-
-      it('should set session variable, when called with key and value', function() {
+    describe('._setSessionVariable()', function () {
+      it('should set session variable, when called with key and value', function () {
         request._setSessionVariable('key', 'value');
         expect(request.session.key).to.equal('value');
       });
 
-      it('should unset session variable, when called with key and no value', function() {
+      it('should unset session variable, when called with key and no value', function () {
         request._setSessionVariable('key', 'value');
         request._setSessionVariable('key');
         expect(request.param('key')).to.not.exist;
@@ -664,17 +659,15 @@ describe('mockRequest', function() {
       it('should throw an error, when called with no arguments', function () {
         expect(request._setSessionVariable).to.throw;
       });
-
     });
 
-    describe('._setCookiesVariable()', function() {
-
-      it('should set cookie, when called with key and value', function() {
+    describe('._setCookiesVariable()', function () {
+      it('should set cookie, when called with key and value', function () {
         request._setCookiesVariable('key', 'value');
         expect(request.cookies.key).to.equal('value');
       });
 
-      it('should unset cookie, when called with key and no value', function() {
+      it('should unset cookie, when called with key and no value', function () {
         request._setCookiesVariable('key', 'value');
         request._setCookiesVariable('key');
         expect(request.cookies.key).to.not.exist;
@@ -683,17 +676,15 @@ describe('mockRequest', function() {
       it('should throw an error, when called with no arguments', function () {
         expect(request._setCookiesVariable).to.throw;
       });
-
     });
 
-    describe('._setSignedCookiesVariable()', function() {
-
-      it('should set signed cookie, when called with key and value', function() {
+    describe('._setSignedCookiesVariable()', function () {
+      it('should set signed cookie, when called with key and value', function () {
         request._setSignedCookiesVariable('key', 'value');
         expect(request.signedCookies.key).to.equal('value');
       });
 
-      it('should unset signed cookie, when called with key and no value', function() {
+      it('should unset signed cookie, when called with key and no value', function () {
         request._setSignedCookiesVariable('key', 'value');
         request._setSignedCookiesVariable('key');
         expect(request.signedCookies.key).to.not.exist;
@@ -702,12 +693,10 @@ describe('mockRequest', function() {
       it('should throw an error, when called with no arguments', function () {
         expect(request._setSignedCookiesVariable).to.throw;
       });
-
     });
 
-    describe('._setHeadersVariable()', function() {
-
-      it('should set header, when called with key and value', function() {
+    describe('._setHeadersVariable()', function () {
+      it('should set header, when called with key and value', function () {
         request._setHeadersVariable('key', 'value');
         expect(request.get('key')).to.equal('value');
         expect(request.header('key')).to.equal('value');
@@ -718,17 +707,15 @@ describe('mockRequest', function() {
         expect(request._setHeadersVariable).to.throw;
         expect(request._setHeadersVariable.bind(null, 'key')).to.throw;
       });
-
     });
 
-    describe('._setFilesVariable()', function() {
-
-      it('should set file, when called with key and value', function() {
+    describe('._setFilesVariable()', function () {
+      it('should set file, when called with key and value', function () {
         request._setFilesVariable('key', 'value');
         expect(request.files.key).to.equal('value');
       });
 
-      it('should unset file, when called with key and no value', function() {
+      it('should unset file, when called with key and no value', function () {
         request._setFilesVariable('key', 'value');
         request._setFilesVariable('key');
         expect(request.files.key).to.not.exist;
@@ -737,72 +724,62 @@ describe('mockRequest', function() {
       it('should throw an error, when called with no arguments', function () {
         expect(request._setFilesVariable).to.throw;
       });
-
     });
 
-    describe('._setMethod()', function() {
-
-      it('should set method, when called with value', function() {
+    describe('._setMethod()', function () {
+      it('should set method, when called with value', function () {
         var value = 'HEAD';
         request._setMethod(value);
         expect(request.method).to.equal(value);
       });
 
-      it('should unset method, when called with no arguments', function() {
+      it('should unset method, when called with no arguments', function () {
         request._setMethod();
         expect(request.method).to.not.exist;
       });
-
     });
 
-    describe('._setURL()', function() {
-
-      it('should set url, when called with value', function() {
+    describe('._setURL()', function () {
+      it('should set url, when called with value', function () {
         var value = '/path/to/url';
         request._setURL(value);
         expect(request.url).to.equal(value);
       });
 
-      it('should unset url, when called with no arguments', function() {
+      it('should unset url, when called with no arguments', function () {
         request._setURL();
         expect(request.url).to.not.exist;
       });
-
     });
 
-    describe('._setBaseUrl()', function() {
-
-      it('should set baseUrl, when called with value', function() {
+    describe('._setBaseUrl()', function () {
+      it('should set baseUrl, when called with value', function () {
         var value = '/path';
         request._setBaseUrl(value);
         expect(request.baseUrl).to.equal(value);
       });
 
-      it('should unset baseUrl, when called with no arguments', function() {
+      it('should unset baseUrl, when called with no arguments', function () {
         request._setBaseUrl();
         expect(request.baseUrl).to.not.exist;
       });
-
     });
 
-    describe('._setOriginalUrl()', function() {
-
-      it('should set originalUrl, when called with value', function() {
+    describe('._setOriginalUrl()', function () {
+      it('should set originalUrl, when called with value', function () {
         var value = '/path/to/url';
         request._setOriginalUrl(value);
         expect(request.originalUrl).to.equal(value);
       });
 
-      it('should unset originalUrl, when called with no arguments', function() {
+      it('should unset originalUrl, when called with no arguments', function () {
         request._setOriginalUrl();
         expect(request.originalUrl).to.not.exist;
       });
-
     });
 
-    describe('._setBody()', function() {
-
-      it('should set body, when called with value', function() {
+    describe('._setBody()', function () {
+      it('should set body, when called with value', function () {
         var value = {
           key1: 'value1',
           key2: 'value2'
@@ -811,21 +788,19 @@ describe('mockRequest', function() {
         expect(request.body).to.deep.equal(value);
       });
 
-      it('should unset body, when called with no arguments', function() {
+      it('should unset body, when called with no arguments', function () {
         request._setBody();
         expect(request.body).to.not.exist;
       });
-
     });
 
-    describe('._addBody()', function() {
-
-      it('should add body variable, when called with key and value', function() {
+    describe('._addBody()', function () {
+      it('should add body variable, when called with key and value', function () {
         request._addBody('key', 'value');
         expect(request.body.key).to.equal('value');
       });
 
-      it('should unset body variable, when called with key and no value', function() {
+      it('should unset body variable, when called with key and no value', function () {
         request._addBody('key', 'value');
         request._addBody('key');
         expect(request.body.key).to.not.exist;
@@ -834,17 +809,15 @@ describe('mockRequest', function() {
       it('should throw an error, when called with no arguments', function () {
         expect(request._addBody).to.throw;
       });
-
     });
 
-    describe('.send()', function() {
-
-      it('should trigger data and end event when string is given', function(done) {
+    describe('.send()', function () {
+      it('should trigger data and end event when string is given', function (done) {
         var data = [];
-        request.on('data', function(chunk) {
+        request.on('data', function (chunk) {
           data.push(chunk);
         });
-        request.on('end', function() {
+        request.on('end', function () {
           data = Buffer.concat(data).toString();
           expect(data).to.equal('test data');
           done();
@@ -852,13 +825,13 @@ describe('mockRequest', function() {
         request.send('test data');
       });
 
-      it('should trigger data and end event when object is given', function(done) {
+      it('should trigger data and end event when object is given', function (done) {
         var data = [];
-        var dataTosend = {'key' : 'value'};
-        request.on('data', function(chunk) {
+        var dataTosend = { key: 'value' };
+        request.on('data', function (chunk) {
           data.push(chunk);
         });
-        request.on('end', function() {
+        request.on('end', function () {
           data = Buffer.concat(data).toString();
           expect(JSON.parse(data)).to.deep.equal(dataTosend);
           done();
@@ -866,12 +839,12 @@ describe('mockRequest', function() {
         request.send(dataTosend);
       });
 
-      it('should trigger data and end event when number is given', function(done) {
+      it('should trigger data and end event when number is given', function (done) {
         var data = [];
-        request.on('data', function(chunk) {
+        request.on('data', function (chunk) {
           data.push(chunk);
         });
-        request.on('end', function() {
+        request.on('end', function () {
           data = Buffer.concat(data).toString();
           expect(data).to.equal('35');
           done();
@@ -879,13 +852,13 @@ describe('mockRequest', function() {
         request.send(35);
       });
 
-      it('should trigger data and end event when buffer is given', function(done) {
+      it('should trigger data and end event when buffer is given', function (done) {
         var data = [];
         var bufferdata = Buffer.from('test data');
-        request.on('data', function(chunk) {
+        request.on('data', function (chunk) {
           data.push(chunk);
         });
-        request.on('end', function() {
+        request.on('end', function () {
           data = Buffer.concat(data).toString();
           expect(data).to.equal('test data');
           done();
@@ -893,24 +866,22 @@ describe('mockRequest', function() {
         request.send(bufferdata);
       });
 
-      it('should trigger data and end event when nothing is given', function(done) {
+      it('should trigger data and end event when nothing is given', function (done) {
         var data = [];
-        request.on('data', function(chunk) {
+        request.on('data', function (chunk) {
           data.push(chunk);
         });
-        request.on('end', function() {
+        request.on('end', function () {
           data = Buffer.concat(data).toString();
           expect(data).to.equal('');
           done();
         });
         request.send();
       });
-
     });
 
-    describe('.hostname', function() {
-
-      it('should return the host\'s main domain', function() {
+    describe('.hostname', function () {
+      it('should return the host\'s main domain', function () {
         var options = {
           headers: {
             host: 'tobi.ferrets.example.com:5000'
@@ -934,7 +905,6 @@ describe('mockRequest', function() {
         options.headers.host = 'localhost:3000';
         request = mockRequest.createRequest(options);
         expect(request.hostname).to.equal('localhost');
-
       });
 
       it('should return an empty string', function () {
@@ -957,12 +927,10 @@ describe('mockRequest', function() {
         request = mockRequest.createRequest(options);
         expect(request.hostname).to.equal('predefined.host.com');
       });
-
     });
 
-    describe('.subdomains', function() {
-
-      it('should returns the host subdomains', function() {
+    describe('.subdomains', function () {
+      it('should returns the host subdomains', function () {
         var options = {
           headers: {
             host: 'tobi.ferrets.example.com'
@@ -971,7 +939,6 @@ describe('mockRequest', function() {
         request = mockRequest.createRequest(options);
         expect(request.subdomains).to.be.an('array').that.includes('ferrets');
         expect(request.subdomains).to.be.an('array').that.includes('tobi');
-
       });
 
       it('should returns and empty array', function () {
@@ -986,15 +953,11 @@ describe('mockRequest', function() {
         options.headers.host = 'example.com';
         request = mockRequest.createRequest(options);
         expect(request.subdomains).to.be.an('array').that.empty;
-
       });
-
     });
-
   });
 
-  describe('asyncIterator', function() {
-
+  describe('asyncIterator', function () {
     async function collect(asyncIterable) {
       const chunks = [];
       for await (const chunk of asyncIterable) {
@@ -1003,7 +966,7 @@ describe('mockRequest', function() {
       return chunks;
     }
 
-    it('should iterate when sending data', async function() {
+    it('should iterate when sending data', async function () {
       const request = mockRequest.createRequest();
 
       const chunksPromise = collect(request);
@@ -1013,7 +976,7 @@ describe('mockRequest', function() {
       expect(data).to.equal('test data');
     });
 
-    it('should iterate synchronous pushes', async function() {
+    it('should iterate synchronous pushes', async function () {
       const request = mockRequest.createRequest();
 
       const chunksPromise = collect(request);
@@ -1026,7 +989,7 @@ describe('mockRequest', function() {
       expect(data).to.equal('foobarbaz');
     });
 
-    it('should ignore push after end', async function() {
+    it('should ignore push after end', async function () {
       const request = mockRequest.createRequest();
 
       const chunksPromise = collect(request);
@@ -1038,23 +1001,23 @@ describe('mockRequest', function() {
       expect(data).to.equal('foo');
     });
 
-    it('should iterate asynchronous pushes', async function() {
+    it('should iterate asynchronous pushes', async function () {
       const request = mockRequest.createRequest();
 
       const chunksPromise = collect(request);
       request.emit('data', Buffer.from('foo'));
-      await new Promise(r => setTimeout(r));
+      await new Promise((r) => setTimeout(r));
       request.emit('data', Buffer.from('bar'));
-      await new Promise(r => setTimeout(r));
+      await new Promise((r) => setTimeout(r));
       request.emit('data', Buffer.from('baz'));
-      await new Promise(r => setTimeout(r));
+      await new Promise((r) => setTimeout(r));
       request.emit('end');
 
       const data = Buffer.concat(await chunksPromise).toString();
       expect(data).to.equal('foobarbaz');
     });
 
-    it('should support asynchronous pushes while iterating', async function() {
+    it('should support asynchronous pushes while iterating', async function () {
       const request = mockRequest.createRequest();
 
       const chunksPromise = (async () => {
@@ -1064,31 +1027,31 @@ describe('mockRequest', function() {
           chunks.push(chunk);
           if (extraPushes.length > 0) {
             request.emit('data', Buffer.from(extraPushes.pop()));
-            await new Promise(r => setTimeout(r));
+            await new Promise((r) => setTimeout(r));
           }
         }
         return chunks;
       })();
 
       request.emit('data', Buffer.from('foo'));
-      await new Promise(r => setTimeout(r));
+      await new Promise((r) => setTimeout(r));
       request.emit('data', Buffer.from('bar'));
-      await new Promise(r => setTimeout(r));
+      await new Promise((r) => setTimeout(r));
       request.emit('data', Buffer.from('baz'));
-      await new Promise(r => setTimeout(r));
+      await new Promise((r) => setTimeout(r));
       request.emit('end');
 
       const data = Buffer.concat(await chunksPromise).toString();
       expect(data).to.equal('foo1bar2baz3');
     });
 
-    it('supports error', async function() {
+    it('supports error', async function () {
       const request = mockRequest.createRequest();
 
       /** @type {AsyncIterator} */
       const iterator = request[Symbol.asyncIterator]();
       const error = new Error('Test error');
-      
+
       const nextPromise = iterator.next();
       request.emit('error', error);
 
@@ -1100,7 +1063,7 @@ describe('mockRequest', function() {
       }
     });
 
-    it('supports throw', async function() {
+    it('supports throw', async function () {
       const request = mockRequest.createRequest();
 
       /** @type {AsyncIterator} */
@@ -1120,14 +1083,14 @@ describe('mockRequest', function() {
       }
     });
 
-    it('first error wins', async function() {
+    it('first error wins', async function () {
       const request = mockRequest.createRequest();
 
       /** @type {AsyncIterator} */
       const iterator = request[Symbol.asyncIterator]();
       const error1 = new Error('Test error 1');
       const error2 = new Error('Test error 2');
-      
+
       const nextPromise = iterator.next();
       request.emit('error', error1);
       request.emit('error', error2);
@@ -1140,7 +1103,7 @@ describe('mockRequest', function() {
       }
     });
 
-    it('supports return', async function() {
+    it('supports return', async function () {
       const request = mockRequest.createRequest();
 
       /** @type {AsyncIterator} */
@@ -1150,10 +1113,10 @@ describe('mockRequest', function() {
       expect(result.done).to.equal(true);
     });
 
-    ['close', 'error'].forEach(event => {
+    ['close', 'error'].forEach((event) => {
       it(`discards buffer on ${event}`, async function () {
         const request = mockRequest.createRequest();
-  
+
         const chunksPromise = (async () => {
           const chunks = [];
           try {
@@ -1165,13 +1128,13 @@ describe('mockRequest', function() {
           }
           return chunks;
         })();
-  
+
         request.emit('data', Buffer.from('foo'));
-        await new Promise(r => setTimeout(r));
+        await new Promise((r) => setTimeout(r));
         request.emit('data', Buffer.from('bar'));
         request.emit(event, event === 'error' ? new Error('Test error') : undefined);
         request.emit('data', Buffer.from('baz'));
-  
+
         const data = Buffer.concat(await chunksPromise).toString();
         expect(data).to.equal('foo');
       });
@@ -1179,7 +1142,7 @@ describe('mockRequest', function() {
 
     it('emits custom event after creation', async () => {
       const request = mockRequest.createRequest();
-      
+
       request.on('async_iterator', () => {
         request.emit('data', Buffer.from('foo'));
         request.emit('data', Buffer.from('bar'));
@@ -1194,7 +1157,7 @@ describe('mockRequest', function() {
     if (typeof global.Request === 'function') {
       it('can be fed to a Fetch API Request body', async function () {
         const request = mockRequest.createRequest();
-        
+
         // eslint-disable-next-line no-undef
         const webRequest = new Request('http://example.com', {
           method: 'POST',
@@ -1215,7 +1178,5 @@ describe('mockRequest', function() {
         expect(webRequestJson).to.deep.equal({ foo: 'bar' });
       });
     }
-
   });
-
 });

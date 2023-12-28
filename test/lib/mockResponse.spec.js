@@ -10,7 +10,6 @@ var mockResponse = require('../../lib/mockResponse');
 var mockRequest = require('../../lib/mockRequest');
 
 describe('mockResponse', function () {
-
   it('should expose .createResponse()', function () {
     expect(mockResponse.createResponse).to.be.a('function');
   });
@@ -178,11 +177,9 @@ describe('mockResponse', function () {
       expect(response.cookies).to.deep.equal({});
       expect(response.locals).to.deep.equal({ a: 'b' });
     });
-
   });
 
   describe('Express Response methods', function () {
-
     describe('.cookie()', function () {
       var response;
 
@@ -231,7 +228,6 @@ describe('mockResponse', function () {
         var chainedResponse = response.cookie('name', cookie.value, cookie.options);
         expect(chainedResponse).to.deep.equal(response);
       });
-
     });
 
     describe('.clearCookie()', function () {
@@ -282,7 +278,6 @@ describe('mockResponse', function () {
         var chainedResponse = response.clearCookie('name');
         expect(chainedResponse).to.deep.equal(response);
       });
-
     });
 
     describe('.status()', function () {
@@ -305,7 +300,6 @@ describe('mockResponse', function () {
         response.status();
         expect(response.statusCode).to.not.exist;
       });
-
     });
 
     describe('.sendStatus()', function () {
@@ -347,7 +341,6 @@ describe('mockResponse', function () {
         expect(response.type).to.throw;
         expect(response.contentType).to.throw;
       });
-
     });
 
     describe('.vary()', function () {
@@ -380,7 +373,6 @@ describe('mockResponse', function () {
         response.vary(['Value1', 'VALUE2', 'value3']);
         expect(response.get('Vary')).to.equal('value1, value2, value3');
       });
-
     });
 
     describe('.append()', function () {
@@ -402,7 +394,10 @@ describe('mockResponse', function () {
 
         expect(response.setHeader).to.have.been.calledTwice;
         expect(response.setHeader).to.have.been.calledWith('Link', '<http://localhost/>');
-        expect(response.setHeader).to.have.been.calledWith('Link', ['<http://localhost/>', '<http://localhost:80/>']);
+        expect(response.setHeader).to.have.been.calledWith('Link', [
+          '<http://localhost/>',
+          '<http://localhost:80/>'
+        ]);
 
         expect(response.get('Link')).to.deep.equal(['<http://localhost/>', '<http://localhost:80/>']);
       });
@@ -511,7 +506,6 @@ describe('mockResponse', function () {
         expect(response.set).to.throw;
         expect(response.header).to.throw;
       });
-
     });
 
     describe('.get()', function () {
@@ -537,7 +531,6 @@ describe('mockResponse', function () {
         expect(response.get).to.throw;
         expect(response.getHeader).to.throw;
       });
-
     });
 
     describe('.redirect()', function () {
@@ -569,7 +562,6 @@ describe('mockResponse', function () {
         expect(response.statusCode).to.equal(statusCode);
         expect(response._getRedirectUrl()).to.equal(url);
       });
-
     });
 
     // TODO: fix in 2.0; method should mimic Express Response.render()
@@ -641,14 +633,12 @@ describe('mockResponse', function () {
 
     // TODO: fix in 2.0; method should mimic Express Response.send()
     describe('.send()', function () {
-
       it('should mimic Express Response.send()');
 
       it('should return the response', function () {
         var response = mockResponse.createResponse();
         expect(response.send({})).to.equal(response);
       });
-
     });
 
     // TODO: fix in 2.0; method should mimic Express Response.json()
@@ -717,7 +707,6 @@ describe('mockResponse', function () {
         response.json({ hello: 'world' });
         expect(response._getData()).to.eql(hackedContent);
       });
-
     });
 
     // TODO: fix in 2.0; method should mimic Express Response.jsonp()
@@ -800,7 +789,7 @@ describe('mockResponse', function () {
         response = mockResponse.createResponse();
 
         expect(function () {
-          response.format({ html: function () { } });
+          response.format({ html: function () {} });
         }).to.throw(Error, /Request object unavailable/);
       });
 
@@ -852,7 +841,6 @@ describe('mockResponse', function () {
 
   // TODO: fix in 2.0; methods should be inherited from Node ServerResponse
   describe('Node ServerResponse methods', function () {
-
     describe('.writeHead()', function () {
       var response;
 
@@ -936,16 +924,16 @@ describe('mockResponse', function () {
       it('merges the given headers with the ones specified earlier (set with `setHeader`)', function () {
         response.setHeader('Access-Control-Allow-Origin', '*');
         response.writeHead(200, { 'Access-Control-Max-Age': '86400' });
-        expect(response.getHeaders()).to.contain.all.keys({ 'access-control-allow-origin': '*', 'access-control-max-age': '86400' });
+        expect(response.getHeaders()).to.contain.all.keys({
+          'access-control-allow-origin': '*',
+          'access-control-max-age': '86400'
+        });
       });
-
     });
-
   });
 
   // TODO: fix in 2.0; methods should be inherited from Node OutogingMessage
   describe('Node OutogingMessage methods', function () {
-
     describe('.setHeader()', function () {
       var response;
 
@@ -957,7 +945,6 @@ describe('mockResponse', function () {
         response = null;
       });
 
-
       it('should set header, when called with name and value strings', function () {
         response.setHeader('name', 'value');
         expect(response.getHeader('name')).to.equal('value');
@@ -967,10 +954,9 @@ describe('mockResponse', function () {
         expect(response.setHeader).to.throw;
       });
 
-      it('should return this', function() {
+      it('should return this', function () {
         expect(response.setHeader('name', 'value')).to.equal(response);
       });
-
     });
 
     describe('.getHeader()', function () {
@@ -1006,7 +992,6 @@ describe('mockResponse', function () {
       it('should throw and error, when called without arguments', function () {
         expect(response.getHeader).to.throw;
       });
-
     });
 
     describe('.getHeaderNames()', function () {
@@ -1133,7 +1118,6 @@ describe('mockResponse', function () {
       it('should throw and error, when called without arguments', function () {
         expect(response.removeHeader).to.throw;
       });
-
     });
 
     describe('.write()', function () {
@@ -1179,7 +1163,6 @@ describe('mockResponse', function () {
       });
 
       it('should inherit from Node OutogingMessage.write()');
-
     });
 
     describe('.end()', function () {
@@ -1225,33 +1208,31 @@ describe('mockResponse', function () {
 
       it('should inherit from Node OutogingMessage.end()');
 
-      it('triggers callback provided as 1st argument', function() {
+      it('triggers callback provided as 1st argument', function () {
         var callback = sinon.spy();
         response.end(callback);
-        
+
         expect(callback).to.have.been.called;
       });
-      
-      it('triggers callback provided as 2nd argument', function() {
+
+      it('triggers callback provided as 2nd argument', function () {
         var payload = 'random-text';
         var callback = sinon.spy();
         response.end(Buffer.from(payload), callback);
-        
+
         expect(callback).to.have.been.called;
         expect(response._getBuffer().toString()).to.equal(payload);
       });
-      
-      it('triggers callback provided as 3rd argument', function() {
+
+      it('triggers callback provided as 3rd argument', function () {
         var payload = 'random-text';
         var callback = sinon.spy();
         response.end(Buffer.from(payload), 'utf8', callback);
-        
+
         expect(callback).to.have.been.called;
         expect(response._getBuffer().toString()).to.equal(payload);
       });
-      
     });
-
   });
 
   describe('write() + end() interactions', function () {
@@ -1277,83 +1258,56 @@ describe('mockResponse', function () {
       var buffer = response._getBuffer();
       expect(buffer.toString()).to.equal(payload1 + payload2);
     });
-
   });
 
   // TODO: fix in 2.0; methods should be inherited from Node WritableStream
   describe('node WritableStream methods', function () {
-
     describe('.destroy()', function () {
-
       it('should inherit from Node WritableStream.destroy()');
-
     });
 
     describe('.destroySoon()', function () {
-
       it('should inherit from Node WritableStream.destroySoon()');
-
     });
-
   });
 
   // TODO: fix in 2.0; methods should be inherited from Node EventEmitter
   describe('node EventEmitter methods', function () {
-
     describe('.addListener()', function () {
-
       it('should inherit from Node EventEmitter.addListener()');
-
     });
 
     describe('.on()', function () {
-
       it('should inherit from Node EventEmitter.on()');
-
     });
 
     describe('.once()', function () {
-
       it('should inherit from Node EventEmitter.once()');
-
     });
 
     describe('.removeListener()', function () {
-
       it('should inherit from Node EventEmitter.removeListener()');
-
     });
 
     describe('.removeAllListeners()', function () {
-
       it('should inherit from Node EventEmitter.removeAllListeners()');
-
     });
 
     describe('.setMaxListeners()', function () {
-
       it('should inherit from Node EventEmitter.setMaxListeners()');
-
     });
 
     describe('.listeners()', function () {
-
       it('should inherit from Node EventEmitter.listeners()');
-
     });
 
     describe('.emit()', function () {
-
       it('should inherit from Node EventEmitter.emit()');
-
     });
 
     describe('.prependListener()', function () {
-
       it('should inherit from Node EventEmitter.prependListener()');
-
     });
-
   });
 
   // TODO: deprecate helper methods in 2.0
@@ -1369,7 +1323,6 @@ describe('mockResponse', function () {
     });
 
     describe('._isEndCalled()', function () {
-
       it('will be deprecated in 2.0');
 
       it('should return false when .end() hasn\'t been called', function () {
@@ -1380,11 +1333,9 @@ describe('mockResponse', function () {
         response.end();
         expect(response._isEndCalled()).to.be.true;
       });
-
     });
 
     describe('._getHeaders()', function () {
-
       it('will be deprecated in 2.0');
 
       it('should return empty object when no headers have been set', function () {
@@ -1398,11 +1349,9 @@ describe('mockResponse', function () {
         response.type('txt');
         expect(response._getHeaders()).to.deep.equal(headers);
       });
-
     });
 
     describe('._getLocals()', function () {
-
       it('should return empty object when no locals have been set', function () {
         expect(response._getLocals()).to.deep.equal({});
       });
@@ -1414,11 +1363,9 @@ describe('mockResponse', function () {
         response.locals = locals;
         expect(response._getLocals()).to.deep.equal(locals);
       });
-
     });
 
     describe('._getData()', function () {
-
       it('will be deprecated in 2.0');
 
       it('should return empty string when no data has been sent', function () {
@@ -1429,11 +1376,9 @@ describe('mockResponse', function () {
         response.send('data');
         expect(response._getData()).to.equal('data');
       });
-
     });
 
     describe('._getJSONData()', function () {
-
       it('will be deprecated in 2.0');
 
       it('should return sent data', function () {
@@ -1441,11 +1386,9 @@ describe('mockResponse', function () {
         response.send(JSON.stringify(data));
         expect(response._getJSONData()).to.deep.equal(data);
       });
-
     });
 
     describe('._getStatusCode()', function () {
-
       it('will be deprecated in 2.0');
 
       it('should return default status code, when not set', function () {
@@ -1456,11 +1399,9 @@ describe('mockResponse', function () {
         response.status(404);
         expect(response._getStatusCode()).to.equal(404);
       });
-
     });
 
     describe('._getStatusMessage()', function () {
-
       it('will be deprecated in 2.0');
 
       it('should return the default status message, when not set', function () {
@@ -1476,11 +1417,9 @@ describe('mockResponse', function () {
         response.writeHead(400, 'NotOK');
         expect(response._getStatusMessage()).to.equal('NotOK');
       });
-
     });
 
     describe('._isJSON()', function () {
-
       it('will be deprecated in 2.0');
 
       it('should return true, when Content-Type is JSON', function () {
@@ -1492,11 +1431,9 @@ describe('mockResponse', function () {
         response.type('html');
         expect(response._isJSON()).to.be.false;
       });
-
     });
 
     describe('._isUTF8()', function () {
-
       it('will be deprecated in 2.0');
 
       it('should return false, when enconding is not UTF-8', function () {
@@ -1507,11 +1444,9 @@ describe('mockResponse', function () {
         response.setEncoding('utf8');
         expect(response._isUTF8()).to.be.true;
       });
-
     });
 
     describe('._isDataLengthValid()', function () {
-
       it('will be deprecated in 2.0');
 
       it('should return true, when Content-Length not present', function () {
@@ -1529,11 +1464,9 @@ describe('mockResponse', function () {
         response.header('Content-Length', '5');
         expect(response._isDataLengthValid()).to.be.false;
       });
-
     });
 
     describe('._getRedirectUrl()', function () {
-
       it('will be deprecated in 2.0');
 
       it('should return empty string, when .redirect() not called', function () {
@@ -1545,11 +1478,9 @@ describe('mockResponse', function () {
         response.redirect(url);
         expect(response._getRedirectUrl()).to.equal(url);
       });
-
     });
 
     describe('._getRenderView()', function () {
-
       it('will be deprecated in 2.0');
 
       it('should return empty string, when .render() not called', function () {
@@ -1561,11 +1492,9 @@ describe('mockResponse', function () {
         response.render(view);
         expect(response._getRenderView()).to.equal(view);
       });
-
     });
 
     describe('._getRenderData()', function () {
-
       it('will be deprecated in 2.0');
 
       it('should return empty object, when .render() not called', function () {
@@ -1584,10 +1513,6 @@ describe('mockResponse', function () {
         response.render('view', data);
         expect(response._getRenderData()).to.deep.equal(data);
       });
-
     });
-
   });
-
-
 });

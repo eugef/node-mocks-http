@@ -1,0 +1,14 @@
+{
+    "printWidth": 120,
+    "trailingComma": "none",
+    "singleQuote": true,
+    "tabWidth": 4,
+    "overrides": [
+        {
+            "files": "package.json",
+            "options": {
+                "tabWidth": 2
+            }
+        }
+    ]
+}

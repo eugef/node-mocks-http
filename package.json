@@ -68,8 +68,11 @@
     "gulp-eslint": "^6.0.0",
     "gulp-istanbul": "^1.1.3",
     "gulp-mocha": "^8.0.0",
+    "husky": "^8.0.3",
     "istanbul": "^0.4.5",
+    "lint-staged": "^15.2.0",
     "mocha": "^8.1.1",
+    "prettier": "^3.1.1",
     "sinon": "^9.0.3",
     "sinon-chai": "^3.5.0",
     "ts-node": "^10.9.1",
@@ -79,12 +82,19 @@
   "scripts": {
     "spec": "gulp spec",
     "spec:ts": "gulp spec:ts",
+    "pretest": "prettier --check .",
     "test": "gulp test",
     "test:ts": "gulp test:ts",
     "types": "tsd . --files ./test/**/*.test-d.ts",
-    "postversion": "npm publish && git push --follow-tags"
+    "format": "prettier --write --list-different .",
+    "postversion": "npm publish && git push --follow-tags",
+    "prepare": "husky install"
   },
   "files": [
     "lib"
-  ]
+  ],
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,ts,md}": "prettier --write"
+  }
 }

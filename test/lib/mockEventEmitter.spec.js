@@ -6,22 +6,21 @@ var expect = chai.expect;
 var MockEventEmitter = require('../../lib/mockEventEmitter');
 var mockEventEmitter;
 
-describe('mockEventEmitter', function() {
-
-  before(function() {
+describe('mockEventEmitter', function () {
+  before(function () {
     mockEventEmitter = new MockEventEmitter();
   });
 
-  it('should be a function', function() {
+  it('should be a function', function () {
     expect(MockEventEmitter).to.be.a('function');
   });
 
-  it('should be an object factory', function() {
+  it('should be an object factory', function () {
     expect(mockEventEmitter).to.be.a('object');
     expect(mockEventEmitter).to.be.an.instanceof(MockEventEmitter);
   });
 
-  it('should expose "MockEventEmitter" prototype', function() {
+  it('should expose "MockEventEmitter" prototype', function () {
     expect(mockEventEmitter).to.have.property('addListener');
     expect(mockEventEmitter.addListener).to.be.a('function');
 
@@ -50,7 +49,7 @@ describe('mockEventEmitter', function() {
     expect(mockEventEmitter.prependListener).to.be.a('function');
   });
 
-  it('should return undefined when methods called', function() {
+  it('should return undefined when methods called', function () {
     expect(mockEventEmitter.addListener()).to.be.undefined;
     expect(mockEventEmitter.on()).to.be.undefined;
     expect(mockEventEmitter.once()).to.be.undefined;
@@ -60,7 +59,5 @@ describe('mockEventEmitter', function() {
     expect(mockEventEmitter.listeners()).to.be.undefined;
     expect(mockEventEmitter.emit()).to.be.undefined;
     expect(mockEventEmitter.prependListener()).to.be.undefined;
-
   });
-
 });
