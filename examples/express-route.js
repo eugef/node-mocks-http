@@ -8,11 +8,10 @@ var httpMocks = require('../lib/http-mock');
 
 // And you have created a function to handle that route's call:
 
-var routeHandler = function(request, response) {
-
+var routeHandler = function (request, response) {
     var id = request.params.id;
 
-    console.log('We have a \'%s\' request for %s (ID: %d)', request.method, request.url, id);
+    console.log("We have a '%s' request for %s (ID: %d)", request.method, request.url, id);
 
     var body = {
         name: 'Bob Dog',
@@ -24,15 +23,13 @@ var routeHandler = function(request, response) {
     response.statusCode = 200;
     response.send(JSON.stringify(body), 'utf8');
     response.end();
-
 };
 
 // -----------------------------------------------------------------
 // In another file, you can easily test the routeHandler function
 // with some code like this using the testing framework of your choice:
 
-exports['routeHandler - Simple testing'] = function(test) {
-
+exports['routeHandler - Simple testing'] = function (test) {
     var request = httpMocks.createRequest({
         method: 'GET',
         url: '/user/42',
@@ -57,5 +54,4 @@ exports['routeHandler - Simple testing'] = function(test) {
     test.ok(response._isUTF8());
 
     test.done();
-
 };

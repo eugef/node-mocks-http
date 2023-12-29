@@ -1,9 +1,7 @@
 import { Request, Response, CookieOptions } from 'express';
 import { IncomingMessage, OutgoingMessage } from 'http';
 
-
-export type RequestMethod =
-    'CONNECT' | 'DELETE' | 'GET' | 'HEAD' | 'OPTIONS' | 'PATCH' | 'POST' | 'PUT' | 'TRACE';
+export type RequestMethod = 'CONNECT' | 'DELETE' | 'GET' | 'HEAD' | 'OPTIONS' | 'PATCH' | 'POST' | 'PUT' | 'TRACE';
 
 export interface Params {
     [key: string]: any;
@@ -18,7 +16,7 @@ export interface Cookies {
 }
 
 export interface Headers {
-    'accept'?: string;
+    accept?: string;
     'accept-language'?: string;
     'accept-patch'?: string;
     'accept-ranges'?: string;
@@ -28,12 +26,12 @@ export interface Headers {
     'access-control-allow-origin'?: string;
     'access-control-expose-headers'?: string;
     'access-control-max-age'?: string;
-    'age'?: string;
-    'allow'?: string;
+    age?: string;
+    allow?: string;
     'alt-svc'?: string;
-    'authorization'?: string;
+    authorization?: string;
     'cache-control'?: string;
-    'connection'?: string;
+    connection?: string;
     'content-disposition'?: string;
     'content-encoding'?: string;
     'content-language'?: string;
@@ -41,36 +39,36 @@ export interface Headers {
     'content-location'?: string;
     'content-range'?: string;
     'content-type'?: string;
-    'cookie'?: string;
-    'date'?: string;
-    'expect'?: string;
-    'expires'?: string;
-    'forwarded'?: string;
-    'from'?: string;
-    'host'?: string;
+    cookie?: string;
+    date?: string;
+    expect?: string;
+    expires?: string;
+    forwarded?: string;
+    from?: string;
+    host?: string;
     'if-match'?: string;
     'if-modified-since'?: string;
     'if-none-match'?: string;
     'if-unmodified-since'?: string;
     'last-modified'?: string;
-    'location'?: string;
-    'pragma'?: string;
+    location?: string;
+    pragma?: string;
     'proxy-authenticate'?: string;
     'proxy-authorization'?: string;
     'public-key-pins'?: string;
-    'range'?: string;
-    'referer'?: string;
+    range?: string;
+    referer?: string;
     'retry-after'?: string;
     'set-cookie'?: string[];
     'strict-transport-security'?: string;
-    'tk'?: string;
-    'trailer'?: string;
+    tk?: string;
+    trailer?: string;
     'transfer-encoding'?: string;
-    'upgrade'?: string;
+    upgrade?: string;
     'user-agent'?: string;
-    'vary'?: string;
-    'via'?: string;
-    'warning'?: string;
+    vary?: string;
+    via?: string;
+    warning?: string;
     'www-authenticate'?: string;
     [header: string]: string | string[] | undefined;
 }
@@ -122,7 +120,7 @@ export type MockRequest<T extends IncomingMessage> = T & {
 
     // Support custom properties appended on Request objects.
     [key: string]: any;
-}
+};
 
 export interface ResponseOptions {
     eventEmitter?: any;
@@ -134,7 +132,7 @@ export interface ResponseOptions {
 export type ResponseCookie = {
     value: any;
     options: CookieOptions;
-}
+};
 
 export type MockResponse<T extends OutgoingMessage> = T & {
     _isEndCalled: () => boolean;
@@ -152,8 +150,8 @@ export type MockResponse<T extends OutgoingMessage> = T & {
     _getRenderData: () => any;
     _getRenderView: () => string;
 
-    cookies: {[name: string]: ResponseCookie};
-}
+    cookies: { [name: string]: ResponseCookie };
+};
 
 export function createRequest<T extends IncomingMessage = Request>(options?: RequestOptions): MockRequest<T>;
 
@@ -164,4 +162,7 @@ export interface Mocks<T1 extends IncomingMessage, T2 extends OutgoingMessage> {
     res: MockResponse<T2>;
 }
 
-export function createMocks<T1 extends IncomingMessage = Request, T2 extends OutgoingMessage = Response>(reqOptions?: RequestOptions, resOptions?: ResponseOptions): Mocks<T1, T2>;
+export function createMocks<T1 extends IncomingMessage = Request, T2 extends OutgoingMessage = Response>(
+    reqOptions?: RequestOptions,
+    resOptions?: ResponseOptions
+): Mocks<T1, T2>;
