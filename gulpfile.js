@@ -1,52 +1,29 @@
-'use strict';
+const gulp = require('gulp');
+const mocha = require('gulp-mocha');
+const istanbul = require('gulp-istanbul');
 
-var gulp = require('gulp');
-var mocha = require('gulp-mocha');
-var istanbul = require('gulp-istanbul');
-var eslint = require('gulp-eslint');
-
-var files = {
+const files = {
     src: ['./lib/**/*.js'],
     test: ['./test/**/*.spec.js', './*.js'],
     testTs: ['./test/**/*.spec.ts']
 };
+gulp.task('dot', () => gulp.src(files.test, { read: false }).pipe(mocha({ reporter: 'dot' })));
 
-gulp.task('lint', function () {
-    return gulp
-        .src(files.src.concat(files.test))
-        .pipe(
-            eslint({
-                // configFile: './.eslintrc',
-                useEslintrc: true
-            })
-        )
-        .pipe(eslint.format())
-        .pipe(eslint.failOnError());
-});
+gulp.task('test', gulp.series('dot'));
 
-gulp.task('dot', function () {
-    return gulp.src(files.test, { read: false }).pipe(mocha({ reporter: 'dot' }));
-});
+gulp.task('test:ts', () =>
+    gulp.src(files.testTs, { read: false }).pipe(mocha({ reporter: 'dot', require: 'ts-node/register' }))
+);
 
-gulp.task('test', gulp.series('dot' /*, 'lint'*/));
+gulp.task('spec', () => gulp.src(files.test, { read: false }).pipe(mocha({ reporter: 'spec' })));
 
-gulp.task('test:ts', function () {
-    return gulp.src(files.testTs, { read: false }).pipe(mocha({ reporter: 'dot', require: 'ts-node/register' }));
-});
+gulp.task('spec:ts', () => gulp.src(files.testTs, { read: false }).pipe(mocha({ reporter: 'spec' })));
 
-gulp.task('spec', function () {
-    return gulp.src(files.test, { read: false }).pipe(mocha({ reporter: 'spec' }));
-});
-
-gulp.task('spec:ts', function () {
-    return gulp.src(files.testTs, { read: false }).pipe(mocha({ reporter: 'spec' }));
-});
-
-gulp.task('coverage', function (done) {
+gulp.task('coverage', (done) => {
     gulp.src(files.src)
         .pipe(istanbul())
         .pipe(istanbul.hookRequire())
-        .on('finish', function () {
+        .on('finish', () => {
             gulp.src(files.test)
                 .pipe(mocha({ reporter: 'dot' }))
                 .pipe(

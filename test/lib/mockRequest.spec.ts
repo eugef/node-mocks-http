@@ -51,9 +51,9 @@ describe('mockRequest', function () {
                 expect(request.baseUrl).to.equal(request.url);
                 expect(request.path).to.equal('');
                 expect(request.params).to.deep.equal({});
-                expect(request.session).to.not.exist;
+                expect(request.session).to.be.a('undefined');
                 expect(request.cookies).to.deep.equal({});
-                expect(request.signedCookies).to.not.exist;
+                expect(request.signedCookies).to.be.a('undefined');
                 expect(request.headers).to.deep.equal({});
                 expect(request.body).to.deep.equal({});
                 expect(request.query).to.deep.equal({});
@@ -330,9 +330,9 @@ describe('mockRequest', function () {
 
         it('should not return header, when not set', function () {
             const request = mockRequest.createRequest();
-            expect(request.get('key')).to.not.exist;
-            expect(request.header('key')).to.not.exist;
-            expect(request.getHeader('key')).to.not.exist;
+            expect(request.get('key')).to.be.a('undefined');
+            expect(request.header('key')).to.be.a('undefined');
+            expect(request.getHeader('key')).to.be.a('undefined');
         });
     });
 
@@ -455,7 +455,7 @@ describe('mockRequest', function () {
     describe('.range()', function () {
         it('returns undefined if there is no Range header', function () {
             const request = mockRequest.createRequest();
-            expect(request.range(10)).to.be.undefined;
+            expect(request.range(10)).to.be.an('undefined');
         });
 
         const tests = [
@@ -578,20 +578,20 @@ describe('mockRequest', function () {
 
         it('should not return param, when not found in params/body/query', function () {
             const request = mockRequest.createRequest();
-            expect(request.get('key')).to.not.exist;
-            expect(request.header('key')).to.not.exist;
+            expect(request.get('key')).to.be.a('undefined');
+            expect(request.header('key')).to.be.a('undefined');
         });
 
         it('should return defaultValue, when not found in params/body/query', function () {
             const request = mockRequest.createRequest();
-            expect(request.get('key')).to.not.exist;
+            expect(request.get('key')).to.be.a('undefined');
             expect(request.param('key', 'defaultValue')).to.equal('defaultValue');
         });
 
         it('should return undefined, when not found in params/body/query', function () {
             const request = mockRequest.createRequest();
-            expect(request.get('key')).to.not.exist;
-            expect(request.param('key')).to.be.undefined;
+            expect(request.get('key')).to.be.a('undefined');
+            expect(request.param('key')).to.be.an('undefined');
         });
     });
 
@@ -607,12 +607,12 @@ describe('mockRequest', function () {
                 const request = mockRequest.createRequest();
                 request._setParameter('key', 'value');
                 request._setParameter('key');
-                expect(request.param('key')).to.not.exist;
+                expect(request.param('key')).to.be.a('undefined');
             });
 
             it('should throw an error, when called with no arguments', function () {
                 const request = mockRequest.createRequest();
-                expect(request._setParameter).to.throw;
+                expect(request._setParameter).to.throw();
             });
         });
 
@@ -627,12 +627,12 @@ describe('mockRequest', function () {
                 const request = mockRequest.createRequest();
                 request._setSessionVariable('key', 'value');
                 request._setSessionVariable('key');
-                expect(request.param('key')).to.not.exist;
+                expect(request.param('key')).to.be.a('undefined');
             });
 
             it('should throw an error, when called with no arguments', function () {
                 const request = mockRequest.createRequest();
-                expect(request._setSessionVariable).to.throw;
+                expect(request._setSessionVariable).to.throw();
             });
         });
 
@@ -647,12 +647,12 @@ describe('mockRequest', function () {
                 const request = mockRequest.createRequest();
                 request._setCookiesVariable('key', 'value');
                 request._setCookiesVariable('key');
-                expect(request.cookies.key).to.not.exist;
+                expect(request.cookies.key).to.be.a('undefined');
             });
 
             it('should throw an error, when called with no arguments', function () {
                 const request = mockRequest.createRequest();
-                expect(request._setCookiesVariable).to.throw;
+                expect(request._setCookiesVariable).to.throw();
             });
         });
 
@@ -667,12 +667,12 @@ describe('mockRequest', function () {
                 const request = mockRequest.createRequest();
                 request._setSignedCookiesVariable('key', 'value');
                 request._setSignedCookiesVariable('key');
-                expect(request.signedCookies.key).to.not.exist;
+                expect(request.signedCookies.key).to.be.a('undefined');
             });
 
             it('should throw an error, when called with no arguments', function () {
                 const request = mockRequest.createRequest();
-                expect(request._setSignedCookiesVariable).to.throw;
+                expect(request._setSignedCookiesVariable).to.throw();
             });
         });
 
@@ -687,8 +687,8 @@ describe('mockRequest', function () {
 
             it('should throw an error, when called with missing arguments', function () {
                 const request = mockRequest.createRequest();
-                expect(request._setHeadersVariable).to.throw;
-                expect(request._setHeadersVariable.bind(null, 'key')).to.throw;
+                expect(request._setHeadersVariable).to.throw();
+                expect(request._setHeadersVariable.bind(null, 'key')).to.throw();
             });
         });
 
@@ -703,12 +703,12 @@ describe('mockRequest', function () {
                 const request = mockRequest.createRequest();
                 request._setFilesVariable('key', 'value');
                 request._setFilesVariable('key');
-                expect(request.files.key).to.not.exist;
+                expect(request.files.key).to.be.a('undefined');
             });
 
             it('should throw an error, when called with no arguments', function () {
                 const request = mockRequest.createRequest();
-                expect(request._setFilesVariable).to.throw;
+                expect(request._setFilesVariable).to.throw();
             });
         });
 
@@ -723,7 +723,7 @@ describe('mockRequest', function () {
             it('should unset method, when called with no arguments', function () {
                 const request = mockRequest.createRequest();
                 request._setMethod();
-                expect(request.method).to.not.exist;
+                expect(request.method).to.be.a('undefined');
             });
         });
 
@@ -738,7 +738,7 @@ describe('mockRequest', function () {
             it('should unset url, when called with no arguments', function () {
                 const request = mockRequest.createRequest();
                 request._setURL();
-                expect(request.url).to.not.exist;
+                expect(request.url).to.be.a('undefined');
             });
         });
 
@@ -753,7 +753,7 @@ describe('mockRequest', function () {
             it('should unset baseUrl, when called with no arguments', function () {
                 const request = mockRequest.createRequest();
                 request._setBaseUrl();
-                expect(request.baseUrl).to.not.exist;
+                expect(request.baseUrl).to.be.a('undefined');
             });
         });
 
@@ -768,7 +768,7 @@ describe('mockRequest', function () {
             it('should unset originalUrl, when called with no arguments', function () {
                 const request = mockRequest.createRequest();
                 request._setOriginalUrl();
-                expect(request.originalUrl).to.not.exist;
+                expect(request.originalUrl).to.be.a('undefined');
             });
         });
 
@@ -786,7 +786,7 @@ describe('mockRequest', function () {
             it('should unset body, when called with no arguments', function () {
                 const request = mockRequest.createRequest();
                 request._setBody();
-                expect(request.body).to.not.exist;
+                expect(request.body).to.be.a('undefined');
             });
         });
 
@@ -801,12 +801,12 @@ describe('mockRequest', function () {
                 const request = mockRequest.createRequest();
                 request._addBody('key', 'value');
                 request._addBody('key');
-                expect(request.body.key).to.not.exist;
+                expect(request.body.key).to.be.a('undefined');
             });
 
             it('should throw an error, when called with no arguments', function () {
                 const request = mockRequest.createRequest();
-                expect(request._addBody).to.throw;
+                expect(request._addBody).to.throw();
             });
         });
 
@@ -955,11 +955,11 @@ describe('mockRequest', function () {
 
                 let request: mockRequest.MockRequest<IncomingMessage>;
                 request = mockRequest.createRequest(options);
-                expect(request.subdomains).to.be.an('array').that.empty;
+                expect(request.subdomains).to.be.an('array').to.have.lengthOf(0);
 
                 options.headers!.host = 'example.com';
                 request = mockRequest.createRequest(options);
-                expect(request.subdomains).to.be.an('array').that.empty;
+                expect(request.subdomains).to.be.an('array').to.have.lengthOf(0);
             });
         });
     });

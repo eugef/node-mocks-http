@@ -1,6 +1,4 @@
-'use strict';
-
-var httpMocks = require('../lib/http-mock');
+const httpMocks = require('../lib/http-mock');
 
 // Suppose you have the following Express route:
 
@@ -8,12 +6,12 @@ var httpMocks = require('../lib/http-mock');
 
 // And you have created a function to handle that route's call:
 
-var routeHandler = function (request, response) {
-    var id = request.params.id;
+const routeHandler = function (request, response) {
+    const { id } = request.params;
 
     console.log("We have a '%s' request for %s (ID: %d)", request.method, request.url, id);
 
-    var body = {
+    const body = {
         name: 'Bob Dog',
         age: 42,
         email: 'bob@dog.com'
@@ -30,7 +28,7 @@ var routeHandler = function (request, response) {
 // with some code like this using the testing framework of your choice:
 
 exports['routeHandler - Simple testing'] = function (test) {
-    var request = httpMocks.createRequest({
+    const request = httpMocks.createRequest({
         method: 'GET',
         url: '/user/42',
         params: {
@@ -38,11 +36,11 @@ exports['routeHandler - Simple testing'] = function (test) {
         }
     });
 
-    var response = httpMocks.createResponse();
+    const response = httpMocks.createResponse();
 
     routeHandler(request, response);
 
-    var data = response._getJSONData();
+    const data = response._getJSONData();
 
     test.equal('Bob Dog', data.name);
     test.equal(42, data.age);

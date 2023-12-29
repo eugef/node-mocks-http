@@ -1,26 +1,26 @@
-'use strict';
+const chai = require('chai');
 
-var chai = require('chai');
-var expect = chai.expect;
+const { expect } = chai;
 
-var MockWritableStream = require('../../lib/mockWritableStream');
-var mockWritableStream;
+const MockWritableStream = require('../../lib/mockWritableStream');
 
-describe('mockWritableStream', function () {
-    before(function () {
+let mockWritableStream;
+
+describe('mockWritableStream', () => {
+    before(() => {
         mockWritableStream = new MockWritableStream();
     });
 
-    it('should be a function', function () {
+    it('should be a function', () => {
         expect(MockWritableStream).to.be.a('function');
     });
 
-    it('should be an object factory', function () {
+    it('should be an object factory', () => {
         expect(mockWritableStream).to.be.a('object');
         expect(mockWritableStream).to.be.an.instanceof(MockWritableStream);
     });
 
-    it('should expose "MockWritableStream" prototype', function () {
+    it('should expose "MockWritableStream" prototype', () => {
         expect(mockWritableStream).to.have.property('end');
         expect(mockWritableStream.end).to.be.a('function');
 
@@ -31,9 +31,9 @@ describe('mockWritableStream', function () {
         expect(mockWritableStream.destroySoon).to.be.a('function');
     });
 
-    it('should return undefined when methods called', function () {
-        expect(mockWritableStream.end()).to.be.undefined;
-        expect(mockWritableStream.destroy()).to.be.undefined;
-        expect(mockWritableStream.destroySoon()).to.be.undefined;
+    it('should return undefined when methods called', () => {
+        expect(mockWritableStream.end()).to.be.an('undefined');
+        expect(mockWritableStream.destroy()).to.be.an('undefined');
+        expect(mockWritableStream.destroySoon()).to.be.an('undefined');
     });
 });

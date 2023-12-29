@@ -1,20 +1,14 @@
-'use strict';
+const chai = require('chai');
+const httpMock = require('../../lib/http-mock');
 
-var chai = require('chai');
-var expect = chai.expect;
+const { expect } = chai;
 
-var httpMock;
-
-describe('http-mock', function () {
-    before(function () {
-        httpMock = require('../../lib/http-mock');
-    });
-
-    it('should export .createRequest()', function () {
+describe('http-mock', () => {
+    it('should export .createRequest()', () => {
         expect(httpMock.createRequest).to.be.a('function');
     });
 
-    it('should export .createResponse()', function () {
+    it('should export .createResponse()', () => {
         expect(httpMock.createResponse).to.be.a('function');
     });
 });
