@@ -62,6 +62,8 @@
     "@types/express": "^4.17.17",
     "@types/mocha": "^10.0.6",
     "@types/node": "^14",
+    "@typescript-eslint/eslint-plugin": "^6.17.0",
+    "@typescript-eslint/parser": "^6.17.0",
     "chai": "^4.2.0",
     "eslint": "^8.56.0",
     "eslint-config-airbnb-base": "^15.0.0",
@@ -81,11 +83,9 @@
     "typescript": "^5.3.2"
   },
   "scripts": {
-    "spec": "gulp spec",
-    "spec:ts": "gulp spec:ts",
-    "pretest": "prettier --check .",
+    "pretest": "npm run format",
     "test": "gulp test",
-    "test:ts": "gulp test:ts",
+    "coverage": "gulp coverage",
     "types": "tsd . --files ./test/**/*.test-d.ts",
     "format": "prettier --write --list-different .",
     "lint": "eslint --fix .",

@@ -4,20 +4,16 @@ const istanbul = require('gulp-istanbul');
 
 const files = {
     src: ['./lib/**/*.js'],
-    test: ['./test/**/*.spec.js', './*.js'],
+    test: ['./test/**/*.spec.js', './test/**/*.spec.ts'],
     testTs: ['./test/**/*.spec.ts']
 };
-gulp.task('dot', () => gulp.src(files.test, { read: false }).pipe(mocha({ reporter: 'dot' })));
+gulp.task('dot', () =>
+    gulp.src(files.test, { read: false }).pipe(mocha({ reporter: 'spec', require: 'ts-node/register' }))
+);
 
 gulp.task('test', gulp.series('dot'));
 
-gulp.task('test:ts', () =>
-    gulp.src(files.testTs, { read: false }).pipe(mocha({ reporter: 'dot', require: 'ts-node/register' }))
-);
-
 gulp.task('spec', () => gulp.src(files.test, { read: false }).pipe(mocha({ reporter: 'spec' })));
-
-gulp.task('spec:ts', () => gulp.src(files.testTs, { read: false }).pipe(mocha({ reporter: 'spec' })));
 
 gulp.task('coverage', (done) => {
     gulp.src(files.src)

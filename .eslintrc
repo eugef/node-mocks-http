@@ -3,6 +3,7 @@
         "airbnb-base",
         "prettier"
     ],
+    "parser": "@typescript-eslint/parser",
     "rules": {
         "no-underscore-dangle": "off",
         "no-console": "off",
@@ -11,6 +12,14 @@
             "warn",
             "as-needed"
         ],
+        "prefer-destructuring": [
+            "error",
+            {
+                "object": true,
+                "array": false
+            }
+        ],
+        "no-prototype-builtins": "warn",
         "no-restricted-syntax": [
             "error",
             {
@@ -26,11 +35,13 @@
     "overrides": [
         {
             "files": [
-                "test/**/*.js"
+                "test/**/*.js",
+                "test/**/*.ts"
             ],
             "env": {
                 "mocha": true
             }
         }
-    ]
+    ],
+    "root": true
 }
