@@ -1,3 +1,9 @@
+## v 1.14.1
+
+-   Move express and node types to prod deps [Issue #290][290].
+
+[290]: https://github.com/eugef/node-mocks-http/pull/290
+
 ## v 1.14.0
 
 -   Fix nodejs typing [Issue #281][281].
