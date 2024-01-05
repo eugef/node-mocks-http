@@ -1,6 +1,7 @@
 import { IncomingMessage as NodeRequest, OutgoingMessage as NodeResponse } from 'http';
 import { expectAssignable, expectNotAssignable, expectNotType, expectType } from 'tsd';
 import { Request as ExpressRequest, Response as ExpressResponse } from 'express';
+
 import { createMocks, createRequest, createResponse, MockRequest, MockResponse, Mocks } from '../../lib/http-mock';
 
 expectType<MockRequest<ExpressRequest>>(createRequest());
