@@ -5,7 +5,6 @@ import parseRange from 'range-parser';
 
 import * as mockRequest from '../../lib/http-mock';
 import { IncomingMessage } from 'http';
-import stream from 'stream';
 
 describe('mockRequest', function () {
     it('should expose .createRequest()', function () {
@@ -280,6 +279,11 @@ describe('mockRequest', function () {
                 const request = mockRequest.createRequest(options);
                 expect(request.ips).to.deep.equal([options.ip]);
             });
+        });
+
+        it('should be able to create a Fetch API Request object', function () {
+            const request = mockRequest.createRequest<Request>();
+            expect(request.bodyUsed).to.be.undefined;
         });
     });
 

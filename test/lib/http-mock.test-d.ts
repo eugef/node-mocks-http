@@ -24,3 +24,4 @@ expectAssignable<NodeResponse>(createResponse<NodeResponse>());
 expectNotAssignable<ExpressResponse>(createResponse<NodeResponse>());
 
 expectType<Mocks<ExpressRequest, ExpressResponse>>(createMocks());
+expectType<Mocks<globalThis.Request, globalThis.Response>>(createMocks<globalThis.Request, globalThis.Response>());
