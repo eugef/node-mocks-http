@@ -83,12 +83,14 @@
     "typescript": "^5.3.2"
   },
   "scripts": {
-    "pretest": "npm run format",
     "test": "gulp test",
     "coverage": "gulp coverage",
     "types": "tsd . --files ./test/**/*.test-d.ts",
     "format": "prettier --write --list-different .",
     "lint": "eslint --fix .",
+    "check": "npm run check:format && npm run check:lint",
+    "check:format": "prettier --list-different .",
+    "check:lint": "eslint .",
     "postversion": "npm publish && git push --follow-tags",
     "prepare": "husky install"
   },
