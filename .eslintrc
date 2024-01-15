@@ -38,6 +38,9 @@
                 "test/**/*.js",
                 "test/**/*.ts"
             ],
+            "rules": {
+                "no-unused-expressions": "off"
+            },
             "env": {
                 "mocha": true
             }

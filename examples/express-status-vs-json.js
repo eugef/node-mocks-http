@@ -23,7 +23,7 @@ const routeHandler = function (request, response) {
 // In another file, you can easily test the routeHandler function
 // with some code like this using the testing framework of your choice:
 
-exports['routeHandler - Simple testing of status() vs json()'] = function (test) {
+exports['routeHandler - Simple testing of status() vs json()'] = function testing(test) {
     const request = httpMocks.createRequest({
         method: 'POST',
         url: '/users'
