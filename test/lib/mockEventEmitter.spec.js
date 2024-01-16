@@ -1,26 +1,26 @@
-'use strict';
+const chai = require('chai');
 
-var chai = require('chai');
-var expect = chai.expect;
+const { expect } = chai;
 
-var MockEventEmitter = require('../../lib/mockEventEmitter');
-var mockEventEmitter;
+const MockEventEmitter = require('../../lib/mockEventEmitter');
 
-describe('mockEventEmitter', function () {
-    before(function () {
+let mockEventEmitter;
+
+describe('mockEventEmitter', () => {
+    before(() => {
         mockEventEmitter = new MockEventEmitter();
     });
 
-    it('should be a function', function () {
+    it('should be a function', () => {
         expect(MockEventEmitter).to.be.a('function');
     });
 
-    it('should be an object factory', function () {
+    it('should be an object factory', () => {
         expect(mockEventEmitter).to.be.a('object');
         expect(mockEventEmitter).to.be.an.instanceof(MockEventEmitter);
     });
 
-    it('should expose "MockEventEmitter" prototype', function () {
+    it('should expose "MockEventEmitter" prototype', () => {
         expect(mockEventEmitter).to.have.property('addListener');
         expect(mockEventEmitter.addListener).to.be.a('function');
 
@@ -49,15 +49,15 @@ describe('mockEventEmitter', function () {
         expect(mockEventEmitter.prependListener).to.be.a('function');
     });
 
-    it('should return undefined when methods called', function () {
-        expect(mockEventEmitter.addListener()).to.be.undefined;
-        expect(mockEventEmitter.on()).to.be.undefined;
-        expect(mockEventEmitter.once()).to.be.undefined;
-        expect(mockEventEmitter.removeListener()).to.be.undefined;
-        expect(mockEventEmitter.removeAllListeners()).to.be.undefined;
-        expect(mockEventEmitter.setMaxListeners()).to.be.undefined;
-        expect(mockEventEmitter.listeners()).to.be.undefined;
-        expect(mockEventEmitter.emit()).to.be.undefined;
-        expect(mockEventEmitter.prependListener()).to.be.undefined;
+    it('should return undefined when methods called', () => {
+        expect(mockEventEmitter.addListener()).to.be.an('undefined');
+        expect(mockEventEmitter.on()).to.be.an('undefined');
+        expect(mockEventEmitter.once()).to.be.an('undefined');
+        expect(mockEventEmitter.removeListener()).to.be.an('undefined');
+        expect(mockEventEmitter.removeAllListeners()).to.be.an('undefined');
+        expect(mockEventEmitter.setMaxListeners()).to.be.an('undefined');
+        expect(mockEventEmitter.listeners()).to.be.an('undefined');
+        expect(mockEventEmitter.emit()).to.be.an('undefined');
+        expect(mockEventEmitter.prependListener()).to.be.an('undefined');
     });
 });

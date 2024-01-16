@@ -1,25 +1,25 @@
-'use strict';
+const chai = require('chai');
 
-var chai = require('chai');
-var expect = chai.expect;
-var sinonChai = require('sinon-chai');
+const { expect } = chai;
+const sinonChai = require('sinon-chai');
+
 chai.use(sinonChai);
 
-var mockExpressResponse = require('../../lib/express/mock-express').response;
+const mockExpressResponse = require('../../lib/express/mock-express').response;
 
-describe('mockExpressResponse', function () {
-    it('should expose .createResponse()', function () {
+describe('mockExpressResponse', () => {
+    it('should expose .createResponse()', () => {
         expect(mockExpressResponse.createResponse).to.be.a('function');
     });
 
-    describe('.createResponse()', function () {
-        var response;
+    describe('.createResponse()', () => {
+        let response;
 
-        before(function () {
+        before(() => {
             response = mockExpressResponse.createResponse();
         });
 
-        it('should return an object', function () {
+        it('should return an object', () => {
             expect(response).to.be.an('object');
         });
     });
