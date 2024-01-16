@@ -1,90 +1,50 @@
-env:
-  node: true
-  es2017: true
-
-parserOptions:
-  ecmaVersion: 2019
-
-rules:
-  comma-dangle: 2
-  no-alert: 2
-  no-array-constructor: 2
-  no-caller: 2
-  no-catch-shadow: 2
-  no-control-regex: 2
-  no-debugger: 2
-  no-div-regex: 2
-  no-dupe-keys: 2
-  no-else-return: 2
-  no-empty: 2
-  no-empty-character-class: 2
-  no-eq-null: 2
-  no-eval: 2
-  no-ex-assign: 2
-  no-func-assign: 0
-  no-floating-decimal: 2
-  no-implied-eval: 2
-  no-with: 2
-  no-fallthrough: 2
-  no-unreachable: 2
-  no-undef: 2
-  no-undef-init: 2
-  no-unused-expressions: 2
-  no-octal: 2
-  no-octal-escape: 2
-  no-obj-calls: 2
-  no-multi-str: 2
-  no-new-wrappers: 2
-  no-new: 2
-  no-new-func: 2
-  no-native-reassign: 2
-  no-delete-var: 2
-  no-return-assign: 2
-  no-new-object: 2
-  no-label-var: 2
-  no-self-compare: 2
-  no-sync: 2
-  no-loop-func: 2
-  no-labels: 2
-  no-unused-vars:
-    - 1
-    - argsIgnorePattern: ^_
-      varsIgnorePattern: ^_
-  no-script-url: 2
-  no-proto: 2
-  no-iterator: 2
-  no-mixed-requires:
-    - 0
-    - false
-  no-extra-parens: 2
-  no-shadow: 2
-  no-use-before-define: 2
-  no-redeclare: 2
-  no-regex-spaces: 2
-  no-mixed-spaces-and-tabs: 2
-  no-underscore-dangle: 0
-
-  brace-style: 2
-  camelcase: 2
-  consistent-this:
-    - 2
-    - self
-  curly: 2
-  dot-notation: 2
-  eqeqeq: 2
-  new-cap: 2
-  new-parens: 2
-  quotes:
-    - 2
-    - single
-  semi: 2
-  strict:
-    - 2
-    - global
-  use-isnan: 2
-  valid-typeof: 2
-  wrap-iife: 2
-  indent:
-    - 1
-    - 4
-    - SwitchCase: 1
+{
+    "extends": [
+        "airbnb-base",
+        "prettier"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "rules": {
+        "no-underscore-dangle": "off",
+        "no-console": "off",
+        "no-plusplus": "off",
+        "func-names": [
+            "warn",
+            "as-needed"
+        ],
+        "prefer-destructuring": [
+            "error",
+            {
+                "object": true,
+                "array": false
+            }
+        ],
+        "no-prototype-builtins": "warn",
+        "no-restricted-syntax": [
+            "error",
+            {
+                "selector": "LabeledStatement",
+                "message": "Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand."
+            },
+            {
+                "selector": "WithStatement",
+                "message": "`with` is disallowed in strict mode because it makes code impossible to predict and optimize."
+            }
+        ]
+    },
+    "overrides": [
+        {
+            "files": [
+                "test/**/*.js",
+                "test/**/*.ts"
+            ],
+            "rules": {
+                "no-unused-expressions": "off"
+            },
+            "env": {
+                "mocha": true
+            }
+        }
+    ],
+    "root": true
+}
