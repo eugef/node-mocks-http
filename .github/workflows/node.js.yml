@@ -11,7 +11,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -30,5 +29,13 @@ jobs:
     - run: npm run build --if-present
     - run: npm run check
     - run: npm run coverage
-    - name: Code Coverage Report
-      uses: romeovs/lcov-reporter-action@v0.3.1
+
+  coverage:
+    needs: build
+
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      - name: Code Coverage Report
+        uses: romeovs/lcov-reporter-action@v0.3.1
