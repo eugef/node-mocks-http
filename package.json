@@ -82,12 +82,12 @@
   "scripts": {
     "test": "mocha",
     "coverage": "nyc --reporter=html --reporter=lcov --reporter=text-summary mocha",
-    "types": "tsd . --files ./test/**/*.test-d.ts",
     "format": "prettier --write --list-different .",
     "lint": "eslint --fix .",
-    "check": "npm run check:format && npm run check:lint",
+    "check": "npm run check:format && npm run check:lint && npm run check:types",
     "check:format": "prettier --list-different .",
     "check:lint": "eslint .",
+    "check:types": "tsd --files ./test/**/*.test-d.ts .",
     "postversion": "npm publish && git push --follow-tags",
     "prepare": "husky install"
   },
