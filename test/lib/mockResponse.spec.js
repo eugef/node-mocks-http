@@ -1242,6 +1242,14 @@ describe('mockResponse', () => {
             expect(response._getData()).to.equal(payload1 + payload2);
         });
 
+        it('should accept Uint8Array through write() and end() and concatenate them in _data', () => {
+            const payload1 = 'payload1';
+            const payload2 = 'payload2';
+            response.write(new TextEncoder().encode(payload1));
+            response.end(new TextEncoder().encode(payload2));
+            expect(response._getData()).to.equal(payload1 + payload2);
+        });
+
         it('should accept buffers through write() and end() and concatenate them in _buffer', () => {
             const payload1 = 'payload1';
             const payload2 = 'payload2';
