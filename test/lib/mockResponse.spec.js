@@ -1241,6 +1241,14 @@ describe('mockResponse', () => {
             expect(response._getData()).to.equal(payload1 + payload2);
         });
 
+        it('should accept Uint8Array through write() and end() and concatenate them in _data', () => {
+            const payload1 = 'payload1';
+            const payload2 = 'payload2';
+            response.write(new TextEncoder().encode(payload1));
+            response.end(new TextEncoder().encode(payload2));
+            expect(response._getData()).to.equal(payload1 + payload2);
+        });
+
         it('should accept buffers through write() and end() and concatenate them in _buffer', () => {
             const payload1 = 'payload1';
             const payload2 = 'payload2';
@@ -1360,6 +1368,11 @@ describe('mockResponse', () => {
             it('will be deprecated in 2.0');
 
             it('should return empty string when no data has been sent', () => {
+                expect(response._getData()).to.equal('');
+            });
+
+            it('should return empty string when sent data is undefined', () => {
+                response.send(undefined);
                 expect(response._getData()).to.equal('');
             });
 
