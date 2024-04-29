@@ -1372,6 +1372,11 @@ describe('mockResponse', () => {
                 expect(response._getData()).to.equal('');
             });
 
+            it('should return empty string when sent data is undefined', () => {
+                response.send(undefined);
+                expect(response._getData()).to.equal('');
+            });
+
             it('should return sent data', () => {
                 response.send('data');
                 expect(response._getData()).to.equal('data');
