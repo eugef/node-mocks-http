@@ -3,9 +3,10 @@ import * as url from 'url';
 import * as querystring from 'querystring';
 import parseRange from 'range-parser';
 import { EventEmitter } from 'events';
-
 import { IncomingMessage } from 'http';
+
 import * as mockRequest from '../../lib/http-mock';
+
 
 describe('mockRequest', () => {
     it('should expose .createRequest()', () => {
@@ -280,6 +281,11 @@ describe('mockRequest', () => {
                 const request = mockRequest.createRequest(options);
                 expect(request.ips).to.deep.equal([options.ip]);
             });
+        });
+
+        it('should be able to create a Fetch API Request object', function () {
+            const request = mockRequest.createRequest<Request>();
+            expect(request.bodyUsed).to.be.undefined;
         });
     });
 
