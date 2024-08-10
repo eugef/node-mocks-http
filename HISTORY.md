@@ -1,3 +1,17 @@
+## v 1.15.1
+
+-   Allowing @types/node v22 [Issue #305][305].
+
+[305]: https://github.com/eugef/node-mocks-http/pull/305
+
+## v 1.15.0
+
+-   Add to write() and end() support of TypedArray [Issue #300][300].
+-   Fix: return empty string when send() was called with undefined [Issue #298][298].
+
+[300]: https://github.com/eugef/node-mocks-http/pull/300
+[298]: https://github.com/eugef/node-mocks-http/pull/298
+
 ## v 1.14.1
 
 -   Move express and node types to prod deps [Issue #290][290].
