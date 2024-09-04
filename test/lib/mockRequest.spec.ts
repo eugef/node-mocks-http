@@ -7,7 +7,6 @@ import { IncomingMessage } from 'http';
 
 import * as mockRequest from '../../lib/http-mock';
 
-
 describe('mockRequest', () => {
     it('should expose .createRequest()', () => {
         expect(mockRequest.createRequest).to.be.a('function');
@@ -283,7 +282,7 @@ describe('mockRequest', () => {
             });
         });
 
-        it('should be able to create a Fetch API Request object', function () {
+        it('should be able to create a Fetch API Request object', () => {
             const request = mockRequest.createRequest<Request>();
             expect(request.bodyUsed).to.be.undefined;
         });
