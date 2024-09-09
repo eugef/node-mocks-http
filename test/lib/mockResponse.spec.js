@@ -85,6 +85,9 @@ describe('mockResponse', () => {
             expect(response).to.have.property('setHeader');
             expect(response.setHeader).to.be.a('function');
 
+            expect(response).to.have.property('appendHeader');
+            expect(response.appendHeader).to.be.a('function');
+
             expect(response).to.have.property('removeHeader');
             expect(response.removeHeader).to.be.a('function');
 
@@ -924,8 +927,8 @@ describe('mockResponse', () => {
         });
     });
 
-    // TODO: fix in 2.0; methods should be inherited from Node OutogingMessage
-    describe('Node OutogingMessage methods', () => {
+    // TODO: fix in 2.0; methods should be inherited from Node OutgoingMessage
+    describe('Node OutgoingMessage methods', () => {
         describe('.setHeader()', () => {
             let response;
 
@@ -948,6 +951,24 @@ describe('mockResponse', () => {
 
             it('should return this', () => {
                 expect(response.setHeader('name', 'value')).to.equal(response);
+            });
+        });
+
+        describe('.appendHeader()', () => {
+            let response;
+
+            beforeEach(() => {
+                response = mockResponse.createResponse();
+            });
+
+            afterEach(() => {
+                response = null;
+            });
+
+            it('should concatenate header values, when called twice with same name', () => {
+                response.appendHeader('name', 'value 1');
+                response.appendHeader('name', 'value 2');
+                expect(response.getHeader('name')).to.eql(['value 1', 'value 2']);
             });
         });
 
