@@ -105,8 +105,8 @@ it('should handle expressjs requests', () => {
 ```
 
 The expected type parameter in the mock request and response expects any type that extends the NodeJS
-`http.IncomingRequest` interface. This means you can also mock requests coming from other frameworks
-too. An example for NextJS request will look like this:
+`http.IncomingRequest` interface or Fetch API `Request` class. This means you can also mock requests
+coming from other frameworks too. An example for NextJS request will look like this:
 
 ```ts
 it('should handle nextjs requests', () => {
@@ -118,6 +118,23 @@ it('should handle nextjs requests', () => {
         }
     });
     const mockExpressResponse = httpMocks.createResponse<NextApiResponse>();
+
+    // ... the rest of the test as above.
+});
+```
+
+It is also possible to mock requests from the NextJS new AppRouter:
+
+```ts
+it('should handle nextjs app reouter requests', () => {
+    const mockExpressRequest = httpMocks.createRequest<NextRequest>({
+        method: 'GET',
+        url: '/user/42',
+        params: {
+            id: 42
+        }
+    });
+    const mockExpressResponse = httpMocks.createResponse<NextResponse>();
 
     // ... the rest of the test as above.
 });

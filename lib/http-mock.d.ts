@@ -1,6 +1,9 @@
 import { Request, Response, CookieOptions } from 'express';
 import { IncomingMessage, OutgoingMessage } from 'http';
 
+export type RequestType = IncomingMessage | globalThis.Request;
+export type ResponseType = OutgoingMessage | globalThis.Response;
+
 export type RequestMethod = 'CONNECT' | 'DELETE' | 'GET' | 'HEAD' | 'OPTIONS' | 'PATCH' | 'POST' | 'PUT' | 'TRACE';
 
 export interface Params {
@@ -105,7 +108,7 @@ export interface RequestOptions {
     [key: string]: any;
 }
 
-export type MockRequest<T extends IncomingMessage> = T & {
+export type MockRequest<T extends RequestType> = T & {
     _setParameter: (key: string, value?: string) => void;
     _setSessionVariable: (variable: string, value?: string) => void;
     _setCookiesVariable: (variable: string, value?: string) => void;
@@ -134,7 +137,7 @@ export type ResponseCookie = {
     options: CookieOptions;
 };
 
-export type MockResponse<T extends OutgoingMessage> = T & {
+export type MockResponse<T extends ResponseType> = T & {
     _isEndCalled: () => boolean;
     _getHeaders: () => Headers;
     _getData: () => any;
@@ -153,16 +156,16 @@ export type MockResponse<T extends OutgoingMessage> = T & {
     cookies: { [name: string]: ResponseCookie };
 };
 
-export function createRequest<T extends IncomingMessage = Request>(options?: RequestOptions): MockRequest<T>;
+export function createRequest<T extends RequestType = Request>(options?: RequestOptions): MockRequest<T>;
 
-export function createResponse<T extends OutgoingMessage = Response>(options?: ResponseOptions): MockResponse<T>;
+export function createResponse<T extends ResponseType = Response>(options?: ResponseOptions): MockResponse<T>;
 
-export interface Mocks<T1 extends IncomingMessage, T2 extends OutgoingMessage> {
+export interface Mocks<T1 extends RequestType, T2 extends ResponseType> {
     req: MockRequest<T1>;
     res: MockResponse<T2>;
 }
 
-export function createMocks<T1 extends IncomingMessage = Request, T2 extends OutgoingMessage = Response>(
+export function createMocks<T1 extends RequestType = Request, T2 extends ResponseType = Response>(
     reqOptions?: RequestOptions,
     resOptions?: ResponseOptions
 ): Mocks<T1, T2>;
