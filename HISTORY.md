@@ -1,3 +1,11 @@
+## v 1.16.0
+
+-   Add appendHeader to MockResponse [Issue #306][306].
+-   Add Fetch API types as accepted mock parameters [Issue #291][291].
+
+[306]: https://github.com/eugef/node-mocks-http/pull/306
+[291]: https://github.com/eugef/node-mocks-http/pull/291
+
 ## v 1.15.1
 
 -   Allowing @types/node v22 [Issue #305][305].

@@ -2,7 +2,7 @@
   "author": "Howard Abrams <howard.abrams@gmail.com> (http://www.github.com/howardabrams)",
   "name": "node-mocks-http",
   "description": "Mock 'http' objects for testing Express, Next.js and Koa routing functions",
-  "version": "1.15.1",
+  "version": "1.16.0",
   "homepage": "https://github.com/eugef/node-mocks-http",
   "bugs": {
     "url": "https://github.com/eugef/node-mocks-http/issues"
