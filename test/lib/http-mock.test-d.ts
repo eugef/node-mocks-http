@@ -27,3 +27,5 @@ expectAssignable<NodeResponse>(createResponse<NodeResponse>());
 expectNotAssignable<ExpressResponse>(createResponse<NodeResponse>());
 
 expectType<Mocks<ExpressRequest, ExpressResponse>>(createMocks());
+// eslint-disable-next-line no-undef
+expectType<Mocks<globalThis.Request, globalThis.Response>>(createMocks<globalThis.Request, globalThis.Response>());

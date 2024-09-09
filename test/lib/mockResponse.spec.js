@@ -1,13 +1,12 @@
 const chai = require('chai');
-
-const { expect } = chai;
 const sinon = require('sinon');
 const sinonChai = require('sinon-chai');
 
-chai.use(sinonChai);
-
 const mockResponse = require('../../lib/mockResponse');
 const mockRequest = require('../../lib/mockRequest');
+
+const { expect } = chai;
+chai.use(sinonChai);
 
 describe('mockResponse', () => {
     it('should expose .createResponse()', () => {
