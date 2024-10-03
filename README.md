@@ -75,18 +75,20 @@ exports['routeHandler - Simple testing'] = function (test) {
 
 ### TypeScript typings
 
-The typings for TypeScript are bundled with this project. In particular, the `.createRequest()`, `.createResponse()` and `.createMocks()` methods are typed and are generic. Unless specified explicitly, they will be return an Express-based request/response object:
+The typings for TypeScript are bundled with this project. In particular, the `.createRequest()`, `.createResponse()` and `.createMocks()` methods are typed and are generic. You should explicitly specify the type of request/response object of your framework, otherwise the basic NodeJS `IncomingMessage` and `OutgoingMessage` are used:
 
 ```ts
+import type { Request, Response } from 'express';
+
 it('should handle expressjs requests', () => {
-    const mockExpressRequest = httpMocks.createRequest({
+    const mockExpressRequest = httpMocks.createRequest<Request>({
         method: 'GET',
         url: '/user/42',
         params: {
             id: 42
         }
     });
-    const mockExpressResponse = httpMocks.createResponse();
+    const mockExpressResponse = httpMocks.createResponse<Response>();
 
     routeHandler(request, response);
 
