@@ -4,6 +4,7 @@ import * as querystring from 'querystring';
 import parseRange from 'range-parser';
 import { EventEmitter } from 'events';
 import { IncomingMessage } from 'http';
+import type { Request as ExpressRequest } from 'express';
 
 import * as mockRequest from '../../lib/http-mock';
 
@@ -981,7 +982,7 @@ describe('mockRequest', () => {
         });
 
         it('should support asynchronous pushes while iterating', async () => {
-            const request = mockRequest.createRequest();
+            const request = mockRequest.createRequest<ExpressRequest>();
 
             const chunksPromise = (async () => {
                 const extraPushes = ['3', '2', '1'];
@@ -1018,7 +1019,7 @@ describe('mockRequest', () => {
         });
 
         it('supports error', async () => {
-            const request = mockRequest.createRequest();
+            const request = mockRequest.createRequest<ExpressRequest>();
 
             /** @type {AsyncIterator} */
             const iterator = request[Symbol.asyncIterator]();
@@ -1036,7 +1037,7 @@ describe('mockRequest', () => {
         });
 
         it('supports throw', async () => {
-            const request = mockRequest.createRequest();
+            const request = mockRequest.createRequest<ExpressRequest>();
 
             /** @type {AsyncIterator} */
             const iterator: AsyncIterator<string> = request[Symbol.asyncIterator]();
@@ -1055,7 +1056,7 @@ describe('mockRequest', () => {
         });
 
         it('first error wins', async () => {
-            const request = mockRequest.createRequest();
+            const request = mockRequest.createRequest<ExpressRequest>();
 
             /** @type {AsyncIterator} */
             const iterator: AsyncIterator<string> = request[Symbol.asyncIterator]();
@@ -1075,7 +1076,7 @@ describe('mockRequest', () => {
         });
 
         it('supports return', async () => {
-            const request = mockRequest.createRequest();
+            const request = mockRequest.createRequest<ExpressRequest>();
 
             /** @type {AsyncIterator} */
             const iterator: AsyncIterator<string> = request[Symbol.asyncIterator]();
@@ -1086,7 +1087,7 @@ describe('mockRequest', () => {
 
         ['close', 'error'].forEach((event) => {
             it(`discards buffer on ${event}`, async () => {
-                const request = mockRequest.createRequest();
+                const request = mockRequest.createRequest<ExpressRequest>();
 
                 const chunksPromise = (async () => {
                     const chunks = [] as string[];

@@ -1,4 +1,3 @@
-import { Request, Response, CookieOptions } from 'express';
 import { IncomingMessage, OutgoingMessage } from 'http';
 
 export type RequestType = IncomingMessage | globalThis.Request;
@@ -134,7 +133,7 @@ export interface ResponseOptions {
 
 export type ResponseCookie = {
     value: any;
-    options: CookieOptions;
+    options: Record<string, unknown>;
 };
 
 export type MockResponse<T extends ResponseType> = T & {
@@ -156,16 +155,16 @@ export type MockResponse<T extends ResponseType> = T & {
     cookies: { [name: string]: ResponseCookie };
 };
 
-export function createRequest<T extends RequestType = Request>(options?: RequestOptions): MockRequest<T>;
+export function createRequest<T extends RequestType = RequestType>(options?: RequestOptions): MockRequest<T>;
 
-export function createResponse<T extends ResponseType = Response>(options?: ResponseOptions): MockResponse<T>;
+export function createResponse<T extends ResponseType = ResponseType>(options?: ResponseOptions): MockResponse<T>;
 
 export interface Mocks<T1 extends RequestType, T2 extends ResponseType> {
     req: MockRequest<T1>;
     res: MockResponse<T2>;
 }
 
-export function createMocks<T1 extends RequestType = Request, T2 extends ResponseType = Response>(
+export function createMocks<T1 extends RequestType = RequestType, T2 extends ResponseType = ResponseType>(
     reqOptions?: RequestOptions,
     resOptions?: ResponseOptions
 ): Mocks<T1, T2>;
