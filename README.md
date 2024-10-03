@@ -13,13 +13,13 @@ This project is available as a
 [NPM package][npm-url].
 
 ```bash
-$ npm install node-mocks-http --save-dev
+$ npm install node-mocks-http @types/node @types/express --save-dev
 ```
 
 or
 
 ```bash
-$ yarn add node-mocks-http --dev
+$ yarn add node-mocks-http @types/node @types/express --dev
 ```
 
 After installing the package include the following in your test files:
