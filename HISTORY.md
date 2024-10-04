@@ -1,3 +1,9 @@
+## v 1.16.1
+
+-   Allowing @types/express v5 [Issue #309][309].
+
+[309]: https://github.com/eugef/node-mocks-http/pull/309
+
 ## v 1.16.0
 
 -   Add appendHeader to MockResponse [Issue #306][306].
