@@ -1,3 +1,9 @@
+## v 1.16.2
+
+-   Fix: writeHead() sets headersSent [Issue #313][313].
+
+[313]: https://github.com/eugef/node-mocks-http/pull/313
+
 ## v 1.16.1
 
 -   Allowing @types/express v5 [Issue #309][309].
