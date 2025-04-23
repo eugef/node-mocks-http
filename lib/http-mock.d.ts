@@ -19,6 +19,7 @@ export interface Cookies {
 }
 
 export interface Headers {
+    // Standard HTTP headers
     accept?: string;
     'accept-language'?: string;
     'accept-patch'?: string;
@@ -73,7 +74,33 @@ export interface Headers {
     via?: string;
     warning?: string;
     'www-authenticate'?: string;
+
+    // Support for arbitrary headers
     [header: string]: string | string[] | undefined;
+}
+
+/**
+ * HeaderWebAPI interface combines the existing Headers type with
+ * standard Web API Headers interface methods for better compatibility
+ * with browser environments.
+ */
+export interface HeaderWebAPI {
+    // Include all the header properties
+    [header: string]: any; // 'any' to accommodate both header values and methods
+
+    // Web API Headers methods
+    append(name: string, value: string): void;
+    delete(name: string): void;
+    get(name: string): string | null;
+    has(name: string): boolean;
+    set(name: string, value: string): void;
+    forEach(callbackfn: (value: string, key: string, parent: HeaderWebAPI) => void, thisArg?: any): void;
+
+    // Iterator methods
+    entries(): IterableIterator<[string, string]>;
+    keys(): IterableIterator<string>;
+    values(): IterableIterator<string>;
+    [Symbol.iterator](): IterableIterator<[string, string]>;
 }
 
 export interface Query {
@@ -121,6 +148,8 @@ export type MockRequest<T extends RequestType> = T & {
     _setBody: (body?: Body) => void;
     _addBody: (key: string, value?: any) => void;
 
+    headers: HeaderWebAPI;
+
     // Support custom properties appended on Request objects.
     [key: string]: any;
 };
@@ -139,7 +168,7 @@ export type ResponseCookie = {
 
 export type MockResponse<T extends ResponseType> = T & {
     _isEndCalled: () => boolean;
-    _getHeaders: () => Headers;
+    _getHeaders: () => HeaderWebAPI;
     _getData: () => any;
     _getJSONData: () => any;
     _getBuffer: () => Buffer;
