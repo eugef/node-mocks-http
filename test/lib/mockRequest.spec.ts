@@ -43,7 +43,7 @@ describe('mockRequest', () => {
                 expect(request.param).to.be.a('function');
             });
 
-            it('shoud initialize with default options', () => {
+            it('should initialize with default options', () => {
                 const request = mockRequest.createRequest();
                 expect(request.method).to.equal('GET');
                 expect(request.url).to.equal('');
@@ -54,7 +54,8 @@ describe('mockRequest', () => {
                 expect(request.session).to.be.a('undefined');
                 expect(request.cookies).to.deep.equal({});
                 expect(request.signedCookies).to.be.a('undefined');
-                expect(request.headers).to.deep.equal({});
+                expect(request.headers).to.be.an('object');
+                expect(Object.keys(request.headers).length).to.equal(0);
                 expect(request.body).to.deep.equal({});
                 expect(request.query).to.deep.equal({});
                 expect(request.files).to.deep.equal({});
@@ -202,9 +203,12 @@ describe('mockRequest', () => {
                 const request = mockRequest.createRequest(options);
                 expect(request.header('KEY1')).to.equal('value1');
                 expect(request.get('KEY1')).to.equal('value1');
+                expect(request.headers.get('KEY1')).to.equal('value1');
                 expect(request.getHeader('KEY1')).to.equal('value1');
+
                 expect(request.header('KEY2')).to.equal('value2');
                 expect(request.get('KEY2')).to.equal('value2');
+                expect(request.headers.get('KEY2')).to.equal('value2');
                 expect(request.getHeader('KEY2')).to.equal('value2');
             });
 
@@ -298,6 +302,7 @@ describe('mockRequest', () => {
             const request = mockRequest.createRequest(options);
             expect(request.get('key')).to.equal('value');
             expect(request.header('key')).to.equal('value');
+            expect(request.headers.get('key')).to.equal('value');
             expect(request.getHeader('key')).to.equal('value');
         });
 
@@ -311,6 +316,7 @@ describe('mockRequest', () => {
             const request = mockRequest.createRequest(options);
             expect(request.get('referrer')).to.equal('value');
             expect(request.header('referrer')).to.equal('value');
+            expect(request.headers.get('referrer')).to.equal('value');
             expect(request.getHeader('referrer')).to.equal('value');
         });
 
@@ -324,6 +330,7 @@ describe('mockRequest', () => {
             const request = mockRequest.createRequest(options);
             expect(request.get('referer')).to.equal('value');
             expect(request.header('referer')).to.equal('value');
+            expect(request.headers.get('referer')).to.equal('value');
             expect(request.getHeader('referer')).to.equal('value');
         });
 
@@ -331,6 +338,7 @@ describe('mockRequest', () => {
             const request = mockRequest.createRequest();
             expect(request.get('key')).to.be.a('undefined');
             expect(request.header('key')).to.be.a('undefined');
+            expect(request.headers.get('key')).to.be.a('undefined');
             expect(request.getHeader('key')).to.be.a('undefined');
         });
     });
@@ -561,6 +569,7 @@ describe('mockRequest', () => {
             const request = mockRequest.createRequest();
             expect(request.get('key')).to.be.a('undefined');
             expect(request.header('key')).to.be.a('undefined');
+            expect(request.headers.get('key')).to.be.a('undefined');
         });
 
         it('should return defaultValue, when not found in params/body/query', () => {
@@ -643,6 +652,7 @@ describe('mockRequest', () => {
                 request._setHeadersVariable('key', 'value');
                 expect(request.get('key')).to.equal('value');
                 expect(request.header('key')).to.equal('value');
+                expect(request.headers.get('key')).to.equal('value');
                 expect(request.getHeader('key')).to.equal('value');
             });
 
