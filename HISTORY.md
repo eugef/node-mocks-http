@@ -1,3 +1,9 @@
+## v 1.17.1
+
+-   Fix direct access to the headers [Issue #319][319].
+
+[319]: https://github.com/eugef/node-mocks-http/pull/319
+
 ## v 1.17.0
 
 -   Allow access request headers both in Express.js and Web Api (Next.js) manner [Issue #317][317].
