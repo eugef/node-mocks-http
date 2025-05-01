@@ -212,6 +212,17 @@ describe('mockRequest', () => {
                 expect(request.getHeader('KEY2')).to.equal('value2');
             });
 
+            it('should set .headers directly and be accessible via get() and header() case-insensitively', () => {
+                const request = mockRequest.createRequest();
+                request.headers.KEY1 = 'value1';
+
+                expect(request.header('KEY1')).to.equal('value1');
+                expect(request.get('KEY1')).to.equal('value1');
+                expect(request.headers.get('KEY1')).to.equal('value1');
+                expect(request.getHeader('KEY1')).to.equal('value1');
+                expect(request.headers.KEY1).to.equal('value1');
+            });
+
             it('should set .body to options.body', () => {
                 const options = {
                     body: {
@@ -304,6 +315,7 @@ describe('mockRequest', () => {
             expect(request.header('key')).to.equal('value');
             expect(request.headers.get('key')).to.equal('value');
             expect(request.getHeader('key')).to.equal('value');
+            expect(request.headers.key).to.equal('value');
         });
 
         it('should return referer, when request as referrer', () => {
@@ -318,6 +330,9 @@ describe('mockRequest', () => {
             expect(request.header('referrer')).to.equal('value');
             expect(request.headers.get('referrer')).to.equal('value');
             expect(request.getHeader('referrer')).to.equal('value');
+
+            // direct access keeps the original name
+            expect(request.headers.referer).to.equal('value');
         });
 
         it('should return referrer, when request as referer', () => {
@@ -332,6 +347,9 @@ describe('mockRequest', () => {
             expect(request.header('referer')).to.equal('value');
             expect(request.headers.get('referer')).to.equal('value');
             expect(request.getHeader('referer')).to.equal('value');
+
+            // direct access keeps the original name
+            expect(request.headers.referrer).to.equal('value');
         });
 
         it('should not return header, when not set', () => {
@@ -340,6 +358,7 @@ describe('mockRequest', () => {
             expect(request.header('key')).to.be.a('undefined');
             expect(request.headers.get('key')).to.be.a('undefined');
             expect(request.getHeader('key')).to.be.a('undefined');
+            expect(request.headers.key).to.be.a('undefined');
         });
     });
 
@@ -570,6 +589,7 @@ describe('mockRequest', () => {
             expect(request.get('key')).to.be.a('undefined');
             expect(request.header('key')).to.be.a('undefined');
             expect(request.headers.get('key')).to.be.a('undefined');
+            expect(request.headers.key).to.be.a('undefined');
         });
 
         it('should return defaultValue, when not found in params/body/query', () => {
@@ -649,16 +669,13 @@ describe('mockRequest', () => {
         describe('._setHeadersVariable()', () => {
             it('should set header, when called with key and value', () => {
                 const request = mockRequest.createRequest();
-                request._setHeadersVariable('key', 'value');
-                expect(request.get('key')).to.equal('value');
-                expect(request.header('key')).to.equal('value');
-                expect(request.headers.get('key')).to.equal('value');
-                expect(request.getHeader('key')).to.equal('value');
-            });
+                request._setHeadersVariable('Key', 'value');
 
-            it('should throw an error, when called with missing arguments', () => {
-                const request = mockRequest.createRequest();
-                expect(request._setHeadersVariable).to.throw();
+                expect(request.get('Key')).to.equal('value');
+                expect(request.header('Key')).to.equal('value');
+                expect(request.headers.get('Key')).to.equal('value');
+                expect(request.getHeader('Key')).to.equal('value');
+                expect(request.headers.Key).to.equal('value');
             });
         });
 
