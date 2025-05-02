@@ -304,18 +304,46 @@ describe('mockRequest', () => {
     });
 
     describe('.get()/.header()', () => {
-        it('should return header, when set', () => {
+        it('should return header, when set in constructor', () => {
             const options = {
                 headers: {
-                    key: 'value'
+                    'Content-type': 'value'
                 }
             };
+
             const request = mockRequest.createRequest(options);
-            expect(request.get('key')).to.equal('value');
-            expect(request.header('key')).to.equal('value');
-            expect(request.headers.get('key')).to.equal('value');
-            expect(request.getHeader('key')).to.equal('value');
-            expect(request.headers.key).to.equal('value');
+            expect(request.get('Content-type')).to.equal('value');
+            expect(request.header('Content-type')).to.equal('value');
+            expect(request.headers.get('Content-type')).to.equal('value');
+            expect(request.getHeader('Content-type')).to.equal('value');
+            expect(request.headers['Content-type']).to.equal('value');
+        });
+
+        it('should return header, when set explicitly', () => {
+            const request = mockRequest.createRequest();
+
+            request.headers['Content-type'] = 'value';
+
+            expect(request.get('Content-type')).to.equal('value');
+            expect(request.header('Content-type')).to.equal('value');
+            expect(request.headers.get('Content-type')).to.equal('value');
+            expect(request.getHeader('Content-type')).to.equal('value');
+            expect(request.headers['Content-type']).to.equal('value');
+        });
+
+        it('should return header, when set as an object (deprecated)', () => {
+            const request = mockRequest.createRequest();
+
+            // setting headers as an object is officially supported by Express
+            // @ts-expect-error
+            request.headers = { 'Content-type': 'value' };
+
+            expect(request.get('Content-type')).to.equal('value');
+            expect(request.header('Content-type')).to.equal('value');
+            expect(request.getHeader('Content-type')).to.equal('value');
+            expect(request.headers['Content-type']).to.equal('value');
+
+            // request.headers.get() is not working in this case
         });
 
         it('should return referer, when request as referrer', () => {
