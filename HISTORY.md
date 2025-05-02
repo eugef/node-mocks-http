@@ -1,3 +1,9 @@
+## v 1.17.2
+
+-   Fix request.get() when headers are set as an object [Issue #321][321].
+
+[321]: https://github.com/eugef/node-mocks-http/pull/321
+
 ## v 1.17.1
 
 -   Fix direct access to the headers [Issue #319][319].
