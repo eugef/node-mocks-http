@@ -1209,4 +1209,39 @@ describe('mockRequest', () => {
             });
         }
     });
+
+    describe('.rawHeaders', () => {
+        it('should include headers from the initial options', () => {
+            const request = mockRequest.createRequest({
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: 'Bearer token'
+                }
+            });
+
+            expect(request.rawHeaders).to.deep.equal([
+                'content-type',
+                'application/json',
+                'authorization',
+                'Bearer token'
+            ]);
+        });
+
+        it('should reflect changes to headers', () => {
+            const request = mockRequest.createRequest({
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            request.headers.Authorization = 'Bearer token';
+
+            expect(request.rawHeaders).to.deep.equal([
+                'content-type',
+                'application/json',
+                'authorization',
+                'Bearer token'
+            ]);
+        });
+    });
 });
