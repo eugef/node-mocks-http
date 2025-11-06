@@ -30,6 +30,9 @@ expectType<MockResponse<ExpressResponse<{ message: number }>>>(createResponse<Ex
 expectNotType<MockResponse<NodeResponse>>(createResponse<ExpressResponse<{ message: number }>>());
 expectAssignable<NodeResponse>(createResponse<ExpressResponse<{ message: number }>>());
 
+expectType<Buffer[]>(createResponse()._getChunks());
+expectType<Buffer[]>(createResponse<NodeResponse>()._getChunks());
+
 expectType<Mocks<ExpressRequest, ExpressResponse>>(createMocks());
 // eslint-disable-next-line no-undef
 expectType<Mocks<globalThis.Request, globalThis.Response>>(createMocks<globalThis.Request, globalThis.Response>());

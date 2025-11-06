@@ -171,6 +171,7 @@ export type MockResponse<T extends ResponseType> = T & {
     _getHeaders: () => HeaderWebAPI;
     _getData: () => any;
     _getJSONData: () => T extends Response<infer ResBody> ? ResBody : any;
+    _getChunks: () => Buffer[];
     _getBuffer: () => Buffer;
     _getLocals: () => any;
     _getStatusCode: () => number;
