@@ -2,7 +2,7 @@
   "author": "Howard Abrams <howard.abrams@gmail.com> (http://www.github.com/howardabrams)",
   "name": "node-mocks-http",
   "description": "Mock 'http' objects for testing Express, Next.js and Koa routing functions",
-  "version": "1.17.0",
+  "version": "1.17.2",
   "homepage": "https://github.com/eugef/node-mocks-http",
   "bugs": {
     "url": "https://github.com/eugef/node-mocks-http/issues"
@@ -71,8 +71,8 @@
   "devDependencies": {
     "@types/chai": "^4.3.11",
     "@types/mocha": "^10.0.6",
-    "@typescript-eslint/eslint-plugin": "^6.17.0",
-    "@typescript-eslint/parser": "^6.17.0",
+    "@typescript-eslint/eslint-plugin": "^8.56.1",
+    "@typescript-eslint/parser": "^8.56.1",
     "chai": "^4.2.0",
     "eslint": "^8.56.0",
     "eslint-config-airbnb-base": "^15.0.0",
