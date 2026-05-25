@@ -1,4 +1,4 @@
-import { Request, Response, CookieOptions } from 'express';
+import type { Request, Response, CookieOptions } from 'express';
 import { IncomingMessage, OutgoingMessage } from 'http';
 
 export type RequestType = IncomingMessage | globalThis.Request;
