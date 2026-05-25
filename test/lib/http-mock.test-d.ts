@@ -2,7 +2,7 @@ import { IncomingMessage as NodeRequest, OutgoingMessage as NodeResponse } from 
 // eslint-disable-next-line import/no-unresolved
 import { expectAssignable, expectNotAssignable, expectNotType, expectType } from 'tsd';
 // eslint-disable-next-line import/no-unresolved
-import { Request as ExpressRequest, Response as ExpressResponse } from 'express';
+import type { Request as ExpressRequest, Response as ExpressResponse } from 'express';
 
 import { createMocks, createRequest, createResponse, MockRequest, MockResponse, Mocks } from '../../lib/http-mock';
 
