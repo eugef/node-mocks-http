@@ -71,6 +71,7 @@
   },
   "devDependencies": {
     "@types/chai": "^4.3.11",
+    "@types/express": "^5.0.6",
     "@types/mocha": "^10.0.6",
     "@typescript-eslint/eslint-plugin": "^8.56.1",
     "@typescript-eslint/parser": "^8.56.1",
