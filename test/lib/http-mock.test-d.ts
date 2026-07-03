@@ -4,7 +4,15 @@ import { expectAssignable, expectNotAssignable, expectNotType, expectType } from
 // eslint-disable-next-line import/no-unresolved
 import type { Request as ExpressRequest, Response as ExpressResponse } from 'express';
 
-import { createMocks, createRequest, createResponse, MockRequest, MockResponse, Mocks, RequestMethod } from '../../lib/http-mock';
+import {
+    createMocks,
+    createRequest,
+    createResponse,
+    MockRequest,
+    MockResponse,
+    Mocks,
+    RequestMethod
+} from '../../lib/http-mock';
 
 expectType<MockRequest<ExpressRequest>>(createRequest());
 expectNotType<MockRequest<NodeRequest>>(createRequest());
@@ -41,14 +49,14 @@ expectType<Mocks<ExpressRequest, ExpressResponse<{ message: number }>>>(
     createMocks<ExpressRequest, ExpressResponse<{ message: number }>>()
 );
 
-expectAssignable<RequestMethod>("CONNECT");
-expectAssignable<RequestMethod>("DELETE");
-expectAssignable<RequestMethod>("GET");
-expectAssignable<RequestMethod>("HEAD");
-expectAssignable<RequestMethod>("OPTIONS");
-expectAssignable<RequestMethod>("PATCH");
-expectAssignable<RequestMethod>("POST");
-expectAssignable<RequestMethod>("PUT");
-expectAssignable<RequestMethod>("QUERY");
-expectAssignable<RequestMethod>("TRACE");
-expectNotAssignable<RequestMethod>("WRONG");
+expectAssignable<RequestMethod>('CONNECT');
+expectAssignable<RequestMethod>('DELETE');
+expectAssignable<RequestMethod>('GET');
+expectAssignable<RequestMethod>('HEAD');
+expectAssignable<RequestMethod>('OPTIONS');
+expectAssignable<RequestMethod>('PATCH');
+expectAssignable<RequestMethod>('POST');
+expectAssignable<RequestMethod>('PUT');
+expectAssignable<RequestMethod>('QUERY');
+expectAssignable<RequestMethod>('TRACE');
+expectNotAssignable<RequestMethod>('WRONG');
