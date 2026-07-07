@@ -1,3 +1,11 @@
+## v 1.18.0
+
+-   Replace parseurl with WHATWG URL API by @Saturate in https://github.com/eugef/node-mocks-http/pull/315
+-   feat: type \_getJSONData method by @nicoabie in https://github.com/eugef/node-mocks-http/pull/324
+-   feat: type \_getChunks method by @nlisgo in https://github.com/eugef/node-mocks-http/pull/326
+-   Deprecate Node 16, add Node 24 by @eugef in https://github.com/eugef/node-mocks-http/pull/328
+-   feat(types): Add `QUERY` to `RequestMethod` union by @RobinTail in https://github.com/eugef/node-mocks-http/pull/335
+
 ## v 1.17.2
 
 -   Fix request.get() when headers are set as an object [Issue #321][321].
