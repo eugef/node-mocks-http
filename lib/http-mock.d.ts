@@ -4,7 +4,17 @@ import { IncomingMessage, OutgoingMessage } from 'http';
 export type RequestType = IncomingMessage | globalThis.Request;
 export type ResponseType<ResBody = any> = OutgoingMessage | globalThis.Response | Response<ResBody>;
 
-export type RequestMethod = 'CONNECT' | 'DELETE' | 'GET' | 'HEAD' | 'OPTIONS' | 'PATCH' | 'POST' | 'PUT' | 'TRACE';
+export type RequestMethod =
+    | 'CONNECT'
+    | 'DELETE'
+    | 'GET'
+    | 'HEAD'
+    | 'OPTIONS'
+    | 'PATCH'
+    | 'POST'
+    | 'PUT'
+    | 'QUERY'
+    | 'TRACE';
 
 export interface Params {
     [key: string]: any;
