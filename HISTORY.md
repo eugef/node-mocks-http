@@ -1,3 +1,7 @@
+## v 1.18.1
+
+-   fix(types): stop collapsing custom intersection types in createResponse/createMocks by @MGough in https://github.com/eugef/node-mocks-http/pull/337
+
 ## v 1.18.0
 
 -   Replace parseurl with WHATWG URL API by @Saturate in https://github.com/eugef/node-mocks-http/pull/315
