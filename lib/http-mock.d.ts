@@ -198,9 +198,7 @@ export type MockResponse<T extends ResponseType> = T & {
 
 export function createRequest<T extends RequestType = Request>(options?: RequestOptions): MockRequest<T>;
 
-export function createResponse<T extends ResponseType = Response>(
-    options?: ResponseOptions
-): MockResponse<T extends Response<infer ResBody> ? Response<ResBody> : T>;
+export function createResponse<T extends ResponseType = Response>(options?: ResponseOptions): MockResponse<T>;
 
 export interface Mocks<T1 extends RequestType, T2 extends ResponseType> {
     req: MockRequest<T1>;
@@ -210,11 +208,4 @@ export interface Mocks<T1 extends RequestType, T2 extends ResponseType> {
 export function createMocks<T1 extends RequestType = Request, T2 extends ResponseType = Response>(
     reqOptions?: RequestOptions,
     resOptions?: ResponseOptions
-): Mocks<
-    T1,
-    T2 extends globalThis.Response
-        ? globalThis.Response
-        : T2 extends Response<infer ResBody>
-          ? Response<ResBody>
-          : Response
->;
+): Mocks<T1, T2>;

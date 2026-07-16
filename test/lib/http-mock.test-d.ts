@@ -49,6 +49,31 @@ expectType<Mocks<ExpressRequest, ExpressResponse<{ message: number }>>>(
     createMocks<ExpressRequest, ExpressResponse<{ message: number }>>()
 );
 
+// A custom request type that intersects a framework interface (e.g. Next.js's
+// NextApiRequest) with MockRequest<ExpressRequest> must be preserved as-is, not
+// collapsed down to a bare ExpressRequest.
+interface CustomFrameworkRequest {
+    customFrameworkMethod: () => void;
+}
+type CustomRequest = CustomFrameworkRequest & MockRequest<ExpressRequest>;
+
+expectType<MockRequest<CustomRequest>>(createRequest<CustomRequest>());
+expectType<Mocks<CustomRequest, ExpressResponse>>(createMocks<CustomRequest, ExpressResponse>());
+
+// A custom response type that intersects a framework interface (e.g. Next.js's
+// NextApiResponse) with MockResponse<ExpressResponse> must be preserved as-is,
+// not collapsed down to a bare ExpressResponse<ResBody>.
+interface CustomFrameworkResponse {
+    customFrameworkMethod: () => void;
+}
+type CustomResponse = CustomFrameworkResponse & MockResponse<ExpressResponse<{ message: number }>>;
+
+expectType<MockResponse<CustomResponse>>(createResponse<CustomResponse>());
+expectType<Mocks<ExpressRequest, CustomResponse>>(createMocks<ExpressRequest, CustomResponse>());
+
+// Both sides can be custom intersection types at once.
+expectType<Mocks<CustomRequest, CustomResponse>>(createMocks<CustomRequest, CustomResponse>());
+
 expectAssignable<RequestMethod>('CONNECT');
 expectAssignable<RequestMethod>('DELETE');
 expectAssignable<RequestMethod>('GET');
